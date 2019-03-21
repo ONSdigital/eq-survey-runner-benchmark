@@ -6,6 +6,7 @@ from locust import TaskSet, task
 import utils
 from har_parser import parse_har_file
 from token_generator import create_token
+from urllib.parse import urlsplit
 from uuid import uuid4
 
 r = random.Random()
@@ -14,23 +15,18 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
     def __init__(self, parent):
         super().__init__(parent)
 
+        self.base_url = self.locust.client.base_url
+
         self.har_filepath = os.environ.get('HAR_FILEPATH', 'requests.har')
-        self.eq_id = None
-        self.form_type_id = None
+        self.eq_id = 'test'
+        self.form_type_id = 'mutually_exclusive'
 
         self.parse_har_file()
-
 
     def parse_har_file(self):
         filepath = Path(self.har_filepath)
         absolute_path = filepath.absolute()
         self.requests = parse_har_file(absolute_path)
-
-        self.eq_id, self.form_type_id = utils.get_questionnaire_from_request(self.requests[0])
-
-        print("Parsed HAR file to the following requests")
-        for request in self.requests:
-            print(f"{request['method']}: {request['url']}\n{request['data']}")
 
     @task
     def start(self):
@@ -42,7 +38,8 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
         user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 0))
 
         for request in self.requests:
-            request['url'] = utils.replace_collection_exercise_sid(request['url'], self.collection_exercise_sid)
+            request_base_url = "{0.scheme}://{0.netloc}".format(urlsplit(request['url']))
+            request['url'] = request['url'].replace(request_base_url, self.base_url)
 
             if request['method'] == 'GET':
                 response = self.get(**request)
@@ -55,6 +52,9 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
                 if user_wait_time_min and user_wait_time_max:
                     time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
             elif request['method'] == 'POST':
+
+                print('POST to ', request['url'])
+
                 response = self.post(**request)
 
                 if response.status_code != 302:
@@ -67,7 +67,6 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
 
 
     def do_launch_survey(self):
-        self.collection_exercise_sid = str(uuid4())
 
         token = create_token(
             form_type_id=self.form_type_id,
@@ -82,13 +81,13 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
             postcode='PE12 4GH',
             roles=[],
             variant_flags={'sexual_identity': 'false'},
-            collection_exercise_sid=self.collection_exercise_sid
+            collection_exercise_sid=str(uuid4())
         )
 
         url = f'/session?token={token}'
-        response = self.get(url, name="/session")
+        response = self.get(url=url, name="/session")
 
         if response.status_code != 302:
             raise Exception('Got a non-302 back when authenticating session: {}'.format(response.status_code))
 
-        return response.headers['Location']
+        return self.get(url=response.headers['Location'])
