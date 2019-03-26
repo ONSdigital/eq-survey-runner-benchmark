@@ -10,7 +10,6 @@ haralyzer = "*"
 backoff = "*"
 sdc-cryptography = "==0.2.3"
 locustio = "*"
-urlsplit = "*"
 
 [requires]
 python_version = "3.7"

@@ -213,11 +213,11 @@
         },
         "locustio": {
             "hashes": [
-                "sha256:be7b44468b8683def983e7451ab505cd85fff8d06f6b75ad7c899cedbbf789ac",
-                "sha256:c77b471e0e08e215c93a7af9a95b79193268072873fbbc0effca40f3d9b58be4"
+                "sha256:514562bb0040f18f7b3b74ed9beb943800030801058501c630c8b3fc02bafa27",
+                "sha256:93404f831114791b0756325c53b08bff73f048eeb69688be657629feaa62b507"
             ],
             "index": "pypi",
-            "version": "==0.9.0"
+            "version": "==0.11.0"
         },
         "markupsafe": {
             "hashes": [
@@ -276,7 +276,6 @@
         },
         "pycparser": {
             "hashes": [
-                "sha256:3291c4926b3c9d5380ba6a0196f20399301b5dc162d1d713a486e666dfcae3e9",
                 "sha256:a988718abfad80b6b157acce7bf130a30876d27603738ac39f140993246b25b3"
             ],
             "version": "==2.19"
@@ -365,10 +364,10 @@
         },
         "werkzeug": {
             "hashes": [
-                "sha256:c3fd7a7d41976d9f44db327260e263132466836cef6f91512889ed60ad26557c",
-                "sha256:d5da73735293558eb1651ee2fddc4d0dedcfa06538b8813a2e20011583c9e49b"
+                "sha256:96da23fa8ccecbc3ae832a83df5c722c11547d021637faacb0bec4dd2f4666c8",
+                "sha256:ca5c2dcd367d6c0df87185b9082929d255358f5391923269335782b213d52655"
             ],
-            "version": "==0.14.1"
+            "version": "==0.15.1"
         }
     },
     "develop": {}

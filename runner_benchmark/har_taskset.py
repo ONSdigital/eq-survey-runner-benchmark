@@ -18,8 +18,8 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
         self.base_url = self.locust.client.base_url
 
         self.har_filepath = os.environ.get('HAR_FILEPATH', 'requests.har')
-        self.eq_id = 'test'
-        self.form_type_id = 'mutually_exclusive'
+        self.eq_id = os.environ.get('EQ_ID')
+        self.form_type_id = os.environ.get('FORM_TYPE')
 
         self.parse_har_file()
 

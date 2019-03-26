@@ -18,7 +18,11 @@ To run a benchmark, use:
 
 ```bash
 pipenv install
-pipenv run ./run.sh
+pipenv run ./run.sh <EQ_ID> <FORM_TYPE>
+```
+e.g.
+```
+pipenv run ./run.sh test mutually_exclusive
 ```
 
 This will run 1 minute of locust requests with 1 user and no wait time between requests. It will also process the CSV output to combine `collection_exercise_sid` into `[ID]` in the requests.
@@ -30,13 +34,13 @@ If you'd like to run locust on its own, you can use the following commands
 For the web interface:
 
 ```bash
-locust -f runner_benchmark/har_replay_test.py --host=http://localhost:5000
+EQ_ID=test FORM_TYPE=mutually_exclusive locust -f runner_benchmark/har_replay_test.py --host=http://localhost:5000
 ```
 
 For a command line interface ( with output CSV file ):
 
 ```bash
-locust -f runner_benchmark/har_replay_test.py --host=http://localhost:5000 --no-web -t 1m -c 100 -r 10 --csv=output
+EQ_ID=test FORM_TYPE=mutually_exclusive locust -f runner_benchmark/har_replay_test.py --host=http://localhost:5000 --no-web -t 1m -c 100 -r 10 --csv=output
 ```
 
 ## Configuration
@@ -45,6 +49,8 @@ The following environment variables can be used to configure the locust test:
 
 - `HAR_FILEPATH` - The filepath of the HAR file relative to the base project directory
   - Defaults to `requests.har`
+- `EQ_ID` - The eq_id of the schema being tested.
+- `FORM_TYPE` - The form_type of the schema being tested.
 - `USER_WAIT_TIME_MIN_SECONDS` - The minimum delay between each user's GET requests
   - defaults to zero
 - `USER_WAIT_TIME_MAX_SECONDS` - The maximum delay between each user's GET requests
