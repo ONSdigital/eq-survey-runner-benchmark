@@ -1,0 +1,8 @@
+url,method,num_requests,mean_response_time,min_response_time,max_response_time,average_content_size,requests_per_second
+/questionnaire/mandatory-checkbox,GET,44,122.0,112.0,161.0,17350.0,0.74
+/questionnaire/mandatory-checkbox,POST,22,201.0,185.0,219.0,281.0,0.37
+/questionnaire/non-mandatory-checkbox,GET,44,127.0,107.0,404.0,18044.0,0.74
+/questionnaire/non-mandatory-checkbox,POST,44,222.0,180.0,806.0,251.0,0.74
+/questionnaire/summary,GET,44,136.0,111.0,507.0,14907.0,0.74
+/session,GET,22,323.0,300.0,371.0,273.0,0.37
+Total,None,220,174.0,107.0,806.0,10165.0,3.72

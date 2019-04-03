@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7deb142f9d4d298bb99ce9a4a967f1cf081210a435ac741792612ac6ea5178ed"
+            "sha256": "5640fd7a881855ffa721f1173f987ac94d3380509fbe0290d337156112864e77"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -210,6 +210,13 @@
                 "sha256:82ea1ec2a2246d69858652796f19d3d88b01e1da14602c1dce5daf02a65b20ac"
             ],
             "version": "==0.5"
+        },
+        "locust": {
+            "hashes": [
+                "sha256:aaa38b525795e9c1a35ac3620543cf4e62f82948714f60a32023ea8c9b8edc2e"
+            ],
+            "index": "pypi",
+            "version": "==0.0"
         },
         "locustio": {
             "hashes": [
