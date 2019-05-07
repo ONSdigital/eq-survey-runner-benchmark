@@ -41,7 +41,7 @@ class QuestionnaireMixins:
         return response
 
 
-CSRF_REGEX = re.compile(r'<input id="csrf_token" name="csrf_token" type="hidden" value="(.+?)"/>')
+CSRF_REGEX = re.compile(r'<input id=csrf_token name=csrf_token type=hidden value=(.+?)>')
 
 
 def _extract_csrf_token(html):
