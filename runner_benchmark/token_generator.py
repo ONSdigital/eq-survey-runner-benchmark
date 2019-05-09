@@ -43,6 +43,7 @@ def _get_payload_with_params(form_type_id, eq_id, survey_url=None, **extra_paylo
         'period_id': '201604',
         'collection_exercise_sid': str(uuid4()),
         'ru_ref': '123456789012A',
+        'response_id': str(uuid4()),
         'case_id': str(uuid4()),
         'ru_name': 'Integration Testing',
         'ref_p_start_date': '2016-04-01',
