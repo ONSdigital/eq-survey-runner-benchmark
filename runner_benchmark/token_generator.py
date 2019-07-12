@@ -7,11 +7,34 @@ from sdc.crypto.key_store import KeyStore
 
 KEY_PURPOSE_AUTHENTICATION = 'authentication'
 
-
 EQ_USER_AUTHENTICATION_RRM_PRIVATE_KEY_KID = '709eb42cfee5570058ce0711f730bfbb7d4c8ade'
 SR_USER_AUTHENTICATION_PUBLIC_KEY_KID = 'e19091072f920cbf3ca9f436ceba309e7d814a62'
 
 KEYS_FOLDER = './jwt-test-keys'
+
+PAYLOAD = {
+    'user_id': 'benchmark-user',
+    'period_str': 'July 2019',
+    'period_id': '201907',
+    'collection_exercise_sid': str(uuid4()),
+    'case_id': str(uuid4()),
+    'case_type': 'HI',
+    'display_address': '68 Abingdon Road, Goathill',
+    'ru_ref': '123456789012A',
+    'response_id': '1234567890123456',
+    'questionnaire_id': '0123456789000000',
+    'ru_name': 'Integration Testing',
+    'ref_p_start_date': '2019-04-01',
+    'ref_p_end_date': '2019-011-30',
+    'return_by': '2019-12-06',
+    'trad_as': 'Benchmark Tests',
+    'employment_date': '1983-06-02',
+    'region_code': 'GB-ENG',
+    'language_code': 'en',
+    'roles': [],
+    'account_service_url': 'http://upstream.url',
+    'variant_flags': {'sexual_identity': 'false'},
+}
 
 
 def get_file_contents(filename, trim=False):
@@ -36,36 +59,16 @@ _key_store = KeyStore({
 })
 
 
-def _get_payload_with_params(form_type_id, eq_id, survey_url=None, **extra_payload):
-    payload_vars = {
-        'user_id': 'integration-test',
-        'period_str': 'April 2016',
-        'period_id': '201604',
-        'collection_exercise_sid': str(uuid4()),
-        'ru_ref': '123456789012A',
-        'response_id': str(uuid4()),
-        'case_id': str(uuid4()),
-        'ru_name': 'Integration Testing',
-        'ref_p_start_date': '2016-04-01',
-        'ref_p_end_date': '2016-04-30',
-        'return_by': '2016-05-06',
-        'trad_as': 'Integration Tests',
-        'employment_date': '1983-06-02',
-        'variant_flags': None,
-        'region_code': 'GB-ENG',
-        'language_code': 'en',
-        'sexual_identity': False,
-        'roles': [],
-        'tx_id': str(uuid4()),
-        'eq_id': eq_id,
-        'form_type': form_type_id,
-        'iat': time.time(),
-        'exp': time.time() + float(3600),  # one hour from now
-        'jti': str(uuid4())
-    }
-
+def _get_payload_with_params(schema_name, survey_url=None, **extra_payload):
+    payload_vars = PAYLOAD.copy()
+    payload_vars['tx_id'] = str(uuid4())
+    payload_vars['schema_name'] = schema_name
     if survey_url:
         payload_vars['survey_url'] = survey_url
+
+    payload_vars['iat'] = time.time()
+    payload_vars['exp'] = payload_vars['iat'] + float(3600)  # one hour from now
+    payload_vars['jti'] = str(uuid4())
 
     for key, value in extra_payload.items():
         payload_vars[key] = value
@@ -73,8 +76,8 @@ def _get_payload_with_params(form_type_id, eq_id, survey_url=None, **extra_paylo
     return payload_vars
 
 
-def create_token(form_type_id, eq_id, **extra_payload):
-    payload_vars = _get_payload_with_params(form_type_id, eq_id, None, **extra_payload)
+def create_token(schema_name, **extra_payload):
+    payload_vars = _get_payload_with_params(schema_name, **extra_payload)
 
     return generate_token(payload_vars)
 

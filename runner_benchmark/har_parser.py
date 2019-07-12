@@ -1,10 +1,11 @@
 import json
-from urllib.parse import unquote_plus
-from pathlib import Path
 from operator import itemgetter
+from pathlib import Path
+from urllib.parse import unquote_plus
 
 import dateutil.parser
 from haralyzer import HarParser
+
 
 def parse_har_file(har_file_path):
     """
@@ -42,8 +43,10 @@ def parse_har_file(har_file_path):
 
     return requests
 
+
 def decode_post_data(url_encoded_data):
     return {unquote_plus(k): unquote_plus(v) for k, v in url_encoded_data.items()}
+
 
 def generate_har_benchmark(filename):
     filepath = Path(filename)
@@ -53,6 +56,7 @@ def generate_har_benchmark(filename):
     print("Processing request data:")
     for r in requests:
         print(f"{r['method']}: {r['url']}")
+
 
 if __name__ == '__main__':
     generate_har_benchmark('requests.har')
