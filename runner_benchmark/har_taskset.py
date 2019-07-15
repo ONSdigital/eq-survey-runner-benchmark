@@ -1,15 +1,17 @@
 import os
-import time
 import random
+import time
 from pathlib import Path
+from urllib.parse import urlsplit
+
 from locust import TaskSet, task
+
 import utils
 from har_parser import parse_har_file
 from token_generator import create_token
-from urllib.parse import urlsplit
-from uuid import uuid4
 
 r = random.Random()
+
 
 class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
     def __init__(self, parent):
@@ -18,8 +20,7 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
         self.base_url = self.locust.client.base_url
 
         self.har_filepath = os.environ.get('HAR_FILEPATH', 'requests.har')
-        self.eq_id = os.environ.get('EQ_ID')
-        self.form_type_id = os.environ.get('FORM_TYPE')
+        self.schema_name = os.environ.get('SCHEMA_NAME')
 
         self.parse_har_file()
 
@@ -44,8 +45,10 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
             if request['method'] == 'GET':
                 response = self.get(**request)
 
-                if response.status_code != 200:
-                    raise Exception(f"Got a non-200 ({response.status_code}) back when getting page: {request['url']}")
+                if response.status_code not in [200, 302]:
+                    raise Exception(
+                        f"Got a ({response.status_code}) back when getting page: {request['url']}"
+                    )
 
                 print("Waiting after GET request")
 
@@ -65,27 +68,12 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
             else:
                 raise Exception(f"Invalid request method {request['method']} for request to: {request['url']}")
 
-
     def do_launch_survey(self):
 
-        token = create_token(
-            form_type_id=self.form_type_id,
-            eq_id=self.eq_id,
-            region_code='GB-ENG',
-            country='E',
-            address_line1='68 Abingdon Road',
-            address_line2='Some place',
-            locality='Some locale',
-            town_name='Some town',
-            display_address='68 Abingdon Road, Some place, PE12 4GH',
-            postcode='PE12 4GH',
-            roles=[],
-            variant_flags={'sexual_identity': 'false'},
-            collection_exercise_sid=str(uuid4())
-        )
+        token = create_token(schema_name=self.schema_name)
 
         url = f'/session?token={token}'
-        response = self.get(url=url, name="/session")
+        response = self.get(url=url, name='/session')
 
         if response.status_code != 302:
             raise Exception('Got a non-302 back when authenticating session: {}'.format(response.status_code))

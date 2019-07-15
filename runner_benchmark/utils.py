@@ -3,24 +3,24 @@ import re
 
 class QuestionnaireMixins:
     client = None
-    csrftoken = None
-    prevurl = None
+    csrf_token = None
+    previous_url = None
 
     def get(self, *args, **kwargs):
         allow_redirects = kwargs.pop('allow_redirects', False)
         kwargs.pop('method', None)
 
-        print('GET', kwargs['url'])
+        print('\nGET', kwargs['url'])
 
         response = self.client.get(allow_redirects=allow_redirects, *args, **kwargs)
 
         if not response.content:
             raise Exception(f"No content in GET response for url: {kwargs['url']}")
 
-        self.csrftoken = _extract_csrf_token(response.content.decode('utf8'))
-        self.prevurl = kwargs['url']
+        self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
+        self.previous_url = kwargs['url']
 
-        print('csrftoken', self.csrftoken)
+        print('csrf_token', self.csrf_token)
 
         return response
 
@@ -29,10 +29,10 @@ class QuestionnaireMixins:
         kwargs.pop('method', None)
         allow_redirects = kwargs.pop('allow_redirects', False)
 
-        data['csrf_token'] = self.csrftoken
+        data['csrf_token'] = self.csrf_token
 
         headers = {
-            'Referer': self.prevurl
+            'Referer': self.previous_url
         }
 
         print('POST Headers', headers)

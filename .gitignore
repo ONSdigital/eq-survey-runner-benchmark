@@ -116,3 +116,6 @@ dmypy.json
 
 # Request logs
 *.har
+
+# intellij
+.idea/
