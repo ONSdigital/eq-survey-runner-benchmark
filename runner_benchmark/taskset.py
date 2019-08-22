@@ -1,3 +1,4 @@
+import json
 import os
 import random
 import time
@@ -6,28 +7,24 @@ from urllib.parse import urlsplit
 
 from locust import TaskSet, task
 
-import utils
-from har_parser import parse_har_file
-from token_generator import create_token
+from .questionnaire_mixins import QuestionnaireMixins
+from .token_generator import create_token
 
 r = random.Random()
 
 
-class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
+class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.base_url = self.locust.client.base_url
 
-        self.har_filepath = os.environ.get('HAR_FILEPATH', 'requests.har')
-        self.schema_name = os.environ.get('SCHEMA_NAME')
+        requests_filepath = os.environ.get('REQUESTS_JSON', 'requests.json')
 
-        self.parse_har_file()
-
-    def parse_har_file(self):
-        filepath = Path(self.har_filepath)
-        absolute_path = filepath.absolute()
-        self.requests = parse_har_file(absolute_path)
+        with open(requests_filepath, encoding='utf-8') as requests_file:
+            requests_json = json.load(requests_file)
+            self.schema_name = requests_json['schema_name']
+            self.requests = requests_json['requests']
 
     @task
     def start(self):
@@ -39,43 +36,47 @@ class HarFileTaskSet(TaskSet, utils.QuestionnaireMixins):
         user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 0))
 
         for request in self.requests:
-            request_base_url = "{0.scheme}://{0.netloc}".format(urlsplit(request['url']))
-            request['url'] = request['url'].replace(request_base_url, self.base_url)
-
             if request['method'] == 'GET':
-                response = self.get(**request)
+                response = self.get(request['url'])
 
                 if response.status_code not in [200, 302]:
                     raise Exception(
                         f"Got a ({response.status_code}) back when getting page: {request['url']}"
                     )
 
-                print("Waiting after GET request")
-
                 if user_wait_time_min and user_wait_time_max:
+                    print("Waiting after GET request")
                     time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
-            elif request['method'] == 'POST':
 
+            elif request['method'] == 'POST':
                 print('POST to ', request['url'])
 
-                response = self.post(**request)
+                response = self.post(request['url'], request['data'])
 
                 if response.status_code != 302:
-                    raise Exception(f"Got a non-302 ({response.status_code}) back when posting page: {request['url']} with data: {request['data']}")
+                    raise Exception(
+                        f"Got a non-302 ({response.status_code}) back when posting page: {request['url']} with data: {request['data']}"
+                    )
 
                 print(f"Redirect to: {response.headers['Location']}")
 
             else:
-                raise Exception(f"Invalid request method {request['method']} for request to: {request['url']}")
+                raise Exception(
+                    f"Invalid request method {request['method']} for request to: {request['url']}"
+                )
 
     def do_launch_survey(self):
 
         token = create_token(schema_name=self.schema_name)
 
         url = f'/session?token={token}'
-        response = self.get(url=url, name='/session')
+        response = self.get(url)
 
         if response.status_code != 302:
-            raise Exception('Got a non-302 back when authenticating session: {}'.format(response.status_code))
+            raise Exception(
+                'Got a non-302 back when authenticating session: {}'.format(
+                    response.status_code
+                )
+            )
 
-        return self.get(url=response.headers['Location'])
+        response = self.get(response.headers['Location'], allow_redirects=True)

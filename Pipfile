@@ -4,12 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+black = "==19.3b0"
 
 [packages]
 haralyzer = "*"
 backoff = "*"
 sdc-cryptography = "==0.2.3"
 locustio = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"
