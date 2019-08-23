@@ -42,7 +42,7 @@ The following environment variables can be used to configure the locust test:
 
 Open the network inspector in Chrome or Firefox and ensure 'preserve log' is ticked. Run your manual or functional test. 
 
-**Important:** The captured test should not include `/session` endpoint.
+**Important:** The captured test should not include the `/session` endpoint.
 
 After the test is complete, right-click on one of the requests in the network inspector and save the log as a HAR file. To generate a requests file from the HAR file run:
 
