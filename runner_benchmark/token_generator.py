@@ -45,18 +45,26 @@ def get_file_contents(filename, trim=False):
     return data
 
 
-_key_store = KeyStore({
-    'keys': {
-        EQ_USER_AUTHENTICATION_RRM_PRIVATE_KEY_KID: {
-            'purpose': KEY_PURPOSE_AUTHENTICATION,
-            'type': 'private',
-            'value': get_file_contents('sdc-user-authentication-signing-rrm-private-key.pem')},
-        SR_USER_AUTHENTICATION_PUBLIC_KEY_KID: {
-            'purpose': KEY_PURPOSE_AUTHENTICATION,
-            'type': 'public',
-            'value': get_file_contents('sdc-user-authentication-encryption-sr-public-key.pem')},
+_key_store = KeyStore(
+    {
+        'keys': {
+            EQ_USER_AUTHENTICATION_RRM_PRIVATE_KEY_KID: {
+                'purpose': KEY_PURPOSE_AUTHENTICATION,
+                'type': 'private',
+                'value': get_file_contents(
+                    'sdc-user-authentication-signing-rrm-private-key.pem'
+                ),
+            },
+            SR_USER_AUTHENTICATION_PUBLIC_KEY_KID: {
+                'purpose': KEY_PURPOSE_AUTHENTICATION,
+                'type': 'public',
+                'value': get_file_contents(
+                    'sdc-user-authentication-encryption-sr-public-key.pem'
+                ),
+            },
+        }
     }
-})
+)
 
 
 def _get_payload_with_params(schema_name, survey_url=None, **extra_payload):
