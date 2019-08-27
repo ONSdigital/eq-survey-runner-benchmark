@@ -2,8 +2,6 @@ import json
 import os
 import random
 import time
-from pathlib import Path
-from urllib.parse import urlsplit
 
 from locust import TaskSet, task
 
@@ -53,12 +51,12 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
 
                 response = self.post(request['url'], request['data'])
 
-                if response.status_code != 302:
+                if response.status_code not in [200, 302]:
                     raise Exception(
-                        f"Got a non-302 ({response.status_code}) back when posting page: {request['url']} with data: {request['data']}"
+                        f"Got a ({response.status_code}) back when posting page: {request['url']} with data: {request['data']}"
                     )
-
-                print(f"Redirect to: {response.headers['Location']}")
+                if response.status_code == 302:
+                    print(f"Redirect location: {response.headers['Location']}")
 
             else:
                 raise Exception(
@@ -79,4 +77,4 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                 )
             )
 
-        response = self.get(response.headers['Location'], allow_redirects=True)
+        self.get(response.headers['Location'], allow_redirects=True)

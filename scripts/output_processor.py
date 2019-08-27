@@ -7,7 +7,7 @@ input_filename = 'output_requests.csv'
 output_filename = 'output_requests_processed.csv'
 
 ce_id_regex = re.compile(
-    '\/[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}\/', re.I
+    r'\/[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}\/', re.I
 )
 
 

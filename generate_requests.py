@@ -1,6 +1,5 @@
 import json
 from operator import itemgetter
-from pathlib import Path
 from urllib.parse import unquote_plus, urlsplit
 
 import click
