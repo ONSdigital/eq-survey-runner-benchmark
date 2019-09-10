@@ -36,7 +36,7 @@ class QuestionnaireMixins:
 
 
 CSRF_REGEX = re.compile(
-    r'<input id=csrf_token name=csrf_token type=hidden value=(.+?)>'
+    r'<input id="csrf_token" name="csrf_token" type="hidden" value="(.+?)">'
 )
 
 

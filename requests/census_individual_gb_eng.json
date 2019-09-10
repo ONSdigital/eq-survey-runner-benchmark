@@ -1,0 +1,546 @@
+{
+    "requests": [
+        {
+            "method": "POST",
+            "url": "/questionnaire/accommodation-type/",
+            "data": {
+                "accommodation-type-answer": "A communal establishment",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/proxy/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/proxy/",
+            "data": {
+                "proxy-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/name/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/name/",
+            "data": {
+                "first-name": "John",
+                "middle-names": "",
+                "last-name": "Smith",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/establishment-position/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/establishment-position/",
+            "data": {
+                "establishment-position-answer": "Resident",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/date-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/date-of-birth/",
+            "data": {
+                "date-of-birth-answer-day": "01",
+                "date-of-birth-answer-month": "06",
+                "date-of-birth-answer-year": "1985",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/confirm-dob/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/confirm-dob/",
+            "data": {
+                "confirm-date-of-birth-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sex/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sex/",
+            "data": {
+                "sex-answer": "Male",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/marriage-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/marriage-type/",
+            "data": {
+                "marriage-type-answer": "Married",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/current-marriage-status/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/current-marriage-status/",
+            "data": {
+                "current-marriage-status-answer": "Someone of the opposite sex",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/another-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/another-address/",
+            "data": {
+                "another-address-answer": "No",
+                "another-address-answer-other-country": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/in-education/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/in-education/",
+            "data": {
+                "in-education-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/country-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/country-of-birth/",
+            "data": {
+                "country-of-birth-answer": "England",
+                "country-of-birth-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/language/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/language/",
+            "data": {
+                "language-answer": "English",
+                "language-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/national-identity/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/national-identity/",
+            "data": {
+                "national-identity-answer": "English",
+                "national-identity-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/ethnic-group/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/ethnic-group/",
+            "data": {
+                "ethnic-group-answer": "White",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/white-ethnic-group/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/white-ethnic-group/",
+            "data": {
+                "white-ethnic-group-answer": "English, Welsh, Scottish, Northern Irish or British",
+                "white-ethnic-group-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/religion/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/religion/",
+            "data": {
+                "religion-answer": "No religion",
+                "religion-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/past-usual-household-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/past-usual-household-address/",
+            "data": {
+                "past-usual-address-household-answer": "household-address",
+                "past-usual-address-household-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/passports/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/passports/",
+            "data": {
+                "passports-answer": "United Kingdom",
+                "passport-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/health/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/health/",
+            "data": {
+                "health-answer": "Very good",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/disability/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/disability/",
+            "data": {
+                "disability-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/carer/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/carer/",
+            "data": {
+                "carer-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sexual-identity/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sexual-identity/",
+            "data": {
+                "sexual-identity-answer": "Straight or Heterosexual",
+                "sexual-identity-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/birth-gender/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/birth-gender/",
+            "data": {
+                "birth-gender-answer": "Yes",
+                "birth-gender-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/qualifications/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/qualifications/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/apprenticeship/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/apprenticeship/",
+            "data": {
+                "apprenticeship-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/degree/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/degree/",
+            "data": {
+                "degree-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/nvq-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/nvq-level/",
+            "data": {
+                "nvq-level-answer-exclusive": "None of these apply",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/a-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/a-level/",
+            "data": {
+                "a-level-answer": "2 or more A levels",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/gcse/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/gcse/",
+            "data": {
+                "gcse-answer": "5 or more GCSEs",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/armed-forces/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/armed-forces/",
+            "data": {
+                "armed-forces-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/employment-status/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/employment-status/",
+            "data": {
+                "employment-status-answer": "Working as an employee",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/main-employment-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/main-employment-block/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/main-job-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/main-job-type/",
+            "data": {
+                "main-job-type-answer": "Employee",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/business-name/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/business-name/",
+            "data": {
+                "business-name-answer": "Office for National Statistics",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/job-title/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/job-title/",
+            "data": {
+                "job-title-answer": "Statistician",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/job-description/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/job-description/",
+            "data": {
+                "job-description-answer": "RSI calculation",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/employers-business/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/employers-business/",
+            "data": {
+                "employers-business-answer": "Civil Service",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/supervise/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/supervise/",
+            "data": {
+                "supervise-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/hours-worked/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/hours-worked/",
+            "data": {
+                "hours-worked-answer": "31 to 48 hours",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/work-travel/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/work-travel/",
+            "data": {
+                "work-travel-answer": "Driving a car or van",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/employer-type-of-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/employer-type-of-address/",
+            "data": {
+                "employer-type-of-address-answer": "At a workplace",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/employer-address-workplace/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/employer-address-workplace/",
+            "data": {
+                "employer-address-workplace-answer-building": "Office For National Statistics",
+                "employer-address-workplace-answer-street": "Cardiff Road",
+                "employer-address-workplace-answer-city": "Newport",
+                "employer-address-workplace-answer-county": "Gwent",
+                "employer-adress-workplace-answer-postcode": "NP10 8XG",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "census_individual_gb_eng"
+}
