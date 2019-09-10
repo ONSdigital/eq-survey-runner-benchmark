@@ -25,7 +25,7 @@ class QuestionnaireMixins:
 
         data['csrf_token'] = self.csrf_token
 
-        headers = {'Referer': self.previous_url}
+        headers = {'Referer': self.base_url}
 
         print('POST Headers', headers)
 
