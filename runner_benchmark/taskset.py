@@ -49,7 +49,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
             elif request['method'] == 'POST':
                 print('POST to ', request['url'])
 
-                response = self.post(request['url'], request['data'])
+                response = self.post(self.base_url, request['url'], request['data'])
 
                 if response.status_code not in [200, 302]:
                     raise Exception(
