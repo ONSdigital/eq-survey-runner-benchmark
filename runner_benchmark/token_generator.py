@@ -21,7 +21,7 @@ PAYLOAD = {
     'case_type': 'HI',
     'display_address': '68 Abingdon Road, Goathill',
     'ru_ref': '123456789012A',
-    'response_id': '1234567890123456',
+    'response_id': str(uuid4()),
     'questionnaire_id': '0123456789000000',
     'ru_name': 'Integration Testing',
     'ref_p_start_date': '2019-04-01',
