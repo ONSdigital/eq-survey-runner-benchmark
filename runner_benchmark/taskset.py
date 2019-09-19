@@ -17,6 +17,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         super().__init__(parent)
 
         self.base_url = self.locust.client.base_url
+        self.redirect_params = {}
 
         requests_filepath = os.environ.get('REQUESTS_JSON', 'requests.json')
 
@@ -34,10 +35,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 0))
         user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 0))
 
-        redirect_params = {}
-
         for request in self.requests:
-            request_url = request['url'].format_map(redirect_params)
+            request_url = request['url'].format_map(self.redirect_params)
 
             if request['method'] == 'GET':
                 response = self.get(request_url)
@@ -46,12 +45,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     raise Exception(
                         f"Got a ({response.status_code}) back when getting page: {request_url}"
                     )
-                if response.status_code == 302:
-                    print(f"Redirect location: {response.headers['Location']}")
-                    if 'redirect_route' in request:
-                        redirect_params = parse_params_from_location(
-                            response.headers['Location'], request['redirect_route']
-                        )
+
+                self.handle_redirect(request, response)
 
                 if user_wait_time_min and user_wait_time_max:
                     print("Waiting after GET request")
@@ -66,16 +61,20 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     raise Exception(
                         f"Got a ({response.status_code}) back when posting page: {request_url} with data: {request['data']}"
                     )
-                if response.status_code == 302:
-                    print(f"Redirect location: {response.headers['Location']}")
-                    if 'redirect_route' in request:
-                        redirect_params = parse_params_from_location(
-                            response.headers['Location'], request['redirect_route']
-                        )
+
+                self.handle_redirect(request, response)
 
             else:
                 raise Exception(
                     f"Invalid request method {request['method']} for request to: {request_url}"
+                )
+
+    def handle_redirect(self, request, response):
+        if response.status_code == 302:
+            print(f"Redirect location: {response.headers['Location']}")
+            if 'redirect_route' in request:
+                self.redirect_params = parse_params_from_location(
+                    response.headers['Location'], request['redirect_route']
                 )
 
     def do_launch_survey(self):
