@@ -1,0 +1,40 @@
+{
+    "requests": [
+        {
+            "method": "POST",
+            "url": "/questionnaire/mandatory-checkbox/",
+            "data": {
+                "mandatory-checkbox-answer": "Cheese",
+                "other-answer-mandatory": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/non-mandatory-checkbox/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/non-mandatory-checkbox/",
+            "data": {
+                "non-mandatory-checkbox-answer": "Ham",
+                "other-answer-non-mandatory": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "test_checkbox"
+}
