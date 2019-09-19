@@ -1,0 +1,1414 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/who-lives-here-interstitial/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/who-lives-here-interstitial/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/primary-person-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/primary-person-list-collector/",
+            "data": {
+                "you-live-here-answer": "Yes, I usually live here",
+                "action[save_continue]": ""
+            },
+            "param_url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/",
+            "data": {
+                "first-name": "Joe",
+                "middle-names": "",
+                "last-name": "Bloggs",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/anyone-else-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/anyone-else-list-collector/",
+            "data": {
+                "anyone-else-answer": "Yes, I need to add someone",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/add-person/",
+            "data": {
+                "first-name": "Silvia",
+                "middle-names": "",
+                "last-name": "Bloggs",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/anyone-else-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/anyone-else-list-collector/",
+            "data": {
+                "anyone-else-answer": "No, I do not need to add anyone",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/anyone-else-temp-away-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/anyone-else-temp-away-list-collector/",
+            "data": {
+                "anyone-else-temp-away-answer": "No, I do not need to add anyone",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-visitors/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-visitors/",
+            "data": {
+                "any-visitors-answer": "People who usually live somewhere else in the UK, for example boy/girlfriends, friends or relatives",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/add-visitor/?previous=any-visitors"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/add-visitor/?previous=any-visitors",
+            "data": {
+                "first-name": "Sarah",
+                "last-name": "Bloggs",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor-list-collector/",
+            "data": {
+                "visitor-answer": "No, I do not need to add anyone",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/who-lives-here-section-summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/who-lives-here-section-summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships-interstitial/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships-interstitial/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/",
+            "param_url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/",
+            "data": {
+                "relationship-answer": "Husband or wife",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/accommodation-section/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/accommodation-introduction/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/accommodation-introduction/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/accommodation-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/accommodation-type/",
+            "data": {
+                "accommodation-type-answer": "Whole house or bungalow",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/type-of-house/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/type-of-house/",
+            "data": {
+                "type-of-house-answer": "Detached",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/self-contained/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/self-contained/",
+            "data": {
+                "self-contained-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/number-of-bedrooms/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/number-of-bedrooms/",
+            "data": {
+                "number-of-bedrooms-answer": "3",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/central-heating/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/central-heating/",
+            "data": {
+                "central-heating-answer": "Mains gas",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/own-or-rent/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/own-or-rent/",
+            "data": {
+                "own-or-rent-answer": "Owns outright",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/number-of-vehicles/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/number-of-vehicles/",
+            "data": {
+                "number-of-vehicles-answer": "1",
+                "number-of-vehicles-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/accommodation-section-summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/accommodation-section-summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/individual-interstitial/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/individual-interstitial/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/proxy/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/proxy/",
+            "data": {
+                "proxy-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/date-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/date-of-birth/",
+            "data": {
+                "date-of-birth-answer-day": "1",
+                "date-of-birth-answer-month": "1",
+                "date-of-birth-answer-year": "1965",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/confirm-dob/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/confirm-dob/",
+            "data": {
+                "confirm-date-of-birth-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/sex/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/sex/",
+            "data": {
+                "sex-answer": "Male",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/marriage-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/marriage-type/",
+            "data": {
+                "marriage-type-answer": "Married",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/current-marriage-status/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/current-marriage-status/",
+            "data": {
+                "current-marriage-status-answer": "Someone of the opposite sex",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/another-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/another-address/",
+            "data": {
+                "another-address-answer": "No",
+                "another-address-answer-other-country": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/in-education/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/in-education/",
+            "data": {
+                "in-education-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/country-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/country-of-birth/",
+            "data": {
+                "country-of-birth-answer": "England",
+                "country-of-birth-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/language/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/language/",
+            "data": {
+                "language-answer": "English",
+                "language-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/national-identity/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/national-identity/",
+            "data": {
+                "national-identity-answer": "English",
+                "national-identity-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/ethnic-group/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/ethnic-group/",
+            "data": {
+                "ethnic-group-answer": "White",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/white-ethnic-group/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/white-ethnic-group/",
+            "data": {
+                "white-ethnic-group-answer": "English, Welsh, Scottish, Northern Irish or British",
+                "white-ethnic-group-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/religion/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/religion/",
+            "data": {
+                "religion-answer": "No religion",
+                "religion-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/past-usual-household-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/past-usual-household-address/",
+            "data": {
+                "past-usual-address-household-answer": "household-address",
+                "past-usual-address-household-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/passports/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/passports/",
+            "data": {
+                "passports-answer": "United Kingdom",
+                "passport-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/health/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/health/",
+            "data": {
+                "health-answer": "Very good",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/disability/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/disability/",
+            "data": {
+                "disability-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/carer/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/carer/",
+            "data": {
+                "carer-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/sexual-identity/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/sexual-identity/",
+            "data": {
+                "sexual-identity-answer": "Straight or Heterosexual",
+                "sexual-identity-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/birth-gender/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/birth-gender/",
+            "data": {
+                "birth-gender-answer": "Yes",
+                "birth-gender-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/qualifications/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/qualifications/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/apprenticeship/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/apprenticeship/",
+            "data": {
+                "apprenticeship-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/degree/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/degree/",
+            "data": {
+                "degree-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/nvq-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/nvq-level/",
+            "data": {
+                "nvq-level-answer-exclusive": "None of these apply",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/a-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/a-level/",
+            "data": {
+                "a-level-answer-exclusive": "None of these apply",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/gcse/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/a-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/a-level/",
+            "data": {
+                "a-level-answer": "2 or more A levels",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/gcse/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/gcse/",
+            "data": {
+                "gcse-answer": "5 or more GCSEs",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/armed-forces/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/armed-forces/",
+            "data": {
+                "armed-forces-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/employment-status/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/employment-status/",
+            "data": {
+                "employment-status-answer": "Working as an employee",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/main-employment-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/main-employment-block/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/main-job-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/main-job-type/",
+            "data": {
+                "main-job-type-answer": "Self-employed or freelance without employees",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/business-name/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/business-name/",
+            "data": {
+                "business-name-answer": "",
+                "no-business-name-answer": "No organisation or work for a private individual",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/job-title/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/job-title/",
+            "data": {
+                "job-title-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/job-description/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/job-description/",
+            "data": {
+                "job-description-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/employers-business/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/employers-business/",
+            "data": {
+                "employers-business-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/supervise/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/supervise/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/hours-worked/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/hours-worked/",
+            "data": {
+                "hours-worked-answer": "0 to 15 hours",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/work-travel/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/work-travel/",
+            "data": {
+                "work-travel-answer": "Work mainly at or from home",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/employer-type-of-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/employer-type-of-address/",
+            "data": {
+                "employer-type-of-address-answer": "At or from home",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/individual-interstitial/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/individual-interstitial/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/proxy/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/proxy/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/date-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/date-of-birth/",
+            "data": {
+                "date-of-birth-answer-day": "",
+                "date-of-birth-answer-month": "",
+                "date-of-birth-answer-year": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/date-of-birth/",
+            "data": {
+                "date-of-birth-answer-day": "2",
+                "date-of-birth-answer-month": "2",
+                "date-of-birth-answer-year": "1965",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/confirm-dob/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/confirm-dob/",
+            "data": {
+                "confirm-date-of-birth-answer": "Yes",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/sex/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/sex/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/marriage-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/marriage-type/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/another-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/another-address/",
+            "data": {
+                "another-address-answer-other-country": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/in-education/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/in-education/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/in-education/",
+            "data": {
+                "in-education-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/country-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/country-of-birth/",
+            "data": {
+                "country-of-birth-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/country-of-birth/",
+            "data": {
+                "country-of-birth-answer": "England",
+                "country-of-birth-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/language/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/language/",
+            "data": {
+                "language-answer": "English",
+                "language-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/national-identity/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/national-identity/",
+            "data": {
+                "national-identity-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/ethnic-group/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/ethnic-group/",
+            "data": {
+                "ethnic-group-answer": "White",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/white-ethnic-group/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/white-ethnic-group/",
+            "data": {
+                "white-ethnic-group-answer": "English, Welsh, Scottish, Northern Irish or British",
+                "white-ethnic-group-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/religion/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/religion/",
+            "data": {
+                "religion-answer": "No religion",
+                "religion-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/past-usual-household-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/past-usual-household-address/",
+            "data": {
+                "past-usual-address-household-answer": "household-address",
+                "past-usual-address-household-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/passports/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/passports/",
+            "data": {
+                "passports-answer": "United Kingdom",
+                "passport-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/health/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/health/",
+            "data": {
+                "health-answer": "Very good",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/disability/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/disability/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/carer/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/carer/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/sexual-identity/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/sexual-identity/",
+            "data": {
+                "sexual-identity-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/birth-gender/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/birth-gender/",
+            "data": {
+                "birth-gender-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/qualifications/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/qualifications/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/apprenticeship/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/apprenticeship/",
+            "data": {
+                "apprenticeship-answer": "No",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/degree/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/degree/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/nvq-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/nvq-level/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/a-level/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/a-level/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/gcse/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/gcse/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/other-qualifications/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/other-qualifications/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/armed-forces/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/armed-forces/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/employment-status/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/employment-status/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/employment-status/",
+            "data": {
+                "employment-status-answer": "Self-employed or freelance",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/main-employment-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/main-employment-block/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/main-job-type/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/main-job-type/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/business-name/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/business-name/",
+            "data": {
+                "business-name-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/job-title/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/job-title/",
+            "data": {
+                "job-title-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/job-description/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/job-description/",
+            "data": {
+                "job-description-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/employers-business/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/employers-business/",
+            "data": {
+                "employers-business-answer": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/supervise/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/supervise/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/hours-worked/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/hours-worked/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/work-travel/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/work-travel/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/employer-type-of-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/employer-type-of-address/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/employer-address-workplace/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/employer-address-workplace/",
+            "data": {
+                "employer-address-workplace-answer-building": "",
+                "employer-address-workplace-answer-street": "",
+                "employer-address-workplace-answer-city": "",
+                "employer-address-workplace-answer-county": "",
+                "employer-adress-workplace-answer-postcode": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {},
+            "param_url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-date-of-birth/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-date-of-birth/",
+            "data": {
+                "visitor-date-of-birth-answer-day": "",
+                "visitor-date-of-birth-answer-month": "",
+                "visitor-date-of-birth-answer-year": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-sex/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-sex/",
+            "data": {
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/{visitor_1_id}/usual-household-address/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/{visitor_1_id}/usual-household-address/",
+            "data": {
+                "usual-address-household-answer-other": "",
+                "action[save_continue]": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "census_household_gb_eng"
+}
