@@ -37,7 +37,11 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         redirect_params = {}
 
         for request in self.requests:
-            request_url = request['url'].format(**redirect_params) if has_params(request['url']) else request['url']
+            request_url = (
+                request['url'].format(**redirect_params)
+                if has_params(request['url'])
+                else request['url']
+            )
 
             if request['method'] == 'GET':
                 response = self.get(request_url)
@@ -48,8 +52,10 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     )
                 if response.status_code == 302:
                     print(f"Redirect location: {response.headers['Location']}")
-                    if 'param_url' in request:
-                        redirect_params = parse_params_from_location(response.headers['Location'], request['param_url'])
+                    if 'redirect_route' in request:
+                        redirect_params = parse_params_from_location(
+                            response.headers['Location'], request['redirect_route']
+                        )
 
                 if user_wait_time_min and user_wait_time_max:
                     print("Waiting after GET request")
@@ -66,8 +72,10 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     )
                 if response.status_code == 302:
                     print(f"Redirect location: {response.headers['Location']}")
-                    if 'param_url' in request:
-                        redirect_params = parse_params_from_location(response.headers['Location'], request['param_url'])
+                    if 'redirect_route' in request:
+                        redirect_params = parse_params_from_location(
+                            response.headers['Location'], request['redirect_route']
+                        )
 
             else:
                 raise Exception(

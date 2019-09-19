@@ -26,7 +26,7 @@
                 "you-live-here-answer": "Yes, I usually live here",
                 "action[save_continue]": ""
             },
-            "param_url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+            "redirect_route": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
         },
         {
             "method": "POST",
@@ -148,7 +148,7 @@
         {
             "method": "GET",
             "url": "/questionnaire/relationships/",
-            "param_url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+            "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
         },
         {
             "method": "POST",
@@ -1337,7 +1337,7 @@
             "method": "POST",
             "url": "/questionnaire/",
             "data": {},
-            "param_url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
+            "redirect_route": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
         },
         {
             "method": "GET",
