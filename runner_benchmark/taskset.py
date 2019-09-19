@@ -5,7 +5,7 @@ import time
 
 from locust import TaskSet, task
 
-from .utils import parse_params_from_location, has_params
+from .utils import parse_params_from_location
 from .questionnaire_mixins import QuestionnaireMixins
 from .token_generator import create_token
 
@@ -37,11 +37,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         redirect_params = {}
 
         for request in self.requests:
-            request_url = (
-                request['url'].format(**redirect_params)
-                if has_params(request['url'])
-                else request['url']
-            )
+            request_url = request['url'].format_map(redirect_params)
 
             if request['method'] == 'GET':
                 response = self.get(request_url)

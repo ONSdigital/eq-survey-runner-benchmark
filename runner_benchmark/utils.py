@@ -1,10 +1,6 @@
 from urllib.parse import urlparse
 
 
-def has_params(string):
-    return '{' in string and '}' in string
-
-
 def parse_params_from_location(url, route):
     route_path = urlparse(route).path
     url_path = urlparse(url).path
