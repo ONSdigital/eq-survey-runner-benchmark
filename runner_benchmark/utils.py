@@ -23,19 +23,3 @@ def parse_params_from_location(url, route):
                 params[field_name] = value
 
     return params
-
-
-if __name__ == "__main__":
-    print(
-        parse_params_from_location(
-            'http://localhost:5000/questionnaire/household/riyjtl/add-or-edit-primary-person/',
-            'http://localhost:5000/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/',
-        )
-    )
-
-    print(
-        parse_params_from_location(
-            'http://localhost:5000/questionnaire/relationships/riyjtl/to/fgt56f/',
-            'http://localhost:5000/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/',
-        )
-    )
