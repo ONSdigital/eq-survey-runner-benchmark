@@ -30,8 +30,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         self.replay_requests()
 
     def replay_requests(self):
-        user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 0))
-        user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 0))
+        user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 5))
+        user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 15))
 
         for request in self.requests:
             if request['method'] == 'GET':

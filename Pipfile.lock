@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "60e4f4a3f24a4f5dea8b9694c474ae20ea7dcd7e24647956966d230c540891a9"
+            "sha256": "41b9e55821cfe6a2dbf59b261f5518815832b7ebed812f5cf852937577125366"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -40,10 +40,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:046832c04d4e752f37383b628bc601a7ea7211496b4638f6514d0e5b9acc4939",
-                "sha256:945e3ba63a0b9f577b1395204e13c3a231f9bc0223888be653286534e5873695"
+                "sha256:e4f3620cfea4f83eedc95b24abd9cd56f3c4b146dd0177e83a21b4eb49e21e50",
+                "sha256:fd7c7c74727ddcf00e9acd26bba8da604ffec95bf1c2144e67aff7a8b50e6cef"
             ],
-            "version": "==2019.6.16"
+            "version": "==2019.9.11"
         },
         "cffi": {
             "hashes": [
@@ -213,12 +213,9 @@
             "version": "==0.5"
         },
         "locustio": {
-            "hashes": [
-                "sha256:514562bb0040f18f7b3b74ed9beb943800030801058501c630c8b3fc02bafa27",
-                "sha256:93404f831114791b0756325c53b08bff73f048eeb69688be657629feaa62b507"
-            ],
-            "index": "pypi",
-            "version": "==0.11.0"
+            "editable": true,
+            "git": "https://github.com/locustio/locust.git",
+            "ref": "610a87f433900d8baae51709c41e3b147a53bc97"
         },
         "markupsafe": {
             "hashes": [
@@ -365,10 +362,10 @@
         },
         "werkzeug": {
             "hashes": [
-                "sha256:87ae4e5b5366da2347eb3116c0e6c681a0e939a33b2805e2c0cbd282664932c4",
-                "sha256:a13b74dd3c45f758d4ebdb224be8f1ab8ef58b3c0ffc1783a8c7d9f4f50227e6"
+                "sha256:00d32beac38fcd48d329566f80d39f10ec2ed994efbecfb8dd4b320062d05902",
+                "sha256:0a24d43be6a7dce81bae05292356176d6c46d63e42a0dd3f9504b210a9cfaa43"
             ],
-            "version": "==0.15.5"
+            "version": "==0.15.6"
         }
     },
     "develop": {

@@ -11,8 +11,8 @@ black = "==19.3b0"
 haralyzer = "*"
 backoff = "*"
 sdc-cryptography = "==0.2.3"
-locustio = "*"
 click = "*"
+locustio = {editable = true,git = "https://github.com/locustio/locust.git",ref = "master"}
 
 [requires]
 python_version = "3.7"
