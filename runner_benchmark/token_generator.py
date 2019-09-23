@@ -21,7 +21,6 @@ PAYLOAD = {
     'case_type': 'HI',
     'display_address': '68 Abingdon Road, Goathill',
     'ru_ref': '123456789012A',
-    'response_id': '1234567890123456',
     'questionnaire_id': '0123456789000000',
     'ru_name': 'Integration Testing',
     'ref_p_start_date': '2019-04-01',
@@ -70,6 +69,7 @@ _key_store = KeyStore(
 def _get_payload_with_params(schema_name, survey_url=None, **extra_payload):
     payload_vars = PAYLOAD.copy()
     payload_vars['tx_id'] = str(uuid4())
+    payload_vars['response_id'] = str(uuid4())
     payload_vars['schema_name'] = schema_name
     if survey_url:
         payload_vars['survey_url'] = survey_url
