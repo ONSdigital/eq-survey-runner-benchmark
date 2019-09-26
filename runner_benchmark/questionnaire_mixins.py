@@ -13,9 +13,10 @@ class QuestionnaireMixins:
         if not response.content:
             raise Exception(f"No content in GET response for url: {url}")
 
-        self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
+        if response.status_code != 302:
+            self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
 
-        print('csrf_token', self.csrf_token)
+            print('csrf_token', self.csrf_token)
 
         return response
 
