@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-black = "==19.3b0"
+black = "*"
 "flake8" = "*"
 
 [packages]
@@ -16,3 +16,6 @@ locustio = {editable = true,git = "https://github.com/locustio/locust.git",ref =
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
