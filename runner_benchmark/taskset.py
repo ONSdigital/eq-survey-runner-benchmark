@@ -32,8 +32,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         self.replay_requests()
 
     def replay_requests(self):
-        user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 0))
-        user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 0))
+        user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 1))
+        user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 2))
 
         for request in self.requests:
             request_url = request['url'].format_map(self.redirect_params)
@@ -49,12 +49,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                 self.handle_redirect(request, response)
 
                 if user_wait_time_min and user_wait_time_max:
-                    print("Waiting after GET request")
                     time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
 
             elif request['method'] == 'POST':
-                print('POST to ', request_url)
-
                 response = self.post(self.base_url, request_url, request['data'])
 
                 if response.status_code not in [200, 302]:
@@ -71,7 +68,6 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
 
     def handle_redirect(self, request, response):
         if response.status_code == 302:
-            print(f"Redirect location: {response.headers['Location']}")
             if 'redirect_route' in request:
                 self.redirect_params = parse_params_from_location(
                     response.headers['Location'], request['redirect_route']

@@ -1,0 +1,42 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "name" . }}-locust-slave
+  labels:
+    app: {{ template "name" . }}
+    component: locust-slave
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.slave.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "name" . }}
+      release: {{ .Release.Name }}
+      component: locust-slave
+  template:
+    metadata:
+      labels:
+        app: {{ template "name" . }}
+        release: {{ .Release.Name }}
+        component: locust-slave
+        name: {{ template "name" . }}-locust-slave
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.slave.image.repository }}:{{ .Values.slave.image.tag }}"
+          imagePullPolicy: {{ .Values.slave.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: HOST
+              value: "{{ .Values.host }}"
+            - name: REQUESTS_JSON
+              value: "{{ .Values.requestsJson }}"
+            - name: USER_WAIT_TIME_MIN_SECONDS
+              value: "{{ .Values.userWaitTimeMinSeconds }}"
+            - name: USER_WAIT_TIME_MAX_SECONDS
+              value: "{{ .Values.userWaitTimeMaxSeconds }}"
+            - name: LOCUST_OPTS
+              value: "{{ .Values.locustOptions }}"
