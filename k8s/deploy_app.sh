@@ -10,7 +10,7 @@ fi
 DOCKER_REGISTRY="${DOCKER_REGISTRY:-eu.gcr.io/census-eq-ci}"
 IMAGE_TAG="${IMAGE_TAG:-latest}"
 REQUESTS_JSON="${REQUESTS_JSON:-requests/census_household_gb_eng.json}"
-LOCUST_OPTS="${LOCUST_OPTS:--f locustfile.py --no-web -c 100 -r 10}"
+LOCUST_OPTS="${LOCUST_OPTS:-'-f locustfile.py --no-web -c 800 -r 10 --loglevel=CRITICAL --run-time=2h --only-summary'}"
 
 helm tiller run \
     helm upgrade --install \
