@@ -6,7 +6,7 @@ slave:
   replicaCount: 1
   image:
     repository: eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark
-    tag: standalone
+    tag: latest
     pullPolicy: Always
 
 resources:
