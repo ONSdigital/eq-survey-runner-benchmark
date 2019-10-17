@@ -18,5 +18,5 @@ host: https://v3-runner.gcp.dev.eq.ons.digital/
 requestsJson: requests/census_household_gb_eng.json
 userWaitTimeMinSeconds: 1
 userWaitTimeMaxSeconds: 2
-locustOptions: -f locustfile.py --no-web -c 800 -r 10 -L critical --run-time 2h
+locustOptions: -f locustfile.py --no-web -c 800 -r 10 --loglevel=CRITICAL --run-time=2h --only-summary
 
