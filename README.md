@@ -54,6 +54,44 @@ e.g.
 pipenv run python generate_requests.py requests.har requests/test_checkbox.json test_checkbox
 ```
 
+---
+
+## Deployment with [Helm](https://helm.sh/)
+
+To deploy this application with helm, you must have a kubernetes cluster already running and be logged into the cluster.
+
+Log in to the cluster using:
+
+```
+gcloud container clusters get-credentials survey-runner --region <region> --project <gcp_project_id>
+```
+
+You need to have Helm installed locally
+
+1. Install Helm with `brew install kubernetes-helm` and then run `helm init --client-only`
+
+2. Install Helm Tiller plugin for _Tillerless_ deploys `helm plugin install https://github.com/rimusz/helm-tiller`
+
+
+### Deploying the app
+
+The following environment variables can be set when deploying the app.
+- HOST 
+- DOCKER_REGISTRY *(optional)*
+- IMAGE_TAG *(optional)*
+
+To deploy the app to the cluster, run the following command:
+
+```
+./k8s/deploy_app.sh
+```
+
+For example:
+
+```
+HOST=https://v3-runner.gcp.dev.eq.ons.digital ./k8s/deploy_app.sh
+```
+
 ## Future Improvements
 
 - Allow rerunning a test using the original timings rather than a random wait time between GET requests.
