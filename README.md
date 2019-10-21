@@ -83,13 +83,13 @@ The following environment variables can be set when deploying the app.
 To deploy the app to the cluster, run the following command:
 
 ```
-./k8s/deploy_app.sh
-```
-
-For example:
-
-```
-HOST=https://v3-runner.gcp.dev.eq.ons.digital ./k8s/deploy_app.sh
+helm tiller run \
+-    helm upgrade --install \
+-    runner-benchmark \
+-    k8s/helm \
+-    --set host=${HOST} \
+-    --set image.repository=${DOCKER_REGISTRY}/eq-survey-runner-benchmark \
+-    --set image.tag=${IMAGE_TAG}
 ```
 
 ## Future Improvements
