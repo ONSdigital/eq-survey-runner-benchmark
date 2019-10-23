@@ -1,6 +1,8 @@
 dist: xenial
 sudo: true
 language: python
+python:
+  - "3.7"
 script:
     - set -e
     - export TAG=`if [ "$TRAVIS_PULL_REQUEST_BRANCH" == "" ]; then echo "latest"; else echo branch-$(echo $TRAVIS_PULL_REQUEST_BRANCH | sed s:/:-:g); fi`
