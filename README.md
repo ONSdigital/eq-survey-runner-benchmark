@@ -75,11 +75,6 @@ You need to have Helm installed locally
 
 ### Deploying the app
 
-The following environment variables can be set when deploying the app.
-- HOST 
-- DOCKER_REGISTRY *(optional)*
-- IMAGE_TAG *(optional)*
-
 To deploy the app to the cluster, run the following command:
 
 ```
