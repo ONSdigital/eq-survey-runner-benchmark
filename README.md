@@ -83,8 +83,7 @@ helm tiller run \
 -    runner-benchmark \
 -    k8s/helm \
 -    --set host=${HOST} \
--    --set image.repository=${DOCKER_REGISTRY}/eq-survey-runner-benchmark \
--    --set image.tag=${IMAGE_TAG}
+-    --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${IMAGE_TAG}
 ```
 
 ## Future Improvements
