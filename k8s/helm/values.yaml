@@ -3,9 +3,8 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-image:
-  repository: eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark
-  tag: latest
+container:
+  image: eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
   pullPolicy: Always
 
 resources:
