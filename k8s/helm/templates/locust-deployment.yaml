@@ -1,10 +1,10 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "name" . }}-locust-node
+  name: {{ template "name" . }}
   labels:
     app: {{ template "name" . }}
-    component: locust-node
+    component: locust
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -14,14 +14,14 @@ spec:
     matchLabels:
       app: {{ template "name" . }}
       release: {{ .Release.Name }}
-      component: locust-node
+      component: locust
   template:
     metadata:
       labels:
         app: {{ template "name" . }}
         release: {{ .Release.Name }}
-        component: locust-node
-        name: {{ template "name" . }}-locust-node
+        component: locust
+        name: {{ template "name" . }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
