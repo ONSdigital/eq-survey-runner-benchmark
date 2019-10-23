@@ -86,6 +86,28 @@ helm tiller run \
 -    --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${IMAGE_TAG}
 ```
 
+If you want to vary the default parameters Locust uses on start, you can specify them using the following variables:
+
+- requestsJson - The filepath of the requests file relative to the base project directory
+  - Defaults to `requests.json`
+- locustOptions - The host name the benchmark is run against.
+- userWaitTimeMinSeconds - The minimum delay between each user's GET requests
+  - defaults to 1
+- userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
+  - defaults to 2 
+
+e.g
+```
+helm tiller run \
+-    helm upgrade --install \
+-    runner-benchmark \
+-    k8s/helm \
+-    --set requestsJson=requests/census_individual_gb_eng.json \
+-    --set locustOptions="-f locustfile.py -c 1000 -r 50 -L WARNING" \
+-    --set host=https://your-runner.gcp.dev.eq.ons.digital \
+-    --set container.image=eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
+```
+
 ## Future Improvements
 
 - Allow rerunning a test using the original timings rather than a random wait time between GET requests.
