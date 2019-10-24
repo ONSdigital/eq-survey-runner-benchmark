@@ -6,8 +6,6 @@ class QuestionnaireMixins:
     csrf_token = None
 
     def get(self, url, allow_redirects=False):
-        print('\nGET', url)
-
         response = self.client.get(allow_redirects=allow_redirects, url=url)
 
         if not response.content:
@@ -16,8 +14,6 @@ class QuestionnaireMixins:
         if response.status_code != 302:
             self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
 
-            print('csrf_token', self.csrf_token)
-
         return response
 
     def post(self, base_url, request_url, data={}):
@@ -25,8 +21,6 @@ class QuestionnaireMixins:
         data['csrf_token'] = self.csrf_token
 
         headers = {'Referer': base_url}
-
-        print('POST Headers', headers)
 
         response = self.client.post(
             allow_redirects=False, headers=headers, data=data, url=request_url

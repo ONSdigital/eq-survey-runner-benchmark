@@ -54,6 +54,60 @@ e.g.
 pipenv run python generate_requests.py requests.har requests/test_checkbox.json test_checkbox
 ```
 
+---
+
+## Deployment with [Helm](https://helm.sh/)
+
+To deploy this application with helm, you must have a kubernetes cluster already running and be logged into the cluster.
+
+Log in to the cluster using:
+
+```
+gcloud container clusters get-credentials survey-runner --region <region> --project <gcp_project_id>
+```
+
+You need to have Helm installed locally
+
+1. Install Helm with `brew install kubernetes-helm` and then run `helm init --client-only`
+
+2. Install Helm Tiller plugin for _Tillerless_ deploys `helm plugin install https://github.com/rimusz/helm-tiller`
+
+
+### Deploying the app
+
+To deploy the app to the cluster, run the following command:
+
+```
+helm tiller run \
+-    helm upgrade --install \
+-    runner-benchmark \
+-    k8s/helm \
+-    --set host=${HOST} \
+-    --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${IMAGE_TAG}
+```
+
+If you want to vary the default parameters Locust uses on start, you can specify them using the following variables:
+
+- requestsJson - The filepath of the requests file relative to the base project directory
+  - Defaults to `requests.json`
+- locustOptions - The host name the benchmark is run against.
+- userWaitTimeMinSeconds - The minimum delay between each user's GET requests
+  - defaults to 1
+- userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
+  - defaults to 2 
+
+e.g
+```
+helm tiller run \
+-    helm upgrade --install \
+-    runner-benchmark \
+-    k8s/helm \
+-    --set requestsJson=requests/census_individual_gb_eng.json \
+-    --set locustOptions="-f locustfile.py -c 1000 -r 50 -L WARNING" \
+-    --set host=https://your-runner.gcp.dev.eq.ons.digital \
+-    --set container.image=eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
+```
+
 ## Future Improvements
 
 - Allow rerunning a test using the original timings rather than a random wait time between GET requests.
