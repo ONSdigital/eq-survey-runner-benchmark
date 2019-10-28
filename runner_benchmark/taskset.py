@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import re
 import time
 
 from locust import TaskSet, task
@@ -34,12 +35,14 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
     def replay_requests(self):
         user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 1))
         user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 2))
+        url_name_regex = r'{.*?}'
 
         for request in self.requests:
+            url_name = re.sub(url_name_regex, '{id}', request['url'])
             request_url = request['url'].format_map(self.redirect_params)
 
             if request['method'] == 'GET':
-                response = self.get(request_url)
+                response = self.get(request_url, name=url_name)
 
                 if response.status_code not in [200, 302]:
                     raise Exception(
@@ -52,7 +55,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
 
             elif request['method'] == 'POST':
-                response = self.post(self.base_url, request_url, request['data'])
+                response = self.post(self.base_url, request_url, request['data'], name=url_name)
 
                 if response.status_code not in [200, 302]:
                     raise Exception(
@@ -78,7 +81,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         token = create_token(schema_name=self.schema_name)
 
         url = f'/session?token={token}'
-        response = self.get(url)
+        response = self.get(url, name='/session')
 
         if response.status_code != 302:
             raise Exception(

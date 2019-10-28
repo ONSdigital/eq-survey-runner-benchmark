@@ -5,8 +5,8 @@ class QuestionnaireMixins:
     client = None
     csrf_token = None
 
-    def get(self, url, allow_redirects=False):
-        response = self.client.get(allow_redirects=allow_redirects, url=url)
+    def get(self, url, allow_redirects=False, name=None):
+        response = self.client.get(allow_redirects=allow_redirects, url=url, name=name)
 
         if not response.content:
             raise Exception(f"No content in GET response for url: {url}")
@@ -16,14 +16,14 @@ class QuestionnaireMixins:
 
         return response
 
-    def post(self, base_url, request_url, data={}):
+    def post(self, base_url, request_url, data={}, name=None):
 
         data['csrf_token'] = self.csrf_token
 
         headers = {'Referer': base_url}
 
         response = self.client.post(
-            allow_redirects=False, headers=headers, data=data, url=request_url
+            allow_redirects=False, headers=headers, data=data, url=request_url, name=name
         )
         return response
 
