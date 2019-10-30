@@ -56,15 +56,11 @@ pipenv run python generate_requests.py requests.har requests/test_checkbox.json 
 
 ## Dealing with repeating sections
 
-Repeating sections generate dynamic ids at runtime, which means they will not be available when a request file is generated from the above process.
-
-If not addressed any GET with a dynamic section id will not be formatted correctly and will generate an error.
+Repeating sections generate dynamic ids at runtime, which means they will not be available when a request file is generated from the above process. If not addressed any GET with a dynamic section id will not be formatted correctly and will generate an error.
 
 To fix the issue we need to harvest the section ids when they are first created and then use those values to format future urls.
 
-Our current implementation requires the following code to be manually added into the JSON request file in the POST the dynamic section id is first created.
-
-This will then allow the return value from the POST to be mapped to the section id key for future use.
+Our current implementation requires the following code to be manually added into the JSON request file in the POST the dynamic section id is first created. This will then allow the return value from the POST to be mapped to the section id key for future use.
 
 
 ```
