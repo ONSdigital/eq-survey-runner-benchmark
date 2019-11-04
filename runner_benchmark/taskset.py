@@ -72,8 +72,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
     def handle_redirect(self, request, response):
         if response.status_code == 302:
             if 'redirect_route' in request:
-                self.redirect_params = parse_params_from_location(
-                    response.headers['Location'], request['redirect_route']
+                self.redirect_params.update(parse_params_from_location(
+                    response.headers['Location'], request['redirect_route'])
                 )
 
     def do_launch_survey(self):
