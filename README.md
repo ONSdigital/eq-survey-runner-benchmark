@@ -80,7 +80,7 @@ questionnaire/household/NZNuza/individual-interstitial/
 Notice the "NZNuza", this is the list_item_id value and we can see its in position 3. To harvest this value we put in our "redirect_route" element and a path value matching the key to that position
 
 ```
-"redirect_route": ""/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/""
+"redirect_route": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
 
 ```
 
@@ -88,18 +88,18 @@ So putting it all together we would get
 
 ```
 {
-            "method": "POST",
-            "url": "/questionnaire/primary-person-list-collector/",
-            "data": {
-                "you-live-here-answer": "Yes, I usually live here",
-                "action[save_continue]": ""
-            },
-            "redirect_route": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
-        }
+    "method": "POST",
+    "url": "/questionnaire/primary-person-list-collector/",
+    "data": {
+      "you-live-here-answer": "Yes, I usually live here",
+      "action[save_continue]": ""
+    },
+    "redirect_route": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+  },
+  {
+    "method": "GET",
+    "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+  }
 ```
 
 N.B Although the above example uses the same url in the redirect as the GET, it doesn't have to, it just looks cleaner, we only really care that the key ({person_1_list_id}) and the value returned from the POST align, the redirect_route value could be "/-/-/{person_1_list_id}/-/".
