@@ -1,0 +1,10 @@
+"Name","# requests","50%","66%","75%","80%","90%","95%","98%","99%","100%"
+"GET /questionnaire/",242,39,40,40,40,42,44,49,51,410
+"POST /questionnaire/mandatory-checkbox/",242,22,23,23,23,24,26,29,37,57
+"GET /questionnaire/non-mandatory-checkbox/",242,24,24,24,25,25,26,27,30,35
+"POST /questionnaire/non-mandatory-checkbox/",242,22,22,22,23,24,25,26,34,54
+"GET /questionnaire/summary/",242,23,23,23,23,24,25,29,80,330
+"POST /questionnaire/summary/",242,30,31,31,31,32,34,36,37,41
+"GET /session",242,45,46,47,47,49,50,54,90,93
+"GET /submitted/thank-you/",242,19,19,19,19,20,21,22,24,37
+"Total",1936,23,30,36,39,44,46,48,51,410

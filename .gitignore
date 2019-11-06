@@ -121,5 +121,5 @@ dmypy.json
 .idea/
 
 .vscode/
-*.csv
+/*.csv
 *.DS_Store
