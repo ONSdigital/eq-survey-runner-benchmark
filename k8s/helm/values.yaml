@@ -2,19 +2,18 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+parallelism: 1
 container:
   image: eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
   pullPolicy: Always
 
-resources:
-  requests:
-    cpu: "0.7"
-    memory: "2048Mi"
+cpu: "0.7"
+memory: "2048Mi"
 
 host: ''
-requestsJson: requests/census_household_gb_eng.json
+requestsJson: 'requests/census_household_gb_eng.json'
 userWaitTimeMinSeconds: 1
 userWaitTimeMaxSeconds: 2
-locustOptions: -f locustfile.py --no-web -c 800 -r 10 --loglevel=CRITICAL --run-time=2h --only-summary
-
+locustOptions: '-f locustfile.py --no-web -c 800 -r 10 --loglevel=CRITICAL --run-time=2h --only-summary'
+gcsOutputBucket: ''
+outputDirectory: 'manual-run'

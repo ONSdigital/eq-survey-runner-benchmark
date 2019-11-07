@@ -1,3 +1,4 @@
+
 # EQ Performance Benchmark
 
 This is a performance benchmarking tool designed to measure the performance of [EQ Survey Runner](https://github.com/ONSDigital/eq-survey-runner) using [locust](https://locust.io/).
@@ -147,6 +148,8 @@ If you want to vary the default parameters Locust uses on start, you can specify
   - defaults to 1
 - userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
   - defaults to 2 
+- gcsOutputBucket - Name of the GCS bucket in which the output should be stored.
+  - defaults to <project-id>-benchmark-outputs
 
 e.g
 ```

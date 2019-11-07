@@ -13,6 +13,7 @@ backoff = "*"
 sdc-cryptography = "==0.2.3"
 click = "*"
 locustio = "*"
+google-cloud-storage = "*"
 
 [requires]
 python_version = "3.7"

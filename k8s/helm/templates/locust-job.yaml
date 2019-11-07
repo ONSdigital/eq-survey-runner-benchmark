@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "name" . }}-{{ randAlphaNum 3 | lower }}
+  labels:
+    app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+    app.kubernetes.io/instance: "{{ .Release.Name }}"
+    app.kubernetes.io/version: "{{ .Chart.AppVersion }}"
+    helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+spec:
+  ttlSecondsAfterFinished: 0
+  parallelism: {{ .Values.parallelism }}
+  template:
+    metadata:
+      name: "{{ .Release.Name }}"
+      labels:
+        app.kubernetes.io/managed-by: "{{ .Release.Service }}"
+        app.kubernetes.io/instance: "{{.Release.Name }}"
+        helm.sh/chart: "{{.Chart.Name}}-{{.Chart.Version}}"
+    spec:
+      restartPolicy: "OnFailure"
+      containers:
+        - name: "{{ .Chart.Name }}"
+          image: "{{ .Values.container.image }}"
+          imagePullPolicy: "{{ .Values.container.pullPolicy }}"
+          resources:
+            requests:
+              cpu:  "{{ .Values.cpu }}"
+              memory: "{{ .Values.memory }}"
+          env:
+            - name: HOST
+              value: "{{ .Values.host }}"
+            - name: REQUESTS_JSON
+              value: "{{ .Values.requestsJson }}"
+            - name: USER_WAIT_TIME_MIN_SECONDS
+              value: "{{ .Values.userWaitTimeMinSeconds }}"
+            - name: USER_WAIT_TIME_MAX_SECONDS
+              value: "{{ .Values.userWaitTimeMaxSeconds }}"
+            - name: LOCUST_OPTS
+              value: "{{ .Values.locustOptions }}"
+            - name: GCS_OUTPUT_BUCKET
+              value: "{{ .Values.gcsOutputBucket }}"
+            - name: OUTPUT_DIRECTORY
+              value: "{{ .Values.outputDirectory }}"
