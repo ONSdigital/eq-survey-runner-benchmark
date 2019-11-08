@@ -13,10 +13,10 @@ class GoogleCloudStorage:
     def upload_files(self, output_files, directory, **kwargs):
         date_string = datetime.utcnow().isoformat()
 
-        for file in output_files:
-            blob = self.bucket.blob(f'{directory}/{date_string}/{file}')
+        for output_file in output_files:
+            blob = self.bucket.blob(f'{directory}/{date_string}/{output_file}')
             blob.metadata = {**kwargs}
-            blob.upload_from_filename(filename=file)
+            blob.upload_from_filename(filename=output_file)
 
 
 def get_runner_version(runner_url):
