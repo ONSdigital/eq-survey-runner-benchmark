@@ -26,6 +26,7 @@ def get_runner_version(runner_url):
 
     return None
 
+
 '''
 This script allows the upload of the benchmark outputs to a GCS Bucket.
 If running locally, you must specify valid Application Default Credentials (ADC):

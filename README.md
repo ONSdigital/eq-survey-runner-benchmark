@@ -158,7 +158,7 @@ helm tiller run \
 -    runner-benchmark \
 -    k8s/helm \
 -    --set requestsJson=requests/census_individual_gb_eng.json \
--    --set locustOptions="-f locustfile.py -c 1000 -r 50 -L WARNING" \
+-    --set locustOptions="-f locustfile.py --clients 1000 --hatch-rate 50 -L WARNING" \
 -    --set host=https://your-runner.gcp.dev.eq.ons.digital \
 -    --set container.image=eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
 ```

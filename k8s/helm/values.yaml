@@ -14,6 +14,6 @@ host: ''
 requestsJson: 'requests/census_household_gb_eng.json'
 userWaitTimeMinSeconds: 1
 userWaitTimeMaxSeconds: 2
-locustOptions: '-f locustfile.py --no-web -c 800 -r 10 --loglevel=CRITICAL --run-time=2h --only-summary'
+locustOptions: '--locustfile locustfile.py --no-web --clients 800 --hatch-rate 10 --loglevel=CRITICAL --run-time=2h --only-summary'
 gcsOutputBucket: ''
 outputDirectory: 'manual-run'

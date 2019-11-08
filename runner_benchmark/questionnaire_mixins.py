@@ -23,7 +23,11 @@ class QuestionnaireMixins:
         headers = {'Referer': base_url}
 
         response = self.client.post(
-            allow_redirects=False, headers=headers, data=data, url=request_url, name=name
+            allow_redirects=False,
+            headers=headers,
+            data=data,
+            url=request_url,
+            name=name,
         )
         return response
 
