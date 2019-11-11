@@ -14,7 +14,11 @@ class GoogleCloudStorage:
         date_string = datetime.utcnow().isoformat()
 
         for output_file in output_files:
-            blob = self.bucket.blob(f'{directory}/{date_string}/{output_file}')
+            if directory:
+                blob = self.bucket.blob(f'{directory}/{date_string}/{output_file}')
+            else:
+                blob = self.bucket.blob(f'{date_string}/{output_file}')
+
             blob.metadata = {**kwargs}
             blob.upload_from_filename(filename=output_file)
 
