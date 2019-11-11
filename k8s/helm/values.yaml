@@ -18,6 +18,3 @@ locustOptions: '--no-web --clients 800 --hatch-rate 10 --loglevel=CRITICAL --run
 output:
   bucket: ''
   directory: ''
-
-gcsOutputBucket: ''
-outputDirectory: 'manual-run'
