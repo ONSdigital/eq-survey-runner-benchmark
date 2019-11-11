@@ -148,8 +148,8 @@ If you want to vary the default parameters Locust uses on start, you can specify
   - defaults to 1
 - userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
   - defaults to 2 
-- gcsOutputBucket - Name of the GCS bucket in which the output should be stored.
-  - defaults to <project-id>-benchmark-outputs
+- output.bucket - Name of the GCS bucket in which the output should be stored.
+- output.directory - Name of the directory within the GCS bucket in which the output should be stored.
 
 e.g
 ```
