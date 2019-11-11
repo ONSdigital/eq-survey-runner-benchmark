@@ -43,3 +43,25 @@ Questionnaire GETs average: 220ms
 Questionnaire POSTs average: 256ms
 All requests average: 320ms
 ```
+
+## Proposed investigations
+
+- Move session to Redis
+- Use Firestore not in Datastore mode
+- Update to Python 3.8
+- Merge session into questionnaire state
+- Clean view model passed to template reducing Python code executed from templates
+- Work done in before request
+- Per session CSRF token
+- Gunicorn alternatives (uwsgi or gevent direct)
+- Gunicorn (or alternative) tuning
+- Authentication with Flask-Login (possible removal of Flask-Login)
+- Alternative to simplejson e.g. orjson or rapidjson
+- Encrypt questionnaire state and session directly rather than via JWE
+- Configuration settings for client libraries e.g. Redis, Datastore
+- Answer store structure performance - flat vs nested
+- Don't encrypt progress store
+- More in-memory caching of things that don't change per request
+- Caching of method calls - can it be faster? - it looks like flask caching is using pickle
+- Convert critical Python code to C using Cython
+- Use PyPy
