@@ -39,6 +39,6 @@ spec:
             - name: LOCUST_OPTS
               value: "{{ .Values.locustOptions }}"
             - name: GCS_OUTPUT_BUCKET
-              value: "{{ .Values.gcsOutputBucket }}"
+              value: "{{ .Values.output.bucket }}"
             - name: OUTPUT_DIRECTORY
-              value: "{{ .Values.outputDirectory }}"
+              value: "{{ .Values.output.directory }}"
