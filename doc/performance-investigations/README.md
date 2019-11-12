@@ -12,6 +12,8 @@
 1. Copy the generated CSVs (`baseline_*.csv`, `investigation_*.csv`) into the investigation folder.
 1. Update `summary.md` with the results.
 
+Depending on the duration of the tests, you may want to consider running them more than once.
+
 ## Choosing a benchmark configuration
 
 The simplest configuration to run is captured in `run.sh` which defaults to one client with no wait time:
