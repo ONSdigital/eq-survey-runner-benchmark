@@ -46,4 +46,3 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-  
