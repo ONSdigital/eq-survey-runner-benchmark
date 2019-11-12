@@ -7,6 +7,6 @@ echo "locust $LOCUST_OPTS"
 USER_WAIT_TIME_MIN_SECONDS=${USER_WAIT_TIME_MIN_SECONDS} USER_WAIT_TIME_MAX_SECONDS=${USER_WAIT_TIME_MAX_SECONDS} REQUESTS_JSON=${REQUESTS_JSON} HOST=${HOST} locust $LOCUST_OPTS
 
 if [[ -n ${GCS_OUTPUT_BUCKET} ]]; then
-    echo "Storing output"
+    echo "Storing benchmark outputs"
     python store_benchmark_outputs.py
 fi
