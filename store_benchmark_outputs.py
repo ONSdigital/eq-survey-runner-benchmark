@@ -10,15 +10,17 @@ class GoogleCloudStorage:
         client = storage.Client()
         self.bucket = client.get_bucket(bucket_name)
 
-    def upload_files(self, output_files, directory, **kwargs):
-        date_string = datetime.utcnow().isoformat()
-
+    def upload_files(
+        self, output_files, directory, output_filename_prefix=None, **kwargs
+    ):
         for output_file in output_files:
-            if directory:
-                blob = self.bucket.blob(f'{directory}/{date_string}/{output_file}')
-            else:
-                blob = self.bucket.blob(f'{date_string}/{output_file}')
+            output_filename = (
+                f'{output_filename_prefix}_{output_file}'
+                if output_filename_prefix
+                else output_file
+            )
 
+            blob = self.bucket.blob(f'{directory or ""}/{output_filename}')
             blob.metadata = {**kwargs}
             blob.upload_from_filename(filename=output_file)
 
@@ -45,18 +47,21 @@ if __name__ == '__main__':
         output_directory = os.getenv('OUTPUT_DIRECTORY')
         min_wait = os.getenv('USER_WAIT_TIME_MIN_SECONDS')
         max_wait = os.getenv('USER_WAIT_TIME_MAX_SECONDS')
+        filename_prefix = os.getenv('OUTPUT_FILENAME_PREFIX')
         runner_version = get_runner_version(host)
         try:
             gcs = GoogleCloudStorage(bucket_name=gcs_bucket_name)
             gcs.upload_files(
                 output_files=('output_requests.csv', 'output_distribution.csv'),
                 directory=output_directory,
+                output_filename_prefix=filename_prefix,
                 host=host,
                 min_wait=min_wait,
                 max_wait=max_wait,
                 requests_json=requests_json,
                 locust_options=locust_options,
                 runner_version=runner_version,
+                timestamp=int(datetime.utcnow().timestamp()),
             )
         except Exception as ex:
             raise Exception(f"Error occurred during file upload to GCS - {ex}")

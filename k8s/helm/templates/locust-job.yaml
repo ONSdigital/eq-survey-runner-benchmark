@@ -42,3 +42,7 @@ spec:
               value: "{{ .Values.output.bucket }}"
             - name: OUTPUT_DIRECTORY
               value: "{{ .Values.output.directory }}"
+            - name: OUTPUT_FILENAME_PREFIX
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
