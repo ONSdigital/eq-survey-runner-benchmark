@@ -17,9 +17,9 @@ for line in sys.stdin:
         get_values.append(percentile_99th)
     if 'POST /questionnaire' in line:
         post_values.append(percentile_99th)
-    if 'Total' in line:
+    if 'Aggregated' in line:
         total = percentile_99th
-  
+
 get_average = int(sum(get_values) / len(get_values))
 post_average = int(sum(post_values) / len(post_values))
 

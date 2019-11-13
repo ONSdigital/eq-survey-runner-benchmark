@@ -55,7 +55,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
 
             elif request['method'] == 'POST':
-                response = self.post(self.base_url, request_url, request['data'], name=url_name)
+                response = self.post(
+                    self.base_url, request_url, request['data'], name=url_name
+                )
 
                 if response.status_code not in [200, 302]:
                     raise Exception(
@@ -72,8 +74,10 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
     def handle_redirect(self, request, response):
         if response.status_code == 302:
             if 'redirect_route' in request:
-                self.redirect_params.update(parse_params_from_location(
-                    response.headers['Location'], request['redirect_route'])
+                self.redirect_params.update(
+                    parse_params_from_location(
+                        response.headers['Location'], request['redirect_route']
+                    )
                 )
 
     def do_launch_survey(self):

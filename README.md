@@ -1,3 +1,4 @@
+
 # EQ Performance Benchmark
 
 This is a performance benchmarking tool designed to measure the performance of [EQ Survey Runner](https://github.com/ONSDigital/eq-survey-runner) using [locust](https://locust.io/).
@@ -147,6 +148,8 @@ If you want to vary the default parameters Locust uses on start, you can specify
   - defaults to 1
 - userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
   - defaults to 2 
+- output.bucket - Name of the GCS bucket in which the output should be stored.
+- output.directory - Name of the directory within the GCS bucket in which the output should be stored.
 
 e.g
 ```
@@ -155,7 +158,7 @@ helm tiller run \
 -    runner-benchmark \
 -    k8s/helm \
 -    --set requestsJson=requests/census_individual_gb_eng.json \
--    --set locustOptions="-f locustfile.py -c 1000 -r 50 -L WARNING" \
+-    --set locustOptions="--clients 1000 --hatch-rate 50 -L WARNING" \
 -    --set host=https://your-runner.gcp.dev.eq.ons.digital \
 -    --set container.image=eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
 ```
