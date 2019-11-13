@@ -1,0 +1,10 @@
+"Method","Name","# requests","# failures","Median response time","Average response time","Min response time","Max response time","Average Content Size","Requests/s"
+"GET","/questionnaire/",242,0,39,41,34,409,10057,0.81
+"POST","/questionnaire/mandatory-checkbox/",242,0,22,23,19,57,279,0.81
+"GET","/questionnaire/non-mandatory-checkbox/",242,0,24,24,21,35,10396,0.81
+"POST","/questionnaire/non-mandatory-checkbox/",242,0,22,22,19,54,249,0.81
+"GET","/questionnaire/summary/",242,0,23,25,20,331,8614,0.81
+"POST","/questionnaire/summary/",242,0,30,30,27,41,245,0.81
+"GET","/session",242,0,45,46,40,93,233,0.81
+"GET","/submitted/thank-you/",242,0,19,19,16,37,6658,0.81
+"None","Total",1936,0,23,29,16,409,4591,6.48
