@@ -19,7 +19,7 @@ for line in sys.stdin:
         post_values.append(percentile_99th)
     if 'Aggregated' in line:
         total = percentile_99th
-  
+
 get_average = int(sum(get_values) / len(get_values))
 post_average = int(sum(post_values) / len(post_values))
 
