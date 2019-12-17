@@ -1,6 +1,6 @@
 import os
 
-from locust import FastHttpLocust
+from locust.contrib.fasthttp import FastHttpLocust
 
 from runner_benchmark.taskset import SurveyRunnerTaskSet
 
