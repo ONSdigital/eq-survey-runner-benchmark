@@ -52,8 +52,8 @@ def get_stats():
                 if 'Aggregated' in line:
                     all_response_times.append(percentile_99th)
 
-            get_request_response_times.append(int(sum(get_values) / len(get_values)))
-            post_request_response_times.append(int(sum(post_values) / len(post_values)))
+            get_request_response_times.extend(get_values)
+            post_request_response_times.extend(post_values)
 
             with open(
                 f'{os.getcwd()}/{folder}/{file}'.replace('.csv', '-metadata.json')
