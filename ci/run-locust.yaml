@@ -1,0 +1,56 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: theorf/google-cloud-sdk-helm
+inputs:
+  - name: eq-survey-runner-benchmark
+run:
+  path: bash
+  args:
+    - -exc
+    - |
+      apt-get install -y procps
+
+      cat >~/gcloud-service-key.json <<EOL
+      $SERVICE_ACCOUNT_JSON
+      EOL
+
+      gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
+
+      cd eq-survey-runner-benchmark
+
+      helm init --client-only
+      helm plugin install https://github.com/rimusz/helm-tiller
+
+      FILTER_BY=$(if [[ "$IMPORT_EXISTING_PROJECT" = true ]]; then echo "project_id"; else echo "name"; fi)
+
+      PROJECT_ID=($(gcloud projects list --filter=${FILTER_BY}="${PROJECT_NAME}" --format="value(PROJECT_ID)"))
+
+      [[ "${#PROJECT_ID[@]}" = 1 ]] || exit 1
+
+      GCS_OUTPUT_BUCKET=${PROJECT_ID}-benchmark-outputs
+      COMMIT_HASH=$(cat .git/HEAD | xargs echo -n)
+      RUNTIME_DATE_STRING="$(date +'%Y-%m-%dT%H:%M:%S')"
+
+      gcloud container clusters get-credentials runner-benchmark --region ${REGION} --project ${PROJECT_ID}
+
+      helm tiller run \
+        helm upgrade --install \
+        runner-benchmark \
+        k8s/helm \
+        --set requestsJson="${REQUESTS_JSON}" \
+        --set locustOptions="${LOCUST_OPTIONS}" \
+        --set host=https://${RUNNER_FULLY_QUALIFIED_DOMAIN_NAME} \
+        --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${COMMIT_HASH} \
+        --set userWaitTimeMinSeconds=${USER_WAIT_TIME_MIN_SECONDS} \
+        --set userWaitTimemaxSeconds=${USER_WAIT_TIME_MAX_SECONDS} \
+        --set cpu=${REQUESTED_CPU_PER_POD} \
+        --set memory=${REQUESTED_MEMORY_PER_POD} \
+        --set parallelism=${PARALLELISM} \
+        --set output.bucket=${GCS_OUTPUT_BUCKET} \
+        --set output.directory="timed-schedule/${RUNTIME_DATE_STRING}"
+
+      JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')
+
+      kubectl wait --for=condition=complete --timeout=60m job/${JOB_NAME}
