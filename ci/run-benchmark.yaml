@@ -53,4 +53,4 @@ run:
 
       JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')
 
-      kubectl wait --for=condition=complete --timeout=60m job/${JOB_NAME}
+      kubectl wait --for=condition=complete --timeout=${TIMEOUT} job/${JOB_NAME}
