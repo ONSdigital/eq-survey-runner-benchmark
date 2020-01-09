@@ -5,8 +5,6 @@ image_resource:
     repository: theorf/google-cloud-sdk-helm
 inputs:
   - name: eq-survey-runner-benchmark
-params:
-  IMPORT_EXISTING_PROJECT: true
 run:
   path: bash
   args:
@@ -19,9 +17,6 @@ run:
       EOL
 
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
-      FILTER_BY=$(if [[ "$IMPORT_EXISTING_PROJECT" = true ]]; then echo "project_id"; else echo "name"; fi)
-      PROJECT_ID=($(gcloud projects list --filter=${FILTER_BY}="${PROJECT_NAME}" --format="value(PROJECT_ID)"))
-      [[ "${#PROJECT_ID[@]}" = 1 ]] || exit 1
 
       cd eq-survey-runner-benchmark
 
