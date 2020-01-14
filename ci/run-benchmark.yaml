@@ -15,8 +15,8 @@ params:
   IMAGE_TAG:
   USER_WAIT_TIME_MIN_SECONDS:
   USER_WAIT_TIME_MAX_SECONDS:
-  REQUESTED_CPU_PER_NODE:
-  REQUESTED_MEMORY_PER_NODE:
+  AVAILABLE_CPU:
+  AVAILABLE_MEMORY:
   PARALLELISM:
   TIMEOUT:
 run:
@@ -52,8 +52,8 @@ run:
         --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${IMAGE_TAG} \
         --set userWaitTimeMinSeconds=${USER_WAIT_TIME_MIN_SECONDS} \
         --set userWaitTimemaxSeconds=${USER_WAIT_TIME_MAX_SECONDS} \
-        --set cpu=${REQUESTED_CPU_PER_NODE} \
-        --set memory=${REQUESTED_MEMORY_PER_NODE} \
+        --set cpu=${AVAILABLE_CPU} \
+        --set memory=${AVAILABLE_MEMORY} \
         --set parallelism=${PARALLELISM} \
         --set output.bucket=${GCS_OUTPUT_BUCKET} \
         --set output.directory="timed-schedule/${RUNTIME_DATE_STRING}"
