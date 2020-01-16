@@ -17,6 +17,7 @@ params:
   USER_WAIT_TIME_MAX_SECONDS:
   PARALLELISM:
   TIMEOUT:
+  OUTPUT_DIR:
 run:
   path: bash
   args:
@@ -52,7 +53,7 @@ run:
         --set userWaitTimemaxSeconds=${USER_WAIT_TIME_MAX_SECONDS} \
         --set parallelism=${PARALLELISM} \
         --set output.bucket=${GCS_OUTPUT_BUCKET} \
-        --set output.directory="timed-schedule/${RUNTIME_DATE_STRING}"
+        --set output.directory="${OUTPUT_DIR}/${RUNTIME_DATE_STRING}"
 
       JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')
 
