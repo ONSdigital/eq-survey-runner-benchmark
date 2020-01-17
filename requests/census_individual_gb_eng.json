@@ -16,7 +16,7 @@
             "method": "POST",
             "url": "/questionnaire/proxy/",
             "data": {
-                "proxy-answer": "No",
+                "proxy-answer": "No, I\u2019m answering for myself",
                 "action[save_continue]": ""
             }
         },
@@ -68,7 +68,7 @@
             "method": "POST",
             "url": "/questionnaire/confirm-dob/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes",
+                "confirm-date-of-birth-answer": "Yes, I am {age_in_years} years old",
                 "action[save_continue]": ""
             }
         },
@@ -218,7 +218,7 @@
             "method": "POST",
             "url": "/questionnaire/past-usual-household-address/",
             "data": {
-                "past-usual-address-household-answer": "household-address",
+                "past-usual-address-household-answer": "{household_address}",
                 "past-usual-address-household-answer-other": "",
                 "action[save_continue]": ""
             }
@@ -365,7 +365,7 @@
             "method": "POST",
             "url": "/questionnaire/gcse/",
             "data": {
-                "gcse-answer": "5 or more GCSEs",
+                "gcse-answer": "5 or more GCSEs grades A* to C or 9 to 4",
                 "action[save_continue]": ""
             }
         },

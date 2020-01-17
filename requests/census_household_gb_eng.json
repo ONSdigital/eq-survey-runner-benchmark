@@ -29,6 +29,10 @@
             "redirect_route": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
         },
         {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+        },
+        {
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/",
             "data": {
@@ -149,6 +153,10 @@
             "method": "GET",
             "url": "/questionnaire/relationships/",
             "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
         },
         {
             "method": "POST",
@@ -276,9 +284,8 @@
             "url": "/questionnaire/"
         },
         {
-            "method": "POST",
-            "url": "/questionnaire/",
-            "data": {}
+            "method": "GET",
+            "url": "/questionnaire/sections/individual-section/{person_1_list_id}/"
         },
         {
             "method": "GET",
@@ -299,7 +306,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/proxy/",
             "data": {
-                "proxy-answer": "Yes",
+                "proxy-answer": "Yes, I am",
                 "action[save_continue]": ""
             }
         },
@@ -325,7 +332,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/confirm-dob/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes",
+                "confirm-date-of-birth-answer": "Yes, I am {age_in_years} years old",
                 "action[save_continue]": ""
             }
         },
@@ -475,7 +482,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/past-usual-household-address/",
             "data": {
-                "past-usual-address-household-answer": "household-address",
+                "past-usual-address-household-answer": "{household_address}",
                 "past-usual-address-household-answer-other": "",
                 "action[save_continue]": ""
             }
@@ -619,26 +626,10 @@
             "url": "/questionnaire/household/{person_1_list_id}/gcse/"
         },
         {
-            "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/a-level/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/household/{person_1_list_id}/a-level/",
-            "data": {
-                "a-level-answer": "2 or more A levels",
-                "action[save_continue]": ""
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/gcse/"
-        },
-        {
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/gcse/",
             "data": {
-                "gcse-answer": "5 or more GCSEs",
+                "gcse-answer": "5 or more GCSEs grades A* to C or 9 to 4",
                 "action[save_continue]": ""
             }
         },
@@ -799,9 +790,8 @@
             "url": "/questionnaire/"
         },
         {
-            "method": "POST",
-            "url": "/questionnaire/",
-            "data": {}
+            "method": "GET",
+            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/"
         },
         {
             "method": "GET",
@@ -833,16 +823,6 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/date-of-birth/",
             "data": {
-                "date-of-birth-answer-day": "",
-                "date-of-birth-answer-month": "",
-                "date-of-birth-answer-year": "",
-                "action[save_continue]": ""
-            }
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/date-of-birth/",
-            "data": {
                 "date-of-birth-answer-day": "2",
                 "date-of-birth-answer-month": "2",
                 "date-of-birth-answer-year": "1965",
@@ -857,7 +837,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/confirm-dob/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes",
+                "confirm-date-of-birth-answer": "Yes, {person_name} is {age_in_years} years old",
                 "action[save_continue]": ""
             }
         },
@@ -903,13 +883,6 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/in-education/",
             "data": {
-                "action[save_continue]": ""
-            }
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/in-education/",
-            "data": {
                 "in-education-answer": "No",
                 "action[save_continue]": ""
             }
@@ -917,14 +890,6 @@
         {
             "method": "GET",
             "url": "/questionnaire/household/{person_2_list_id}/country-of-birth/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/country-of-birth/",
-            "data": {
-                "country-of-birth-answer-other": "",
-                "action[save_continue]": ""
-            }
         },
         {
             "method": "POST",
@@ -1006,7 +971,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/past-usual-household-address/",
             "data": {
-                "past-usual-address-household-answer": "household-address",
+                "past-usual-address-household-answer": "{household_address}",
                 "past-usual-address-household-answer-other": "",
                 "action[save_continue]": ""
             }
@@ -1174,13 +1139,6 @@
         {
             "method": "GET",
             "url": "/questionnaire/household/{person_2_list_id}/employment-status/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/employment-status/",
-            "data": {
-                "action[save_continue]": ""
-            }
         },
         {
             "method": "POST",
