@@ -15,6 +15,7 @@ def get_stats(folders):
 
         get_request_response_times = []
         post_request_response_times = []
+        all_response_times = []
 
         for file in os.listdir(folder):
             if 'distribution.csv' not in file:
@@ -54,9 +55,10 @@ def get_stats(folders):
 
 
 def plot_data(df):
-    plt.style.use('seaborn-darkgrid')
+    plt.style.use('seaborn-poster')
     df.plot.line()
-    plt.xticks(df.index, df["DATE"])
+    plt.xticks(df.index, df["DATE"], size="small", rotation=90)
+    plt.yticks(size="small")
     plt.ylabel("Average Response Time (ms)")
     plt.xlabel("Run Date (DD-MM)")
     plt.show()
