@@ -55,10 +55,10 @@ def get_stats(folders):
 
 def plot_data(df):
     plt.style.use('seaborn-darkgrid')
-    df.set_index('DATE', inplace=True)
     df.plot.line()
+    plt.xticks(df.index, df["DATE"])
     plt.ylabel("Average Response Time (ms)")
-    plt.xlabel("Run Date")
+    plt.xlabel("Run Date (DD-MM)")
     plt.show()
 
 
