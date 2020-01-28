@@ -61,7 +61,7 @@ def plot_data(df):
     plt.yticks(size="small")
     plt.ylabel("Average Response Time (ms)")
     plt.xlabel("Run Date (DD-MM)")
-    plt.show()
+    plt.savefig('performance_graph.png')
 
 
 def get_run_date(folder):
