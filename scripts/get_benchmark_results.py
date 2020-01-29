@@ -62,4 +62,3 @@ if __name__ == '__main__':
     gcs.get_files()
 
     print('All files downloaded')
-
