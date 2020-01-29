@@ -2,27 +2,7 @@ import os
 from datetime import datetime
 
 import requests
-from google.cloud import storage
-
-
-class GoogleCloudStorage:
-    def __init__(self, bucket_name):
-        client = storage.Client()
-        self.bucket = client.get_bucket(bucket_name)
-
-    def upload_files(
-        self, output_files, directory, output_filename_prefix=None, **kwargs
-    ):
-        for output_file in output_files:
-            output_filename = (
-                f'{output_filename_prefix}_{output_file}'
-                if output_filename_prefix
-                else output_file
-            )
-
-            blob = self.bucket.blob(f'{directory or ""}/{output_filename}')
-            blob.metadata = {**kwargs}
-            blob.upload_from_filename(filename=output_file)
+from scripts.google_cloud_storage import GoogleCloudStorage
 
 
 def get_runner_version(runner_url):
