@@ -10,20 +10,6 @@ class GoogleCloudStorage:
         self.bucket = client.get_bucket(bucket_name)
         self.blobs = client.list_blobs(bucket_name)
 
-    def upload_files(
-        self, output_files, directory, output_filename_prefix=None, **kwargs
-    ):
-        for output_file in output_files:
-            output_filename = (
-                f'{output_filename_prefix}_{output_file}'
-                if output_filename_prefix
-                else output_file
-            )
-
-            blob = self.bucket.blob(f'{directory or ""}/{output_filename}')
-            blob.metadata = {**kwargs}
-            blob.upload_from_filename(filename=output_file)
-
     def get_files(self):
         output_dir = 'outputs'
         for blob in self.blobs:
