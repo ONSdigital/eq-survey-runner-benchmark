@@ -6,6 +6,8 @@ name = "pypi"
 [dev-packages]
 black = "==19.10b0"
 "flake8" = "*"
+pandas = "*"
+matplotlib = "*"
 
 [packages]
 haralyzer = "*"
@@ -14,8 +16,6 @@ sdc-cryptography = "==0.2.3"
 click = "*"
 locustio = "*"
 google-cloud-storage = "*"
-pandas = "*"
-matplotlib = "*"
 
 [requires]
 python_version = "3.7"

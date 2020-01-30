@@ -123,3 +123,6 @@ dmypy.json
 .vscode/
 /*.csv
 *.DS_Store
+
+/outputs
+.png

@@ -1,4 +1,5 @@
 import os
+import sys
 from glob import glob
 from datetime import datetime
 
@@ -17,11 +18,9 @@ def get_stats(folders):
         post_request_response_times = []
         all_response_times = []
 
-        for file in os.listdir(folder):
-            if 'distribution.csv' not in file:
-                continue
+        for file in glob(folder + '/*distribution.csv'):
 
-            with open(f'{os.getcwd()}/{folder}/{file}') as f:
+            with open(file) as f:
                 data = f.read()
 
             get_values = []
@@ -62,6 +61,7 @@ def plot_data(df):
     plt.ylabel("Average Response Time (ms)")
     plt.xlabel("Run Date (DD-MM)")
     plt.savefig('performance_graph.png')
+    print("Graph saved as performance_graph.png")
 
 
 def get_run_date(folder):
@@ -73,8 +73,13 @@ def get_run_date(folder):
 
 
 if __name__ == '__main__':
-    test_run_folders = sorted(glob("outputs/daily-test/*"))
+    if len(sys.argv) != 2:
+        print("Provide the benchmark outputs directory as a parameter")
+    else:
+        output_folder = sys.argv[-1]
 
-    data_frame = get_stats(test_run_folders)
+        test_run_folders = sorted(glob(f"{output_folder}/*"))
 
-    plot_data(data_frame)
+        data_frame = get_stats(test_run_folders)
+
+        plot_data(data_frame)
