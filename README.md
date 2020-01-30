@@ -181,8 +181,12 @@ If this is the first time you are downloading these results you will need to ret
 
 Run the `get_benchmark_results.py` to download the latest benchmark results from GCP. This script requires two environment variables to be set:
 
-`GCS_OUTPUT_BUCKET` - eq-daily-performance-test
-`GOOGLE_APPLICATION_CREDENTIALS` - <path_to_json_credentials_file> pipenv run python -m scripts.get_benchmark_results
+```
+GCS_OUTPUT_BUCKET - eq-daily-performance-test
+```
+```
+GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file> pipenv run python -m scripts.get_benchmark_results
+```
 
 ### Run the Visualise Results script
 
