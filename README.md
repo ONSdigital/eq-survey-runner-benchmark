@@ -169,7 +169,7 @@ You can use the `visualise_results.py` script to visualise benchmark results ove
 
 ### Pre-Requisites
 
-You need to be authenticated with GCP in order to downlaod the benchmark results. To do this:
+You need to be authenticated with GCP in order to download the benchmark results. To do this:
 
 Log In with gcloud auth using:
 
