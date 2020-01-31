@@ -59,4 +59,4 @@ run:
 
       kubectl wait --for=condition=complete --timeout=${TIMEOUT} job/${JOB_NAME}
 
-      sleep 300
+      sleep 60
