@@ -13,12 +13,6 @@ if __name__ == '__main__':
             'Value for `GCS_OUTPUT_BUCKET` environment variable not valid.'
         )
 
-    application_credentials = os.environ['GOOGLE_APPLICATION_CREDENTIALS']
-    if not application_credentials:
-        raise ValueError(
-            'Value for `GOOGLE_APPLICATION_CREDENTIALS` environment variable not valid.'
-        )
-
     gcs = GoogleCloudStorage(bucket_name=gcs_bucket_name)
     print("Fetching files...")
     gcs.get_files(output_dir)
