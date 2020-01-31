@@ -169,7 +169,15 @@ You can use the `visualise_results.py` script to visualise benchmark results ove
 
 ### Pre-Requisites
 
-If this is the first time you are downloading these results you will need to retrieve the key for the `results-analysis` service account in the `eq-daily-performance-test` project. To do this:
+You need to be authenticated with GCP in order to downlaod the benchmark results. To do this:
+
+Log In with gcloud auth using:
+
+`gcloud auth login`
+
+`gcloud auth application-default login`
+
+Alternatively you can use the project service Account:
 
 - Go to the `eq-daily-performance-test` project in GCP
 - Go to IAM&Admin and open up the Service Accounts tab
