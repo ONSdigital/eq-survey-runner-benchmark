@@ -2,7 +2,7 @@ import sys
 from glob import glob
 
 import statistics
-import pandas as pd
+from pandas import DataFrame
 import matplotlib.pyplot as plt
 
 
@@ -47,7 +47,7 @@ def get_stats(folders):
                             statistics.mean(post_request_response_times),
                             statistics.mean(all_response_times)])
 
-    output_df = pd.DataFrame(results_list, columns=["DATE", "GET", "POST", "AGGREGATE"])
+    output_df = DataFrame(results_list, columns=["DATE", "GET", "POST", "AGGREGATE"])
 
     return output_df
 
