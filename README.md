@@ -169,9 +169,7 @@ You can use the `visualise_results.py` script to visualise benchmark results ove
 
 ### Pre-Requisites
 
-You need to be authenticated with GCP in order to download the benchmark results. To do this:
-
-Log In with gcloud auth using:
+You need to be authenticated with GCP in order to download the benchmark results. To do this use:
 
 `gcloud auth login`
 
@@ -187,18 +185,29 @@ Alternatively you can use the project service Account:
 
 ### Download Benchmark Results
 
-Run the `get_benchmark_results.py` to download the latest benchmark results from GCP. This script requires two environment variables to be set:
+Run the `get_benchmark_results` script to download the latest benchmark results from GCP. You will need to set the bucket name as an environment variable:
 
 ```
 GCS_OUTPUT_BUCKET - eq-daily-performance-test
 ```
+
+If you are running the script using a service account you will need to set the path to the JSON key file (see Pre-requisites above):
 ```
-GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file> pipenv run python -m scripts.get_benchmark_results
+GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file> 
+```
+
+Now run the script:
+```
+pipenv run python -m scripts.get_benchmark_results
 ```
 
 ### Run the Visualise Results script
 
-The `visualise_results.py` script will run against any benchmark results stored in an `outputs/daily-test` directory.
+The `visualise_results` script will run against any benchmark results stored in the directory that is passed as a parameter to the script e.g.
+
+```
+pipenv run python -m scripts.visualise_results  outputs/daily-test
+```
 
 A line chart will be generated and saved as `performance_graph.png`.
 
