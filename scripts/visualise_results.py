@@ -1,10 +1,7 @@
-import os
 import sys
 from glob import glob
-from datetime import datetime
 
 import statistics
-import json
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -43,7 +40,9 @@ def get_stats(folders):
 
             all_response_times = get_values + post_values
 
-        results_list.append([get_run_date(folder),
+            date = folder.split('T')[0].split('/')[-1]
+
+        results_list.append([date,
                             statistics.mean(get_request_response_times),
                             statistics.mean(post_request_response_times),
                             statistics.mean(all_response_times)])
@@ -62,14 +61,6 @@ def plot_data(df):
     plt.xlabel("Run Date (DD-MM)")
     plt.savefig('performance_graph.png')
     print("Graph saved as performance_graph.png")
-
-
-def get_run_date(folder):
-    for file in os.listdir(folder):
-        if "output_requests-metadata.json" in file:
-            with open(f'{folder}/{file}') as json_file:
-                metadata = json.load(json_file)
-                return datetime.utcfromtimestamp(int(metadata["timestamp"])).strftime('%d-%m')
 
 
 if __name__ == '__main__':
