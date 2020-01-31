@@ -40,7 +40,7 @@ def get_stats(folders):
 
             all_response_times = get_values + post_values
 
-        date = folder.split('T')[0].split('/')[-1]
+        date = folder.split('/')[-1].split('T')[0]
 
         results_list.append([date,
                             statistics.mean(get_request_response_times),
@@ -65,7 +65,7 @@ def plot_data(df):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Provide the benchmark outputs directory as a parameter")
+        print("Provide the benchmark outputs directory as a parameter e.g. outputs/daily-test")
     else:
         output_folder = sys.argv[-1]
 
