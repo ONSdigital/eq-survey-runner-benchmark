@@ -40,7 +40,7 @@ def get_stats(folders):
 
             all_response_times = get_values + post_values
 
-            date = folder.split('T')[0].split('/')[-1]
+        date = folder.split('T')[0].split('/')[-1]
 
         results_list.append([date,
                             statistics.mean(get_request_response_times),
