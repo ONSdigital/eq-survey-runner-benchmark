@@ -24,11 +24,12 @@ class GoogleCloudStorage:
             blob.metadata = {**kwargs}
             blob.upload_from_filename(filename=output_file)
 
-    def get_files(self, output_dir):
+    def get_files(self):
+        output_dir = "outputs"
 
         for blob in self.client.list_blobs(self.bucket_name):
 
-            file_path = '/'.join(iter(blob.name.split('/')[:2]))
+            file_path = blob.name.rsplit('/', 1)[0]
 
             output_file_path = f'{output_dir}/{file_path}'
 

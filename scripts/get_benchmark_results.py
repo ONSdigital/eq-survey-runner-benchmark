@@ -4,7 +4,6 @@ from scripts.google_cloud_storage import GoogleCloudStorage
 
 
 if __name__ == '__main__':
-    output_dir = "outputs"
 
     gcs_bucket_name = os.environ['GCS_OUTPUT_BUCKET']
 
@@ -15,6 +14,6 @@ if __name__ == '__main__':
 
     gcs = GoogleCloudStorage(bucket_name=gcs_bucket_name)
     print("Fetching files...")
-    gcs.get_files(output_dir)
+    gcs.get_files()
 
     print('All files downloaded')
