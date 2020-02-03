@@ -171,7 +171,7 @@ You can use the `visualise_results.py` script to visualise benchmark results ove
 
 You need to be authenticated with GCP in order to download the benchmark results. To do this use:
 
-`gcloud auth login`
+`gcloud auth login --project <project_id>`
 
 `gcloud auth application-default login`
 
