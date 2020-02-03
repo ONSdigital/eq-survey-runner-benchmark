@@ -175,9 +175,9 @@ You need to be authenticated with GCP in order to download the benchmark results
 
 `gcloud auth application-default login`
 
-Alternatively you can use a project service Account, you will need to make sure that the service account has permission to access the bucket [see Google docs](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
+Alternatively you can use a project service Account, you will need to make sure that the service account has permission to access the bucket [(see Google docs)](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 
-Once the service account has been created you will need to download its JSON keys file [see Google docs](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). The path for this file will be used as an environment variable for the `get_benchmark_results.py` script.
+Once the service account has been created you will need to download its JSON keys file [(see Google docs)](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). The path for this file will be used as an environment variable for the `get_benchmark_results.py` script.
 
 ### Download Benchmark Results
 
