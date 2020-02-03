@@ -1,19 +1,17 @@
-import os
+import sys
 
 from scripts.google_cloud_storage import GoogleCloudStorage
 
 
 if __name__ == '__main__':
 
-    gcs_bucket_name = os.environ['GCS_OUTPUT_BUCKET']
+    if len(sys.argv) != 2:
+        print("Provide the bucket name as a parameter e.g. performance-test-outputs")
+    else:
+        gcs_bucket_name = sys.argv[-1]
 
-    if not gcs_bucket_name:
-        raise ValueError(
-            'Value for `GCS_OUTPUT_BUCKET` environment variable not valid.'
-        )
+        gcs = GoogleCloudStorage(bucket_name=gcs_bucket_name)
+        print("Fetching files...")
 
-    gcs = GoogleCloudStorage(bucket_name=gcs_bucket_name)
-    print("Fetching files...")
-    gcs.get_files()
-
-    print('All files downloaded')
+        gcs.get_files()
+        print('All files downloaded')
