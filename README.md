@@ -163,6 +163,45 @@ helm tiller run \
 -    --set container.image=eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
 ```
 
+## Visualising Benchmark Results
+
+You can use the `visualise_results.py` script to visualise benchmark results over time. 
+
+### Pre-Requisites
+
+You need to be authenticated with GCP in order to download the benchmark results. To do this use:
+
+`gcloud auth login --project <project_id>`
+
+`gcloud auth application-default login`
+
+Alternatively you can use a project service Account, you will need to make sure that the service account has permission to access the bucket [(see Google docs)](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
+
+Once the service account has been created you will need to download its JSON keys file [(see Google docs)](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). The path for this file will be used as an environment variable for the `get_benchmark_results.py` script.
+
+### Download Benchmark Results
+
+If you are running the script using a service account you will need to set the path to the JSON key file as an evironment variable (see Pre-requisites above):
+```
+GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file> 
+```
+
+To run the script and download results:
+```
+pipenv run python -m scripts.get_benchmark_results <bucket_name>
+```
+
+### Run the Visualise Results script
+
+The `visualise_results` script will run against any benchmark results stored in the directory that is passed as a parameter to the script e.g.
+
+```
+pipenv run python -m scripts.visualise_results  outputs/daily-test
+```
+
+A line chart will be generated and saved as `performance_graph.png`.
+
+
 ## Future Improvements
 
 - Allow rerunning a test using the original timings rather than a random wait time between GET requests.

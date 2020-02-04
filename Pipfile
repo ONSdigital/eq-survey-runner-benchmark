@@ -6,6 +6,8 @@ name = "pypi"
 [dev-packages]
 black = "==19.10b0"
 "flake8" = "*"
+pandas = "*"
+matplotlib = "*"
 
 [packages]
 haralyzer = "*"
@@ -19,4 +21,4 @@ google-cloud-storage = "*"
 python_version = "3.7"
 
 [pipenv]
-allow_prereleases = false
+allow_prereleases = true
