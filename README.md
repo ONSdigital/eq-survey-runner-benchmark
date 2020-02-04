@@ -181,20 +181,14 @@ Once the service account has been created you will need to download its JSON key
 
 ### Download Benchmark Results
 
-Run the `get_benchmark_results` script to download the latest benchmark results from GCP. You will need to set the bucket name as an environment variable:
-
-```
-GCS_OUTPUT_BUCKET - eq-daily-performance-test
-```
-
-If you are running the script using a service account you will need to set the path to the JSON key file (see Pre-requisites above):
+If you are running the script using a service account you will need to set the path to the JSON key file as an evironment variable (see Pre-requisites above):
 ```
 GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file> 
 ```
 
-Now run the script:
+To run the script and download results:
 ```
-pipenv run python -m scripts.get_benchmark_results
+pipenv run python -m scripts.get_benchmark_results <bucket_name>
 ```
 
 ### Run the Visualise Results script
