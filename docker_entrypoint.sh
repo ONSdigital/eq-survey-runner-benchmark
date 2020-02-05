@@ -8,5 +8,5 @@ USER_WAIT_TIME_MIN_SECONDS=${USER_WAIT_TIME_MIN_SECONDS} USER_WAIT_TIME_MAX_SECO
 
 if [[ -n ${GCS_OUTPUT_BUCKET} ]]; then
     echo "Storing benchmark outputs"
-    python store_benchmark_outputs.py
+    python -m scripts.store_benchmark_outputs
 fi
