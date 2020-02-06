@@ -19,7 +19,7 @@ e.g.
 pipenv run ./run.sh requests/test_checkbox.json
 ```
 
-This will run 1 minute of locust requests with 1 user and no wait time between requests. The output file can be found in `output_requests.csv`.
+This will run 1 minute of locust requests with 1 user and no wait time between requests. The output files are `output_stats.csv` and `output_stats_history.csv`.
 
 For the web interface:
 
