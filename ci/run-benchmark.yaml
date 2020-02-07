@@ -18,6 +18,7 @@ params:
   PARALLELISM:
   TIMEOUT:
   OUTPUT_DIR:
+  SERVICE_ACCOUNT_JSON: ((gcp.service_account.json))
 run:
   path: bash
   args:
@@ -26,7 +27,7 @@ run:
       apt-get install -y procps
 
       cat >~/gcloud-service-key.json <<EOL
-      ((gcp.service_account_json))
+      $SERVICE_ACCOUNT_JSON
       EOL
 
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
