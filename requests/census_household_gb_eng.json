@@ -32,11 +32,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/anyone-else-list-collector/?list_item_id={person_1_list_id}"
+            "url": "/questionnaire/anyone-else-list-collector/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/anyone-else-list-collector/?list_item_id={person_1_list_id}",
+            "url": "/questionnaire/anyone-else-list-collector/",
             "data": {
                 "anyone-else-answer": "Yes, I need to add someone"
             }
