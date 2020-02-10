@@ -15,7 +15,7 @@ def get_stats(folders):
         post_request_response_times = []
         all_response_times = []
 
-        for file in glob(folder + '/*distribution.csv'):
+        for file in glob(folder + '/*distribution.csv') or glob(folder + '/*history.csv'):
 
             with open(file) as f:
                 data = f.read()
