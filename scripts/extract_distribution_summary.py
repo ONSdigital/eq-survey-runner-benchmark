@@ -11,14 +11,16 @@ for line in sys.stdin:
         continue
 
     values = line.split(',')
-    percentile_99th = int(values[9])
+    percentile_99th = int(values[19])
 
-    if 'GET /questionnaire' in line:
-        get_values.append(percentile_99th)
-    if 'POST /questionnaire' in line:
-        post_values.append(percentile_99th)
-    if 'Aggregated' in line:
+    if values[1].startswith('"/questionnaire'):
+        if values[0] == '"GET"':
+            get_values.append(percentile_99th)
+        elif values[0] == '"POST"':
+            post_values.append(percentile_99th)
+    elif values[1].startswith('"Aggregated"'):
         total = percentile_99th
+
 
 get_average = int(sum(get_values) / len(get_values))
 post_average = int(sum(post_values) / len(post_values))
