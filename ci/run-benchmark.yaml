@@ -18,7 +18,7 @@ params:
   PARALLELISM:
   TIMEOUT:
   OUTPUT_DIR:
-  SERVICE_ACCOUNT_JSON: ((gcp.service_account.json))
+  SERVICE_ACCOUNT_JSON: ((gcp.service_account_json))
 run:
   path: bash
   args:
