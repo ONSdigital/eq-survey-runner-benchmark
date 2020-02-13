@@ -35,7 +35,7 @@ More in-depth configuration is explained in the top-level [Readme](/README.md).
 You can use the `extract_distribution_summary.py` script to extract high level metrics from the Locust distributions CSV:
 
 ```
-python scripts/extract_distribution_summary.py < baseline_stats.csv
+python scripts/extract_distribution_summary.py < output_stats.csv
 ```
 
 Will output something like:
