@@ -32,10 +32,10 @@ More in-depth configuration is explained in the top-level [Readme](/README.md).
 
 ## Extracting performance metrics from CSVs
 
-You can use the `extract_distribution_summary.py` script to extract high level metrics from the Locust distributions CSV:
+You can use the `extract_stats_summary.py` script to extract high level metrics from the Locust distributions CSV:
 
 ```
-python scripts/extract_distribution_summary.py < output_stats.csv
+python scripts/extract_stats_summary.py < baseline_stats.csv
 ```
 
 Will output something like:
