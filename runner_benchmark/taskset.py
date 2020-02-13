@@ -4,7 +4,7 @@ import random
 import re
 import time
 
-from locust import TaskSet, task, between
+from locust import TaskSet, task, constant
 
 from .utils import parse_params_from_location
 from .questionnaire_mixins import QuestionnaireMixins
@@ -14,8 +14,7 @@ r = random.Random()
 
 
 class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
-    wait_time = between(int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 1)),
-                        int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 2)))
+    wait_time = constant(0)
 
     def __init__(self, parent):
         super().__init__(parent)
@@ -36,6 +35,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         self.replay_requests()
 
     def replay_requests(self):
+        user_wait_time_min = int(os.getenv('USER_WAIT_TIME_MIN_SECONDS', 1))
+        user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 2))
         url_name_regex = r'{.*?}'
 
         for request in self.requests:
@@ -51,6 +52,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     )
 
                 self.handle_redirect(request, response)
+
+                if user_wait_time_min and user_wait_time_max:
+                    time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
 
             elif request['method'] == 'POST':
                 response = self.post(
