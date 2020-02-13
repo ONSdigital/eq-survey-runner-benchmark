@@ -15,7 +15,7 @@ def get_stats(folders):
         post_request_response_times = []
         all_response_times = []
 
-        for file in glob(folder + '/*distribution.csv'):
+        for file in glob(folder + '/*distribution.csv') or glob(folder + '/*stats.csv'):
 
             with open(file) as f:
                 data = f.read()
@@ -28,12 +28,20 @@ def get_stats(folders):
                     continue
 
                 values = line.split(',')
-                percentile_99th = int(values[9])
 
-                if 'GET /questionnaire' in line:
-                    get_values.append(percentile_99th)
-                if 'POST /questionnaire' in line:
-                    post_values.append(percentile_99th)
+                if 'distribution' in file:
+                    percentile_99th = int(values[9])
+                    if 'GET /questionnaire' in line:
+                        get_values.append(percentile_99th)
+                    elif 'POST /questionnaire' in line:
+                        post_values.append(percentile_99th)
+                else:
+                    percentile_99th = int(values[19])
+                    if values[1].startswith('"/questionnaire'):
+                        if values[0] == '"GET"':
+                            get_values.append(percentile_99th)
+                        elif values[0] == '"POST"':
+                            post_values.append(percentile_99th)
 
             get_request_response_times.extend(get_values)
             post_request_response_times.extend(post_values)

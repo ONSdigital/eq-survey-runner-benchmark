@@ -4,7 +4,7 @@ import random
 import re
 import time
 
-from locust import TaskSet, task
+from locust import TaskSet, task, constant
 
 from .utils import parse_params_from_location
 from .questionnaire_mixins import QuestionnaireMixins
@@ -14,6 +14,8 @@ r = random.Random()
 
 
 class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
+    wait_time = constant(0)
+
     def __init__(self, parent):
         super().__init__(parent)
 
