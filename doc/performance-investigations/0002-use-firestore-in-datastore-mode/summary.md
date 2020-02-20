@@ -6,27 +6,10 @@ See https://cloud.google.com/datastore/docs/firestore-or-datastore for more deta
 
 Link to Github branch with proposed changes.
 
-## Benchmark profile
-
-| Option | Value |
-|--------|-------|
-| Requests file | census_individual_gb_eng.json |
-| Run time | 30m |
-| User wait time minimum | 0 |
-| User wait time maximum | 0 |
-| Clients | 125 |
-| Hatch rate | 125 |
-
 ## Results
 
-Results based on 99th percentile timings.
-
-| Metric | Baseline | Investigation |
-|--------|----------|--------------|
-| Questionnaire GETs | 1482ms | |
-| Questionnaire POSTs | 1464ms| |
-| All requests | 1700ms | |
+On investigation, it became apparent that all new projects created since changing to eq-terraform-gcp are now created using Firestore in Datastore mode by default. This is caused by the Project no longer being managed by Terraform, which created legacy Datastore applications. This has created a difference between our formal and non-formal environments, as formal environments are still using the legacy Datastore mode. We should bring our formal environments in line with the eq-staging and test environments. It is possible to upgrade the Datastore application to Firestore via the project UI when all entities have been cleared out. An alternative is to recreate formal environment projects.
 
 ## Decision
 
-Merge or discard?
+Upgrade formal environments to Firestore in Datastore mode.

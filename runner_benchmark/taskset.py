@@ -83,7 +83,6 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                 )
 
     def do_launch_survey(self):
-
         token = create_token(schema_name=self.schema_name)
 
         url = f'/session?token={token}'
