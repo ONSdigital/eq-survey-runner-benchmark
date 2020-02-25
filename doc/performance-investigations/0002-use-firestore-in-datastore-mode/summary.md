@@ -1,4 +1,4 @@
-# Investigate Firestore in Datastore Mode
+#  Use Firestore in Datastore Mode
 
 Current databases created via the Python Datastore library are traditional Datastore databases, Firestore offers a Datastore compatibility mode that reduces or removes some of the limitations of native Datastore.
 
