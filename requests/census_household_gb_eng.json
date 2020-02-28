@@ -149,8 +149,9 @@
             "url": "/questionnaire/"
         },
         {
-            "method": "GET",
-            "url": "/questionnaire/sections/accommodation-section/"
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
         },
         {
             "method": "GET",
@@ -253,8 +254,9 @@
             "url": "/questionnaire/"
         },
         {
-            "method": "GET",
-            "url": "/questionnaire/sections/individual-section/{person_1_list_id}/"
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
         },
         {
             "method": "GET",
@@ -297,7 +299,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/confirm-dob/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes, I am {age_in_years} years old"
+                "confirm-date-of-birth-answer": "Yes, I am {age} old"
             }
         },
         {
@@ -715,8 +717,9 @@
             "url": "/questionnaire/"
         },
         {
-            "method": "GET",
-            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/"
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
         },
         {
             "method": "GET",
@@ -734,7 +737,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/proxy/",
-            "data": {}
+            "data": {
+                "proxy-answer": "No, I am answering on their behalf"
+            }
         },
         {
             "method": "GET",
@@ -744,9 +749,9 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/date-of-birth/",
             "data": {
-                "date-of-birth-answer-day": "2",
+                "date-of-birth-answer-day": "1",
                 "date-of-birth-answer-month": "2",
-                "date-of-birth-answer-year": "1965"
+                "date-of-birth-answer-year": "1970"
             }
         },
         {
@@ -757,7 +762,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/confirm-dob/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes, {person_name} is {age_in_years} years old"
+                "confirm-date-of-birth-answer": "Yes, {person_name} is {age} old"
             }
         },
         {
@@ -767,7 +772,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/sex/",
-            "data": {}
+            "data": {
+                "sex-answer": "Female"
+            }
         },
         {
             "method": "GET",
@@ -776,7 +783,20 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/marriage-type/",
-            "data": {}
+            "data": {
+                "marriage-type-answer": "Married"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/current-marriage-status/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/current-marriage-status/",
+            "data": {
+                "current-marriage-status-answer": "Someone of the opposite sex"
+            }
         },
         {
             "method": "GET",
@@ -786,6 +806,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/another-address/",
             "data": {
+                "another-address-answer": "No",
                 "another-address-answer-other-country": ""
             }
         },
@@ -832,6 +853,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/national-identity/",
             "data": {
+                "national-identity-answer": "English",
                 "national-identity-answer-other": ""
             }
         },
@@ -912,7 +934,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/disability/",
-            "data": {}
+            "data": {
+                "disability-answer": "No"
+            }
         },
         {
             "method": "GET",
@@ -921,7 +945,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/carer/",
-            "data": {}
+            "data": {
+                "carer-answer": "No"
+            }
         },
         {
             "method": "GET",
@@ -931,6 +957,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/sexual-identity/",
             "data": {
+                "sexual-identity-answer": "Straight or Heterosexual",
                 "sexual-identity-answer-other": ""
             }
         },
@@ -942,6 +969,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/birth-gender/",
             "data": {
+                "birth-gender-answer": "Yes",
                 "birth-gender-answer-other": ""
             }
         },
@@ -972,7 +1000,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/degree/",
-            "data": {}
+            "data": {
+                "degree-answer": "Yes"
+            }
         },
         {
             "method": "GET",
@@ -981,7 +1011,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/nvq-level/",
-            "data": {}
+            "data": {
+                "nvq-level-answer-exclusive": "None of these apply"
+            }
         },
         {
             "method": "GET",
@@ -990,7 +1022,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/a-level/",
-            "data": {}
+            "data": {
+                "a-level-answer": "2 or more A levels"
+            }
         },
         {
             "method": "GET",
@@ -999,16 +1033,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/gcse/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/household/{person_2_list_id}/other-qualifications/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/other-qualifications/",
-            "data": {}
+            "data": {
+                "gcse-answer": "5 or more GCSEs grades A* to C or 9 to 4"
+            }
         },
         {
             "method": "GET",
@@ -1017,7 +1044,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/armed-forces/",
-            "data": {}
+            "data": {
+                "armed-forces-answer-exclusive": "No"
+            }
         },
         {
             "method": "GET",
@@ -1027,7 +1056,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/employment-status/",
             "data": {
-                "employment-status-answer": "Self-employed or freelance"
+                "employment-status-answer": "Working as an employee"
             }
         },
         {
@@ -1046,7 +1075,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/main-job-type/",
-            "data": {}
+            "data": {
+                "main-job-type-answer": "Employee"
+            }
         },
         {
             "method": "GET",
@@ -1099,7 +1130,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/supervise/",
-            "data": {}
+            "data": {
+                "supervise-answer": "Yes"
+            }
         },
         {
             "method": "GET",
@@ -1108,15 +1141,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/hours-worked/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/household/{person_2_list_id}/work-travel/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/household/{person_2_list_id}/hours-worked/"
+            "data": {
+                "hours-worked-answer": "31 to 48 hours"
+            }
         },
         {
             "method": "GET",
@@ -1125,7 +1152,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/work-travel/",
-            "data": {}
+            "data": {
+                "work-travel-answer": "Driving a car or van"
+            }
         },
         {
             "method": "GET",
@@ -1134,7 +1163,20 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/employer-type-of-address/",
-            "data": {}
+            "data": {
+                "employer-type-of-address-answer": "At a workplace"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/mainly-work-in-uk/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/mainly-work-in-uk/",
+            "data": {
+                "mainly-work-in-uk-answer": "Yes"
+            }
         },
         {
             "method": "GET",
@@ -1172,10 +1214,6 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/visitor-section/{visitor_1_id}/"
-        },
-        {
-            "method": "GET",
             "url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
         },
         {
@@ -1191,9 +1229,9 @@
             "method": "POST",
             "url": "/questionnaire/visitor/{visitor_1_id}/visitor-date-of-birth/",
             "data": {
-                "visitor-date-of-birth-answer-day": "",
-                "visitor-date-of-birth-answer-month": "",
-                "visitor-date-of-birth-answer-year": ""
+                "visitor-date-of-birth-answer-day": "1",
+                "visitor-date-of-birth-answer-month": "1",
+                "visitor-date-of-birth-answer-year": "2000"
             }
         },
         {
@@ -1203,7 +1241,9 @@
         {
             "method": "POST",
             "url": "/questionnaire/visitor/{visitor_1_id}/visitor-sex/",
-            "data": {}
+            "data": {
+                "visitor-sex-answer": "Female"
+            }
         },
         {
             "method": "GET",
@@ -1213,7 +1253,23 @@
             "method": "POST",
             "url": "/questionnaire/visitor/{visitor_1_id}/usual-household-address/",
             "data": {
+                "usual-address-household-answer": "An address in the UK",
                 "usual-address-household-answer-other": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor/{visitor_1_id}/usual-address-details/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor/{visitor_1_id}/usual-address-details/",
+            "data": {
+                "usual-address-details-answer-building": "",
+                "usual-address-details-answer-street": "",
+                "usual-address-details-answer-city": "",
+                "usual-address-details-answer-county": "",
+                "usual-address-details-answer-postcode": ""
             }
         },
         {
