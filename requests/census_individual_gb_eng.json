@@ -15,7 +15,7 @@
             "method": "POST",
             "url": "/questionnaire/proxy/",
             "data": {
-                "proxy-answer": "No, I\u2019m answering for myself"
+                "proxy-answer": "For myself"
             }
         },
         {
@@ -63,7 +63,7 @@
             "method": "POST",
             "url": "/questionnaire/confirm-dob/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes, I am {age_in_years} years old"
+                "confirm-date-of-birth-answer": "Yes, I am {age} old"
             }
         },
         {
