@@ -1,6 +1,10 @@
 {
     "requests": [
         {
+            "method": "GET",
+            "url": "/questionnaire/who-lives-here-interstitial/"
+        },
+        {
             "method": "POST",
             "url": "/questionnaire/who-lives-here-interstitial/",
             "data": {}

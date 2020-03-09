@@ -1,6 +1,10 @@
 {
     "requests": [
         {
+            "method": "GET",
+            "url": "/questionnaire/accommodation-type/"
+        },
+        {
             "method": "POST",
             "url": "/questionnaire/accommodation-type/",
             "data": {
