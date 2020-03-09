@@ -51,7 +51,6 @@ def get_stats(folders, filter_after):
 
             all_response_times = get_values + post_values
 
-
         results_list.append(
             [
                 date,
@@ -60,6 +59,12 @@ def get_stats(folders, filter_after):
                 statistics.mean(all_response_times),
             ]
         )
+
+    return results_list
+
+
+def create_data_frame(folders, filter_after):
+    results_list = get_stats(folders, filter_after)
 
     output_df = DataFrame(results_list, columns=["DATE", "GET", "POST", "AVERAGE"])
 
@@ -84,10 +89,10 @@ if __name__ == '__main__':
         )
     else:
         output_folder = sys.argv[1]
-        filter_after = sys.argv[2] if len(sys.argv) > 2 else None
+        filter_after_date = sys.argv[2] if len(sys.argv) > 2 else None
 
         test_run_folders = sorted(glob(f"{output_folder}/*"))
 
-        data_frame = get_stats(test_run_folders, filter_after=filter_after)
+        data_frame = create_data_frame(test_run_folders, filter_after=filter_after_date)
 
         plot_data(data_frame)

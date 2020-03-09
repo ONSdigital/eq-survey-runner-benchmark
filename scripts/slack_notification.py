@@ -43,6 +43,7 @@ def main():
 
         print('Slack notification posted')
 
+
 if __name__ == "__main__":
     with warnings.catch_warnings():
         #  https://github.com/slackapi/python-slackclient/issues/622
