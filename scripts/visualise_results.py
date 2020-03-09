@@ -6,10 +6,13 @@ from pandas import DataFrame
 import matplotlib.pyplot as plt
 
 
-def get_stats(folders):
+def get_stats(folders, filter_after):
     results_list = []
 
     for folder in folders:
+        date = folder.split('/')[-1].split('T')[0]
+        if filter_after and date <= filter_after:
+            continue
 
         get_request_response_times = []
         post_request_response_times = []
@@ -48,7 +51,6 @@ def get_stats(folders):
 
             all_response_times = get_values + post_values
 
-        date = folder.split('/')[-1].split('T')[0]
 
         results_list.append(
             [
@@ -76,15 +78,16 @@ def plot_data(df):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print(
             "Provide the benchmark outputs directory as a parameter e.g. outputs/daily-test"
         )
     else:
-        output_folder = sys.argv[-1]
+        output_folder = sys.argv[1]
+        filter_after = sys.argv[2] if len(sys.argv) > 2 else None
 
         test_run_folders = sorted(glob(f"{output_folder}/*"))
 
-        data_frame = get_stats(test_run_folders)
+        data_frame = get_stats(test_run_folders, filter_after=filter_after)
 
         plot_data(data_frame)
