@@ -61,7 +61,7 @@ def get_stats(folders, filter_after):
             ]
         )
 
-    output_df = DataFrame(results_list, columns=["DATE", "GET", "POST", "AGGREGATE"])
+    output_df = DataFrame(results_list, columns=["DATE", "GET", "POST", "AVERAGE"])
 
     return output_df
 
