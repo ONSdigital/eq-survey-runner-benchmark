@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     gcs = GoogleCloudStorage(bucket_name=gcs_bucket_name)
     gcs.upload_files(
-        output_files=('output_stats.csv', 'output_stats_history.csv'),
+        output_files=('output_stats.csv', 'output_stats_history.csv', 'output_failures.csv'),
         directory=output_directory,
         output_filename_prefix=filename_prefix,
         host=host,
