@@ -8,7 +8,11 @@ This repository was heavily inspired by the [census performance tests](https://g
 ## Installation
 
 On MacOSX Catalina (10.15) if the Python packages fail to install there may be two versions of command line tools SDK present(`MacOSX10.15.sdk` and `MacOSX10.14.sdk`).
-You need to remove 10.14 version by using `sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk`.
+You need to remove 10.14 version by using: 
+
+```
+sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
+```
 
 ## Running a benchmark
 
