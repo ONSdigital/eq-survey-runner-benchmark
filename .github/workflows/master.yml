@@ -14,6 +14,6 @@ jobs:
         run: docker build -t eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest .
       - name: Push
         run: |
-          echo "$DOCKER_GCR_PASSWORD" | base64 --decode | docker login -u "$DOCKER_GCR_USERNAME" --password-stdin https://eu.gcr.io
+          echo "${{ secrets.DOCKER_GCR_PASSWORD }} | base64 --decode | docker login -u ${{ secrets.DOCKER_GCR_USERNAME }} --password-stdin https://eu.gcr.io
           echo "Pushing with tag [latest]"
           docker push eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
