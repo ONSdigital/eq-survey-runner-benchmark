@@ -1,6 +1,6 @@
 # Use Redis for storing Questionnaire Runner sessions
 
-The EQ session data are currently stored in Datastore. It may be more performant to store these data in Redis (which is already used for JWT).
+EQ session data are currently stored in Datastore. It may be more performant to store these data in Redis (which is already used for JWT).
 https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investigation-session-performance
 
 ## Benchmark profile
