@@ -46,6 +46,7 @@ https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investiga
 ### Baseline
 
 | Clients, Hatch rate | GET Average (ms) | POST Average (ms) | All requests average (ms) |
+|---------------------|------------------|-------------------|---------------------------|
 | 1, 1 | 103 | 123 | 410 |
 | 5, 5 | 138 | 157 | 270 |
 | 25, 25 | 462 | 416 | 1200 |
@@ -54,6 +55,7 @@ https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investiga
 ### Investigation
 
 | Clients & hatch rate | GET Average (ms) | POST Average (ms) | All requests average (ms) |
+|----------------------|------------------|-------------------|---------------------------|
 | 1, 1 | 95 | 110 | 490 |
 | 5, 5 | 121 | 141 | 280 |
 | 25, 25 | 353 | 422 | 570 |
