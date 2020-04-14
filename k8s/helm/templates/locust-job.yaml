@@ -23,6 +23,9 @@ spec:
         - name: "{{ .Chart.Name }}"
           image: "{{ .Values.container.image }}"
           imagePullPolicy: "{{ .Values.container.pullPolicy }}"
+          resources:
+            requests:
+              cpu: 0.7
           env:
             - name: HOST
               value: "{{ .Values.host }}"
