@@ -23,6 +23,7 @@
 
 - 600 instances, 2400 vCPU available, 1800 vCPU requested
 - Error rate includes any HTTP status codes in the 400 and 500 range (neither are expected)
+- The 99th percentile timings are the load balancer response times reported in Stackdriver
 
 ## Observations
 
