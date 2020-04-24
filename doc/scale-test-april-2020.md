@@ -27,16 +27,16 @@
 
 ## Observations
 
-- In the first run of 90 instances there was an increase in HTTP 502 errors on POST. Re-running the same test immediately a second time, no errors were observed. The assumption is data store scaled based on the volume to cope with the surge in demand.
-- When we got to 100 instances both runs had increased error rates (HTTP 502) but the CPU wasn't being pushed much further than in the 90 instances test. Data store may be the bottleneck here. 
+- In the first run of 90 instances there was an increase in HTTP 502 errors.  These errors were reported by the load balancer as `backend_timeout`; as they were almost exclusively on POST requests it could be that Datastore was throttling writes while it scaled to cope with the surge in demand. This is not possible to prove as we don't have any timings for Datastore requests (they're not available in the Datastore Stackdriver metrics). Re-running the same test immediately a second time, no errors were observed.
+- Both runs of 100 instances had increased error rates (HTTP 502). Again, as the errors were almost exclusively on POST requests, this could also have been be due to Datastore throttling writes. 
 - The average submission rate in the 90 instances test was 114 responses per second, which is 410,000 responses per hour (assuming requests remain stable over an hour).
 
 ## Recommendations
 
-- Speak to CATD and Google about scaling of:
+- Speak to CATD and Google about the scaling of:
   - Kubernetes past the current default limit (2400 vCPU)
   - Datastore - how does it scale, both up and down, with demand
 - Investigate how well the service copes in scaling up/down to meet demand
-- More metrics would be useful
-- Need to implement better ways to aggregate and visualise benchmark results
-
+- Expose timing metrics for data requests - Redis and Datastore
+- Investigate timeout settings to optimise response throughput
+- Implement better ways to aggregate and visualise benchmark results
