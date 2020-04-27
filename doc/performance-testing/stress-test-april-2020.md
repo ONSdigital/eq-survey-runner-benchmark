@@ -1,6 +1,7 @@
 # Scale Test April 2020
 
 ## Benchmark settings
+
 | Setting | Value |
 | --- | ---| 
 | Clients per instance | 200 |
@@ -27,8 +28,8 @@
 
 ## Observations
 
-- In the first run of 90 instances there was an increase in HTTP 502 errors.  These errors were reported by the load balancer as `backend_timeout`; as they were almost exclusively on POST requests it could be that Datastore was throttling writes while it scaled to cope with the surge in demand. This is not possible to prove as we don't have any timings for Datastore requests (they're not available in the Datastore Stackdriver metrics). Re-running the same test immediately a second time, no errors were observed.
-- Both runs of 100 instances had increased error rates (HTTP 502). Again, as the errors were almost exclusively on POST requests, this could also have been be due to Datastore throttling writes. 
+- In the first run of 90 instances, there was an increase in HTTP 502 errors. These errors were reported by the load balancer as `backend_timeout`; as they were almost exclusively on POST requests it could be that Datastore was throttling writes while it scaled to cope with the surge in demand. This is not possible to prove as we don't have any timings for Datastore requests (they're not available in the Datastore Stackdriver metrics). Re-running the same test immediately a second time, no errors were observed.
+- Both runs of 100 instances had increased error rates (HTTP 502). Again, as the errors were almost exclusively on POST requests, this could also have been due to Datastore throttling writes. 
 - The average submission rate in the 90 instances test was 114 responses per second, which is 410,000 responses per hour (assuming requests remain stable over an hour).
 
 ## Recommendations
