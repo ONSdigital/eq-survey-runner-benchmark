@@ -39,19 +39,20 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 2))
         url_name_regex = r'{.*?}'
 
+        self.get('/questionnaire', expect_redirect=True)
+
         for request in self.requests:
             url_name = re.sub(url_name_regex, '{id}', request['url'])
             request_url = request['url'].format_map(self.redirect_params)
 
             if request['method'] == 'GET':
-                response = self.get(request_url, name=url_name)
+                expect_redirect = "redirect_route" in request
+                response = self.get(
+                    request_url, name=url_name, expect_redirect=expect_redirect
+                )
 
-                if response.status_code not in [200, 302]:
-                    raise Exception(
-                        f"Got a ({response.status_code}) back when getting page: {request_url}"
-                    )
-
-                self.handle_redirect(request, response)
+                if expect_redirect:
+                    self.handle_redirect(request, response)
 
                 if user_wait_time_min and user_wait_time_max:
                     time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
@@ -60,13 +61,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                 response = self.post(
                     self.base_url, request_url, request['data'], name=url_name
                 )
-
-                if response.status_code not in [200, 302]:
-                    raise Exception(
-                        f"Got a ({response.status_code}) back when posting page: {request_url} with data: {request['data']}"
-                    )
-
-                self.handle_redirect(request, response)
+                if "redirect_route" in request:
+                    self.handle_redirect(request, response)
 
             else:
                 raise Exception(
@@ -74,25 +70,14 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                 )
 
     def handle_redirect(self, request, response):
-        if response.status_code == 302:
-            if 'redirect_route' in request:
-                self.redirect_params.update(
-                    parse_params_from_location(
-                        response.headers['Location'], request['redirect_route']
-                    )
-                )
+        self.redirect_params.update(
+            parse_params_from_location(
+                response.headers['Location'], request['redirect_route']
+            )
+        )
 
     def do_launch_survey(self):
         token = create_token(schema_name=self.schema_name)
 
         url = f'/session?token={token}'
-        response = self.get(url, name='/session')
-
-        if response.status_code != 302:
-            raise Exception(
-                'Got a non-302 back when authenticating session: {}'.format(
-                    response.status_code
-                )
-            )
-
-        self.get(response.headers['Location'], allow_redirects=True)
+        self.get(url=url, name='/session', expect_redirect=True)

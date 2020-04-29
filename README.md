@@ -5,6 +5,15 @@ This is a performance benchmarking tool designed to measure the performance of [
 
 This repository was heavily inspired by the [census performance tests](https://github.com/ONSdigital/census-eq-performance-tests).
 
+## Installation
+
+On MacOSX Catalina (10.15) if the Python packages fail to install there may be two versions of command line tools SDK present(`MacOSX10.15.sdk` and `MacOSX10.14.sdk`).
+You need to remove 10.14 version by using: 
+
+```
+sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
+```
+
 ## Running a benchmark
 
 The benchmark consumes a requests JSON file that contains a list of HTTP requests. This can either be created from scratch or generated from a HAR file. Example requests files can be found in the `requests` folder.
@@ -19,7 +28,7 @@ e.g.
 pipenv run ./run.sh requests/test_checkbox.json
 ```
 
-This will run 1 minute of locust requests with 1 user and no wait time between requests. The output files are `output_stats.csv` and `output_stats_history.csv`.
+This will run 1 minute of locust requests with 1 user and no wait time between requests. The output files are `output_stats.csv`, `output_stats_history.csv` and `output_failures.csv`.
 
 For the web interface:
 

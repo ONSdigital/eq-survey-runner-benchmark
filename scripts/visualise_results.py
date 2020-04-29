@@ -1,66 +1,10 @@
 import sys
 from glob import glob
 
-import statistics
-from pandas import DataFrame
 import matplotlib.pyplot as plt
+from pandas import DataFrame
 
-
-def get_stats(folders, filter_after):
-    results_list = []
-
-    for folder in folders:
-        date = folder.split('/')[-1].split('T')[0]
-        if filter_after and date <= filter_after:
-            continue
-
-        get_request_response_times = []
-        post_request_response_times = []
-        all_response_times = []
-
-        for file in glob(folder + '/*distribution.csv') or glob(folder + '/*stats.csv'):
-
-            with open(file) as f:
-                data = f.read()
-
-            get_values = []
-            post_values = []
-
-            for line in data.split('\n'):
-                if 'Name' in line:
-                    continue
-
-                values = line.split(',')
-
-                if 'distribution' in file:
-                    percentile_99th = int(values[9])
-                    if 'GET /questionnaire' in line:
-                        get_values.append(percentile_99th)
-                    elif 'POST /questionnaire' in line:
-                        post_values.append(percentile_99th)
-                else:
-                    percentile_99th = int(values[19])
-                    if values[1].startswith('"/questionnaire'):
-                        if values[0] == '"GET"':
-                            get_values.append(percentile_99th)
-                        elif values[0] == '"POST"':
-                            post_values.append(percentile_99th)
-
-            get_request_response_times.extend(get_values)
-            post_request_response_times.extend(post_values)
-
-            all_response_times = get_values + post_values
-
-        results_list.append(
-            [
-                date,
-                statistics.mean(get_request_response_times),
-                statistics.mean(post_request_response_times),
-                statistics.mean(all_response_times),
-            ]
-        )
-
-    return results_list
+from scripts.get_summary import get_stats
 
 
 def create_data_frame(folders, filter_after):
@@ -85,7 +29,7 @@ def plot_data(df):
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print(
-            "Provide the benchmark outputs directory as a parameter e.g. outputs/daily-test"
+            "Provide the benchmark outputs directory and optionally a date to filter after by as a parameter e.g. outputs/daily-test 2020-01-01"
         )
     else:
         output_folder = sys.argv[1]

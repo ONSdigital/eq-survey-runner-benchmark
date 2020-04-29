@@ -1,6 +1,10 @@
 {
     "requests": [
         {
+            "method": "GET",
+            "url": "/questionnaire/mandatory-checkbox/"
+        },
+        {
             "method": "POST",
             "url": "/questionnaire/mandatory-checkbox/",
             "data": {

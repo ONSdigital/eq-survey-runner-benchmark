@@ -3,66 +3,64 @@ import sys
 import warnings
 
 import slack
+from slack.errors import SlackApiError
 
 
-def main():
-    if not os.getenv('SLACK_API_TOKEN'):
-        print("Slack API auth token must be provided")
+def post_slack_notification():
+    slack_auth_token = os.getenv('SLACK_API_TOKEN')
+    if not slack_auth_token:
+        print("'SLACK_API_TOKEN' must be provided")
         sys.exit(1)
 
-    if not os.getenv('SLACK_CHANNEL_NAME'):
-        print("Slack channel name must be provided")
+    slack_channel = os.getenv('SLACK_CHANNEL_NAME')
+    if not slack_channel:
+        print("'SLACK_CHANNEL_NAME' must be provided")
         sys.exit(2)
 
-    file_text_content = os.getenv('FILE_TEXT_CONTENT')
+    content = os.getenv('CONTENT')
     attachment_file_path = os.getenv('ATTACHMENT_FILE_PATH')
-    if file_text_content and attachment_file_path:
-        print("Only text content or attachment can be provided")
+    if content and attachment_file_path:
+        print("Only one of 'CONTENT' or 'ATTACHMENT_FILE_PATH' can be provided")
         sys.exit(3)
 
-    if not (file_text_content or attachment_file_path):
-        print("Text content or attachment file path must be provided")
+    if not (content or attachment_file_path):
+        print("Either 'CONTENT' or 'ATTACHMENT_FILE_PATH' must be provided")
         sys.exit(4)
 
     if attachment_file_path and not os.path.isfile(attachment_file_path):
         print("Attachment file does not exist")
         sys.exit(5)
 
-    client = slack.WebClient(token=os.getenv('SLACK_API_TOKEN'))
+    client = slack.WebClient(token=slack_auth_token)
 
-    channel = os.getenv('SLACK_CHANNEL_NAME')
+    initial_comment = os.getenv('INITIAL_COMMENT', '')
+    title = os.getenv('TITLE', '')
 
-    text_content = os.getenv('TEXT_CONTENT', '')
-    text_title = os.getenv('TEXT_TITLE', '')
+    try:
+        if content:
+            response = client.files_upload(
+                channels=f'#{slack_channel}',
+                content=content,
+                filetype=os.getenv('FILE_TYPE', 'python'),
+                title=title,
+                initial_comment=initial_comment,
+            )
+        else:
+            response = client.files_upload(
+                channels=f'#{slack_channel}',
+                file=attachment_file_path,
+                title=title,
+                initial_comment=initial_comment,
+            )
+    except SlackApiError as e:
+        print(f'Slack notification errored\nError: {e.response["error"]}')
+        sys.exit(6)
 
-    if file_text_content:
-        response = client.files_upload(
-            channels=f'#{channel}',
-            content=file_text_content,
-            filetype=os.getenv('FILE_TYPE', 'python'),
-            title=text_title,
-            initial_comment=text_content,
-        )
+    if response.get('ok', False) is False:
+        print('Slack notification failed')
+        sys.exit(7)
 
-        if response.get('ok', False) is False:
-            print('Slack text content notification failed')
-            sys.exit(6)
-
-        print('Slack text content notification posted')
-
-    elif attachment_file_path:
-        response = client.files_upload(
-            channels=f'#{channel}',
-            file=attachment_file_path,
-            title=text_title,
-            initial_comment=text_content,
-        )
-
-        if response.get('ok', False) is False:
-            print('Slack attachment notification failed')
-            sys.exit(7)
-
-        print('Slack attachment notification posted')
+    print('Slack notification posted')
 
 
 if __name__ == "__main__":
@@ -70,4 +68,4 @@ if __name__ == "__main__":
         #  https://github.com/slackapi/python-slackclient/issues/622
         warnings.simplefilter('ignore', category=RuntimeWarning)
 
-        main()
+        post_slack_notification()

@@ -1,6 +1,10 @@
 {
     "requests": [
         {
+            "method": "GET",
+            "url": "/questionnaire/who-lives-here-interstitial/"
+        },
+        {
             "method": "POST",
             "url": "/questionnaire/who-lives-here-interstitial/",
             "data": {}
@@ -89,11 +93,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/add-visitor/?previous=any-visitors"
+            "url": "/questionnaire/visitors/add-visitor/?previous=any-visitors"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/add-visitor/?previous=any-visitors",
+            "url": "/questionnaire/visitors/add-visitor/?previous=any-visitors",
             "data": {
                 "first-name": "Sarah",
                 "last-name": "Bloggs"
@@ -1210,24 +1214,24 @@
             "method": "POST",
             "url": "/questionnaire/",
             "data": {},
-            "redirect_route": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
+            "redirect_route": "/questionnaire/visitors/{visitor_1_id}/visitor-interstitial/"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/"
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-interstitial/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-interstitial/",
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-interstitial/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-date-of-birth/"
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-date-of-birth/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-date-of-birth/",
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-date-of-birth/",
             "data": {
                 "visitor-date-of-birth-answer-day": "1",
                 "visitor-date-of-birth-answer-month": "1",
@@ -1236,22 +1240,22 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-sex/"
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-sex/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-sex/",
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-sex/",
             "data": {
                 "visitor-sex-answer": "Female"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/{visitor_1_id}/usual-household-address/"
+            "url": "/questionnaire/visitors/{visitor_1_id}/usual-household-address/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/{visitor_1_id}/usual-household-address/",
+            "url": "/questionnaire/visitors/{visitor_1_id}/usual-household-address/",
             "data": {
                 "usual-address-household-answer": "An address in the UK",
                 "usual-address-household-answer-other": ""
@@ -1259,11 +1263,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/{visitor_1_id}/usual-address-details/"
+            "url": "/questionnaire/visitors/{visitor_1_id}/usual-address-details/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/{visitor_1_id}/usual-address-details/",
+            "url": "/questionnaire/visitors/{visitor_1_id}/usual-address-details/",
             "data": {
                 "usual-address-details-answer-building": "",
                 "usual-address-details-answer-street": "",
@@ -1274,11 +1278,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-summary/"
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-summary/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor/{visitor_1_id}/visitor-summary/",
+            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-summary/",
             "data": {}
         },
         {
