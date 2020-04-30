@@ -34,7 +34,7 @@ Use the `fly execute` command to run the task.
 
 ### Output statistics to Slack task
 ```sh
-PROJECT_ID=<prroject_id> \
+PROJECT_ID=<project_id> \
 REQUESTS_JSON=<path_to_requests_file> \
 LOCUST_OPTIONS=<additional_locust_option> \
 RUNNER_FULLY_QUALIFIED_DOMAIN_NAME=<runner_fqdn> \
