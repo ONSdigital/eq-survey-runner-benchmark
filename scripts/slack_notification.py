@@ -7,9 +7,9 @@ from slack.errors import SlackApiError
 
 
 def post_slack_notification():
-    slack_auth_token = os.getenv('SLACK_API_TOKEN')
+    slack_auth_token = os.getenv('SLACK_AUTH_TOKEN')
     if not slack_auth_token:
-        print("'SLACK_API_TOKEN' must be provided")
+        print("'SLACK_AUTH_TOKEN' must be provided")
         sys.exit(1)
 
     slack_channel = os.getenv('SLACK_CHANNEL_NAME')
