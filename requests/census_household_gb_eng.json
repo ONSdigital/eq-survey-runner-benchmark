@@ -116,11 +116,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/who-lives-here-section-summary/"
+            "url": "/questionnaire/sections/who-lives-here-section/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/who-lives-here-section-summary/",
+            "url": "/questionnaire/sections/who-lives-here-section/",
             "data": {}
         },
         {
@@ -246,11 +246,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/accommodation-section-summary/"
+            "url": "/questionnaire/sections/accommodation-section"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/accommodation-section-summary/",
+            "url": "/questionnaire/sections/accommodation-section",
             "data": {}
         },
         {
@@ -709,11 +709,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/summary/"
+            "url": "/questionnaire/sections/individual-section/{person_1_list_id}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_1_list_id}/summary/",
+            "url": "/questionnaire/sections/individual-section/{person_1_list_id}/",
             "data": {}
         },
         {
@@ -1199,11 +1199,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_2_list_id}/summary/"
+            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/summary/",
+            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/",
             "data": {}
         },
         {
@@ -1278,11 +1278,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-summary/"
+            "url": "/questionnaire/sections/visitor-section/{visitor_1_id}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitors/{visitor_1_id}/visitor-summary/",
+            "url": "/questionnaire/sections/visitor-section/{visitor_1_id}/",
             "data": {}
         },
         {
