@@ -10,11 +10,10 @@ Log in (via `fly`) to a Concourse instance that has access to the target GCP pro
 fly login -t <target-concourse>
 ```
 
-### Benchmark
+## Run Benchmark
 The following env vars must be set:
 
 - PROJECT_ID
-- REGION
 - REQUESTS_JSON
 - LOCUST_OPTIONS
 - RUNNER_FULLY_QUALIFIED_DOMAIN_NAME
@@ -27,13 +26,12 @@ The following env vars must be set:
 - OUTPUT_DIR
 - OUTPUT_BUCKET
 
-The following env var already has a sensible default, but can be set with alternative value if needed:
+The following env var already has a sensible default, but can be set with an alternative value if needed:
 - REGION: 
 
-## Provisioning
+### Provisioning
 Use the `fly execute` command to run the task.
 
-### Output statistics to Slack task
 ```sh
 PROJECT_ID=<project_id> \
 REQUESTS_JSON=<path_to_requests_file> \
@@ -50,24 +48,23 @@ fly -t census-eq execute \
   --config ci/run_benchmark.yaml
 ```
 
-### Notifcation of performance statistics to Slack
+## Output results to Slack
 The following env vars must be set:
 
 - OUTPUT_BUCKET
 - OUTPUT_DIR
 - SLACK_CHANNEL_NAME
 
-The following env var already has a sensible default, but can be set with alternative value if needed:
+The following env var already has a sensible default, but can be set with an alternative value if needed:
 - SLACK_AUTH_TOKEN
 
-## Provisioning
+### Provisioning
 Use the `fly execute` command to run the task.
 
-### Output statistics to Slack task
 ```sh
 OUTPUT_BUCKET_NAME=<output_bucket_name> \
 OUTPUT_DIR=<output_directory> \
 SLACK_CHANNEL_NAME=<slack_channel_name> \
 fly -t census-eq execute \
-  --config ci/output-stats-to-slack.yaml
+  --config ci/output-results-to-slack.yaml
 ```

@@ -18,16 +18,16 @@ def post_slack_notification():
         sys.exit(2)
 
     content = os.getenv('CONTENT')
-    attachment_file_path = os.getenv('ATTACHMENT_FILE_PATH')
-    if content and attachment_file_path:
-        print("Only one of 'CONTENT' or 'ATTACHMENT_FILE_PATH' can be provided")
+    attachment_filename = os.getenv('ATTACHMENT_FILENAME')
+    if content and attachment_filename:
+        print("Only one of 'CONTENT' or 'ATTACHMENT_FILENAME' can be provided")
         sys.exit(3)
 
-    if not (content or attachment_file_path):
-        print("Either 'CONTENT' or 'ATTACHMENT_FILE_PATH' must be provided")
+    if not (content or attachment_filename):
+        print("Either 'CONTENT' or 'ATTACHMENT_FILENAME' must be provided")
         sys.exit(4)
 
-    if attachment_file_path and not os.path.isfile(attachment_file_path):
+    if attachment_filename and not os.path.isfile(attachment_filename):
         print("Attachment file does not exist")
         sys.exit(5)
 
@@ -48,7 +48,7 @@ def post_slack_notification():
         else:
             response = client.files_upload(
                 channels=f'#{slack_channel}',
-                file=attachment_file_path,
+                file=attachment_filename,
                 title=title,
                 initial_comment=initial_comment,
             )

@@ -41,9 +41,9 @@ run:
       SUMMARY=$(pipenv run python -m scripts.get_summary outputs/daily-test "$RUNTIME_DATE_STRING")
 
       # Post summary to Slack
-      CONTENT="$SUMMARY" TITLE="Statistics For Latest Benchmark" INITIAL_COMMENT="Latest Daily Performance Metrics" \
+      CONTENT="$SUMMARY" TITLE="Results For Latest Benchmark" INITIAL_COMMENT="Latest Daily Performance Metrics" \
       pipenv run python -m scripts.slack_notification
 
       # Post performance graph to Slack
-      ATTACHMENT_FILE_PATH="performance_graph.png" TITLE="Performance Graph" \
+      ATTACHMENT_FILENAME="performance_graph.png" TITLE="Performance Graph" \
       pipenv run python -m scripts.slack_notification
