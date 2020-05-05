@@ -67,7 +67,7 @@ if __name__ == '__main__':
     folders = sorted(glob(f"{output_folder}/*"))
     stats = get_stats(folders)
 
-    for stat in stats:
+    for stat in stats[::-1]:
         summary = (
             f'Questionnaire GETs average: {int(stat[1])}ms\n'
             f'Questionnaire POSTs average: {int(stat[2])}ms\n'
