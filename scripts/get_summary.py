@@ -79,4 +79,5 @@ if __name__ == '__main__':
                 print(summary)
                 break
         else:
-            print(summary)
+            print(f'{stat[0]}\n'
+                  f'{summary}\n')
