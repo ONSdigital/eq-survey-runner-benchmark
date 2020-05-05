@@ -25,6 +25,7 @@ The following env vars must be set:
 - PARALLELISM
 - TIMEOUT
 - OUTPUT_DIR
+- OUTPUT_BUCKET_NAME
 
 The following env var already has a sensible default, but can be set with alternative value if needed:
 - REGION: 
