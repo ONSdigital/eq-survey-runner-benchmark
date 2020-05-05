@@ -20,11 +20,15 @@ def post_slack_notification():
     content = os.getenv('CONTENT')
     attachment_filename = os.getenv('ATTACHMENT_FILENAME')
     if content and attachment_filename:
-        print("Only one of 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable can be provided")
+        print(
+            "Only one of 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable can be provided"
+        )
         sys.exit(3)
 
     if not (content or attachment_filename):
-        print("Either 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable must be provided")
+        print(
+            "Either 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable must be provided"
+        )
         sys.exit(4)
 
     if attachment_filename and not os.path.isfile(attachment_filename):

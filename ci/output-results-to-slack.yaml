@@ -7,22 +7,21 @@ image_resource:
 inputs:
   - name: eq-survey-runner-benchmark
 params:
-  OUTPUT_BUCKET_NAME:
+  OUTPUT_BUCKET:
   OUTPUT_DIR:
   SLACK_CHANNEL_NAME:
   SERVICE_ACCOUNT_JSON: ((gcp.service_account_json))
-  GOOGLE_APPLICATION_CREDENTIALS: /root/gcloud-service-key.json
   SLACK_AUTH_TOKEN: ((eq-census-slack-app.bot_user_oauth_token))
 run:
   path: bash
   args:
     - -exc
     - |
-      cat >~/gcloud-service-key.json <<EOL
+      export GOOGLE_APPLICATION_CREDENTIALS=/root/gcloud-service-key.json
+
+      cat >$GOOGLE_APPLICATION_CREDENTIALS <<EOL
       $SERVICE_ACCOUNT_JSON
       EOL
-
-      gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
 
       cd eq-survey-runner-benchmark
 
@@ -30,15 +29,15 @@ run:
       pipenv install --deploy
 
       # Get benchmark outputs
-      pipenv run python -m scripts.get_benchmark_results "$OUTPUT_BUCKET_NAME"
+      OUTPUT_BUCKET="$OUTPUT_BUCKET" pipenv run python -m scripts.get_benchmark_results
 
       # Create performance graph
-      pipenv run python -m scripts.visualise_results outputs/${OUTPUT_DIR} 2020-03-04
+      OUTPUT_DIR="outputs/${OUTPUT_DIR}" FILTER_AFTER="2020-03-04" pipenv run python -m scripts.visualise_results
 
       # Date to get summary for
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%d')"
 
-      SUMMARY=$(pipenv run python -m scripts.get_summary outputs/daily-test "$RUNTIME_DATE_STRING")
+      SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" RUN_DATE="$RUNTIME_DATE_STRING" pipenv run python -m scripts.get_summary)
 
       # Post summary to Slack
       CONTENT="$SUMMARY" TITLE="Results For Latest Benchmark" INITIAL_COMMENT="Latest Daily Performance Metrics" \

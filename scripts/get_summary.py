@@ -1,3 +1,4 @@
+import os
 import statistics
 import sys
 from glob import glob
@@ -54,30 +55,28 @@ def get_stats(folders, filter_after=None):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
+    output_folder = os.getenv("OUTPUT_DIR")
+
+    if not output_folder:
         print(
-            "Provide the benchmark outputs directory and optionally a run date as a parameter e.g. outputs/daily-test 2020-04-01"
+            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
         )
-    else:
-        output_folder = sys.argv[1]
+        sys.exit(1)
 
-        arg_len = len(sys.argv)
-        current_date = sys.argv[2] if arg_len > 2 else None
+    run_date = os.getenv("RUN_DATE")
+    folders = sorted(glob(f"{output_folder}/*"))
+    stats = get_stats(folders)
 
-        test_run_folders = sorted(glob(f"{output_folder}/*"))
+    for stat in stats:
+        summary = (
+            f'Questionnaire GETs average: {int(stat[1])}ms\n'
+            f'Questionnaire POSTs average: {int(stat[2])}ms\n'
+            f'All requests average: {int(stat[3])}ms'
+        )
 
-        stats = get_stats(test_run_folders)
-
-        for stat in stats:
-            summary = (
-                f'Questionnaire GETs average: {int(stat[1])}ms\n'
-                f'Questionnaire POSTs average: {int(stat[2])}ms\n'
-                f'All requests average: {int(stat[3])}ms'
-            )
-
-            if current_date:
-                if stat[0] == current_date:
-                    print(summary)
-                    break
-            else:
+        if run_date:
+            if stat[0] == run_date:
                 print(summary)
+                break
+        else:
+            print(summary)

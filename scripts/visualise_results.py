@@ -28,7 +28,9 @@ if __name__ == '__main__':
     output_folder = os.getenv("OUTPUT_DIR")
 
     if not output_folder:
-        print("'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test")
+        print(
+            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
+        )
         sys.exit(1)
 
     filter_after = os.getenv("FILTER_AFTER")
