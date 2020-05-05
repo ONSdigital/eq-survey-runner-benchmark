@@ -9,22 +9,22 @@ from slack.errors import SlackApiError
 def post_slack_notification():
     slack_auth_token = os.getenv('SLACK_AUTH_TOKEN')
     if not slack_auth_token:
-        print("'SLACK_AUTH_TOKEN' must be provided")
+        print("'SLACK_AUTH_TOKEN' environment variable must be provided")
         sys.exit(1)
 
     slack_channel = os.getenv('SLACK_CHANNEL_NAME')
     if not slack_channel:
-        print("'SLACK_CHANNEL_NAME' must be provided")
+        print("'SLACK_CHANNEL_NAME' environment variable must be provided")
         sys.exit(2)
 
     content = os.getenv('CONTENT')
     attachment_filename = os.getenv('ATTACHMENT_FILENAME')
     if content and attachment_filename:
-        print("Only one of 'CONTENT' or 'ATTACHMENT_FILENAME' can be provided")
+        print("Only one of 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable can be provided")
         sys.exit(3)
 
     if not (content or attachment_filename):
-        print("Either 'CONTENT' or 'ATTACHMENT_FILENAME' must be provided")
+        print("Either 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable must be provided")
         sys.exit(4)
 
     if attachment_filename and not os.path.isfile(attachment_filename):

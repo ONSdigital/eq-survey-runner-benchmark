@@ -1,3 +1,4 @@
+import os
 import sys
 from glob import glob
 
@@ -7,11 +8,8 @@ from pandas import DataFrame
 from scripts.get_summary import get_stats
 
 
-def create_data_frame(folders, filter_after):
-    results_list = get_stats(folders, filter_after)
-
+def create_data_frame(results_list):
     output_df = DataFrame(results_list, columns=["DATE", "GET", "POST", "AVERAGE"])
-
     return output_df
 
 
@@ -27,17 +25,16 @@ def plot_data(df):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print(
-            "Provide the benchmark outputs directory and optionally a date to filter after by as a parameter e.g. outputs/daily-test 2020-01-01"
-        )
-    else:
-        output_folder = sys.argv[1]
-        filter_after_date = sys.argv[2] if len(sys.argv) > 2 else None
+    output_folder = os.getenv("OUTPUT_DIR")
 
-        test_run_folders = sorted(glob(f"{output_folder}/*"))
+    if not output_folder:
+        print("'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test")
+        sys.exit(1)
 
-        results_list = get_stats(folders, filter_after)
-        data_frame = create_data_frame(results_list)
+    filter_after = os.getenv("FILTER_AFTER")
+    folders = sorted(glob(f"{output_folder}/*"))
 
-        plot_data(data_frame)
+    results = get_stats(folders, filter_after)
+    data_frame = create_data_frame(results)
+
+    plot_data(data_frame)

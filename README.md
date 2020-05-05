@@ -197,7 +197,7 @@ GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file>
 
 To run the script and download results:
 ```
-pipenv run python -m scripts.get_benchmark_results <bucket_name>
+OUTPUT_BUCKET="<bucket_name>" pipenv run python -m scripts.get_benchmark_results
 ```
 
 ### Run the Visualise Results script
@@ -205,7 +205,7 @@ pipenv run python -m scripts.get_benchmark_results <bucket_name>
 The `visualise_results` script will run against any benchmark results stored in the directory that is passed as a parameter to the script e.g.
 
 ```
-pipenv run python -m scripts.visualise_results  outputs/daily-test
+OUTPUT_DIR="outputs/daily-test" pipenv run python -m scripts.visualise_results
 ```
 
 A line chart will be generated and saved as `performance_graph.png`.
