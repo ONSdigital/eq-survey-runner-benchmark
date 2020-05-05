@@ -18,7 +18,7 @@ params:
   PARALLELISM:
   TIMEOUT:
   OUTPUT_DIR:
-  OUTPUT_BUCKET_NAME:
+  OUTPUT_BUCKET:
   SERVICE_ACCOUNT_JSON: ((gcp.service_account_json))
 run:
   path: bash
@@ -53,7 +53,7 @@ run:
         --set userWaitTimeMinSeconds=${USER_WAIT_TIME_MIN_SECONDS} \
         --set userWaitTimeMaxSeconds=${USER_WAIT_TIME_MAX_SECONDS} \
         --set parallelism=${PARALLELISM} \
-        --set output.bucket=${OUTPUT_BUCKET_NAME} \
+        --set output.bucket=${OUTPUT_BUCKET} \
         --set output.directory="${OUTPUT_DIR}/${RUNTIME_DATE_STRING}"
 
       JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')

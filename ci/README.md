@@ -25,7 +25,7 @@ The following env vars must be set:
 - PARALLELISM
 - TIMEOUT
 - OUTPUT_DIR
-- OUTPUT_BUCKET_NAME
+- OUTPUT_BUCKET
 
 The following env var already has a sensible default, but can be set with alternative value if needed:
 - REGION: 
@@ -53,7 +53,7 @@ fly -t census-eq execute \
 ### Notifcation of performance statistics to Slack
 The following env vars must be set:
 
-- OUTPUT_BUCKET_NAME
+- OUTPUT_BUCKET
 - OUTPUT_DIR
 - SLACK_CHANNEL_NAME
 
