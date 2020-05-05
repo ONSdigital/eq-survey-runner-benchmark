@@ -37,6 +37,7 @@ if __name__ == '__main__':
 
         test_run_folders = sorted(glob(f"{output_folder}/*"))
 
-        data_frame = create_data_frame(test_run_folders, filter_after=filter_after_date)
+        results_list = get_stats(folders, filter_after)
+        data_frame = create_data_frame(results_list)
 
         plot_data(data_frame)
