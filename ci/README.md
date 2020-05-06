@@ -27,7 +27,7 @@ The following env vars must be set:
 - OUTPUT_BUCKET
 
 The following env var already has a sensible default, but can be set with an alternative value if needed:
-- REGION: 
+- REGION
 
 ### Provisioning
 Use the `fly execute` command to run the task.
