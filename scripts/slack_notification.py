@@ -15,7 +15,7 @@ def post_slack_notification():
     slack_channel = os.getenv('SLACK_CHANNEL_NAME')
     if not slack_channel:
         print("'SLACK_CHANNEL_NAME' environment variable must be provided")
-        sys.exit(2)
+        sys.exit(1)
 
     content = os.getenv('CONTENT')
     attachment_filename = os.getenv('ATTACHMENT_FILENAME')
@@ -23,17 +23,17 @@ def post_slack_notification():
         print(
             "Only one of 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable can be provided"
         )
-        sys.exit(3)
+        sys.exit(1)
 
     if not (content or attachment_filename):
         print(
             "Either 'CONTENT' or 'ATTACHMENT_FILENAME' environment variable must be provided"
         )
-        sys.exit(4)
+        sys.exit(1)
 
     if attachment_filename and not os.path.isfile(attachment_filename):
         print("Attachment file does not exist")
-        sys.exit(5)
+        sys.exit(1)
 
     client = slack.WebClient(token=slack_auth_token)
 
@@ -58,11 +58,11 @@ def post_slack_notification():
             )
     except SlackApiError as e:
         print(f'Slack notification errored\nError: {e.response["error"]}')
-        sys.exit(6)
+        sys.exit(2)
 
     if response.get('ok', False) is False:
         print('Slack notification failed')
-        sys.exit(7)
+        sys.exit(2)
 
     print('Slack notification posted')
 
