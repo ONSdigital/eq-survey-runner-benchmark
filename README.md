@@ -191,21 +191,42 @@ Once the service account has been created you will need to download its JSON key
 ### Download Benchmark Results
 
 If you are running the script using a service account you will need to set the path to the JSON key file as an evironment variable (see Pre-requisites above):
-```
-GOOGLE_APPLICATION_CREDENTIALS - <path_to_json_credentials_file> 
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="<path_to_json_credentials_file>"
 ```
 
 To run the script and download results:
-```
+```bash
 OUTPUT_BUCKET="<bucket_name>" pipenv run python -m scripts.get_benchmark_results
 ```
 
+### Summarise the results
+You can get a breakdown of the average response times for a result set by doing:
+```bash
+OUTPUT_DIR="outputs/daily-test" \
+OUTPUT_DATE="2020-01-01" \
+pipenv run python -m scripts.get_summary
+```
+
+This will output something like:
+```
+Questionnaire GETs average: 477ms
+Questionnaire POSTs average: 573ms
+All requests average: 524ms
+```
+
+If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
+
 ### Run the Visualise Results script
 
-The `visualise_results` script will run against any benchmark results stored in the directory that is passed as a parameter to the script e.g.
+The `visualise_results` script will run against any benchmark results stored in the directory that is passed as an environment variable to the script e.g.
+Optionally, you can also specify the number of days to visualise the results for. 
 
-```
-OUTPUT_DIR="outputs/daily-test" pipenv run python -m scripts.visualise_results
+For example, to visualise results for the last 7 days:
+```bash
+OUTPUT_DIR="outputs/daily-test" \
+NUMBER_OF_DAYS="7" \
+pipenv run python -m scripts.visualise_results
 ```
 
 A line chart will be generated and saved as `performance_graph.png`.

@@ -1,11 +1,9 @@
-import os
-import sys
 from glob import glob
 
 import matplotlib.pyplot as plt
 from pandas import DataFrame
 
-from scripts.get_summary import get_stats
+from scripts.get_summary import get_results, validated_environment_variables
 
 
 def create_data_frame(results_list):
@@ -25,18 +23,9 @@ def plot_data(df):
 
 
 if __name__ == '__main__':
-    output_folder = os.getenv("OUTPUT_DIR")
-
-    if not output_folder:
-        print(
-            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
-        )
-        sys.exit(1)
-
-    filter_after = os.getenv("FILTER_AFTER")
+    output_folder, number_of_days = validated_environment_variables()
     folders = sorted(glob(f"{output_folder}/*"))
-
-    results = get_stats(folders, filter_after)
+    results = get_results(folders, number_of_days)
     data_frame = create_data_frame(results)
 
     plot_data(data_frame)

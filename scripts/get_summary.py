@@ -1,15 +1,19 @@
 import os
 import statistics
 import sys
+from datetime import datetime, timedelta
 from glob import glob
 
 
-def get_stats(folders, filter_after=None):
+def get_results(folders, number_of_days=None):
     results_list = []
+    date_valid_from = (
+        (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
+    )
 
     for folder in folders:
         date = folder.split('/')[-1].split('T')[0]
-        if filter_after and date <= filter_after:
+        if date_valid_from and datetime.strptime(date, "%Y-%m-%d") < date_valid_from:
             continue
 
         get_request_response_times = []
@@ -54,30 +58,40 @@ def get_stats(folders, filter_after=None):
     return results_list
 
 
-if __name__ == '__main__':
-    output_folder = os.getenv("OUTPUT_DIR")
+def validated_environment_variables():
+    output_dir = os.getenv("OUTPUT_DIR")
 
-    if not output_folder:
+    if not output_dir:
         print(
             "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
         )
         sys.exit(1)
 
-    run_date = os.getenv("RUN_DATE")
-    folders = sorted(glob(f"{output_folder}/*"))
-    stats = get_stats(folders)
+    days = os.getenv("NUMBER_OF_DAYS")
+    if days and days.isdigit() is False:
+        print("'NUMBER_OF_DAYS' environment variable must be a valid integer value")
+        sys.exit(2)
 
-    for stat in stats[::-1]:
+    days = int(days) if days else None
+    return output_dir, days
+
+
+if __name__ == '__main__':
+    output_folder, num_days = validated_environment_variables()
+    output_date = os.getenv("OUTPUT_DATE")
+    sorted_folders = sorted(glob(f"{output_folder}/*"))
+    result = get_results(sorted_folders, num_days)
+
+    for result in result[::-1]:
         summary = (
-            f'Questionnaire GETs average: {int(stat[1])}ms\n'
-            f'Questionnaire POSTs average: {int(stat[2])}ms\n'
-            f'All requests average: {int(stat[3])}ms'
+            f'Questionnaire GETs average: {int(result[1])}ms\n'
+            f'Questionnaire POSTs average: {int(result[2])}ms\n'
+            f'All requests average: {int(result[3])}ms'
         )
 
-        if run_date:
-            if stat[0] == run_date:
+        if output_date:
+            if result[0] == output_date:
                 print(summary)
                 break
         else:
-            print(f'{stat[0]}\n'
-                  f'{summary}\n')
+            print(f'{result[0]}\n' f'{summary}\n')

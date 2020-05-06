@@ -3,9 +3,7 @@ import sys
 
 from scripts.google_cloud_storage import GoogleCloudStorage
 
-
 if __name__ == '__main__':
-
     output_bucket = os.getenv("OUTPUT_BUCKET")
 
     if not output_bucket:
