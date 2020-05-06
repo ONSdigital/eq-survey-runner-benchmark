@@ -88,7 +88,7 @@
             "method": "POST",
             "url": "/questionnaire/any-visitors/",
             "data": {
-                "any-visitors-answer": "People who usually live somewhere else in the UK, for example boy/girlfriends, friends or relatives"
+                "any-visitors-answer": "People who usually live somewhere else in the UK, for example, boyfriends, girlfriends, friends or relatives"
             }
         },
         {
