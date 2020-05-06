@@ -24,6 +24,8 @@ run:
       $SERVICE_ACCOUNT_JSON
       EOL
 
+      gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
+
       cd eq-survey-runner-benchmark
 
       pip3 install pipenv
