@@ -5,11 +5,16 @@ There will be performance implications with both Pythion 3.8 and dependent the g
 
 https://github.com/ONSdigital/eq-questionnaire-runner/tree/update-to-python-38
 
-## Benchmark app and profile
+## Benchmark version
+
+| Tag | Identifying Commit |
+|--------|-------|
+| latest | 7c865648ad1665583ee0a6a1738e5a4a70e28f80 |
+
+## Benchmark profile
 
 | Option | Value |
 |--------|-------|
-| Benchmark app | 7c865648ad1665583ee0a6a1738e5a4a70e28f80 |
 | Requests file | census_household_gb_eng.json |
 | Run time | 60 mins |
 | Instances | 1 |
@@ -39,4 +44,4 @@ Results based on 99th percentile timings.
 
 ## Decision
 
-Significant performance gains suggest a merge of this branch would be beneficial 
+Significant performance gains indicate a merge of this branch would be beneficial 
