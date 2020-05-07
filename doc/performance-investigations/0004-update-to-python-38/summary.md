@@ -1,7 +1,7 @@
 # Update to Python 3.8
 
 Following gevent now supporting Python 3.8 (as of gevent 1.5) we are now able to upgrade Python.
-There will be performance implications with both Pythion 3.8 and dependent the gunicorn/gevent libraries.
+There will be performance implications with both Python 3.8 and the gunicorn/gevent libraries.
 
 https://github.com/ONSdigital/eq-questionnaire-runner/tree/update-to-python-38
 
