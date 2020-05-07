@@ -44,6 +44,7 @@ USER_WAIT_TIME_MAX_SECONDS=<user_max_wait_time< \
 PARALLELISM=<number_of_jobs_to_run> \
 TIMEOUT=<job_timeout> \
 OUTPUT_DIR=<folder_where_outputs_are_stored> \
+OUTPUT_BUCKET=<bucket_where_outputs_are_stored> \
 fly -t census-eq execute \
   --config ci/run_benchmark.yaml
 ```
@@ -57,12 +58,13 @@ The following env vars must be set:
 
 The following env var already has a sensible default, but can be set with an alternative value if needed:
 - SLACK_AUTH_TOKEN
+- NUMBER_OF_DAYS
 
 ### Provisioning
 Use the `fly execute` command to run the task.
 
 ```sh
-OUTPUT_BUCKET_NAME=<output_bucket_name> \
+OUTPUT_BUCKET=<output_bucket_name> \
 OUTPUT_DIR=<output_directory> \
 SLACK_CHANNEL_NAME=<slack_channel_name> \
 fly -t census-eq execute \
