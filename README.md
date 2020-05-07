@@ -219,7 +219,7 @@ If `OUTPUT_DATE` is not provided, then it will output a summary for all results 
 
 ### Run the Visualise Results script
 
-The `visualise_results` script will run against any benchmark results stored in the directory that is passed as an environment variable to the script e.g.
+The `visualise_results` script will run against any benchmark results stored in the directory that is passed as an environment variable to the script.
 Optionally, you can also specify the number of days to visualise the results for. 
 
 For example, to visualise results for the last 7 days:

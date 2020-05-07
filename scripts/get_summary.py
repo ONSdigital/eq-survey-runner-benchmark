@@ -7,13 +7,13 @@ from glob import glob
 
 def get_results(folders, number_of_days=None):
     results_list = []
-    date_valid_from = (
+    from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
     )
 
     for folder in folders:
         date = folder.split('/')[-1].split('T')[0]
-        if date_valid_from and datetime.strptime(date, "%Y-%m-%d") < date_valid_from:
+        if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
 
         get_request_response_times = []
@@ -58,7 +58,7 @@ def get_results(folders, number_of_days=None):
     return results_list
 
 
-def validated_environment_variables():
+def parse_environment_variables():
     output_dir = os.getenv("OUTPUT_DIR")
 
     if not output_dir:
@@ -70,17 +70,24 @@ def validated_environment_variables():
     days = os.getenv("NUMBER_OF_DAYS")
     if days and days.isdigit() is False:
         print("'NUMBER_OF_DAYS' environment variable must be a valid integer value")
-        sys.exit(2)
+        sys.exit(1)
 
     days = int(days) if days else None
-    return output_dir, days
+    output_date = os.getenv("OUTPUT_DATE")
+
+    return {
+        'output_dir': output_dir,
+        'number_of_days': days,
+        'output_date': output_date,
+    }
 
 
 if __name__ == '__main__':
-    output_folder, num_days = validated_environment_variables()
-    output_date = os.getenv("OUTPUT_DATE")
-    sorted_folders = sorted(glob(f"{output_folder}/*"))
-    result = get_results(sorted_folders, num_days)
+    parsed_variables = parse_environment_variables()
+    date_to_output = parsed_variables['output_date']
+
+    sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
+    result = get_results(sorted_folders)
 
     for result in result[::-1]:
         summary = (
@@ -89,8 +96,8 @@ if __name__ == '__main__':
             f'All requests average: {int(result[3])}ms'
         )
 
-        if output_date:
-            if result[0] == output_date:
+        if date_to_output:
+            if result[0] == date_to_output:
                 print(summary)
                 break
         else:

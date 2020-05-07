@@ -3,12 +3,7 @@ from glob import glob
 import matplotlib.pyplot as plt
 from pandas import DataFrame
 
-from scripts.get_summary import get_results, validated_environment_variables
-
-
-def create_data_frame(results_list):
-    output_df = DataFrame(results_list, columns=["DATE", "GET", "POST", "AVERAGE"])
-    return output_df
+from scripts.get_summary import get_results, parse_environment_variables
 
 
 def plot_data(df):
@@ -23,9 +18,10 @@ def plot_data(df):
 
 
 if __name__ == '__main__':
-    output_folder, number_of_days = validated_environment_variables()
-    folders = sorted(glob(f"{output_folder}/*"))
-    results = get_results(folders, number_of_days)
-    data_frame = create_data_frame(results)
+    parsed_variables = parse_environment_variables()
+
+    folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
+    results = get_results(folders, parsed_variables['number_of_days'])
+    data_frame = DataFrame(results, columns=["DATE", "GET", "POST", "AVERAGE"])
 
     plot_data(data_frame)

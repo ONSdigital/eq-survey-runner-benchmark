@@ -6,7 +6,7 @@ import slack
 from slack.errors import SlackApiError
 
 
-def post_slack_notification():
+def parse_environment_variables():
     slack_auth_token = os.getenv('SLACK_AUTH_TOKEN')
     if not slack_auth_token:
         print("'SLACK_AUTH_TOKEN' environment variable must be provided")
@@ -35,26 +35,39 @@ def post_slack_notification():
         print("Attachment file does not exist")
         sys.exit(1)
 
-    client = slack.WebClient(token=slack_auth_token)
-
     initial_comment = os.getenv('INITIAL_COMMENT', '')
     title = os.getenv('TITLE', '')
 
+    return {
+        'slack_auth_token': slack_auth_token,
+        'slack_channel': slack_channel,
+        'content': content,
+        'attachment_filename': attachment_filename,
+        'initial_comment': initial_comment,
+        'title': title,
+    }
+
+
+def post_slack_notification():
+    parsed_variables = parse_environment_variables()
+
+    client = slack.WebClient(token=parsed_variables['slack_auth_token'])
+
     try:
-        if content:
+        if parsed_variables['content']:
             response = client.files_upload(
-                channels=f'#{slack_channel}',
-                content=content,
+                channels=f'#{parsed_variables["slack_channel"]}',
+                content=parsed_variables['content'],
                 filetype=os.getenv('FILE_TYPE', 'python'),
-                title=title,
-                initial_comment=initial_comment,
+                title=parsed_variables['title'],
+                initial_comment=parsed_variables['initial_comment'],
             )
         else:
             response = client.files_upload(
-                channels=f'#{slack_channel}',
-                file=attachment_filename,
-                title=title,
-                initial_comment=initial_comment,
+                channels=f'#{parsed_variables["slack_channel"]}',
+                file=parsed_variables['attachment_filename'],
+                title=parsed_variables['title'],
+                initial_comment=parsed_variables['initial_comment'],
             )
     except SlackApiError as e:
         print(f'Slack notification errored\nError: {e.response["error"]}')
