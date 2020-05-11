@@ -37,37 +37,45 @@ def parse_environment_variables():
 
     initial_comment = os.getenv('INITIAL_COMMENT', '')
     title = os.getenv('TITLE', '')
+    file_type = os.getenv('FILE_TYPE', 'python')
 
     return {
         'slack_auth_token': slack_auth_token,
         'slack_channel': slack_channel,
         'content': content,
         'attachment_filename': attachment_filename,
+        'file_type': file_type,
         'initial_comment': initial_comment,
         'title': title,
     }
 
 
-def post_slack_notification():
-    parsed_variables = parse_environment_variables()
-
-    client = slack.WebClient(token=parsed_variables['slack_auth_token'])
+def post_slack_notification(
+    slack_auth_token,
+    slack_channel,
+    content,
+    attachment_filename,
+    file_type,
+    initial_comment,
+    title,
+):
+    client = slack.WebClient(token=slack_auth_token)
 
     try:
-        if parsed_variables['content']:
+        if content:
             response = client.files_upload(
-                channels=f'#{parsed_variables["slack_channel"]}',
-                content=parsed_variables['content'],
-                filetype=os.getenv('FILE_TYPE', 'python'),
-                title=parsed_variables['title'],
-                initial_comment=parsed_variables['initial_comment'],
+                channels=f'#{slack_channel}',
+                content=content,
+                filetype=file_type,
+                title=title,
+                initial_comment=initial_comment,
             )
         else:
             response = client.files_upload(
-                channels=f'#{parsed_variables["slack_channel"]}',
-                file=parsed_variables['attachment_filename'],
-                title=parsed_variables['title'],
-                initial_comment=parsed_variables['initial_comment'],
+                channels=f'#{slack_channel}',
+                file=attachment_filename,
+                title=title,
+                initial_comment=initial_comment,
             )
     except SlackApiError as e:
         print(f'Slack notification errored\nError: {e.response["error"]}')
@@ -85,4 +93,5 @@ if __name__ == "__main__":
         #  https://github.com/slackapi/python-slackclient/issues/622
         warnings.simplefilter('ignore', category=RuntimeWarning)
 
-        post_slack_notification()
+        parsed_variables = parse_environment_variables()
+        post_slack_notification(**parsed_variables)
