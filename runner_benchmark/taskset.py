@@ -39,7 +39,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         user_wait_time_max = int(os.getenv('USER_WAIT_TIME_MAX_SECONDS', 2))
         url_name_regex = r'{.*?}'
 
-        self.get('/questionnaire', expect_redirect=True )
+        self.get('/questionnaire', expect_redirect=True)
 
         for request in self.requests:
             url_name = re.sub(url_name_regex, '{id}', request['url'])
@@ -47,7 +47,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
 
             if request['method'] == 'GET':
                 expect_redirect = "redirect_route" in request
-                response = self.get(request_url, name=url_name, expect_redirect=expect_redirect)
+                response = self.get(
+                    request_url, name=url_name, expect_redirect=expect_redirect
+                )
 
                 if expect_redirect:
                     self.handle_redirect(request, response)

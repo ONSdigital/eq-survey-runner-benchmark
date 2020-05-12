@@ -6,8 +6,10 @@ class QuestionnaireMixins:
     csrf_token = None
 
     def get(self, url, name=None, expect_redirect=False):
-        with self.client.get(url=url, name=name, allow_redirects=False, catch_response=True) as response:
-            
+        with self.client.get(
+            url=url, name=name, allow_redirects=False, catch_response=True
+        ) as response:
+
             if expect_redirect:
                 if response.status_code != 302:
                     error = f"Expected a (302) but got a ({response.status_code}) back when getting page: {url}"

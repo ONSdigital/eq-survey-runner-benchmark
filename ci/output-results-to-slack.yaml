@@ -1,0 +1,56 @@
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: google/cloud-sdk
+    tag: slim
+inputs:
+  - name: eq-survey-runner-benchmark
+params:
+  OUTPUT_BUCKET:
+  OUTPUT_DIR:
+  SLACK_CHANNEL_NAME:
+  NUMBER_OF_DAYS:
+  SERVICE_ACCOUNT_JSON: ((gcp.service_account_json))
+  SLACK_AUTH_TOKEN: ((eq-census-slack-app.bot_user_oauth_token))
+run:
+  path: bash
+  args:
+    - -exc
+    - |
+      export GOOGLE_APPLICATION_CREDENTIALS=/root/gcloud-service-key.json
+
+      cat >$GOOGLE_APPLICATION_CREDENTIALS <<EOL
+      $SERVICE_ACCOUNT_JSON
+      EOL
+
+      cd eq-survey-runner-benchmark
+
+      pip3 install pipenv
+      pipenv install --deploy
+
+      # Get benchmark outputs
+      OUTPUT_BUCKET="$OUTPUT_BUCKET" \
+      pipenv run python -m scripts.get_benchmark_results
+
+      # Create performance graph
+      OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
+      NUMBER_OF_DAYS="$NUMBER_OF_DAYS" \
+      pipenv run python -m scripts.visualise_results
+
+      # Date to get summary for
+      RUNTIME_DATE_STRING="$(date +'%Y-%m-%d')"
+      SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
+      OUTPUT_DATE="$RUNTIME_DATE_STRING" \
+      pipenv run python -m scripts.get_summary)
+
+      # Post summary to Slack
+      TITLE="Results For Latest Benchmark" \
+      INITIAL_COMMENT="Latest Daily Performance Metrics" \
+      CONTENT="$SUMMARY" \
+      pipenv run python -m scripts.slack_notification
+
+      # Post performance graph to Slack
+      TITLE="Performance Graph" \
+      ATTACHMENT_FILENAME="performance_graph.png" \
+      pipenv run python -m scripts.slack_notification
