@@ -31,7 +31,7 @@ https://github.com/ONSdigital/eq-questionnaire-runner/tree/update-to-python-38
 
 ## Results
 
-Results based on 99th percentile timings.
+Results based on 99th percentile timings and under the test conditions as detailed above in the benchmark profile.
 
 | Metric | Baseline | Investigation |
 |--------|----------|--------------|
@@ -44,4 +44,6 @@ Results based on 99th percentile timings.
 
 ## Decision
 
-Significant performance gains indicate a merge of this branch would be beneficial 
+The observed performance gains during testing indicate a merge of this branch would be beneficial.
+It should be noted, however, that the gains observed under the testing conditions in the above benchmark profile should not be taken as a headline performance improvement of 'x' percent.
+While the above benchmark profile was intended to represent a realistic top end load, further testing of the candidate branch yielded a range of performance gains not all as significant as documented here. It was observed that at lower loads the performance gains were reduced.
