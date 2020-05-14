@@ -42,7 +42,7 @@
             "method": "POST",
             "url": "/questionnaire/anyone-else-list-collector/",
             "data": {
-                "anyone-else-answer": "Yes, I need to add someone"
+                "anyone-else-answer": "Yes, I want to add {ordinality} person"
             }
         },
         {
