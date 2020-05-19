@@ -35,14 +35,10 @@
             }
         },
         {
-            "method": "GET",
-            "url": "/questionnaire/anyone-else-list-collector/"
-        },
-        {
             "method": "POST",
-            "url": "/questionnaire/anyone-else-list-collector/",
+            "url": "/questionnaire/anyone-else-driving-question/",
             "data": {
-                "anyone-else-answer": "Yes, I want to add {ordinality} person"
+                "anyone-else-driving-question-answer": "Family members and partners"
             }
         },
         {
