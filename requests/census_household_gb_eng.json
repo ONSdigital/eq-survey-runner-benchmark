@@ -112,15 +112,6 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/who-lives-here-section/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/who-lives-here-section/",
-            "data": {}
-        },
-        {
-            "method": "GET",
             "url": "/questionnaire/relationships-interstitial/"
         },
         {
