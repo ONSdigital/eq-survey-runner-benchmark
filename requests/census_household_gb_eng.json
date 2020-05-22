@@ -112,6 +112,15 @@
         },
         {
             "method": "GET",
+            "url": "/questionnaire/sections/who-lives-here-section/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/who-lives-here-section/",
+            "data": {}
+        },
+        {
+            "method": "GET",
             "url": "/questionnaire/relationships-interstitial/"
         },
         {
@@ -230,15 +239,6 @@
                 "number-of-vehicles-answer": "1",
                 "number-of-vehicles-answer-other": ""
             }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/accommodation-section"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/accommodation-section",
-            "data": {}
         },
         {
             "method": "GET",
@@ -693,15 +693,6 @@
             "data": {
                 "employer-type-of-address-answer": "At or from home"
             }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/individual-section/{person_1_list_id}/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/individual-section/{person_1_list_id}/",
-            "data": {}
         },
         {
             "method": "GET",
@@ -1186,15 +1177,6 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/",
-            "data": {}
-        },
-        {
-            "method": "GET",
             "url": "/questionnaire/"
         },
         {
@@ -1262,15 +1244,6 @@
                 "usual-address-details-answer-county": "",
                 "usual-address-details-answer-postcode": ""
             }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/visitor-section/{visitor_1_id}/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/visitor-section/{visitor_1_id}/",
-            "data": {}
         },
         {
             "method": "GET",
