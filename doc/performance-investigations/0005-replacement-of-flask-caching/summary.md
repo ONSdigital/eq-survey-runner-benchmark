@@ -25,10 +25,10 @@ The tests documented here are like-for-like with our daily performance tests.
 | Hatch rate | 64 |
 
 ## Runner images
-| Type      | PR    | Commit | Comments |
-|-----------|--------|--------|--------|
-| Baseline  | https://github.com/ONSdigital/eq-questionnaire-runner/pull/140  | cdf61f7290b62e97a901ed5bbb1396700d2c4494 | Commit in which Flask caching was removed |
-| Investigation Candidate | https://github.com/ONSdigital/eq-questionnaire-runner/pull/141 | d4cdb5040dc0fc77270038b3af6e17a205ea077e | Last commit before Flask caching/werkzeug cached_property was removed |
+| Type      | PR    | Commit |  Date | Comments |
+|-----------|--------|--------|--------|--------|
+| Baseline  | https://github.com/ONSdigital/eq-questionnaire-runner/pull/140  | cdf61f7290b62e97a901ed5bbb1396700d2c4494 | Tue 09, Jun 2020 10:15 UTC | Commit in which Flask caching was removed |
+| Investigation Candidate | https://github.com/ONSdigital/eq-questionnaire-runner/pull/141 | d4cdb5040dc0fc77270038b3af6e17a205ea077e | Mon 08, Jun 2020 07:52 UTC | Last commit before Flask caching/werkzeug cached_property was removed |
 
 ## Results
 
