@@ -1,4 +1,4 @@
-# Replacement of Flask Caching with Built-in functools caching
+# Replacement of Flask-Caching with built-in functools caching
 
 An improvement in Datastore latencies was seen coinciding with the replacement of Flask caching with Python 3.8 built-in functools caching. 
 This test was carried out to help understand if these gains were coincidental or whether there is potentially some bottlenecks in the way we initialise the Datastore client.
