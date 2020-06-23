@@ -74,5 +74,4 @@ Top 3 most time-consuming routes. These are averages between all test runs.
 
 ## Conclusion
 
-The observed performance loss during testing with the investigation candidate indicates there could potentially be some bottleneck/issue with
-the way we currently setting up the Datastore client. Therefore, an investigation should be carried out to identify the cause of this issue.
+The observed performance loss during testing with the investigation candidate indicates there could potentially be some bottleneck/issue with the way we currently set up the Datastore client. Therefore, an investigation should be carried out to identify the cause of this issue.
