@@ -17,7 +17,7 @@ Locust only shows raw data sizes despite using gzip in the test client, but aver
 
 | Tag | Commit |
 |--------|-------|
-| latest | 8f2b9fe14eb19e19140f18b0e5bee78f4dbcb1af
+| allow-non-minified-csrf-regex  | a41876ac5578ea39df592a6958a02852ddb1102f
 
 ## Benchmark profile
 
