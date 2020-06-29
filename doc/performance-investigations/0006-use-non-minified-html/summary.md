@@ -13,6 +13,12 @@ application.jinja_env.lstrip_blocks = True
 
 Locust only shows raw data sizes despite using gzip in the test client, but average content size is increased from 4630 bytes to 9039 without flags and 6830 bytes with.
 
+## Benchmark version
+
+| Tag | Commit |
+|--------|-------|
+| latest | 8f2b9fe14eb19e19140f18b0e5bee78f4dbcb1af
+
 ## Benchmark profile
 
 | Option | Value |
