@@ -11,7 +11,7 @@ application.jinja_env.trim_blocks = True
 application.jinja_env.lstrip_blocks = True
 ```
 
-Link to Github branch with proposed changes.
+Locust only shows raw data sizes despite using gzip in the test client, but average content size is increased from 4630 bytes to 9039 without flags and 6830 bytes with.
 
 ## Benchmark profile
 
