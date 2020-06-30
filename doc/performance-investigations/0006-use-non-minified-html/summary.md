@@ -42,4 +42,4 @@ Results based on 99th percentile timings.
 
 ## Decision
 
-Merge or discard?
+Merge
