@@ -38,8 +38,12 @@ class BenchmarkStats:
                             self.post_requests.append(percentile_99th)
 
                     if row["Name"] == "Aggregated":
-                        request_count = row.get("Request Count") or row.get("# requests")
-                        failure_count = row.get("Failure Count") or row.get("# failures")
+                        request_count = row.get("Request Count") or row.get(
+                            "# requests"
+                        )
+                        failure_count = row.get("Failure Count") or row.get(
+                            "# failures"
+                        )
                         self.total_requests += int(request_count)
                         self.total_failures += int(failure_count)
 
