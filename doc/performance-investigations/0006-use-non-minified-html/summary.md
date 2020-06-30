@@ -35,7 +35,7 @@ Locust only shows raw data sizes despite using gzip in the test client, but aver
 Results based on 99th percentile timings.
 
 | Metric | Baseline | Investigation (Uncompressed) | Investigation (Jinja Flags) |
-|--------|----------|--------------|
+|--------|----------|--------------| ------ |
 | Questionnaire GETs | 360 | 269 | 263 |
 | Questionnaire POSTs | 446 | 377 | 320 |
 | All requests | 490 | 390 | 330 |
