@@ -68,4 +68,4 @@
 - Speak to GCP Redis engineers to understand this behaviour and if our useage is appropriate
 - Tune and retest the kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate) to 
 - Update Grafana dashboard to add vCPU and Launch / Submission counts
-- Update summary script to aggregate scale test results more appropriately 
+- Update summary script to aggregate scale test results per folder more appropriately (inc. Total Requests, Failure %, Max response time)
