@@ -32,10 +32,10 @@
 - Error rate includes any HTTP status codes in the 400 and 500 range (neither are expected)
 - The 99th percentile timings are the load balancer response times reported in Stackdriver
 
-## Errors and Filures
+## Errors and Failures
 
-- The total number of failures as reported by Locust across all requests was 11,142. This corrolaates with the errors we see in the loadbaalancer and application logs and are detailed below
-- 500 errors x 8 reported by the loadbalancer and applicartion logs, all for the `/anyone-else-driving-question` (seen across 7 separate pods)
+- The total number of failures as reported by Locust across all requests was 11,142. This correlates with the errors we see in the load balancer and application logs and are detailed below
+- 500 errors x 8 reported by the load balancer and application logs, all for the `/anyone-else-driving-question` (seen across 7 separate pods)
         
         File '/runner/app/forms/questionnaire_form.py', line 405, in generate_form
               form_data = _clear_detail_answer_field(form_data, question_schema)
@@ -56,16 +56,16 @@
 
 ## Observations
 
-- The run of 110 instances saw significant increase in response times resulting in request timeouts. This coensided with Redis reaching 100% CPU. At this point the load balancer began seeing the 502 `backend_timeout` errors 
-- The average submission rate in the 90 instances test was 135 responses per second, which is 486,000 responses per hour (assuming requests remain stable over an hour).
-- 30,000 rps with 765 used vCPU is reasonable. This equates to 14.32 rps per core (as a GCP resource where the 4th core is effectively unusable) 
+- The run of 110 instances saw significant increase in response times resulting in request timeouts. This coincided with Redis reaching 100% CPU. At this point the load balancer began seeing the 502 `backend_timeout` errors
+- The average submission rate in the 90 instances test was 135 responses per second, which is 486,000 responses per hour (assuming requests remain stable over an hour)
+- 30,000 rps with 765 used vCPU is reasonable. This equates to 14.32 rps per core (as a GCP resource where the 4th core is effectively unusable)
 
 ## Recommendations
 
-- Runner is only utilising 49% of requested available vCPU. Test different gunicorn conigurations and investigate other WSGI or event loop architectures
+- Runner is only utilising 49% of requested available vCPU. Test different gunicorn configurations and investigate other WSGI or event loop architectures
 - Resolve/understand the 401 errors we have seen across this test
 - Redis memorystore CPU 100%, test with increased spec to see if additional resource allows us to scale runner further
 - Speak to GCP Redis engineers to understand this behaviour and if our useage is appropriate
-- Tune and retest the kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate) to 
+- Tune and retest the kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
 - Update Grafana dashboard to add vCPU and Launch / Submission counts
 - Update summary script to aggregate scale test results per folder more appropriately (inc. Total Requests, Failure %, Max response time)
