@@ -67,3 +67,5 @@
 - Redis memorystore CPU 100%, test with increased spec to see if additional resource allows us to scale runner further
 - Speak to GCP Redis engineers to understand this behaviour and if our useage is appropriate
 - Tune and retest the kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate) to 
+- Update Grafana dashboard to add vCPU and Launch / Submission counts
+- Update summary script to aggregate scale test results more appropriately 
