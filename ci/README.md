@@ -40,13 +40,15 @@ RUNNER_FULLY_QUALIFIED_DOMAIN_NAME=<runner_fqdn> \
 DOCKER_REGISTRY=<docker_registry_for_app_images> \
 IMAGE_TAG=<image_tag> \
 USER_WAIT_TIME_MIN_SECONDS=<user_min_wait_time> \
-USER_WAIT_TIME_MAX_SECONDS=<user_max_wait_time< \
+USER_WAIT_TIME_MAX_SECONDS=<user_max_wait_time> \
 PARALLELISM=<number_of_jobs_to_run> \
 TIMEOUT=<job_timeout> \
 OUTPUT_DIR=<folder_where_outputs_are_stored> \
 OUTPUT_BUCKET=<bucket_where_outputs_are_stored> \
 fly -t census-eq execute \
-  --config ci/run_benchmark.yaml
+  --config ci/run_benchmark.yaml \
+  -v image_registry=<docker-registry> \
+  -v deploy_image_version=<image-tag>
 ```
 
 ## Output results to Slack

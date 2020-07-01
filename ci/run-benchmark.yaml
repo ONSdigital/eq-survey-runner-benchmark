@@ -2,7 +2,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: theorf/google-cloud-sdk-helm
+    repository: ((image_registry))/eq-app-deploy-image
+    tag: ((deploy_image_version))
 inputs:
   - name: eq-survey-runner-benchmark
 params:
@@ -25,8 +26,6 @@ run:
   args:
     - -exc
     - |
-      apt-get install -y procps
-
       cat >~/gcloud-service-key.json <<EOL
       $SERVICE_ACCOUNT_JSON
       EOL
@@ -35,15 +34,11 @@ run:
 
       cd eq-survey-runner-benchmark
 
-      helm init --client-only
-      helm plugin install https://github.com/rimusz/helm-tiller
-
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%dT%H:%M:%S')"
 
       gcloud container clusters get-credentials runner-benchmark --region ${REGION} --project ${PROJECT_ID}
 
-      helm tiller run \
-        helm upgrade --install \
+      helm upgrade --install \
         runner-benchmark \
         k8s/helm \
         --set requestsJson="${REQUESTS_JSON}" \
