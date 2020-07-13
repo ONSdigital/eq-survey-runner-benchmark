@@ -56,16 +56,16 @@
 
 ## Observations
 
-- The run of 110 instances saw significant increase in response times resulting in request timeouts. This coincided with Redis reaching 100% CPU. At this point the load balancer began seeing the 502 `backend_timeout` errors
+- The run of 110 load injector instances saw a significant increase in response times resulting in request timeouts. This coincided with Redis reaching 100% CPU. At this point the load balancer began seeing the 502 `backend_timeout` errors
 - The average submission rate in the 90 instances test was 135 responses per second, which is 486,000 responses per hour (assuming requests remain stable over an hour)
-- 30,000 rps with 765 used vCPU is reasonable. This equates to 14.32 rps per core (as a GCP resource where the 4th core is effectively unusable)
+- 30,000 rps with 765 used vCPU is reasonable. This equates to 14.32 rps per core (as a GCP resource where the 4th core is effectively unusable). The test achieved 39 rps per core from the 765 vCPU being utilised at 30,000 rps
 
 ## Recommendations
 
 - Runner is only utilising 49% of requested available vCPU. Test different gunicorn configurations and investigate other WSGI or event loop architectures
-- Resolve/understand the 401 errors we have seen across this test
+- Resolve/understand the 401 and 500 errors we have seen across this test
 - Redis memorystore CPU 100%, test with increased spec to see if additional resource allows us to scale runner further
-- Speak to GCP Redis engineers to understand this behaviour and if our useage is appropriate
+- Speak to GCP Redis engineers to understand this behaviour and if our usage is appropriate
 - Tune and retest the kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
 - Update Grafana dashboard to add vCPU and Launch / Submission counts
 - Update summary script to aggregate scale test results per folder more appropriately (inc. Total Requests, Failure %, Max response time)
