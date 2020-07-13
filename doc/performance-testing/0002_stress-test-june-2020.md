@@ -66,6 +66,6 @@
 - Resolve/understand the 401 and 500 errors we have seen across this test
 - Redis memorystore CPU 100%, test with increased spec to see if additional resource allows us to scale runner further
 - Speak to GCP Redis engineers to understand this behaviour and if our usage is appropriate
-- Tune and retest the kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
+- Tune and retest the Kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
 - Update Grafana dashboard to add vCPU and Launch / Submission counts
 - Update summary script to aggregate scale test results per folder more appropriately (inc. Total Requests, Failure %, Max response time)
