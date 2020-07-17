@@ -1226,8 +1226,8 @@
             "method": "POST",
             "url": "/questionnaire/visitors/{visitor_1_id}/visitor-usual-address/",
             "data": {
-                "usual-address-household-answer": "An address in the UK",
-                "usual-address-household-answer-other": ""
+                "visitor-usual-answer": "An address in the UK",
+                "visitor-usual-answer-other": ""
             }
         },
         {
