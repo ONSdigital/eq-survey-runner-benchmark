@@ -251,11 +251,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/individual-interstitial/"
+            "url": "/questionnaire/household/{person_1_list_id}/individual-introduction/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_1_list_id}/individual-interstitial/",
+            "url": "/questionnaire/household/{person_1_list_id}/individual-introduction/",
             "data": {}
         },
         {
@@ -705,11 +705,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_2_list_id}/individual-interstitial/"
+            "url": "/questionnaire/household/{person_2_list_id}/individual-introduction/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/individual-interstitial/",
+            "url": "/questionnaire/household/{person_2_list_id}/individual-introduction/",
             "data": {}
         },
         {
