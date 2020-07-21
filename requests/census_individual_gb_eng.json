@@ -13,13 +13,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/proxy/"
+            "url": "/questionnaire/confirm-who-is-answering/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/proxy/",
+            "url": "/questionnaire/confirm-who-is-answering/",
             "data": {
-                "proxy-answer": "For myself"
+                "confirm-who-is-answering-answer": "For myself"
             }
         },
         {
@@ -61,13 +61,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/confirm-dob/"
+            "url": "/questionnaire/confirm-age/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/confirm-dob/",
+            "url": "/questionnaire/confirm-age/",
             "data": {
-                "confirm-date-of-birth-answer": "Yes, I am {age} old"
+                "confirm-age-answer": "Yes, I am {age} old"
             }
         },
         {
@@ -83,24 +83,24 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/marriage-type/"
+            "url": "/questionnaire/marital-or-civil-partnership-status/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/marriage-type/",
+            "url": "/questionnaire/marital-or-civil-partnership-status/",
             "data": {
-                "marriage-type-answer": "Married"
+                "marital-or-civil-partnership-status-answer": "Married"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/current-marriage-status/"
+            "url": "/questionnaire/sex-of-current-partner/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/current-marriage-status/",
+            "url": "/questionnaire/sex-of-current-partner/",
             "data": {
-                "current-marriage-status-answer": "Someone of the opposite sex"
+                "sex-of-current-partner-answer": "Someone of the opposite sex"
             }
         },
         {
@@ -140,11 +140,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/past-usual-household-address/"
+            "url": "/questionnaire/location-one-year-ago/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/past-usual-household-address/",
+            "url": "/questionnaire/location-one-year-ago/",
             "data": {
                 "past-usual-address-household-answer": "{household_address}",
                 "past-usual-address-household-answer-other": ""
@@ -199,14 +199,14 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/language/"
+            "url": "/questionnaire/main-language/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/language/",
+            "url": "/questionnaire/main-language/",
             "data": {
-                "language-answer": "English",
-                "language-answer-other": ""
+                "main-language-answer": "English",
+                "main-language-answer-other": ""
             }
         },
         {
@@ -234,57 +234,57 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/disability/"
+            "url": "/questionnaire/health-conditions-or-illnesses/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/disability/",
+            "url": "/questionnaire/health-conditions-or-illnesses/",
             "data": {
-                "disability-answer": "No"
+                "health-conditions-or-illnesses-answer": "No"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/carer/"
+            "url": "/questionnaire/look-after-or-support-others/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/carer/",
+            "url": "/questionnaire/look-after-or-support-others/",
             "data": {
-                "carer-answer": "No"
+                "look-after-or-support-others-answer": "No"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sexual-identity/"
+            "url": "/questionnaire/sexual-orientation/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sexual-identity/",
+            "url": "/questionnaire/sexual-orientation/",
             "data": {
-                "sexual-identity-answer": "Straight or Heterosexual",
-                "sexual-identity-answer-other": ""
+                "sexual-orientation-answer": "Straight or Heterosexual",
+                "sexual-orientation-answer-other": ""
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/birth-gender/"
+            "url": "/questionnaire/gender-identity/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/birth-gender/",
+            "url": "/questionnaire/gender-identity/",
             "data": {
-                "birth-gender-answer": "Yes",
-                "birth-gender-answer-other": ""
+                "gender-identity-answer": "Yes",
+                "gender-identity-answer-other": ""
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/qualifications/"
+            "url": "/questionnaire/qualifications-introduction/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/qualifications/",
+            "url": "/questionnaire/qualifications-introduction/",
             "data": {}
         },
         {
@@ -300,13 +300,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/degree/"
+            "url": "/questionnaire/degree-level-or-above/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/degree/",
+            "url": "/questionnaire/degree-level-or-above/",
             "data": {
-                "degree-answer": "Yes"
+                "degree-level-or-above-answer": "Yes"
             }
         },
         {
@@ -355,33 +355,33 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/employment-status/"
+            "url": "/questionnaire/employment-status-last-seven-days/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/employment-status/",
+            "url": "/questionnaire/employment-status-last-seven-days/",
             "data": {
-                "employment-status-answer": "Working as an employee"
+                "employment-status-last-seven-days-answer": "Working as an employee"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/main-employment-block/"
+            "url": "/questionnaire/main-job-introduction/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/main-employment-block/",
+            "url": "/questionnaire/main-job-introduction/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/main-job-type/"
+            "url": "/questionnaire/main-job-status/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/main-job-type/",
+            "url": "/questionnaire/main-job-status/",
             "data": {
-                "main-job-type-answer": "Employee"
+                "main-job-status-answer": "Employee"
             }
         },
         {
@@ -419,24 +419,24 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/employers-business/"
+            "url": "/questionnaire/business-type/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/employers-business/",
+            "url": "/questionnaire/business-type/",
             "data": {
-                "employers-business-answer": "Civil Service"
+                "business-type-answer": "Civil Service"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/supervise/"
+            "url": "/questionnaire/supervise-others/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/supervise/",
+            "url": "/questionnaire/supervise-others/",
             "data": {
-                "supervise-answer": "Yes"
+                "supervise-others-answer": "Yes"
             }
         },
         {
@@ -452,24 +452,24 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/work-travel/"
+            "url": "/questionnaire/travel-to-work/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/work-travel/",
+            "url": "/questionnaire/travel-to-work/",
             "data": {
-                "work-travel-answer": "Driving a car or van"
+                "travel-to-work-answer": "Driving a car or van"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/employer-type-of-address/"
+            "url": "/questionnaire/workplace-type/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/employer-type-of-address/",
+            "url": "/questionnaire/workplace-type/",
             "data": {
-                "employer-type-of-address-answer": "At a workplace"
+                "workplace-type-answer": "At a workplace"
             }
         },
         {
@@ -485,17 +485,17 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/employer-address-workplace/"
+            "url": "/questionnaire/workplace-address/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/employer-address-workplace/",
+            "url": "/questionnaire/workplace-address/",
             "data": {
-                "employer-address-workplace-answer-building": "Office For National Statistics",
-                "employer-address-workplace-answer-street": "Cardiff Road",
-                "employer-address-workplace-answer-city": "Newport",
-                "employer-address-workplace-answer-county": "Gwent",
-                "employer-address-workplace-answer-postcode": "NP10 8XG"
+                "workplace-address-answer-building": "Office For National Statistics",
+                "workplace-address-answer-street": "Cardiff Road",
+                "workplace-address-answer-city": "Newport",
+                "workplace-address-answer-county": "Gwent",
+                "workplace-address-answer-postcode": "NP10 8XG"
             }
         },
         {
