@@ -217,6 +217,23 @@ All requests average: 524ms
 
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
 
+### Summmarise stress test results:
+To get a breakdown of results for a stress test use the `get_stress_test_summary` script. This accepts a folder containing
+results as a parameter, and will provide aggregate totals at the folder level:
+```bash
+OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_stress_test_summary
+```
+
+This will output something like:
+```
+Questionnaire GETs average: 465ms
+Questionnaire POSTs average: 525ms
+All requests average: 495ms
+Total Requests: 30056523
+Total Failures: 140186
+Error Percentage: 0.47%
+```
+
 ### Run the Visualise Results script
 
 The `visualise_results` script will run against any benchmark results stored in the directory that is passed as an environment variable to the script.
