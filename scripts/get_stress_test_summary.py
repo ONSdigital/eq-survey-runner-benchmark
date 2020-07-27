@@ -1,7 +1,7 @@
 import os
 import statistics
-import sys
 from glob import glob
+from scripts.get_stats import get_stats
 
 
 def get_results(folders):
@@ -9,41 +9,25 @@ def get_results(folders):
     results = {
         "get": [],
         "post": [],
-        "average_get": None,
-        "average_post": None,
-        "average_total": None,
+        "average_get": [],
+        "average_post": [],
+        "average_total": [],
+        "error_percentage": 0,
         "total_requests": 0,
-        "total_failures": 0,
-        "error_percentage": 0
+        "total_failures": 0
     }
 
     for folder in folders:
-        for file in glob(folder + '/*stats.csv'):
+        stats = get_stats(folder)
+        results["get"].extend(stats["get"])
+        results["post"].extend(stats["post"])
+        results["total_requests"] = results["total_requests"] + stats["total_requests"]
+        results["total_failures"] = results["total_failures"] + stats["total_failures"]
 
-            with open(file) as f:
-                data = f.read()
-
-            for line in data.split('\n'):
-                if 'Name' in line:
-                    continue
-
-                values = line.split(',')
-
-                percentile_99th = int(values[18])
-                if values[1].startswith('"/questionnaire'):
-                    if values[0] == '"GET"':
-                        results["get"].append(percentile_99th)
-                    elif values[0] == '"POST"':
-                        results["post"].append(percentile_99th)
-
-                if 'Aggregated' in line:
-                    results["total_requests"] = results["total_requests"] + int(values[2])
-                    results["total_failures"] = results["total_failures"] + int(values[3])
-
-        results["average_get"] = statistics.mean(results["get"])
-        results["average_post"] = statistics.mean(results["post"])
-        results["average_total"] = statistics.mean(results["get"] + results["post"])
-        results["error_percentage"] = (results["total_failures"] * 100) / results["total_requests"]
+    results["average_get"] = statistics.mean(results["get"])
+    results["average_post"] = statistics.mean(results["post"])
+    results["average_total"] = statistics.mean(results["get"] + results["post"])
+    results["error_percentage"] = (results["total_failures"] * 100) / results["total_requests"]
 
     return results
 

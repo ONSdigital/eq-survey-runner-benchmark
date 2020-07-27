@@ -3,6 +3,7 @@ import statistics
 import sys
 from datetime import datetime, timedelta
 from glob import glob
+from scripts.get_stats import get_stats
 
 
 def get_results(folders, number_of_days=None):
@@ -18,33 +19,13 @@ def get_results(folders, number_of_days=None):
 
         get_request_response_times = []
         post_request_response_times = []
-        all_response_times = []
 
-        for file in glob(folder + '/*stats.csv'):
+        stats = get_stats(folder)
 
-            with open(file) as f:
-                data = f.read()
+        get_request_response_times.extend(stats["get"])
+        post_request_response_times.extend(stats["post"])
 
-            get_values = []
-            post_values = []
-
-            for line in data.split('\n'):
-                if 'Name' in line:
-                    continue
-
-                values = line.split(',')
-
-                percentile_99th = int(values[18])
-                if values[1].startswith('"/questionnaire'):
-                    if values[0] == '"GET"':
-                        get_values.append(percentile_99th)
-                    elif values[0] == '"POST"':
-                        post_values.append(percentile_99th)
-
-            get_request_response_times.extend(get_values)
-            post_request_response_times.extend(post_values)
-
-            all_response_times = get_values + post_values
+        all_response_times = stats["get"] + stats["post"]
 
         results_list.append(
             [
@@ -52,6 +33,9 @@ def get_results(folders, number_of_days=None):
                 statistics.mean(get_request_response_times),
                 statistics.mean(post_request_response_times),
                 statistics.mean(all_response_times),
+                stats["total_requests"],
+                stats["total_failures"],
+                (stats["total_failures"] * 100) / stats["total_requests"]
             ]
         )
 
@@ -93,7 +77,10 @@ if __name__ == '__main__':
         summary = (
             f'Questionnaire GETs average: {int(result[1])}ms\n'
             f'Questionnaire POSTs average: {int(result[2])}ms\n'
-            f'All requests average: {int(result[3])}ms'
+            f'All requests average: {int(result[3])}ms\n'
+            f'Total Requests: {int(result[4])}\n'
+            f'Total Failures: {int(result[5])}\n'
+            f'Error Percentage {(round(result[6], 2))}%'
         )
 
         if date_to_output:
