@@ -13,7 +13,7 @@ def get_results(folders):
         "average_total": [],
         "error_percentage": 0,
         "total_requests": 0,
-        "total_failures": 0
+        "total_failures": 0,
     }
 
     for folder in folders:
@@ -26,7 +26,9 @@ def get_results(folders):
     results["average_get"] = statistics.mean(results["get"])
     results["average_post"] = statistics.mean(results["post"])
     results["average_total"] = statistics.mean(results["get"] + results["post"])
-    results["error_percentage"] = (results["total_failures"] * 100) / results["total_requests"]
+    results["error_percentage"] = (results["total_failures"] * 100) / results[
+        "total_requests"
+    ]
 
     return results
 
@@ -35,15 +37,13 @@ def parse_environment_variables():
     try:
         output_dir = os.environ["OUTPUT_DIR"]
     except KeyError:
-        print(
-            "'OUTPUT_DIR' environment variable must be set e.g. outputs/daily-test"
-        )
+        print("'OUTPUT_DIR' environment variable must be set e.g. outputs/daily-test")
         sys.exit(1)
 
     return output_dir
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     folder = parse_environment_variables()
 
     sorted_folders = sorted(glob(f"{folder}/*"))

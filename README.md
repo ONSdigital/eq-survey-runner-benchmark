@@ -213,6 +213,9 @@ This will output something like:
 Questionnaire GETs average: 477ms
 Questionnaire POSTs average: 573ms
 All requests average: 524ms
+Total Requests: 209303
+Total Failures: 0
+Error Percentage: 0.0%
 ```
 
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.

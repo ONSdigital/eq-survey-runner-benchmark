@@ -13,7 +13,7 @@ def get_results(folders, number_of_days=None):
     )
 
     for folder in folders:
-        date = folder.split('/')[-1].split('T')[0]
+        date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
 
@@ -35,7 +35,7 @@ def get_results(folders, number_of_days=None):
                 statistics.mean(all_response_times),
                 stats["total_requests"],
                 stats["total_failures"],
-                (stats["total_failures"] * 100) / stats["total_requests"]
+                (stats["total_failures"] * 100) / stats["total_requests"],
             ]
         )
 
@@ -60,27 +60,27 @@ def parse_environment_variables():
     output_date = os.getenv("OUTPUT_DATE")
 
     return {
-        'output_dir': output_dir,
-        'number_of_days': days,
-        'output_date': output_date,
+        "output_dir": output_dir,
+        "number_of_days": days,
+        "output_date": output_date,
     }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
-    date_to_output = parsed_variables['output_date']
+    date_to_output = parsed_variables["output_date"]
 
     sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
     result = get_results(sorted_folders)
 
     for result in result[::-1]:
         summary = (
-            f'Questionnaire GETs average: {int(result[1])}ms\n'
-            f'Questionnaire POSTs average: {int(result[2])}ms\n'
-            f'All requests average: {int(result[3])}ms\n'
-            f'Total Requests: {int(result[4])}\n'
-            f'Total Failures: {int(result[5])}\n'
-            f'Error Percentage {(round(result[6], 2))}%'
+            f"Questionnaire GETs average: {int(result[1])}ms\n"
+            f"Questionnaire POSTs average: {int(result[2])}ms\n"
+            f"All requests average: {int(result[3])}ms\n"
+            f"Total Requests: {int(result[4])}\n"
+            f"Total Failures: {int(result[5])}\n"
+            f"Error Percentage: {(round(result[6], 2))}%"
         )
 
         if date_to_output:
@@ -88,4 +88,4 @@ if __name__ == '__main__':
                 print(summary)
                 break
         else:
-            print(f'{result[0]}\n' f'{summary}\n')
+            print(f"{result[0]}\n" f"{summary}\n")
