@@ -317,13 +317,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/sex-of-current-partner/"
+            "url": "/questionnaire/household/{person_1_list_id}/sex-of-current-spouse/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_1_list_id}/sex-of-current-partner/",
+            "url": "/questionnaire/household/{person_1_list_id}/sex-of-current-spouse/",
             "data": {
-                "sex-of-current-partner-answer": "Someone of the opposite sex"
+                "sex-of-current-spouse-answer": "Someone of the opposite sex"
             }
         },
         {
@@ -771,13 +771,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_2_list_id}/sex-of-current-partner/"
+            "url": "/questionnaire/household/{person_2_list_id}/sex-of-current-spouse/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_2_list_id}/sex-of-current-partner/",
+            "url": "/questionnaire/household/{person_2_list_id}/sex-of-current-spouse/",
             "data": {
-                "sex-of-current-partner-answer": "Someone of the opposite sex"
+                "sex-of-current-spouse-answer": "Someone of the opposite sex"
             }
         },
         {

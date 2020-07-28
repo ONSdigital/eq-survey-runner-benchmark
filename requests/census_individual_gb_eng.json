@@ -94,13 +94,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sex-of-current-partner/"
+            "url": "/questionnaire/sex-of-current-spouse/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sex-of-current-partner/",
+            "url": "/questionnaire/sex-of-current-spouse/",
             "data": {
-                "sex-of-current-partner-answer": "Someone of the opposite sex"
+                "sex-of-current-spouse-answer": "Someone of the opposite sex"
             }
         },
         {
