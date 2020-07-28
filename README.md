@@ -220,7 +220,7 @@ Error Percentage: 0.0%
 
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
 
-### Summarise Stress Test results:
+### Summarise the Stress Test results:
 To get a breakdown of results for a stress test use the `get_stress_test_summary` script. This accepts a folder containing
 results as a parameter, and will provide aggregate totals at the folder level:
 ```bash
