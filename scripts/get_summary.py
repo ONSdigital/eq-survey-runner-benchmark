@@ -22,10 +22,10 @@ def get_results(folders, number_of_days=None):
 
         stats = get_stats(folder)
 
-        get_request_response_times.extend(stats["get"])
-        post_request_response_times.extend(stats["post"])
+        get_request_response_times.extend(stats.get)
+        post_request_response_times.extend(stats.post)
 
-        all_response_times = stats["get"] + stats["post"]
+        all_response_times = stats.get + stats.post
 
         results_list.append(
             [
@@ -33,9 +33,9 @@ def get_results(folders, number_of_days=None):
                 statistics.mean(get_request_response_times),
                 statistics.mean(post_request_response_times),
                 statistics.mean(all_response_times),
-                stats["total_requests"],
-                stats["total_failures"],
-                (stats["total_failures"] * 100) / stats["total_requests"],
+                stats.total_requests,
+                stats.total_failures,
+                (stats.total_failures * 100) / stats.total_requests,
             ]
         )
 
