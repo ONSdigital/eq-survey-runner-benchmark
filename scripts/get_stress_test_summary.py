@@ -5,7 +5,6 @@ from scripts.get_stats import get_stats
 
 
 def get_results(folders):
-
     results = {
         "get": [],
         "post": [],
@@ -33,11 +32,11 @@ def get_results(folders):
 
 
 def parse_environment_variables():
-    output_dir = os.getenv("OUTPUT_DIR")
-
-    if not output_dir:
+    try:
+        output_dir = os.environ["OUTPUT_DIR"]
+    except KeyError:
         print(
-            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
+            "'OUTPUT_DIR' environment variable must be set e.g. outputs/daily-test"
         )
         sys.exit(1)
 
