@@ -33,18 +33,14 @@ def get_results(folders):
     return results
 
 
-def parse_environment_variables():
-    try:
-        output_dir = os.environ["OUTPUT_DIR"]
-    except KeyError:
-        print("'OUTPUT_DIR' environment variable must be set e.g. outputs/daily-test")
-        sys.exit(1)
-
-    return output_dir
-
-
 if __name__ == "__main__":
-    folder = parse_environment_variables()
+    folder = os.getenv("OUTPUT_DIR")
+
+    if not folder:
+        print(
+            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
+        )
+        sys.exit(1)
 
     sorted_folders = sorted(glob(f"{folder}/*"))
     result = get_results(sorted_folders)
