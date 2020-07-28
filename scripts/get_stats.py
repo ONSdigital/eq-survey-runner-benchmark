@@ -1,25 +1,16 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from glob import glob
 
 @dataclass
 class BenchmarkStats:
-    get: []
-    post: []
-    average_get: None
-    average_post: None
-    average_total: None
-    total_requests: int
-    total_failures: int
-    error_percentage: int
-
-    def __init__(self):
-        self.get = []
-        self.post = []
-        self.average_get = None
-        self.average_post = None
-        self.total_requests = 0
-        self.total_failures = 0
-        self.error_percentage = 0
+    get: [int] = field(default_factory=list)
+    post: [int] = field(default_factory=list)
+    average_get: int = None
+    average_post: int = None
+    average_total: int = None
+    total_requests: int = 0
+    total_failures: int = 0
+    error_percentage: int = 0
 
 
 def get_stats(folder):
