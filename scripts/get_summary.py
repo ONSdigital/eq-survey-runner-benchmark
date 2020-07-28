@@ -1,8 +1,9 @@
+from csv import DictReader
+from datetime import datetime, timedelta
+from glob import glob
 import os
 import statistics
 import sys
-from datetime import datetime, timedelta
-from glob import glob
 
 
 def get_results(folders, number_of_days=None):
@@ -23,23 +24,18 @@ def get_results(folders, number_of_days=None):
         for file in glob(folder + '/*stats.csv'):
 
             with open(file) as f:
-                data = f.read()
+                reader = DictReader(f, delimiter=",")
 
-            get_values = []
-            post_values = []
+                get_values = []
+                post_values = []
 
-            for line in data.split('\n'):
-                if 'Name' in line:
-                    continue
-
-                values = line.split(',')
-
-                percentile_99th = int(values[18])
-                if values[1].startswith('"/questionnaire'):
-                    if values[0] == '"GET"':
-                        get_values.append(percentile_99th)
-                    elif values[0] == '"POST"':
-                        post_values.append(percentile_99th)
+                for row in reader:
+                    percentile_99th = int(row["99%"])
+                    if '/questionnaire' in row['Name']:
+                        if row['Type'] == 'GET':
+                            get_values.append(percentile_99th)
+                        elif row['Type'] == 'POST':
+                            post_values.append(percentile_99th)
 
             get_request_response_times.extend(get_values)
             post_request_response_times.extend(post_values)
