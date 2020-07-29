@@ -5,9 +5,9 @@ from glob import glob
 class BenchmarkStats:
     get: [int] = field(default_factory=list)
     post: [int] = field(default_factory=list)
-    average_get: int = None
-    average_post: int = None
-    average_total: int = None
+    average_get: int = 0
+    average_post: int = 0
+    average_total: int = 0
     total_requests: int = 0
     total_failures: int = 0
     error_percentage: int = 0
