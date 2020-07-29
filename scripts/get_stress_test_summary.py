@@ -1,4 +1,4 @@
-import os
+import os, sys
 import statistics
 from glob import glob
 from scripts.get_stats import get_stats, BenchmarkStats
@@ -11,8 +11,8 @@ def get_results(folders):
         stats = get_stats(folder)
         results.get.extend(stats.get)
         results.post.extend(stats.post)
-        results.total_requests = results.total_requests + stats.total_requests
-        results.total_failures = results.total_failures + stats.total_failures
+        results.total_requests += stats.total_requests
+        results.total_failures += stats.total_failures
 
     results.average_get = statistics.mean(results.get)
     results.average_post = statistics.mean(results.post)
@@ -34,13 +34,4 @@ if __name__ == "__main__":
     sorted_folders = sorted(glob(f"{folder}/*"))
     result = get_results(sorted_folders)
 
-    summary = (
-        f'Questionnaire GETs average: {int(result.average_get)}ms\n'
-        f'Questionnaire POSTs average: {int(result.average_post)}ms\n'
-        f'All requests average: {int(result.average_total)}ms\n'
-        f'Total Requests: {int(result.total_requests)}\n'
-        f'Total Failures: {int(result.total_failures)}\n'
-        f'Error Percentage: {(round(result.error_percentage, 2))}%\n'
-    )
-
-    print(summary)
+    print(result)

@@ -3,41 +3,29 @@ import statistics
 import sys
 from datetime import datetime, timedelta
 from glob import glob
-from scripts.get_stats import get_stats
+from scripts.get_stats import get_stats, BenchmarkStats
 
 
 def get_results(folders, number_of_days=None):
     results_list = []
+
     from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
     )
-
     for folder in folders:
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-
-        get_request_response_times = []
-        post_request_response_times = []
-
+        result = BenchmarkStats()
         stats = get_stats(folder)
+        result.total_requests += stats.total_requests
+        result.total_failures += stats.total_failures
+        result.average_get = statistics.mean(stats.get)
+        result.average_post = statistics.mean(stats.post)
+        result.average_total = statistics.mean(stats.get + stats.post)
+        result.error_percentage = (result.total_failures * 100) / result.total_requests
 
-        get_request_response_times.extend(stats.get)
-        post_request_response_times.extend(stats.post)
-
-        all_response_times = stats.get + stats.post
-
-        results_list.append(
-            [
-                date,
-                statistics.mean(get_request_response_times),
-                statistics.mean(post_request_response_times),
-                statistics.mean(all_response_times),
-                stats.total_requests,
-                stats.total_failures,
-                (stats.total_failures * 100) / stats.total_requests,
-            ]
-        )
+        results_list.append([date, result])
 
     return results_list
 
@@ -71,21 +59,14 @@ if __name__ == "__main__":
     date_to_output = parsed_variables["output_date"]
 
     sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
-    result = get_results(sorted_folders)
 
-    for result in result[::-1]:
-        summary = (
-            f"Questionnaire GETs average: {int(result[1])}ms\n"
-            f"Questionnaire POSTs average: {int(result[2])}ms\n"
-            f"All requests average: {int(result[3])}ms\n"
-            f"Total Requests: {int(result[4])}\n"
-            f"Total Failures: {int(result[5])}\n"
-            f"Error Percentage: {(round(result[6], 2))}%"
-        )
+    results = get_results(sorted_folders)
 
+    for result in results:
         if date_to_output:
             if result[0] == date_to_output:
-                print(summary)
+                print(result[1])
                 break
         else:
-            print(f"{result[0]}\n" f"{summary}\n")
+            print(result[0])
+            print(result[1])

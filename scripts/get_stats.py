@@ -12,6 +12,16 @@ class BenchmarkStats:
     total_failures: int = 0
     error_percentage: int = 0
 
+    def __str__(self):
+        return (
+            f'Questionnaire GETs average: {int(self.average_get)}ms\n'
+            f'Questionnaire POSTs average: {int(self.average_post)}ms\n'
+            f'All requests average: {int(self.average_total)}ms\n'
+            f'Total Requests: {int(self.total_requests)}\n'
+            f'Total Failures: {int(self.total_failures)}\n'
+            f'Error Percentage: {(round(self.error_percentage, 2))}%\n'
+        )
+
 
 def get_stats(folder):
     stats = BenchmarkStats()
@@ -34,8 +44,8 @@ def get_stats(folder):
                 elif values[0] == '"POST"':
                     stats.post.append(percentile_99th)
 
-        if "Aggregated" in line:
-            stats.total_requests = stats.total_requests + int(values[2])
-            stats.total_failures = stats.total_failures + int(values[3])
+            if "Aggregated" in line:
+                stats.total_requests = stats.total_requests + int(values[2])
+                stats.total_failures = stats.total_failures + int(values[3])
 
     return stats
