@@ -339,7 +339,7 @@
             "method": "POST",
             "url": "/questionnaire/gcse/",
             "data": {
-                "gcse-answer": "5 or more GCSEs grades A* to C or 9 to 4"
+                "gcse-answer": "5 or more GCSEs grade A* to C or 9 to 4"
             }
         },
         {
