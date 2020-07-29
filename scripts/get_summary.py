@@ -68,5 +68,4 @@ if __name__ == "__main__":
                 print(result[1])
                 break
         else:
-            print(result[0])
-            print(result[1])
+            print(f"{result[0]}\n" f"{result[1]}\n")
