@@ -3,57 +3,29 @@ import statistics
 import sys
 from datetime import datetime, timedelta
 from glob import glob
+from scripts.get_stats import get_stats, BenchmarkStats
 
 
 def get_results(folders, number_of_days=None):
     results_list = []
+
     from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
     )
-
     for folder in folders:
-        date = folder.split('/')[-1].split('T')[0]
+        date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
+        result = BenchmarkStats()
+        stats = get_stats(folder)
+        result.total_requests += stats.total_requests
+        result.total_failures += stats.total_failures
+        result.average_get = statistics.mean(stats.get)
+        result.average_post = statistics.mean(stats.post)
+        result.average_total = statistics.mean(stats.get + stats.post)
+        result.error_percentage = (result.total_failures * 100) / result.total_requests
 
-        get_request_response_times = []
-        post_request_response_times = []
-        all_response_times = []
-
-        for file in glob(folder + '/*stats.csv'):
-
-            with open(file) as f:
-                data = f.read()
-
-            get_values = []
-            post_values = []
-
-            for line in data.split('\n'):
-                if 'Name' in line:
-                    continue
-
-                values = line.split(',')
-
-                percentile_99th = int(values[18])
-                if values[1].startswith('"/questionnaire'):
-                    if values[0] == '"GET"':
-                        get_values.append(percentile_99th)
-                    elif values[0] == '"POST"':
-                        post_values.append(percentile_99th)
-
-            get_request_response_times.extend(get_values)
-            post_request_response_times.extend(post_values)
-
-            all_response_times = get_values + post_values
-
-        results_list.append(
-            [
-                date,
-                statistics.mean(get_request_response_times),
-                statistics.mean(post_request_response_times),
-                statistics.mean(all_response_times),
-            ]
-        )
+        results_list.append([date, result])
 
     return results_list
 
@@ -76,29 +48,24 @@ def parse_environment_variables():
     output_date = os.getenv("OUTPUT_DATE")
 
     return {
-        'output_dir': output_dir,
-        'number_of_days': days,
-        'output_date': output_date,
+        "output_dir": output_dir,
+        "number_of_days": days,
+        "output_date": output_date,
     }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
-    date_to_output = parsed_variables['output_date']
+    date_to_output = parsed_variables["output_date"]
 
     sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
-    result = get_results(sorted_folders)
 
-    for result in result[::-1]:
-        summary = (
-            f'Questionnaire GETs average: {int(result[1])}ms\n'
-            f'Questionnaire POSTs average: {int(result[2])}ms\n'
-            f'All requests average: {int(result[3])}ms'
-        )
+    results = get_results(sorted_folders)
 
+    for result in results:
         if date_to_output:
             if result[0] == date_to_output:
-                print(summary)
+                print(result[1])
                 break
         else:
-            print(f'{result[0]}\n' f'{summary}\n')
+            print(f"{result[0]}\n" f"{result[1]}\n")
