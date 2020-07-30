@@ -1,9 +1,9 @@
 from csv import DictReader
 from datetime import datetime, timedelta
 from glob import glob
-from typing import List, NamedTuple
 import os
 import sys
+from typing import List, NamedTuple
 
 from scripts.benchmark_stats import BenchmarkStats
 
