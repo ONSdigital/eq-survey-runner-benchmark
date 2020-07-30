@@ -22,6 +22,16 @@ if __name__ == '__main__':
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
     results = get_results(folders, parsed_variables['number_of_days'])
-    data_frame = DataFrame(results, columns=["DATE", "GET", "POST", "AVERAGE"])
+    result_fields = [
+        [
+            result[0],
+            result[1].average_get,
+            result[1].average_post,
+            result[1].average_total,
+        ]
+        for result in results
+    ]
+
+    data_frame = DataFrame(result_fields, columns=["DATE", "GET", "POST", "AVERAGE"])
 
     plot_data(data_frame)

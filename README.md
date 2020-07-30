@@ -200,7 +200,7 @@ To run the script and download results:
 OUTPUT_BUCKET="<bucket_name>" pipenv run python -m scripts.get_benchmark_results
 ```
 
-### Summarise the results
+### Summarise the Daily Benchmark results
 You can get a breakdown of the average response times for a result set by doing:
 ```bash
 OUTPUT_DIR="outputs/daily-test" \
@@ -213,9 +213,29 @@ This will output something like:
 Questionnaire GETs average: 477ms
 Questionnaire POSTs average: 573ms
 All requests average: 524ms
+Total Requests: 209303
+Total Failures: 0
+Error Percentage: 0.0%
 ```
 
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
+
+### Summarise the Stress Test results:
+To get a breakdown of results for a stress test use the `get_stress_test_summary` script. This accepts a folder containing
+results as a parameter, and will provide aggregate totals at the folder level:
+```bash
+OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_stress_test_summary
+```
+
+This will output something like:
+```
+Questionnaire GETs average: 465ms
+Questionnaire POSTs average: 525ms
+All requests average: 495ms
+Total Requests: 30056523
+Total Failures: 140186
+Error Percentage: 0.47%
+```
 
 ### Run the Visualise Results script
 

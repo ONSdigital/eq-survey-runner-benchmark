@@ -562,7 +562,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/gcse/",
             "data": {
-                "gcse-answer": "5 or more GCSEs grades A* to C or 9 to 4"
+                "gcse-answer": "5 or more GCSEs grade A* to C or 9 to 4"
             }
         },
         {
@@ -1016,7 +1016,7 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/gcse/",
             "data": {
-                "gcse-answer": "5 or more GCSEs grades A* to C or 9 to 4"
+                "gcse-answer": "5 or more GCSEs grade A* to C or 9 to 4"
             }
         },
         {
