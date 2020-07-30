@@ -45,7 +45,7 @@ def get_stats(folder):
                     stats.post.append(percentile_99th)
 
             if "Aggregated" in line:
-                stats.total_requests = stats.total_requests + int(values[2])
-                stats.total_failures = stats.total_failures + int(values[3])
+                stats.total_requests += int(values[2])
+                stats.total_failures += int(values[3])
 
     return stats
