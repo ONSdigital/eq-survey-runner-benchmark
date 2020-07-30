@@ -5,7 +5,7 @@ from typing import List, NamedTuple
 import os
 import sys
 
-from scripts import BenchmarkStats
+from scripts.benchmark_stats import BenchmarkStats
 
 
 class Result(NamedTuple):

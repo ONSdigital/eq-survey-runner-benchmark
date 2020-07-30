@@ -1,7 +1,7 @@
 import os, sys
 import statistics
 from glob import glob
-from scripts import BenchmarkStats
+from scripts.benchmark_stats import BenchmarkStats
 from typing import List
 
 
