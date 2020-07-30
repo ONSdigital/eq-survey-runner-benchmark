@@ -10,15 +10,15 @@ def get_results(folders: List[str]) -> List:
 
 
 if __name__ == "__main__":
-    folders = os.getenv("OUTPUT_DIR")
+    folders_path = os.getenv("OUTPUT_DIR")
 
-    if not folders:
+    if not folders_path:
         print(
             "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
         )
         sys.exit(1)
 
-    sorted_folders = sorted(glob(f"{folders}/*"))
+    sorted_folders = sorted(glob(f"{folders_path}/*"))
     results = get_results(sorted_folders)
 
     for result in results:
