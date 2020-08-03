@@ -5,8 +5,11 @@ from typing import List
 
 
 class BenchmarkStats:
-    def __init__(self, folder_path: str):
-        self._files: List[str] = glob(f"{folder_path}/*stats.csv")
+    def __init__(self, folder_paths: List[str]):
+        self._files: List = []
+        for folder_path in folder_paths:
+            self._files.extend(glob(f"{folder_path}/*stats.csv"))
+
         self.get_requests: List[int] = []
         self.post_requests: List[int] = []
         self.total_requests: int = 0

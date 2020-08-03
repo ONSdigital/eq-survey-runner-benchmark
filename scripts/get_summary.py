@@ -24,7 +24,7 @@ def get_results(folders, number_of_days=None):
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-        yield Result(date, BenchmarkStats(folder))
+        yield Result(date, BenchmarkStats([folder]))
 
 
 def parse_environment_variables():

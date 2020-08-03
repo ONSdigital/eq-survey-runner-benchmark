@@ -6,7 +6,7 @@ from typing import List
 from scripts.benchmark_stats import BenchmarkStats
 
 def get_results(folders: List[str]) -> List:
-    return [BenchmarkStats(folder) for folder in folders]
+    return BenchmarkStats(folders)
 
 
 if __name__ == "__main__":
@@ -20,6 +20,4 @@ if __name__ == "__main__":
 
     sorted_folders = sorted(glob(f"{folders_path}/*"))
     results = get_results(sorted_folders)
-
-    for result in results:
-        print(result)
+    print(results)
