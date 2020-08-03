@@ -6,7 +6,7 @@ from typing import Generator, Iterable, List
 
 class BenchmarkStats:
     def __init__(self, folder_path: str):
-        self._files: List[str] = glob(folder_path + "/*stats.csv")
+        self._files: List[str] = glob(f"{folder_path}/*stats.csv")
         self.get_requests: List[int] = []
         self.post_requests: List[int] = []
         self.total_requests: int = 0
