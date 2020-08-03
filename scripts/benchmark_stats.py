@@ -36,8 +36,10 @@ class BenchmarkStats:
                             self.post_requests.append(percentile_99th)
 
                     if row["Name"] == "Aggregated":
-                        self.total_requests += int(row["Request Count"])
-                        self.total_failures += int(row["Failure Count"])
+                        request_count = row.get("Request Count", row["# requests"])
+                        failure_count = row.get("Failure Count", row["# failures"])
+                        self.total_requests += int(request_count)
+                        self.total_failures += int(failure_count)
 
     @property
     def files(self) -> Generator[str, None, None]:
