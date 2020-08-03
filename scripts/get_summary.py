@@ -60,8 +60,9 @@ if __name__ == "__main__":
     results = get_results(sorted_folders)
 
     for result in results:
-        if date_to_output and result.date == date_to_output:
-            print(result.statistics)
-            break
+        if date_to_output:
+            if result.date == date_to_output:
+                print(result.statistics)
+                break
         else:
             print(result)
