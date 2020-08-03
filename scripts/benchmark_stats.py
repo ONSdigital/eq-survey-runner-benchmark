@@ -41,7 +41,7 @@ class BenchmarkStats:
                         self.total_failures += int(failure_count)
 
     @property
-    def files(self) -> Generator[str, None, None]:
+    def files(self) -> List[str]:
         return self._files
 
     @property
