@@ -1,4 +1,3 @@
-from csv import DictReader
 from datetime import datetime, timedelta
 from glob import glob
 import os
@@ -25,8 +24,7 @@ def get_results(folders, number_of_days=None):
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-        results = BenchmarkStats(folder)
-        yield Result(date, results)
+        yield Result(date, BenchmarkStats(folder))
 
 
 def parse_environment_variables():
