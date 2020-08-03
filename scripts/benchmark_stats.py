@@ -11,7 +11,6 @@ class BenchmarkStats:
         self.post_requests: List[int] = []
         self.total_requests: int = 0
         self.total_failures: int = 0
-        self.error_percentage: int
         self._data = self._process_file_data()
 
     def __str__(self):
