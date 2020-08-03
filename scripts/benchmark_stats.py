@@ -1,7 +1,7 @@
 from csv import DictReader
 from glob import glob
 from statistics import mean
-from typing import Generator, Iterable, List
+from typing import List
 
 
 class BenchmarkStats:
@@ -11,7 +11,7 @@ class BenchmarkStats:
         self.post_requests: List[int] = []
         self.total_requests: int = 0
         self.total_failures: int = 0
-        self._data = self._process_file_data()
+        self._process_file_data()
 
     def __str__(self):
         return (
@@ -35,8 +35,8 @@ class BenchmarkStats:
                             self.post_requests.append(percentile_99th)
 
                     if row["Name"] == "Aggregated":
-                        request_count = row.get("Request Count", row["# requests"])
-                        failure_count = row.get("Failure Count", row["# failures"])
+                        request_count = row.get("Request Count") or row.get("# requests")
+                        failure_count = row.get("Failure Count") or row.get("# failures")
                         self.total_requests += int(request_count)
                         self.total_failures += int(failure_count)
 
