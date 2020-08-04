@@ -1,37 +1,23 @@
-import os, sys
-import statistics
 from glob import glob
-from scripts.get_stats import get_stats, BenchmarkStats
+import os
+import sys
+from typing import List
 
+from scripts.benchmark_stats import BenchmarkStats
 
-def get_results(folders):
-    results = BenchmarkStats()
-
-    for folder in folders:
-        stats = get_stats(folder)
-        results.get.extend(stats.get)
-        results.post.extend(stats.post)
-        results.total_requests += stats.total_requests
-        results.total_failures += stats.total_failures
-
-    results.average_get = statistics.mean(results.get)
-    results.average_post = statistics.mean(results.post)
-    results.average_total = statistics.mean(results.get + results.post)
-    results.error_percentage = (results.total_failures * 100) / results.total_requests
-
-    return results
+def get_results(folders: List[str]) -> List:
+    return BenchmarkStats(folders)
 
 
 if __name__ == "__main__":
-    folder = os.getenv("OUTPUT_DIR")
+    folders_path = os.getenv("OUTPUT_DIR")
 
-    if not folder:
+    if not folders_path:
         print(
             "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
         )
         sys.exit(1)
 
-    sorted_folders = sorted(glob(f"{folder}/*"))
-    result = get_results(sorted_folders)
-
-    print(result)
+    sorted_folders = sorted(glob(f"{folders_path}/*"))
+    results = get_results(sorted_folders)
+    print(results)

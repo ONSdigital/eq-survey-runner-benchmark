@@ -4,7 +4,7 @@ import random
 import re
 import time
 
-from locust import TaskSet, task, constant
+from locust import TaskSet, task
 
 from .utils import parse_params_from_location
 from .questionnaire_mixins import QuestionnaireMixins
@@ -14,12 +14,10 @@ r = random.Random()
 
 
 class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
-    wait_time = constant(0)
-
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.base_url = self.locust.client.base_url
+        self.base_url = self.client.base_url
         self.redirect_params = {}
 
         requests_filepath = os.environ.get('REQUESTS_JSON', 'requests.json')
