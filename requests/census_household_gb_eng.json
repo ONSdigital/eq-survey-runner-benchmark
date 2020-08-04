@@ -2,32 +2,32 @@
     "requests": [
         {
             "method": "GET",
-            "url": "/questionnaire/who-lives-here-interstitial/"
+            "url": "/questionnaire/people-who-live-here-introduction/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/who-lives-here-interstitial/",
+            "url": "/questionnaire/people-who-live-here-introduction/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/primary-person-list-collector/"
+            "url": "/questionnaire/do-you-usually-live-here/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/primary-person-list-collector/",
+            "url": "/questionnaire/do-you-usually-live-here/",
             "data": {
-                "you-live-here-answer": "Yes, I usually live here"
+                "do-you-usually-live-here-answer": "Yes, I usually live here"
             },
-            "redirect_route": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+            "redirect_route": "/questionnaire/household/{person_1_list_id}/what-is-your-name/"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/"
+            "url": "/questionnaire/household/{person_1_list_id}/what-is-your-name/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/{person_1_list_id}/add-or-edit-primary-person/",
+            "url": "/questionnaire/household/{person_1_list_id}/what-is-your-name/",
             "data": {
                 "first-name": "Joe",
                 "middle-names": "",
@@ -36,9 +36,9 @@
         },
         {
             "method": "POST",
-            "url": "/questionnaire/anyone-else-driving-question/",
+            "url": "/questionnaire/who-else-lives-here/",
             "data": {
-                "anyone-else-driving-question-answer": "Family members and partners"
+                "who-else-lives-here-answer": "Family members and partners"
             }
         },
         {
@@ -56,24 +56,24 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/anyone-else-list-collector/"
+            "url": "/questionnaire/people-living-here/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/anyone-else-list-collector/",
+            "url": "/questionnaire/people-living-here/",
             "data": {
                 "anyone-else-answer": "No, I do not need to add anyone"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/anyone-else-temp-away-list-collector/"
+            "url": "/questionnaire/any-more-people-living-here/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/anyone-else-temp-away-list-collector/",
+            "url": "/questionnaire/any-more-people-living-here/",
             "data": {
-                "anyone-else-temp-away-answer": "No, I do not need to add anyone"
+                "any-more-people-living-here-answer": "No, I do not need to add anyone"
             }
         },
         {
@@ -101,31 +101,31 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitor-list-collector/"
+            "url": "/questionnaire/any-more-visitors/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitor-list-collector/",
+            "url": "/questionnaire/any-more-visitors/",
             "data": {
                 "visitor-answer": "No, I do not need to add anyone"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/who-lives-here-section/"
+            "url": "/questionnaire/sections/people-who-live-here-and-overnight-visitors/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sections/who-lives-here-section/",
+            "url": "/questionnaire/sections/people-who-live-here-and-overnight-visitors/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/relationships-interstitial/"
+            "url": "/questionnaire/relationships-introduction/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/relationships-interstitial/",
+            "url": "/questionnaire/relationships-introduction/",
             "data": {}
         },
         {
@@ -186,13 +186,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/self-contained/"
+            "url": "/questionnaire/rooms-shared-with-another-household/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/self-contained/",
+            "url": "/questionnaire/rooms-shared-with-another-household/",
             "data": {
-                "self-contained-answer": "Yes"
+                "rooms-shared-with-another-household-answer": "Yes"
             }
         },
         {
