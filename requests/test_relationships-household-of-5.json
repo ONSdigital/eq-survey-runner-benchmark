@@ -1,0 +1,329 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/add-person/",
+            "data": {
+                "first-name": "Person 1",
+                "last-name": "Person 1"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/add-person/",
+            "data": {
+                "first-name": "Person 2",
+                "last-name": "Person 2"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/add-person/",
+            "data": {
+                "first-name": "Person 3",
+                "last-name": "Person 3"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/add-person/",
+            "data": {
+                "first-name": "Person 4",
+                "last-name": "Person 4"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/add-person/",
+            "data": {
+                "first-name": "Person 5",
+                "last-name": "Person 5"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "No"
+            }
+        },
+         {
+            "method": "GET",
+            "url": "/questionnaire/relationships/",
+            "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/",
+            "data": {
+                "relationship-answer": "Husband or Wife"
+            },
+            "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_3_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_3_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_3_list_id}/",
+            "data": {
+                "relationship-answer": "Son or daughter"
+            },
+            "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_4_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_4_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_4_list_id}/",
+            "data": {
+                "relationship-answer": "Son or daughter"
+            },
+            "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_5_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_5_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_5_list_id}/",
+            "data": {
+                "relationship-answer": "Son or daughter"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_2_list_id}/to/{person_3_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_2_list_id}/to/{person_3_list_id}/",
+            "data": {
+                "relationship-answer": "Son or daughter"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_2_list_id}/to/{person_4_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_2_list_id}/to/{person_4_list_id}/",
+            "data": {
+                "relationship-answer": "Son or daughter"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_2_list_id}/to/{person_5_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_2_list_id}/to/{person_5_list_id}/",
+            "data": {
+                "relationship-answer": "Son or daughter"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_3_list_id}/to/{person_4_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_3_list_id}/to/{person_4_list_id}/",
+            "data": {
+                "relationship-answer": "Brother or sister"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_3_list_id}/to/{person_5_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_3_list_id}/to/{person_5_list_id}/",
+            "data": {
+                "relationship-answer": "Brother or sister"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationships/{person_4_list_id}/to/{person_5_list_id}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationships/{person_4_list_id}/to/{person_5_list_id}/",
+            "data": {
+                "relationship-answer": "Brother or sister"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/relationship-interstitial/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/relationship-interstitial/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_5_list_id}/remove-person/?return_to=section-summary"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_5_list_id}/remove-person/?return_to=section-summary",
+            "data": {
+                "remove-confirmation": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_4_list_id}/remove-person/?return_to=section-summary"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_4_list_id}/remove-person/?return_to=section-summary",
+            "data": {
+                "remove-confirmation": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_3_list_id}/remove-person/?return_to=section-summary"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_3_list_id}/remove-person/?return_to=section-summary",
+            "data": {
+                "remove-confirmation": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/section/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "test_relationships"
+}
