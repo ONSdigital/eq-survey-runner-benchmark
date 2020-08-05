@@ -43,11 +43,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/household/add-person/"
+            "url": "/questionnaire/household/people-living-here-add-person/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/household/add-person/",
+            "url": "/questionnaire/household/people-living-here-add-person/",
             "data": {
                 "first-name": "Silvia",
                 "middle-names": "",
@@ -62,7 +62,7 @@
             "method": "POST",
             "url": "/questionnaire/people-living-here/",
             "data": {
-                "anyone-else-answer": "No, I do not need to add anyone"
+                "people-living-here-answer": "No, I do not need to add anyone"
             }
         },
         {
@@ -89,11 +89,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/visitors/add-visitor/?previous=any-visitors"
+            "url": "/questionnaire/visitors/any-more-visitors-add-visitor/?previous=any-visitors"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/visitors/add-visitor/?previous=any-visitors",
+            "url": "/questionnaire/visitors/any-more-visitors-add-visitor/?previous=any-visitors",
             "data": {
                 "first-name": "Sarah",
                 "last-name": "Bloggs"
@@ -107,7 +107,7 @@
             "method": "POST",
             "url": "/questionnaire/any-more-visitors/",
             "data": {
-                "visitor-answer": "No, I do not need to add anyone"
+                "any-more-visitors-answer": "No, I do not need to add anyone"
             }
         },
         {
