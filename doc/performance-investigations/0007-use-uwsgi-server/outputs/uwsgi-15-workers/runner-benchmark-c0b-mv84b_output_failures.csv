@@ -1,0 +1,3 @@
+Method,Name,Error,Occurrences
+POST,/questionnaire/self-contained/,"Expected a (302) but got a (502) back when posting page: /questionnaire/self-contained/ with data: {'self-contained-answer': 'Yes', 'csrf_token': 'IjE4YWI2NTIyMTRmMjQxZjM2ZWVkOGQ0MDY2Mzg0NDZmZjQ1MmYxOGIi.Xyv9cQ.MS9D6_8YRLO2EUt2DLU1ixtR_5M'}",1
+POST,/questionnaire/visitors/{id}/visitor-date-of-birth/,"Expected a (302) but got a (502) back when posting page: /questionnaire/visitors/sCHWaX/visitor-date-of-birth/ with data: {'visitor-date-of-birth-answer-day': '1', 'visitor-date-of-birth-answer-month': '1', 'visitor-date-of-birth-answer-year': '2000', 'csrf_token': 'IjcxNzk0N2NjZWY5ZTcxYmM1Mzk2MzkxYzEzNDNhOTA0YjE4YTU0ZjAi.Xyv90w.dN0lXP1XtGNhVfI-gZ3NsCkKAf4'}",1
