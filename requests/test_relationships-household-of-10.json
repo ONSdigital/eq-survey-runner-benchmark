@@ -585,13 +585,6 @@
             }
         },
         {
-            "method": "POST",
-            "url": "/questionnaire/relationships/{person_4_list_id}/to/{person_30_list_id}/",
-            "data": {
-                "relationship-answer": "Brother or sister"
-            }
-        },
-        {
             "method": "GET",
             "url": "/questionnaire/relationships/{person_5_list_id}/to/{person_6_list_id}/"
         },
