@@ -12,8 +12,8 @@ class BenchmarkStats:
 
         self.get_requests: List[int] = []
         self.post_requests: List[int] = []
-        self.total_get_requests = 0
-        self.total_post_requests = 0
+        self.total_get_requests: int = 0
+        self.total_post_requests: int = 0
         self.total_requests: int = 0
         self.total_failures: int = 0
         self._process_file_data()
