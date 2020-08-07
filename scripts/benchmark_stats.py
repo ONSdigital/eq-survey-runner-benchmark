@@ -32,16 +32,16 @@ class BenchmarkStats:
         for file in self.files:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
-                    percentile_99_9th = int(row["99.9%"])
+                    percentile_99th = int(row["99%"])
                     request_count = int(row.get("Request Count") or row.get("# requests"))
 
                     if "/questionnaire" in row['Name']:
                         if row["Type"] == "GET":
-                            self.get_requests.append(percentile_99_9th * request_count)
+                            self.get_requests.append(percentile_99th * request_count)
                             self.total_get_requests += request_count
                         elif row["Type"] == "POST":
                             self.total_post_requests += request_count
-                            self.post_requests.append(percentile_99_9th * request_count)
+                            self.post_requests.append(percentile_99th * request_count)
 
                     if row["Name"] == "Aggregated":
                         failure_count = row.get("Failure Count") or row.get("# failures")
