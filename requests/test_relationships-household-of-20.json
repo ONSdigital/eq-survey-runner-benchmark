@@ -1974,7 +1974,7 @@
             "data": {
                 "relationship-answer": "Brother or sister"
             }
-        }
+        },
         {
             "method": "GET",
             "url": "/questionnaire/relationships/{person_10_list_id}/to/{person_11_list_id}/"
