@@ -12,6 +12,8 @@ class BenchmarkStats:
 
         self.get_requests: List[int] = []
         self.post_requests: List[int] = []
+        self.total_get_requests = 0
+        self.total_post_requests = 0
         self.total_requests: int = 0
         self.total_failures: int = 0
         self._process_file_data()
@@ -30,17 +32,20 @@ class BenchmarkStats:
         for file in self.files:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
-                    percentile_99th = int(row["99%"])
+                    percentile_99_9th = int(row["99.9%"])
+                    request_count = int(row.get("Request Count") or row.get("# requests"))
+
                     if "/questionnaire" in row['Name']:
                         if row["Type"] == "GET":
-                            self.get_requests.append(percentile_99th)
+                            self.get_requests.append(percentile_99_9th * request_count)
+                            self.total_get_requests += request_count
                         elif row["Type"] == "POST":
-                            self.post_requests.append(percentile_99th)
+                            self.total_post_requests += request_count
+                            self.post_requests.append(percentile_99_9th * request_count)
 
                     if row["Name"] == "Aggregated":
-                        request_count = row.get("Request Count") or row.get("# requests")
                         failure_count = row.get("Failure Count") or row.get("# failures")
-                        self.total_requests += int(request_count)
+                        self.total_requests += request_count
                         self.total_failures += int(failure_count)
 
     @property
@@ -49,15 +54,15 @@ class BenchmarkStats:
 
     @property
     def average_get(self):
-        return mean(self.get_requests)
+        return sum(self.get_requests)/self.total_get_requests
 
     @property
     def average_post(self):
-        return mean(self.post_requests)
+        return sum(self.post_requests)/self.total_post_requests
 
     @property
     def average_total(self):
-        return mean(self.get_requests + self.post_requests)
+        return sum(self.post_requests + self.get_requests)/(self.total_post_requests + self.total_get_requests)
 
     @property
     def error_percentage(self):
