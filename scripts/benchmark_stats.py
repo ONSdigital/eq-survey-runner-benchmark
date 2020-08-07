@@ -1,6 +1,5 @@
 from csv import DictReader
 from glob import glob
-from statistics import mean
 from typing import List
 
 
