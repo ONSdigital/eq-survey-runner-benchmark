@@ -9,8 +9,8 @@ class BenchmarkStats:
         for folder_path in folder_paths:
             self._files.extend(glob(f"{folder_path}/*stats.csv"))
 
-        self.get_requests: List[int] = []
-        self.post_requests: List[int] = []
+        self.weighted_get_requests: List[int] = []
+        self.weighted_post_requests: List[int] = []
         self.total_get_requests: int = 0
         self.total_post_requests: int = 0
         self.total_requests: int = 0
@@ -36,10 +36,10 @@ class BenchmarkStats:
 
                     if "/questionnaire" in row['Name']:
                         if row["Type"] == "GET":
-                            self.get_requests.append(percentile_99th * request_count)
+                            self.weighted_get_requests.append(percentile_99th * request_count)
                             self.total_get_requests += request_count
                         elif row["Type"] == "POST":
-                            self.total_post_requests += request_count
+                            self.weighted_post_requests += request_count
                             self.post_requests.append(percentile_99th * request_count)
 
                     if row["Name"] == "Aggregated":
@@ -52,16 +52,16 @@ class BenchmarkStats:
         return self._files
 
     @property
-    def average_get(self):
-        return sum(self.get_requests)/self.total_get_requests
+    def average_weighted_get(self):
+        return sum(self.weighted_get_requests) / self.total_get_requests
 
     @property
-    def average_post(self):
-        return sum(self.post_requests)/self.total_post_requests
+    def average_weighted_post(self):
+        return sum(self.weighted_post_requests) / self.total_post_requests
 
     @property
-    def average_total(self):
-        return sum(self.post_requests + self.get_requests)/(self.total_post_requests + self.total_get_requests)
+    def average_weighted_total(self):
+        return sum(self.weighted_get_requests + self.weighted_post_requests) / (self.total_post_requests + self.total_get_requests)
 
     @property
     def error_percentage(self):
