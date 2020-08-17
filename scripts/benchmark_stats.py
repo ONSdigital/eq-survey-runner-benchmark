@@ -59,7 +59,7 @@ class BenchmarkStats:
 
     @property
     def average_weighted_total(self):
-        return sum(self.weighted_get_requests + self.weighted_post_requests) / self.total_post_requests
+        return sum(self.weighted_get_requests + self.weighted_post_requests) / self.total_requests
 
     @property
     def error_percentage(self):
