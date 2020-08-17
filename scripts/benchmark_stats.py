@@ -43,7 +43,7 @@ class BenchmarkStats:
                     elif row["Name"] == "Aggregated":
                         failure_count = row.get("Failure Count") or row.get("# failures")
                         self._total_failures = int(failure_count)
-                        self._total_requests = int(request_count)
+                        self._total_requests = request_count
 
     @property
     def files(self) -> List[str]:
