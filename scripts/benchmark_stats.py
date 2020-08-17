@@ -21,7 +21,7 @@ class BenchmarkStats:
             f'Questionnaire GETs average: {int(self.average_weighted_get)}ms\n'
             f'Questionnaire POSTs average: {int(self.average_weighted_post)}ms\n'
             f'All requests average: {int(self.average_weighted_total)}ms\n'
-            f'Total Requests: {int(self.total_requests):,}\n'
+            f'Total Questionnaire Requests: {int(self.total_requests):,}\n'
             f'Total Failures: {int(self.total_failures):,}\n'
             f'Error Percentage: {(round(self.error_percentage, 2))}%\n'
         )
