@@ -5,7 +5,8 @@ from typing import List
 
 from scripts.benchmark_stats import BenchmarkStats
 
-def get_results(folders: List[str]) -> List:
+
+def get_results(folders: List[str]) -> BenchmarkStats:
     return BenchmarkStats(folders)
 
 
