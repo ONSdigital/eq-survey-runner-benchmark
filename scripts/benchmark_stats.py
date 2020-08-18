@@ -31,18 +31,24 @@ class BenchmarkStats:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
                     percentile_99th = int(row["99%"])
-                    request_count = int(row.get("Request Count") or row.get("# requests"))
+                    request_count = int(
+                        row.get("Request Count") or row.get("# requests")
+                    )
 
                     if "/questionnaire" in row['Name']:
                         if row["Type"] == "GET":
-                            self.weighted_get_requests.append(percentile_99th * request_count)
+                            self.weighted_get_requests.append(
+                                percentile_99th * request_count
+                            )
                             self.total_get_requests += request_count
                         elif row["Type"] == "POST":
                             self.weighted_post_requests.append(percentile_99th * request_count)
                             self.total_post_requests += request_count
 
                     if row["Name"] == "Aggregated":
-                        failure_count = row.get("Failure Count") or row.get("# failures")
+                        failure_count = row.get("Failure Count") or row.get(
+                            "# failures"
+                        )
                         self.total_failures += int(failure_count)
 
     @property
@@ -59,7 +65,10 @@ class BenchmarkStats:
 
     @property
     def average_weighted_total(self):
-        return sum(self.weighted_get_requests + self.weighted_post_requests) / self.total_post_requests
+        return (
+            sum(self.weighted_get_requests + self.weighted_post_requests)
+            / self.total_post_requests
+        )
 
     @property
     def error_percentage(self):
