@@ -42,7 +42,9 @@ class BenchmarkStats:
                             )
                             self.total_get_requests += request_count
                         elif row["Type"] == "POST":
-                            self.weighted_post_requests.append(percentile_99th * request_count)
+                            self.weighted_post_requests.append(
+                                percentile_99th * request_count
+                            )
                             self.total_post_requests += request_count
 
                     if row["Name"] == "Aggregated":
