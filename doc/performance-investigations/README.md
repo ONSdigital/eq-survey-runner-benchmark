@@ -37,7 +37,7 @@ You can use the [get_summary.py](/scripts/get_summary.py) or [get_aggregated_sum
 The expected folder structure is:
 ```
 outputs-folder/
-  category-folder/
+  named-folder/
     dated-folder/
       output-stats.csv
 ```
