@@ -1,0 +1,3 @@
+Method,Name,Error,Occurrences
+POST,/questionnaire/,Expected a (302) but got a (502) back when posting page: /questionnaire/ with data: {'csrf_token': 'ImZiYTIyYzkyMjA3NGZhMDI2OWNjMWVlZGYxNzY3OThmZWI2OTYzNjEi.Xyu7Jw.z4ARaxxZwGWA3Xf0aSCt7GWLwtA'},1
+POST,/questionnaire/household/{id}/white-ethnic-group/,"Expected a (302) but got a (502) back when posting page: /questionnaire/household/MhLrTO/white-ethnic-group/ with data: {'white-ethnic-group-answer': 'English, Welsh, Scottish, Northern Irish or British', 'white-ethnic-group-answer-other': '', 'csrf_token': 'IjhlYjE0MWE0MWZiNjVjYjc1OGEyMTk2Njk3MmQzMmZjYWU4Yzc1ZWEi.Xyu7tQ.5JqDV8YSSUmng4WUWczZXbNqV-Y'}",1
