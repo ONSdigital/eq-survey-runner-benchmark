@@ -1,15 +1,15 @@
-from datetime import datetime, timedelta
-from glob import glob
 import os
 import sys
-from typing import List, NamedTuple
+from datetime import datetime, timedelta
+from glob import glob
+from typing import NamedTuple
 
 from scripts.benchmark_stats import BenchmarkStats
 
 
 class Result(NamedTuple):
     date: str
-    statistics: List[str]
+    statistics: BenchmarkStats
 
     def __str__(self):
         return f"{self.date}\n{self.statistics}\n"

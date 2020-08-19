@@ -1,4 +1,3 @@
-import os
 from glob import glob
 
 import matplotlib.pyplot as plt
@@ -7,11 +6,11 @@ from pandas import DataFrame
 from scripts.get_summary import get_results, parse_environment_variables
 
 
-def plot_data(df):
+def plot_data(df, number_of_days_to_plot):
     plt.style.use('seaborn-poster')
 
     if (
-        0 < int(os.getenv("NUMBER_OF_DAYS", 0)) <= 45
+        number_of_days_to_plot and number_of_days_to_plot <= 45
     ):  # To make the chart still easily digestible
         df.plot.line(marker="o", markersize=8)
         plt.grid(True, axis="both", alpha=0.3)
@@ -23,17 +22,18 @@ def plot_data(df):
     plt.xticks(df.index, df["DATE"], size="small", rotation=90)
     plt.yticks(size="small")
     plt.ylabel("Average Response Time (ms)")
-    plt.xlabel("Run Date (DD-MM)")
+    plt.xlabel("Run Date (YYYY-MM-DD)", labelpad=13)
 
-    plt.savefig('performance_graph.png')
+    plt.savefig('performance_graph.png', bbox_inches="tight")
     print("Graph saved as performance_graph.png")
 
 
 if __name__ == '__main__':
     parsed_variables = parse_environment_variables()
+    number_of_days = parsed_variables['number_of_days']
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
-    results = get_results(folders, parsed_variables['number_of_days'])
+    results = get_results(folders, number_of_days)
     result_fields = [
         [
             result[0],
@@ -46,4 +46,4 @@ if __name__ == '__main__':
 
     data_frame = DataFrame(result_fields, columns=["DATE", "GET", "POST", "AVERAGE"])
 
-    plot_data(data_frame)
+    plot_data(data_frame, number_of_days)
