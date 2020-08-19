@@ -54,7 +54,7 @@ def parse_environment_variables():
 if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
     date_to_output = parsed_variables["output_date"]
-    sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
+    sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"), reverse=True)
     results = get_results(sorted_folders)
 
     for result in results:

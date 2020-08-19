@@ -37,9 +37,9 @@ if __name__ == '__main__':
     result_fields = [
         [
             result[0],
-            result[1].average_get,
-            result[1].average_post,
-            result[1].average_total,
+            result[1].average_weighted_get,
+            result[1].average_weighted_post,
+            result[1].average_weighted_total,
         ]
         for result in results
     ]
