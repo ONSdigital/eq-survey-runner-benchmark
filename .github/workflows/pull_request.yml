@@ -1,9 +1,33 @@
 name: PR
 
 on:
-  pull_request
+  pull_request:
+    branches:
+      - master
 
 jobs:
+  lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "::set-env name=PYTHON_VERSION::$(cat .python-version)"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install Pipenv
+        run: pip install pipenv==2018.11.26
+      - name: Cache virtualenv
+        id: cache-virtualenv
+        uses: actions/cache@v1
+        with:
+          path: ~/.local/share/virtualenvs/
+          key: ${{ runner.os }}-${{ env.PYTHON_VERSION }}-virtualenvs-${{ hashFiles('Pipfile.lock') }}
+      - name: Install virtual environment
+        if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+        run: pipenv install --dev
+      - name: Lint scripts
+        run: make lint
   docker-push:
     runs-on: ubuntu-18.04
     steps:
