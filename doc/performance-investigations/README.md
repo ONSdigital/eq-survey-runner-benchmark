@@ -32,18 +32,43 @@ More in-depth configuration is explained in the top-level [Readme](/README.md).
 
 ## Extracting performance metrics from CSVs
 
-You can use the `extract_stats_summary.py` script to extract high level metrics from the Locust distributions CSV:
+You can use the [get_summary.py](/scripts/get_summary.py) or [get_aggregated_summary.py](/scripts/get_aggregated_summary.py) script to extract high level metrics from the Locust distributions CSV.
+
+The expected folder structure is:
+```
+outputs-folder/
+  named-folder/
+    dated-folder/
+      output-stats.csv
+```
+For example:
+```
+outputs/
+  baseline/
+    2020-01-01T00:00:00/
+      output-stats.csv
+```
+
+To get a summary for each dated folder, run the following:
+```
+OUTPUT_DIR=outputs/baseline pipenv run python -m scripts.get_summary 
+```
+
+To get an aggregated summary for all dated folders, run the following:
+```
+OUTPUT_DIR=outputs/baseline pipenv run python -m scripts.get_aggregated_summary
+```
+
+
+Example output:
 
 ```
-python scripts/extract_stats_summary.py < baseline_stats.csv
-```
-
-Will output something like:
-
-```
-Questionnaire GETs average: 220ms
-Questionnaire POSTs average: 256ms
-All requests average: 320ms
+GETs average: 116ms
+POSTs average: 146ms
+All requests average: 131ms
+Total Requests: 204,438
+Total Failures: 0
+Error Percentage: 0.0%
 ```
 
 ## Proposed investigations
