@@ -1,0 +1,9 @@
+{
+  "requests_json": "requests/census_household_gb_eng.json",
+  "host": "https://andrew-test-runner.gcp.dev.eq.ons.digital",
+  "timestamp": "1596718903",
+  "min_wait": "1",
+  "max_wait": "2",
+  "locust_options": "--headless --users 64 --hatch-rate 64 --run-time 10m --csv=output -L WARNING",
+  "runner_version": ""
+}
