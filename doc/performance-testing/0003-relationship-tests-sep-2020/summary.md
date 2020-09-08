@@ -9,14 +9,14 @@ Using request file test_relationships.json and 2 new GCP instances built from ou
 
 As a calibration excise, the new GCP instances were compared to the daily benchmark using census_household_gb_eng.json over 20 minutes.
 
-Latest Daily Performance Metrics (6th September 2020, taken from Slack)
+**Latest Daily Performance Metrics (6th September 2020, taken from Slack)**
 
 GETs average: 100ms
 POSTs average: 125ms
 All requests average: 112ms
 
 
-New instance
+**New instance**
 
 GETs average: 100ms
 POSTs average: 121ms
