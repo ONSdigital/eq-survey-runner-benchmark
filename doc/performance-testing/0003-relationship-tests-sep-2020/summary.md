@@ -5,7 +5,7 @@ To test the effect of relationship performance (response time), when increasing 
 
 ## Test conditions
 
-Using request file test_relationships.json and 2 new GCP instances built from our [pipeline repo](https://github.com/ONSdigital/eq-pipelines) ([daily test load injector](https://github.com/ONSdigital/eq-pipelines/tree/master/performance-testing/daily-test) and [development test environment](https://github.com/ONSdigital/eq-pipelines/tree/master/development/test)), household members were added using the list collector, relationships questions then answered, before being removed and the questionnaire submitted.
+Using request file test_relationships.json and 2 new GCP instances built from our [pipeline repo](https://github.com/ONSdigital/eq-pipelines) ([daily test load injector](https://github.com/ONSdigital/eq-pipelines/tree/master/performance-testing/daily-test) and [development test environment](https://github.com/ONSdigital/eq-pipelines/tree/master/development/test)), household members were added using the list collector, relationship questions then answered, before being removed and the questionnaire submitted.
 
 As a calibration excise, the new GCP instances were compared to the daily benchmark using census_household_gb_eng.json over 20 minutes.
 
@@ -36,7 +36,6 @@ This confirmed that the new instance and load injector were configured and perfo
 | Requests JSON | test_relationships.json |
 | Runtime | 20m |
 | last commit | [783f102e6fbeab11fbc221e9800143e2340ee09c](https://github.com/ONSdigital/eq-questionnaire-runner/commit/783f102e6fbeab11fbc221e9800143e2340ee09c)
-
 
 ## Results
 
