@@ -19,11 +19,12 @@ Branch used: https://github.com/ONSdigital/eq-questionnaire-runner/tree/performa
 
 Results based on average timings.
 
-| Metric              | baseline | gthread & grpc |
-| ------------------- | -------- | -------------- |
-| Questionnaire GETs  | 111ms    | 87ms           |
-| Questionnaire POSTs | 109ms    | 132ms          |
-| All requests        | 110ms    | 116ms          |
+| Metric              | baseline | gthread & grpc | gthread |
+| ------------------- | -------- | -------------- | ------- |
+| Questionnaire GETs  | 111ms    | 87ms           | 133ms   |
+| Questionnaire POSTs | 109ms    | 132ms          | 128ms   |
+| All requests        | 110ms    | 116ms          | 131ms   |
+
 
 ## Discussion
 
