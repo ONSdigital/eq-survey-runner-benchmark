@@ -19,11 +19,11 @@ Branch used: https://github.com/ONSdigital/eq-questionnaire-runner/tree/performa
 
 Results based on average timings.
 
-| Metric              | gthread & grpc |
-| ------------------- | -------------- |
-| Questionnaire GETs  | 87ms           |
-| Questionnaire POSTs | 132ms          |
-| All requests        | 116ms          |
+| Metric              | baseline | gthread & grpc |
+| ------------------- | -------- | -------------- |
+| Questionnaire GETs  | 111ms    | 87ms           |
+| Questionnaire POSTs | 109ms    | 132ms          |
+| All requests        | 110ms    | 116ms          |
 
 ## Discussion
 
@@ -32,6 +32,5 @@ The results show very little difference between the `gevent` and `gthread` worke
 ## Decision
 
 1. The eq-questionnaire-runner web server, worker type, and worker threads variables should be made configurable via Concourse pipeline deployment and Helm charts.
-
 1. Further testing of `gthread` and `grpc` should be undertaken, though under a substantially increased load.
 1. The use of Datastore instead of Redis should be investigated, especially since the use og gRPC is possible using the `gthread` worker type.
