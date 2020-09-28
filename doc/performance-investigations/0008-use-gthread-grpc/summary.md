@@ -21,6 +21,7 @@ Branch used: https://github.com/ONSdigital/eq-questionnaire-runner/tree/performa
 | User wait time maximum | 2                            |
 | Clients                | 64                           |
 | Hatch rate             | 64                           |
+| Worker Threads         | 10                           |
 
 ## Results
 
