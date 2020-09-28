@@ -491,10 +491,9 @@
             "method": "POST",
             "url": "/questionnaire/workplace-address/",
             "data": {
-                "workplace-address-answer-building": "Office For National Statistics",
-                "workplace-address-answer-street": "Cardiff Road",
-                "workplace-address-answer-city": "Newport",
-                "workplace-address-answer-county": "Gwent",
+                "workplace-address-answer-line1": "Office For National Statistics",
+                "workplace-address-answer-line2": "Cardiff Road",
+                "workplace-address-answer-town": "Newport",
                 "workplace-address-answer-postcode": "NP10 8XG"
             }
         },
