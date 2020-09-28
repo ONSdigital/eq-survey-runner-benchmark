@@ -1,6 +1,6 @@
 # Title
 
-Gevent is currently in experimental status within the Google client libraries; the impact of switching to gthread as a gunicorn worker type has been investigated, as this is formally supported. Additionally, the gRPC protocal as an alternative to http has been investigated. This cannot currently be used with the gevent worker type.
+Gevent is currently in experimental status within the Google client libraries; the impact of switching to gthread as a gunicorn worker type has been investigated, as this is formally supported. Additionally, the gRPC protocol as an alternative to HTTP for Datastore has been investigated. This cannot currently be used with the gevent worker type.
 
 Branch used: https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investigation-gthread-grpc
 
