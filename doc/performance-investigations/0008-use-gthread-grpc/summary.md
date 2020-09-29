@@ -7,7 +7,6 @@ This investigation examines the feasibility of switching the gunicorn worker typ
 1. gRPC is not interoperable with the gevent worker type.
 1. PubSub does not support HTTP.
 
-Given the above, full interoperability with the Google Cloud Platform services via gRPC should be possible when using a combination of gthread as a gunicorn worker type with gRPC as the transport protocol. What remains to be seen is whether there is an impact (either positive or negative) on performance benchmarks.
 
 Branch used: https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investigation-gthread-grpc
 
