@@ -2,7 +2,7 @@
 
 This investigation examines the feasibility of switching the gunicorn worker type from gevent to gthread, and the use of the gRPC protocol over HTTP when calling Datastore. There are a number of reasons for this investigation:
 
-1. gevent is currently in experimental status within the Google client libraries.
+1. gevent is currently in experimental status within the Google gRPC client libraries.
 1. gthread is fully supported by the Google cloud client libraries.
 1. gRPC is not interoperable with the gevent worker type.
 1. PubSub does not support HTTP.
