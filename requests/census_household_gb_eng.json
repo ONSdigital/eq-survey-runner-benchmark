@@ -1168,11 +1168,10 @@
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/workplace-address/",
             "data": {
-                "workplace-address-answer-building": "",
-                "workplace-address-answer-street": "",
-                "workplace-address-answer-city": "",
-                "workplace-address-answer-county": "",
-                "workplace-address-answer-postcode": ""
+                "workplace-address-answer-line1": "Office For National Statistics",
+                "workplace-address-answer-line2": "Cardiff Road",
+                "workplace-address-answer-town": "Newport",
+                "workplace-address-answer-postcode": "NP10 8XG"
             }
         },
         {
@@ -1238,10 +1237,9 @@
             "method": "POST",
             "url": "/questionnaire/visitors/{visitor_1_id}/visitor-usual-address-details/",
             "data": {
-                "visitor-usual-address-details-answer-building": "",
-                "visitor-usual-address-details-answer-street": "",
-                "visitor-usual-address-details-answer-city": "",
-                "visitor-usual-address-details-answer-county": "",
+                "visitor-usual-address-details-answer-line1": "Office For National Statistics",
+                "visitor-usual-address-details-answer-line2": "",
+                "visitor-usual-address-details-answer-town": "",
                 "visitor-usual-address-details-answer-postcode": ""
             }
         },
