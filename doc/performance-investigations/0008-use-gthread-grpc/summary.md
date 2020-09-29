@@ -5,7 +5,7 @@ This investigation examines the feasibility of switching the gunicorn worker typ
 1. gevent is currently in experimental status within the Google gRPC client libraries.
 1. gthread is fully supported by the Google cloud client libraries.
 1. gRPC is not interoperable with the gevent worker type.
-1. PubSub does not support HTTP.
+1. The Python PubSub library does not support HTTP and only works over gRPC.
 
 
 Branch used: https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investigation-gthread-grpc
