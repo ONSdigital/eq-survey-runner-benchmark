@@ -34,7 +34,7 @@ Results based on average timings.
 
 ## Discussion
 
-Response times under gthread (without gRPC) increased for both GET and POST requests however, With gthread & gRPC results show a 24% decrease in GET request response times. Although promising it was offset by a rise in POST request response times of 26%. Errors remained at 0 for both the gthread and the gthread & gRPC scenarios.
+The benchmark performance under gthread and gRPC are good enough to warrant further investigation. Response times increased under gthread (without gRPC) for both GET and POST requests by 20% over the baseline. Enabling gRPC however improved GET request response times by 24%, offset by an increase in POST request response times of 26%. As most requests in runner are a combination of a POST and then a GET, this should make little difference in real-world usage. Errors remained at 0 for both the gthread and the gthread & gRPC scenarios.
 
 ## Decision
 
