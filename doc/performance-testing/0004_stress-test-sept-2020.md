@@ -1,5 +1,7 @@
 # Scale Test September 2020
 
+An initial september 2020 scale test was carried out against Runner v3.48.0 with eq-session in a 36GB Redis instance
+
 ## Benchmark settings
 
 | Setting | Value |
@@ -33,7 +35,7 @@
 - There were a total of 105 failures as reported by Locust across all requests (232,232,087)
 - The number of Locust failures (105) correlates with the errors we see in the load balancer and application logs and are detailed below
 - 500 x 105 errors reported by load_balancer as `statusDetails: "response_sent_by_backend"`
-- 500 errors x 92 reported by the load balancer and application logs
+- 500 errors x 92 reported by the application logs
         
         77: "  File '/usr/local/lib/python3.8/site-packages/google/cloud/datastore/_http.py', line 70, in _request"
         78: "    response = http.request(url=api_url, method='POST', headers=headers, data=data)"
@@ -51,16 +53,17 @@
 
 ## Observations
 
-- The run of 120 load injector instances saw no increase in response times
-- The average submission rate in the 120 instances test was X responses per second, which is 540,000 responses per hour (assuming requests remain stable over an hour)
-- 37,000 rps with 802 used vCPU. This equates to 15.44 rps per core (as a GCP resource where the 4th core is effectively unusable). The test achieved 46 rps per core from the 802 vCPU being utilised at 37,000 rps
-- 2396 requested vCPU
-- 599 nodes
-- 802 used cores
+- The run of 120 load injector instances saw no significant increase in response times
+- At 37k rps Redis CPU reached 91% and allowed Runner to scale to 599 instances (past June scale test of 523 Runner instances). Increasing the Redis instance from 4GB TO 36GB saw ~15% improvement in Redis CPU consumption
+- The average submission rate for our benchmark journey in the 120 instances test was 150 responses per second, which is 540,000 responses per hour (assuming requests remain stable over an hour)
+- 37,000 rps saw 802 used vCPU. This equates to 15.44 rps per core (as a GCP resource where the 4th core is effectively unusable). The test achieved 46 rps per core from the 802 vCPU being utilised at 37,000 rps
+- 2396 requested vCPU in total
+- 599 VM nodes
 
 ## Recommendations
 
-- Runner is only utilising 45% of requested available vCPU. Test different configurations and investigate other WSGI or event loop architectures
-- Redis memorystore is 91% CPU, test with eq-session in Datastore over GRPC
+- Runner is only utilising 45% of requested available vCPU. Test different configurations and web server architectures.
+- Redis memorystore is 91% CPU, test with eq-session in Datastore (over GRPC/HTTP)
 - Tune and retest the Kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
 - Update summary script to aggregate 100% reponse times
+- Add stackdriver alerts for resources (e.g. vCPU / Nodes)
