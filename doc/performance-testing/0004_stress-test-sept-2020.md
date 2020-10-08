@@ -32,7 +32,7 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 
 ## Errors and Failures
 
-- There were a total of 105 failures as reported by Locust across all requests (232,232,087)
+- There were 105 failures as reported by Locust across 232,232,087 requests
 - The number of Locust failures (105) correlates with the errors we see in the load balancer and application logs and are detailed below
 - HTTP 500 errors (105) reported by load_balancer as `statusDetails: "response_sent_by_backend"`
 - HTTP 500 errors (92) reported by the application logs:
