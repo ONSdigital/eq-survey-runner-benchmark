@@ -35,7 +35,7 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 - There were a total of 105 failures as reported by Locust across all requests (232,232,087)
 - The number of Locust failures (105) correlates with the errors we see in the load balancer and application logs and are detailed below
 - HTTP 500 errors (105) reported by load_balancer as `statusDetails: "response_sent_by_backend"`
-- 500 errors x 92 reported by the application logs
+- HTTP 500 errors (92) reported by the application logs:
         
         77: "  File '/usr/local/lib/python3.8/site-packages/google/cloud/datastore/_http.py', line 70, in _request"
         78: "    response = http.request(url=api_url, method='POST', headers=headers, data=data)"
