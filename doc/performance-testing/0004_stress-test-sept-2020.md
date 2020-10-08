@@ -25,7 +25,7 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 | 110 |34,000|750|125|0.00007|[output](https://console.cloud.google.com/storage/browser/eq-stress-test-load-injectors-benchmark-outputs/stress-test/2020-09-29T09:14:23)|
 | 120 |37,000|802|115|0.00004|[output](https://console.cloud.google.com/storage/browser/eq-stress-test-load-injectors-benchmark-outputs/stress-test/2020-09-29T09:37:14)|
 
-- 600 Runner instances limit, 1800 (2400) vCPU available (3 of 4 cores)
+- 600 Runner instances limit, 2400 vCPU available, 1800 vCPU usable (3 of 4 cores)
 - 599 Runner instances reached, 1797 (2396) vCPU requested, 802 vCPU used (45%)
 - Error rate includes any HTTP status codes in the 400 and 500 range (neither are expected)
 - The 99th percentile timings are the load balancer response times reported in Stackdriver
