@@ -57,8 +57,6 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 - At 37k rps Redis CPU reached 91% and allowed Runner to scale to 599 instances (past June scale test of 523 Runner instances). Increasing the Redis instance from 4GB TO 36GB saw ~15% improvement in Redis CPU consumption
 - The average submission rate for our benchmark journey in the 120 instances test was 150 responses per second, which is 540,000 responses per hour (assuming requests remain stable over an hour)
 - 37,000 rps saw 802 used vCPU. This equates to 15.44 rps per core (as a GCP resource where the 4th core is effectively unusable). The test achieved 46 rps per core from the 802 vCPU being utilised at 37,000 rps
-- 2396 requested vCPU in total
-- 599 VM nodes
 
 ## Recommendations
 
