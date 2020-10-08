@@ -43,7 +43,7 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
         86: "    raise ConnectionError(err, request=request)"
         87: "requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
 
-- 500 errors x 13 reported by the application logs
+- HTTP 500 errors (13) reported by the application logs:
 
         89: "  File '/usr/local/lib/python3.8/site-packages/google/cloud/datastore/_http.py', line 70, in _request"
         90: "    response = http.request(url=api_url, method='POST', headers=headers, data=data)"
