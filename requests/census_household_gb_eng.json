@@ -131,15 +131,15 @@
         {
             "method": "GET",
             "url": "/questionnaire/relationships/",
-            "redirect_route": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+            "redirect_route": "/questionnaire/relationships/household/{person_1_list_id}/to/{person_2_list_id}/"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/"
+            "url": "/questionnaire/relationships/household/{person_1_list_id}/to/{person_2_list_id}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/relationships/{person_1_list_id}/to/{person_2_list_id}/",
+            "url": "/questionnaire/relationships/household/{person_1_list_id}/to/{person_2_list_id}/",
             "data": {
                 "relationship-answer": "Husband or wife"
             }
