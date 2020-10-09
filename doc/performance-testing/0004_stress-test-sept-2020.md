@@ -57,12 +57,13 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 - At 37k rps Redis CPU reached 91% and allowed Runner to scale to 599 instances (past June scale test of 523 Runner instances). Increasing the Redis instance from 4GB TO 36GB saw ~15% improvement in Redis CPU consumption
 - The average submission rate for our benchmark journey in the 120 instances test was 150 responses per second, which is 540,000 responses per hour (assuming requests remain stable over an hour)
 - 37,000 rps at 802 used vCPU is 46 rps per core
-- 37,000 rps at 2396 vCPU is 15.44 rps per core
+- 37,000 rsp at 1797 requested vCPU is 20.58 rps per core
+- 37,000 rps at 2396 total vCPU is 15.44 rps per core
 
 ## Recommendations
 
-- Runner is only utilising 45% of requested available vCPU. Test different configurations and web server architectures.
 - Redis memorystore is 91% CPU, test with eq-session in Datastore (over GRPC/HTTP)
 - Tune and retest the Kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
 - Update summary script to aggregate 100% reponse times
 - Add stackdriver alerts for resources (e.g. vCPU / Nodes)
+- As Runner utilised only 45% of requested available vCPU the next stress test should increase load to the point where the utilised vCPU increases, identifying the corresponding response time and error rates
