@@ -1,6 +1,6 @@
 # Scale Test September 2020
 
-An initial september 2020 scale test was carried out against Runner v3.48.0 with eq-session in a 36GB Redis instance
+A September 2020 scale test was carried out against Runner v3.48.0 with eq-session in a 36GB Redis instance.
 
 ## Benchmark settings
 
@@ -67,3 +67,4 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 - Update summary script to aggregate 100% reponse times
 - Add stackdriver alerts for resources (e.g. vCPU / Nodes)
 - Due to time and resource constraints for this test, runner utilised only 45% of requested available vCPU. All future stress tests should increase load to the point where the utilised vCPU increases, identifying the corresponding response times and error rates
+- Investigate the above datastore HTTP `Connection aborted` exceptions seen during the test
