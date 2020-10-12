@@ -66,4 +66,4 @@ An initial september 2020 scale test was carried out against Runner v3.48.0 with
 - Tune and retest the Kubernetes autoscaling and configuration (e.g is the 50% `target_cpu_utilization_percentage` appropriate)
 - Update summary script to aggregate 100% reponse times
 - Add stackdriver alerts for resources (e.g. vCPU / Nodes)
-- As Runner utilised only 45% of requested available vCPU the next stress test should increase load to the point where the utilised vCPU increases, identifying the corresponding response time and error rates
+- Due to time and resource constraints for this test, runner utilised only 45% of requested available vCPU. All future stress tests should increase load to the point where the utilised vCPU increases, identifying the corresponding response times and error rates
