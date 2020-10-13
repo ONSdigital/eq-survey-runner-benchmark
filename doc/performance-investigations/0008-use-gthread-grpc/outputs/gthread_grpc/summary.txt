@@ -1,0 +1,7 @@
+2020-09-23
+GETs average: 87ms
+POSTs average: 91ms
+All requests average: 89ms
+Total Requests: 533
+Total Failures: 0
+Error Percentage: 0.0%
