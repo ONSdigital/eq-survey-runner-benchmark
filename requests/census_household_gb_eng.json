@@ -6,7 +6,7 @@
         },
         {
             "method": "POST",
-            "url": "/questionnaire/questionnaire/coronavirus-circumstances/",
+            "url": "/questionnaire/coronavirus-circumstances/",
             "data": {}
         },
         {
