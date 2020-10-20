@@ -52,4 +52,4 @@ Subsequent testing on a single instance of runner indicates that using Datastore
 - Stress tests with threaded web server architecture (over GRPC/HTTP)
 - Strategy for dealing with expired eq-session objects in Datastore
 - Communicate these changes and revisit recent soak/N-Max performance testing  
-- Allow eq-session `EQ_SESSION_BACKEND` to be specified by an environment variable as `storage` (default) or `epemeral_storage`
+- Allow eq-session `EQ_SESSION_BACKEND` to be specified by an environment variable as `storage` (default) or `ephemeral_storage`
