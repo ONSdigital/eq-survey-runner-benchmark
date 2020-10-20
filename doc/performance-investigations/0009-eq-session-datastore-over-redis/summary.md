@@ -39,7 +39,7 @@ Both the baseline and investigation tests saw the following
 
 ## Decision
 
-While the latencies detailed above are similar (suggesting a merge is appropriate) it should be noted that the impact was seen in total CPU utilised to serve the tests (14 cores v 16 cores). Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each request by ~40ms.
+While the latencies detailed above are similar (suggesting a merge is appropriate) it should be noted that the impact was seen in total CPU utilised to serve the tests (14 cores for the Redis baseline v 16 cores for the Datastore investigation). Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each request by ~40ms.
 
 ## Next steps if merged
 
