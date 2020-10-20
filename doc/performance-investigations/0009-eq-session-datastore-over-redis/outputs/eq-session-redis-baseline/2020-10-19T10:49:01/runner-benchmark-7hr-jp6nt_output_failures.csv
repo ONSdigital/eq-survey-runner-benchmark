@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+POST,/questionnaire/household/{id}/date-of-birth/,"Expected a (302) but got a (502) back when posting page: /questionnaire/household/eDmyCZ/date-of-birth/ with data: {'date-of-birth-answer-day': '1', 'date-of-birth-answer-month': '1', 'date-of-birth-answer-year': '1965', 'csrf_token': 'IjhlMGUzMWY3N2U4ZjE1ZWNmNDEwODJiMWMyNWFkOWZjZWU2MjkzODci.X41z_g.uYPVIn3kGgE7h6Ty-8xLxR-bKcs'}",1
