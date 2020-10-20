@@ -20,7 +20,7 @@ https://github.com/ONSdigital/eq-questionnaire-runner/tree/performance-investiga
 
 ## Results
 
-Results based on 99th percentile timings.
+Locust results based on 99th percentile timings.
 
 | Metric | Baseline | Investigation |
 |--------|----------|--------------|
@@ -29,17 +29,21 @@ Results based on 99th percentile timings.
 | All requests | 353ms | 359ms |
 | Total requests (over 20 mins) | 750,432 | 746,720 |
 
-Both the baseline and investigation tests saw the following
+Environment monitoring observations
 
 - 10 Runner instances (30 cores)
 - ~650 rps
 - ~3,600 launches and ~3,200 submissions (across 20 mins)
-- baseline used an average of 14 cores
-- investigation used an average of 16 cores
+
+| Metric | Baseline | Investigation |
+|--------|----------|--------------|
+| Runner cores used (of 30) | 14 | 16|
+| Redis conected clients | 345 | 127 |
+| Redis CPU | 3.5% | 0.35% |
 
 ## Decision
 
-While the latencies detailed above are similar (suggesting a merge is appropriate) it should be noted that the impact was seen in total CPU utilised to serve the tests (14 cores for the Redis baseline v 16 cores for the Datastore investigation). Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each eq-session request by ~40ms.
+While the Locust latencies detailed above are similar (suggesting a merge is appropriate) it should be noted that the main impact across 10 instances of Runner was seen in the total CPU utilised (14 cores for the Redis baseline v 16 cores for the Datastore investigation). Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each eq-session request by ~40ms. This is consistent with previous observations of the two different backends.
 
 ## Next steps if merged
 
