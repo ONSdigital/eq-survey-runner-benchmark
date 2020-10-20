@@ -38,7 +38,7 @@ Environment monitoring observations
 | Metric | Baseline | Investigation |
 |--------|----------|--------------|
 | Runner cores used (of 30) | 14 | 16|
-| Redis conected clients | 345 | 127 |
+| Redis connected clients | 345 | 127 |
 | Redis CPU | 3.5% | 0.35% |
 
 ## Decision
