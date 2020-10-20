@@ -43,7 +43,9 @@ Environment monitoring observations
 
 ## Decision
 
-While the Locust latencies detailed above are similar (suggesting a merge is appropriate) it should be noted that the main impact across 10 instances of Runner was seen in the total CPU utilised (14 cores for the Redis baseline v 16 cores for the Datastore investigation). Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each eq-session request by ~40ms. This is consistent with previous observations of the two different backends.
+While the Locust latencies detailed above are similar (suggesting a merge is appropriate) it should be noted that the main impact across 10 instances of Runner was seen in the total Runner CPU utilised (14 cores for the Redis baseline v 16 cores for the Datastore investigation). However, as expected Redis CPU is significantly improved when eq-session is in Datastore. 
+
+Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each eq-session request by ~40ms. This is consistent with previous observations of the two different backends.
 
 ## Next steps if merged
 
