@@ -47,6 +47,8 @@ While the Locust latencies detailed above are similar (suggesting a merge is app
 
 Subsequent testing on a single instance of runner indicates that using Datastore over Redis for eq-session increases each eq-session request by ~40ms. This is consistent with previous observations of the two different backends.
 
+Recommend merging given the current limitations at scale.
+
 ## Next steps if merged
 
 - Stress tests with threaded web server architecture (over GRPC/HTTP)
