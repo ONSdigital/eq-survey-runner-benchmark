@@ -51,6 +51,7 @@ Recommend merging given the current limitations at scale.
 
 ## Next steps if merged
 
+- Update environments to downscale Redis instance
 - Stress tests with threaded web server architecture (over GRPC/HTTP)
 - Strategy for dealing with expired eq-session objects in Datastore
 - Communicate these changes and revisit recent soak/N-Max performance testing  
