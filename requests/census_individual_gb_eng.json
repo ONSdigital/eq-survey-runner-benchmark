@@ -2,6 +2,15 @@
     "requests": [
         {
             "method": "GET",
+            "url": "/questionnaire/coronavirus-circumstances/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/coronavirus-circumstances/",
+            "data": {}
+        },
+        {
+            "method": "GET",
             "url": "/questionnaire/accommodation-type/"
         },
         {
@@ -111,8 +120,7 @@
             "method": "POST",
             "url": "/questionnaire/another-address/",
             "data": {
-                "another-address-answer": "No",
-                "another-address-answer-other-country": ""
+                "another-address-answer": "No"
             }
         },
         {
@@ -134,8 +142,7 @@
             "method": "POST",
             "url": "/questionnaire/country-of-birth/",
             "data": {
-                "country-of-birth-answer": "England",
-                "country-of-birth-answer-other": ""
+                "country-of-birth-answer": "England"
             }
         },
         {
@@ -146,8 +153,7 @@
             "method": "POST",
             "url": "/questionnaire/location-one-year-ago/",
             "data": {
-                "past-usual-address-household-answer": "{household_address}",
-                "past-usual-address-household-answer-other": ""
+                "location-one-year-ago-answer": "{household_address}"
             }
         },
         {
@@ -158,8 +164,7 @@
             "method": "POST",
             "url": "/questionnaire/national-identity/",
             "data": {
-                "national-identity-answer": "English",
-                "national-identity-answer-other": ""
+                "national-identity-answer": "English"
             }
         },
         {
@@ -181,8 +186,7 @@
             "method": "POST",
             "url": "/questionnaire/white-ethnic-group/",
             "data": {
-                "white-ethnic-group-answer": "English, Welsh, Scottish, Northern Irish or British",
-                "white-ethnic-group-answer-other": ""
+                "white-ethnic-group-answer": "English, Welsh, Scottish, Northern Irish or British"
             }
         },
         {
@@ -193,8 +197,7 @@
             "method": "POST",
             "url": "/questionnaire/religion/",
             "data": {
-                "religion-answer": "No religion",
-                "religion-answer-other": ""
+                "religion-answer": "No religion"
             }
         },
         {
@@ -205,8 +208,7 @@
             "method": "POST",
             "url": "/questionnaire/main-language/",
             "data": {
-                "main-language-answer": "English",
-                "main-language-answer-other": ""
+                "main-language-answer": "English"
             }
         },
         {
@@ -217,8 +219,7 @@
             "method": "POST",
             "url": "/questionnaire/passports/",
             "data": {
-                "passports-answer": "United Kingdom",
-                "passport-answer-other": ""
+                "passports-answer": "United Kingdom"
             }
         },
         {
@@ -494,7 +495,8 @@
                 "workplace-address-answer-line1": "Office For National Statistics",
                 "workplace-address-answer-line2": "Cardiff Road",
                 "workplace-address-answer-town": "Newport",
-                "workplace-address-answer-postcode": "NP10 8XG"
+                "workplace-address-answer-postcode": "NP10 8XG",
+                "workplace-address-answer-uprn": ""
             }
         },
         {
