@@ -18,7 +18,7 @@ def plot_data(df, number_of_days_to_plot):
         df.plot.line()
 
     plt.margins(0.03, 0.07)
-    plt.legend(frameon=False, prop={"size": 17})
+    plt.legend(frameon=True, prop={"size": 17})
     plt.xticks(df.index, df["DATE"], size="small", rotation=90)
     plt.yticks(size="small")
     plt.ylabel("Average Response Time (ms)")
