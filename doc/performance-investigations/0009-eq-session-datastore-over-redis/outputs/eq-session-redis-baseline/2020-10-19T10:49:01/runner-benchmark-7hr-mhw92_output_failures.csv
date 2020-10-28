@@ -1,0 +1,3 @@
+Method,Name,Error,Occurrences
+POST,/questionnaire/number-of-bedrooms/,"Expected a (302) but got a (502) back when posting page: /questionnaire/number-of-bedrooms/ with data: {'number-of-bedrooms-answer': '3', 'csrf_token': 'IjhmMWU1OTgwMTg4ZjEyYWI3ZGVmNTA0OGNlOTM0NjZjMThhZDllOWEi.X410CA.PODrCKFgFfo8M8XEyyMMdTT1I7E'}",1
+GET,/questionnaire/coronavirus-circumstances/,Expected a (200) but got a (0) back when getting page: /questionnaire/coronavirus-circumstances/,1

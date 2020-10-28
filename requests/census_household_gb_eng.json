@@ -2,6 +2,15 @@
     "requests": [
         {
             "method": "GET",
+            "url": "/questionnaire/coronavirus-circumstances/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/coronavirus-circumstances/",
+            "data": {}
+        },
+        {
+            "method": "GET",
             "url": "/questionnaire/people-who-live-here-introduction/"
         },
         {
@@ -256,6 +265,15 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_1_list_id}/individual-introduction/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/individual-coronavirus-circumstances/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_1_list_id}/individual-coronavirus-circumstances/",
             "data": {}
         },
         {
@@ -710,6 +728,15 @@
         {
             "method": "POST",
             "url": "/questionnaire/household/{person_2_list_id}/individual-introduction/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/individual-coronavirus-circumstances/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/{person_2_list_id}/individual-coronavirus-circumstances/",
             "data": {}
         },
         {
