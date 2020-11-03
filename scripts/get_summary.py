@@ -31,10 +31,7 @@ def parse_environment_variables():
     output_dir = os.getenv("OUTPUT_DIR")
 
     if not output_dir:
-        print(
-            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
-        )
-        sys.exit(1)
+        output_dir = "outputs"
 
     days = os.getenv("NUMBER_OF_DAYS")
     if days and days.isdigit() is False:

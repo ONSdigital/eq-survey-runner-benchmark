@@ -25,8 +25,7 @@ class GoogleCloudStorage:
             blob.metadata = {**kwargs}
             blob.upload_from_filename(filename=output_file)
 
-    def get_files(self, from_date):
-        output_dir = os.getenv("OUTPUT_DIR")
+    def get_files(self, from_date, output_dir):
 
         for blob in self.client.list_blobs(self.bucket_name):
             blob_date = blob.name.split("/")[1].split("T")[0]
