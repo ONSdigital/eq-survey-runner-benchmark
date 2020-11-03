@@ -32,7 +32,9 @@ class GoogleCloudStorage:
             blob_date = blob.name.split("/")[1].split("T")[0]
 
             from_date = (
-                (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
+                (datetime.utcnow() - timedelta(days=number_of_days))
+                if number_of_days
+                else None
             )
 
             if from_date and datetime.strptime(blob_date, "%Y-%m-%d") < from_date:
