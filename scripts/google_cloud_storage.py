@@ -1,7 +1,7 @@
 import os
 import json
 
-from datetime import datetime, timedelta
+from datetime import datetime
 from google.cloud import storage
 
 
@@ -25,14 +25,8 @@ class GoogleCloudStorage:
             blob.metadata = {**kwargs}
             blob.upload_from_filename(filename=output_file)
 
-    def get_files(self, number_of_days):
-        output_dir = "outputs"
-
-        from_date = (
-            (datetime.utcnow() - timedelta(days=number_of_days))
-            if number_of_days
-            else None
-        )
+    def get_files(self, from_date):
+        output_dir = os.getenv("OUTPUT_DIR")
 
         for blob in self.client.list_blobs(self.bucket_name):
             blob_date = blob.name.split("/")[1].split("T")[0]
