@@ -1,17 +1,14 @@
 import os
 import sys
 
+from scripts.get_summary import parse_environment_variables
 from scripts.google_cloud_storage import GoogleCloudStorage
 
 if __name__ == '__main__':
     output_bucket = os.getenv("OUTPUT_BUCKET")
 
-    days = os.getenv("NUMBER_OF_DAYS")
-    if days and days.isdigit() is False:
-        print("'NUMBER_OF_DAYS' environment variable must be a valid integer value")
-        sys.exit(1)
-
-    days = int(days) if days else None
+    parsed_variables = parse_environment_variables()
+    number_of_days = parsed_variables['number_of_days']
 
     if not output_bucket:
         print("'OUTPUT_BUCKET' environment variable must be provided")
@@ -20,5 +17,5 @@ if __name__ == '__main__':
     gcs = GoogleCloudStorage(bucket_name=output_bucket)
     print("Fetching files...")
 
-    gcs.get_files(number_of_days=days)
+    gcs.get_files(number_of_days=number_of_days)
     print('All files downloaded')

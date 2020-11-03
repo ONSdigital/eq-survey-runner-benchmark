@@ -28,14 +28,14 @@ class GoogleCloudStorage:
     def get_files(self, number_of_days):
         output_dir = "outputs"
 
+        from_date = (
+            (datetime.utcnow() - timedelta(days=number_of_days))
+            if number_of_days
+            else None
+        )
+
         for blob in self.client.list_blobs(self.bucket_name):
             blob_date = blob.name.split("/")[1].split("T")[0]
-
-            from_date = (
-                (datetime.utcnow() - timedelta(days=number_of_days))
-                if number_of_days
-                else None
-            )
 
             if from_date and datetime.strptime(blob_date, "%Y-%m-%d") < from_date:
                 continue
