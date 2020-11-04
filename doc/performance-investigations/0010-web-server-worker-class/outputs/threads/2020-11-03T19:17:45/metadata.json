@@ -1,0 +1,9 @@
+{
+  "host": "https://threads-runner.gcp.dev.eq.ons.digital",
+  "min_wait": "1",
+  "locust_options": "--headless --users 64 --hatch-rate 64 --run-time 30m --csv=output -L WARNING",
+  "runner_version": "919bc5ca5ce2dd303cfdc232950f50f520349df5",
+  "max_wait": "2",
+  "timestamp": "1604432875",
+  "requests_json": "requests/census_household_gb_eng.json"
+}
