@@ -200,6 +200,12 @@ To run the script and download results:
 OUTPUT_BUCKET="<bucket_name>" pipenv run python -m scripts.get_benchmark_results
 ```
 
+This script also accepts optional `NUMBER_OF_DAYS` and `OUTPUT_DIR` environment variables which allows the user to download a subset of results and set
+a specific output directory e.g.
+```bash
+OUTPUT_BUCKET="<bucket_name>" NUMBER_OF_DAYS=<number_of_days> OUTPUT_DIR="<output_directory>" pipenv run python -m scripts.get_benchmark_results
+```
+
 ### Summarise the Daily Benchmark results
 You can get a breakdown of the average response times for a result set by doing:
 ```bash
