@@ -1,0 +1,9 @@
+{
+  "max_wait": "2",
+  "timestamp": "1604432869",
+  "min_wait": "1",
+  "host": "https://grpc-runner.gcp.dev.eq.ons.digital",
+  "runner_version": "919bc5ca5ce2dd303cfdc232950f50f520349df5",
+  "requests_json": "requests/census_household_gb_eng.json",
+  "locust_options": "--headless --users 64 --hatch-rate 64 --run-time 30m --csv=output -L WARNING"
+}

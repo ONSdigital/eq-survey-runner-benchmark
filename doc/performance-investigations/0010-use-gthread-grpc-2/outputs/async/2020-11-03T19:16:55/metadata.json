@@ -1,0 +1,9 @@
+{
+  "runner_version": "919bc5ca5ce2dd303cfdc232950f50f520349df5",
+  "min_wait": "1",
+  "timestamp": "1604432825",
+  "requests_json": "requests/census_household_gb_eng.json",
+  "max_wait": "2",
+  "host": "https://async-runner.gcp.dev.eq.ons.digital",
+  "locust_options": "--headless --users 64 --hatch-rate 64 --run-time 30m --csv=output -L WARNING"
+}
