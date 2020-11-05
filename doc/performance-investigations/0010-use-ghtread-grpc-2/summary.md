@@ -1,9 +1,7 @@
-# Web server worker class: Async vs Threads vs Threads + gRPC
+# Use gthread gunicorn worker class and gRPC protocol #2
 
-This document compares the performance of Gunicorn under different worker classes. This investigates compares the gevent (async) and gthread worker classes.
-Using threads opens up the following options:
- - the ability to use gRPC for Datastore which is potentially more performant than HTTP
- - the ability to use other Google libraries such as Pub/Sub which current is only performant under threads
+This document follows on from the [previous test](https://github.com/ONSdigital/eq-survey-runner-benchmark/blob/master/doc/performance-investigations/0008-use-gthread-grpc/summary.md) that was carried out to investigate the performance of the threaded worker class of Gunicorn with and without gRPC.
+Now that sessions are stored in Datastore instead of Redis, a re-run of the previous test was appropriate.
 
 ## Benchmark profile
 
@@ -45,7 +43,7 @@ The results below are the averages between all tests. Note response times are in
 | Gunicorn Threads         | 137                | 162                | 150                        |
 | Gunicorn Threads + gRPC  | 91                 | 110                | 100                         |
 
-Performance comparison of Async vs Thread with gRPC over multiple tests.
+#### Performance comparison of Async vs Thread with gRPC over multiple tests.
 
 Threads without gRPC is not included as it was not performant enough.
 
@@ -60,3 +58,4 @@ Threads without gRPC is not included as it was not performant enough.
 - Given the performance of Gunicorn threads with gRPC is on par with async gevent and the options it opens up, we should use threads with gRPC
 - Look at the impact of varying the number of threads
 - Test uWSGI threads with gRPC
+- Run a scale test to discover how threads with gRPC behaves under higher load.
