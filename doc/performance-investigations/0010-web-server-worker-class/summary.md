@@ -1,7 +1,7 @@
 # Web server worker class: Async vs Threads vs Threads + gRPC
 
-We have only ever run the application with Gunicorn in async mode (workers). We should try threads if it is more performant, reliable or consistent. 
-Using threads also opens up other options:
+This document compares the performance of Gunicorn under different worker classes. This investigates compares the gevent (async) and gthread worker classes.
+Using threads opens up the following options:
  - the ability to use gRPC for Datastore which is potentially more performant than HTTP
  - the ability to use other Google libraries such as Pub/Sub which current is only performant under threads
 
