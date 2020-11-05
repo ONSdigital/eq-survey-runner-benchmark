@@ -53,7 +53,7 @@ Threads without gRPC is not included as it was not performant enough.
 
 ## Observations
 
-- Threads with gRPC is just as performant as async
+- Threads with gRPC was as performant as async
 - Using threads is only feasible when also using gRPC
 
 ## Decision
