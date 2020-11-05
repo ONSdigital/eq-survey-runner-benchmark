@@ -47,7 +47,7 @@ The results below are the averages between all tests. Note response times are in
 
 Performance comparison of Async vs Thread with gRPC over multiple tests.
 
-I didn't include threads without gRPC since it was not performant enough to be considered.
+Threads without gRPC is not included as it was not performant enough.
 
 ![](outputs/performance_comparison.png)
 
