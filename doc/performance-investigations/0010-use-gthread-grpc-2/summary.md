@@ -33,17 +33,17 @@ The results below are the averages between all tests. Note response times are in
 
 |                          | 50% | 66% | 75% | 80% | 90% | 95% | 98% | 99% | 99.90% | 99.99% | 100% |
 |--------------------------|-----|-----|-----|-----|-----|-----|-----|-----|--------|--------|------|
-| Gunicorn Async           | 52     | 58  | 61     | 64  | 72  | 82  | 97  | 120 | 200    | 350    | 720  |
-| Gunicorn Threads         | 60     | 67  | 72  | 77  | 92     | 110 | 140 | 160 | 250    | 450    | 1500 |
-| Gunicorn Threads + gRPC  | 50     | 55  | 59     | 62  | 72  | 83  | 100 | 120 | 190   | 350   | 770  |
+| Gunicorn Async           | 52  | 58  | 61  | 64  | 72  | 82  | 97  | 120 | 200    | 350    | 720  |
+| Gunicorn Threads         | 60  | 67  | 72  | 77  | 92  | 110 | 140 | 160 | 250    | 450    | 1500 |
+| Gunicorn Threads + gRPC  | 50  | 55  | 59  | 62  | 72  | 83  | 100 | 120 | 190    | 350    | 770  |
 
 |                          | GETs Response Time | POSTs Response Time| All requests Response Time | 
 |--------------------------|--------------------|--------------------|----------------------------|
-| Gunicorn Async           | 87                 | 111                | 99                        |
+| Gunicorn Async           | 87                 | 111                | 99                         |
 | Gunicorn Threads         | 137                | 162                | 150                        |
-| Gunicorn Threads + gRPC  | 91                 | 110                | 100                         |
+| Gunicorn Threads + gRPC  | 91                 | 110                | 100                        |
 
-#### Performance comparison of Async vs Thread with gRPC over multiple tests.
+#### Performance comparison of Async vs Thread with gRPC over multiple tests
 
 Threads without gRPC is not included as it was not performant enough.
 
