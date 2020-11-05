@@ -14,10 +14,11 @@ if __name__ == '__main__':
     number_of_days = parsed_variables['number_of_days']
     output_dir = parsed_variables['output_dir']
 
-    from_date = None
-
-    if number_of_days:
-        from_date = datetime.now(tz=tzutc()) - timedelta(days=number_of_days)
+    from_date = (
+        datetime.now(tz=tzutc()) - timedelta(days=number_of_days)
+        if number_of_days
+        else None
+    )
 
     if not output_bucket:
         print("'OUTPUT_BUCKET' environment variable must be provided")
