@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          echo "::set-env name=PYTHON_VERSION::$(cat .python-version)"
+          echo "PYTHON_VERSION=$(cat .python-version)" >> $GITHUB_ENV
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -33,7 +33,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Tag
-        run: echo "::set-env name=TAG::${{ github.event.pull_request.head.ref }}"
+        run: echo "TAG=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
       - name: Build
         run: docker build -t onsdigital/eq-survey-runner-benchmark:$TAG .
       - name: Push
