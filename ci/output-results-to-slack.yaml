@@ -31,6 +31,8 @@ run:
 
       # Get benchmark outputs
       OUTPUT_BUCKET="$OUTPUT_BUCKET" \
+      OUTPUT_DIR="outputs" \
+      NUMBER_OF_DAYS="$NUMBER_OF_DAYS" \
       pipenv run python -m scripts.get_benchmark_results
 
       # Create performance graph

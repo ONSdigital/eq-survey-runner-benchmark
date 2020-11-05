@@ -28,13 +28,6 @@ def get_results(folders, number_of_days=None):
 
 
 def parse_environment_variables():
-    output_dir = os.getenv("OUTPUT_DIR")
-
-    if not output_dir:
-        print(
-            "'OUTPUT_DIR' environment variable must be provided e.g. outputs/daily-test"
-        )
-        sys.exit(1)
 
     days = os.getenv("NUMBER_OF_DAYS")
     if days and days.isdigit() is False:
@@ -42,12 +35,11 @@ def parse_environment_variables():
         sys.exit(1)
 
     days = int(days) if days else None
-    output_date = os.getenv("OUTPUT_DATE")
 
     return {
-        "output_dir": output_dir,
         "number_of_days": days,
-        "output_date": output_date,
+        "output_date": os.getenv("OUTPUT_DATE"),
+        "output_dir": os.getenv("OUTPUT_DIR", "outputs"),
     }
 
 
