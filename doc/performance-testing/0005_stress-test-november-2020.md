@@ -108,7 +108,7 @@ Benchmark version: [v1.0.0](https://github.com/ONSdigital/eq-survey-runner-bench
 - The error rate was very low. The errors happened in the middle of the test, for 4 of 20 test runs, after that there were 5 test runs with no errors. This may have been due to GCS scaling issues.
 - The previous Datastore errors did not occur, this looks to have been fixed by switching from HTTP to gRPC for Datastore calls.
 - Response times remained consistent until just over half of the allocated vCPU was used (900 of 1800 vCPU). Around this time the k8s cluster node scaling limit was reached.
-- 99th percentile response times reached 1 second at 95% CPU usage.
+- 99th percentile response times reached 1 second at 95% CPU usage, 95th percentile response times were less than 450ms
 - The `loadbalancing.googleapis.com/https/backend_request_count` 500 metric as reported in Grafana (81 errors) didn't align with the errors reported by the load balancer (50 errors).
 
 ## Recommendations
