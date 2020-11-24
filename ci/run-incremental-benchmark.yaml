@@ -39,25 +39,31 @@ run:
 
       cd eq-survey-runner-benchmark
 
-      RUNTIME_DATE_STRING="$(date +'%Y-%m-%dT%H:%M:%S')"
+      users_to_use=$USERS_PER_INSTANCE_MIN
+      until [ $users_to_use -gt $USERS_PER_INSTANCE_MAX ]
+      do
+        RUNTIME_DATE_STRING="$(date +'%Y-%m-%dT%H:%M:%S')"
+        LOCUST_OPTIONS="--headless --users ${users_to_use} --hatch-rate ${USERS_HATCH_RATE} --run-time ${RUN_TIME} --csv=output -L WARNING"
 
-      LOCUST_OPTIONS="--headless --users ${USERS_PER_INSTANCE_MIN --hatch-rate ${USERS_HATCH_RATE} --run-time ${RUN_TIME} --csv=output -L WARNING'
+        helm upgrade --install \
+          runner-benchmark \
+          k8s/helm \
+          --set requestsJson="${REQUESTS_JSON}" \
+          --set locustOptions="${LOCUST_OPTIONS}" \
+          --set host=https://${RUNNER_FULLY_QUALIFIED_DOMAIN_NAME} \
+          --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${IMAGE_TAG} \
+          --set userWaitTimeMinSeconds=${USER_WAIT_TIME_MIN_SECONDS} \
+          --set userWaitTimeMaxSeconds=${USER_WAIT_TIME_MAX_SECONDS} \
+          --set parallelism=${PARALLELISM} \
+          --set output.bucket=${OUTPUT_BUCKET} \
+          --set output.directory="${OUTPUT_DIR}/${RUNTIME_DATE_STRING}"
 
-      gcloud container clusters get-credentials runner-benchmark --region ${REGION} --project ${PROJECT_ID}
+        JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')
 
-      helm upgrade --install \
-        runner-benchmark \
-        k8s/helm \
-        --set requestsJson="${REQUESTS_JSON}" \
-        --set locustOptions="${LOCUST_OPTIONS}" \
-        --set host=https://${RUNNER_FULLY_QUALIFIED_DOMAIN_NAME} \
-        --set container.image=${DOCKER_REGISTRY}/eq-survey-runner-benchmark:${IMAGE_TAG} \
-        --set userWaitTimeMinSeconds=${USER_WAIT_TIME_MIN_SECONDS} \
-        --set userWaitTimeMaxSeconds=${USER_WAIT_TIME_MAX_SECONDS} \
-        --set parallelism=${PARALLELISM} \
-        --set output.bucket=${OUTPUT_BUCKET} \
-        --set output.directory="${OUTPUT_DIR}/${RUNTIME_DATE_STRING}"
+        echo "---"
+        echo "Running job ${JOB_NAME} with ${users_to_use} clients"
+        echo "---"
 
-      JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')
-
-      kubectl wait --for=condition=complete --timeout=${TIMEOUT} job/${JOB_NAME}
+        kubectl wait --for=condition=complete --timeout=${TIMEOUT} "job/${JOB_NAME}"
+        ((users_to_use+=USERS_PER_INSTANCE_INCREMENT))
+      done
