@@ -61,11 +61,7 @@ run:
           --set output.directory="${OUTPUT_DIR}/${RUNTIME_DATE_STRING}"
 
         JOB_NAME=$(kubectl get jobs '--output=jsonpath={.items[*].metadata.name}')
-
-        echo "---"
-        echo "Running job ${JOB_NAME} with ${users_to_use} clients"
-        echo "---"
-
         kubectl wait --for=condition=complete --timeout=${TIMEOUT} "job/${JOB_NAME}"
+
         ((users_to_use+=USERS_PER_INSTANCE_INCREMENT))
       done
