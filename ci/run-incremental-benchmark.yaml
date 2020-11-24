@@ -39,6 +39,8 @@ run:
 
       cd eq-survey-runner-benchmark
 
+      gcloud container clusters get-credentials runner-benchmark --region ${REGION} --project ${PROJECT_ID}
+
       users_to_use=$USERS_PER_INSTANCE_MIN
       until [ $users_to_use -gt $USERS_PER_INSTANCE_MAX ]
       do
