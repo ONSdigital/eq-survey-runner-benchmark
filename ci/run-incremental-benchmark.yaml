@@ -14,6 +14,11 @@ params:
   RUNNER_FULLY_QUALIFIED_DOMAIN_NAME:
   DOCKER_REGISTRY:
   IMAGE_TAG:
+  USERS_PER_INSTANCE_MIN:
+  USERS_PER_INSTANCE_MAX:
+  USERS_PER_INSTANCE_INCREMENT:
+  USERS_HATCH_RATE:
+  RUN_TIME:
   USER_WAIT_TIME_MIN_SECONDS:
   USER_WAIT_TIME_MAX_SECONDS:
   PARALLELISM:
@@ -35,6 +40,8 @@ run:
       cd eq-survey-runner-benchmark
 
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%dT%H:%M:%S')"
+
+      LOCUST_OPTIONS="--headless --users ${USERS_PER_INSTANCE_MIN --hatch-rate ${USERS_HATCH_RATE} --run-time ${RUN_TIME} --csv=output -L WARNING'
 
       gcloud container clusters get-credentials runner-benchmark --region ${REGION} --project ${PROJECT_ID}
 
