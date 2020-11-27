@@ -26,7 +26,7 @@ At the moment we do not specify a limit for runner pod cpu usage. Rather, we req
 
 ## Fluentd Performance
 
-As part of the testing, fluentd pods were observed to be using around 450 mCPU when under sustained load. Their requested cpu time is only 100 mCPU. This means that, when under load, fluentd log forwarding is using roughly half a core of available CPU. Metrics gathered during recent stress tests show the same level of resource usage. Unfortunately, it was not feasible to get a correct comparison of the impact that disabling app logging has at the cluster level, as the tests that were run when fluentd was disabled, all had multiple `kube-system` pods placed on Runner nodes, however, given the impact that we see when 648 mCPU of additional CPU is requested by `kube-system` pods, it is likely that the increased usage by fluentd will have a negative impact. It may be useful to look at ways to tune fluentd to increase its performance.
+Fluentd pods were observed to be using around 450 mCPU when under sustained load. Their requested cpu time is only 100 mCPU. Metrics gathered during recent stress tests show similar levels of CPU resource usage. Unfortunately, it was not feasible to measure the impact disabling app logging has at the cluster level; all of the tests run with fluentd disabled had multiple `kube-system` pods on Runner nodes. It is likely that that the increase in CPU resource used by fluentd under high load has a negative impact on response times. It may be beneficial to look at fluentd performance tuning.
 
 ## Decision
 
