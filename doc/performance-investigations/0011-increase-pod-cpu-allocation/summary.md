@@ -6,7 +6,7 @@ A number of benchmark tests were carried out to investigate the CPU usage of kub
 
 ## CPU Allocation
 
-In the k8s cluster, the allocation of CPU cores is as follows:
+Our nodes (which are 4 core virtual machines) allocate CPU cores as follows:
 
 - Each node has 3,920 mCPU allocatable.
 - On each node, there is _always_ a minimum of 203 mCPU requested by pods in the `kube-system` namespace, leaving 3,717 mCPU for other pods.
