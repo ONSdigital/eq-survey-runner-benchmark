@@ -1,0 +1,9 @@
+{
+  "timestamp": "1606752413",
+  "min_wait": "1",
+  "requests_json": "requests/census_household_gb_eng.json",
+  "max_wait": "2",
+  "host": "https://james-test-runner.gcp.dev.eq.ons.digital",
+  "locust_options": "--headless --users 64 --hatch-rate 64 --run-time 20m --csv=output -L WARNING",
+  "runner_version": "9c00b984cf0585dd67984944afe16c68fa7f6a25"
+}

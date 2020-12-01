@@ -8,7 +8,7 @@ This repository was heavily inspired by the [census performance tests](https://g
 ## Installation
 
 On MacOSX Catalina (10.15) if the Python packages fail to install there may be two versions of command line tools SDK present(`MacOSX10.15.sdk` and `MacOSX10.14.sdk`).
-You need to remove 10.14 version by using: 
+You need to remove 10.14 version by using:
 
 ```
 sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
@@ -50,7 +50,7 @@ The following environment variables can be used to configure the locust test:
 
 ## Generating a requests file
 
-Open the network inspector in Chrome or Firefox and ensure 'preserve log' is ticked. Run your manual or functional test. 
+Open the network inspector in Chrome or Firefox and ensure 'preserve log' is ticked. Run your manual or functional test.
 
 **Important:** The captured test should not include the `/session` endpoint.
 
@@ -156,7 +156,7 @@ If you want to vary the default parameters Locust uses on start, you can specify
 - userWaitTimeMinSeconds - The minimum delay between each user's GET requests
   - defaults to 1
 - userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
-  - defaults to 2 
+  - defaults to 2
 - output.bucket - Name of the GCS bucket in which the output should be stored.
 - output.directory - Name of the directory within the GCS bucket in which the output should be stored.
 
@@ -174,7 +174,7 @@ helm tiller run \
 
 ## Visualising Benchmark Results
 
-You can use the `visualise_results.py` script to visualise benchmark results over time. 
+You can use the `visualise_results.py` script to visualise benchmark results over time.
 
 ### Pre-Requisites
 
@@ -216,8 +216,8 @@ pipenv run python -m scripts.get_summary
 
 This will output something like:
 ```
-Questionnaire GETs average: 477ms
-Questionnaire POSTs average: 573ms
+GETs average: 477ms
+POSTs average: 573ms
 All requests average: 524ms
 Total Requests: 209303
 Total Failures: 0
@@ -230,7 +230,7 @@ If `OUTPUT_DATE` is not provided, then it will output a summary for all results 
 To get a breakdown of results for a stress test use the `get_stress_test_summary` script. This accepts a folder containing
 results as a parameter, and will provide aggregate totals at the folder level:
 ```bash
-OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_stress_test_summary
+OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aggregated_summary
 ```
 
 This will output something like:
@@ -246,7 +246,7 @@ Error Percentage: 0.47%
 ### Run the Visualise Results script
 
 The `visualise_results` script will run against any benchmark results stored in the directory that is passed as an environment variable to the script.
-Optionally, you can also specify the number of days to visualise the results for. 
+Optionally, you can also specify the number of days to visualise the results for.
 
 For example, to visualise results for the last 7 days:
 ```bash
