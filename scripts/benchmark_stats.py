@@ -1,6 +1,7 @@
 from collections import defaultdict
 from csv import DictReader
 from glob import glob
+from statistics import mean
 from typing import List, Mapping
 
 
@@ -14,10 +15,8 @@ class BenchmarkStats:
         for folder_path in folder_paths:
             self._files.extend(glob(f"{folder_path}/*stats.csv"))
 
-        self._weighted_get_requests: List[int] = []
-        self._weighted_post_requests: List[int] = []
-        self._total_get_requests: int = 0
-        self._total_post_requests: int = 0
+        self._get_requests: List[int] = []
+        self._post_requests: List[int] = []
 
         self._process_file_data()
 
@@ -31,9 +30,8 @@ class BenchmarkStats:
             f'Percentiles:\n'
             f'{formatted_percentiles}\n'
             f'---\n'
-            f'GETs average: {self.average_weighted_get}ms\n'
-            f'POSTs average: {self.average_weighted_post}ms\n'
-            f'All requests average: {self.average_weighted_total}ms\n'
+            f'GETs average: {self.average_get}ms\n'
+            f'POSTs average: {self.average_post}ms\n'
             f'---\n'
             f'Total Requests: {self._total_requests:,}\n'
             f'Total Failures: {self._total_failures:,}\n'
@@ -44,18 +42,16 @@ class BenchmarkStats:
         for file in self.files:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
-                    percentile = int(row[f"{self.PERCENTILE_TO_USE_FOR_ROUTES}%"])
+                    percentile_response_time = int(
+                        row[f"{self.PERCENTILE_TO_USE_FOR_ROUTES}%"]
+                    )
                     request_count = int(
                         row.get("Request Count") or row.get("# requests")
                     )
-                    weighted_request = percentile * request_count
-
                     if row["Type"] == "GET":
-                        self._weighted_get_requests.append(weighted_request)
-                        self._total_get_requests += request_count
+                        self._get_requests.append(percentile_response_time)
                     elif row["Type"] == "POST":
-                        self._weighted_post_requests.append(weighted_request)
-                        self._total_post_requests += request_count
+                        self._post_requests.append(percentile_response_time)
                     elif row["Name"] == "Aggregated":
                         failure_count = row.get("Failure Count") or row.get(
                             "# failures"
@@ -76,19 +72,12 @@ class BenchmarkStats:
         return self._percentiles
 
     @property
-    def average_weighted_get(self) -> int:
-        return sum(self._weighted_get_requests) // self._total_get_requests
+    def average_get(self) -> int:
+        return int(mean(self._get_requests))
 
     @property
-    def average_weighted_post(self) -> int:
-        return sum(self._weighted_post_requests) // self._total_post_requests
-
-    @property
-    def average_weighted_total(self) -> int:
-        return (
-            sum(self._weighted_get_requests + self._weighted_post_requests)
-            // self._total_requests
-        )
+    def average_post(self) -> int:
+        return int(mean(self._post_requests))
 
     @property
     def error_percentage(self) -> int:
