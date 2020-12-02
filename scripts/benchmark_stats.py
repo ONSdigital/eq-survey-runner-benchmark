@@ -50,7 +50,9 @@ class BenchmarkStats:
                     elif row["Type"] == "POST":
                         self._post_requests.append(percentile_response_time)
                     elif row["Name"] == "Aggregated":
-                        request_count = row.get("Request Count") or row.get("# requests")
+                        request_count = row.get("Request Count") or row.get(
+                            "# requests"
+                        )
                         failure_count = row.get("Failure Count") or row.get(
                             "# failures"
                         )
