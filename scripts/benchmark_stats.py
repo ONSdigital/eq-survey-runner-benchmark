@@ -45,19 +45,17 @@ class BenchmarkStats:
                     percentile_response_time = int(
                         row[f"{self.PERCENTILE_TO_USE_FOR_ROUTES}%"]
                     )
-                    request_count = int(
-                        row.get("Request Count") or row.get("# requests")
-                    )
                     if row["Type"] == "GET":
                         self._get_requests.append(percentile_response_time)
                     elif row["Type"] == "POST":
                         self._post_requests.append(percentile_response_time)
                     elif row["Name"] == "Aggregated":
+                        request_count = row.get("Request Count") or row.get("# requests")
                         failure_count = row.get("Failure Count") or row.get(
                             "# failures"
                         )
+                        self._total_requests = int(request_count)
                         self._total_failures = int(failure_count)
-                        self._total_requests = request_count
 
                         self._percentiles = defaultdict(int)
                         for percentile in self.PERCENTILES_TO_REPORT:
