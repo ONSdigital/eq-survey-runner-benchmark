@@ -6,7 +6,7 @@ from typing import List, Mapping
 
 class BenchmarkStats:
     PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9, 100)
-    PERCENTILES_TO_GRAPH = PERCENTILES_TO_REPORT[:-2]
+    PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
     PERCENTILE_TO_USE_FOR_ROUTES = 99
 
     def __init__(self, folder_paths: List[str]):
