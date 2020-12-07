@@ -33,3 +33,4 @@ Fluentd pods were observed to be using around 450 mCPU when under sustained load
 1. Do not increase the runner CPU request.
 1. Test environments should use 3 runner pods on 3 nodes rather than the 2 pods that are currently deployed.
 1. Investigate the feasibility of tuning fluentd.
+1. Investigate performance when using different machine types
