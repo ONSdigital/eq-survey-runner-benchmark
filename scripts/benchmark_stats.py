@@ -80,5 +80,5 @@ class BenchmarkStats:
         return int(mean(self._post_requests))
 
     @property
-    def error_percentage(self) -> int:
-        return (self._total_failures * 100) // self._total_requests
+    def error_percentage(self) -> float:
+        return (self._total_failures * 100) / self._total_requests
