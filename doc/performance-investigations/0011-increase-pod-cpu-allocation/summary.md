@@ -11,6 +11,8 @@ Our nodes (which are 4 core virtual machines) allocate CPU cores as follows:
 - Each node has 3,920 mCPU allocatable.
 - On each node, there is _always_ a minimum of 203 mCPU requested by pods in the `kube-system` namespace, leaving 3,717 mCPU for other pods.
 - 648 mCPU of cores are requested by kube-system pods once per cluster. These can be put on a single node, or split across nodes if there are available CPU cores.
+- From the testing carried out, it appears that the 648mCPU request is static per Kubernetes cluster.
+- Apart from fluentd, none of the kube-system pods use above their requested CPU resource.
 - In our test environment, there are 3 nodes, but only two Runner pods. There is variability in how the Runner and `kube-system` pods are arranged across the nodes. The following arrangements were observed during testing:
   1. `kube-system` pods placed onto the node with no Runner pods.
   1. `kube-system` pods placed entirely on one of the nodes that a Runner pod was also placed on.
@@ -33,4 +35,4 @@ Fluentd pods were observed to be using around 450 mCPU when under sustained load
 1. Do not increase the runner CPU request.
 1. Test environments should use 3 runner pods on 3 nodes rather than the 2 pods that are currently deployed.
 1. Investigate the feasibility of tuning fluentd.
-1. Investigate performance when using different machine types
+1. Investigate performance when using different machine types.
