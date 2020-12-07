@@ -6,6 +6,8 @@ from pandas import DataFrame
 from scripts.benchmark_stats import BenchmarkStats
 from scripts.get_summary import get_results, parse_environment_variables
 
+PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
+
 
 def plot_data(df, number_of_days_to_plot):
     plt.style.use('seaborn-poster')
@@ -38,18 +40,16 @@ if __name__ == '__main__':
 
     result_fields = [
         [
-            result[0],
+            result.date,
             *(
-                result[1].percentiles[percentile]
-                for percentile in BenchmarkStats.PERCENTILES_TO_GRAPH
+                result.statistics.percentiles[percentile]
+                for percentile in PERCENTILES_TO_GRAPH
             ),
         ]
         for result in results
     ]
 
-    percentile_columns = (
-        f"{percentile}th" for percentile in BenchmarkStats.PERCENTILES_TO_GRAPH
-    )
+    percentile_columns = (f"{percentile}th" for percentile in PERCENTILES_TO_GRAPH)
     data_frame = DataFrame(result_fields, columns=["DATE", *percentile_columns])
 
     plot_data(data_frame, number_of_days)

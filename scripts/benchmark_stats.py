@@ -7,7 +7,6 @@ from typing import List, Mapping
 
 class BenchmarkStats:
     PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9, 100)
-    PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
     PERCENTILE_TO_USE_FOR_ROUTES = 99
 
     def __init__(self, folder_paths: List[str]):
@@ -20,7 +19,7 @@ class BenchmarkStats:
 
         self._total_requests: int = 0
         self._total_failures: int = 0
-        self._percentiles: Mapping[int: List[int]] = defaultdict(list)
+        self._percentiles: Mapping[int : List[int]] = defaultdict(list)
 
         self._process_file_data()
 
