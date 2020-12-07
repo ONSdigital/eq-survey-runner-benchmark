@@ -63,10 +63,18 @@ OUTPUT_DIR=outputs/baseline pipenv run python -m scripts.get_aggregated_summary
 Example output:
 
 ```
-GETs average: 116ms
-POSTs average: 146ms
-All requests average: 131ms
-Total Requests: 204,438
+Percentiles:
+50th: 74ms
+90th: 140ms
+95th: 170ms
+99th: 240ms
+99.9th: 360ms
+100th: 820ms
+---
+GETs (99th): 237ms
+POSTs (99th): 272ms
+---
+Total Requests: 323,148
 Total Failures: 0
 Error Percentage: 0.0%
 ```

@@ -18,11 +18,15 @@ class BenchmarkStats:
         self._get_requests: List[int] = []
         self._post_requests: List[int] = []
 
+        self._total_requests: int = 0
+        self._total_failures: int = 0
+        self._percentiles: Mapping[int: List[int]] = defaultdict(list)
+
         self._process_file_data()
 
     def __str__(self):
         formatted_percentiles = "\n".join(
-            f"{percentile}th: {self._percentiles[percentile]}ms"
+            f"{percentile}th: {self.percentiles[percentile]}ms"
             for percentile in self.PERCENTILES_TO_REPORT
         )
         return (
@@ -30,8 +34,8 @@ class BenchmarkStats:
             f'Percentiles:\n'
             f'{formatted_percentiles}\n'
             f'---\n'
-            f'GETs average: {self.average_get}ms\n'
-            f'POSTs average: {self.average_post}ms\n'
+            f'GETs (99th): {self.average_get}ms\n'
+            f'POSTs (99th): {self.average_post}ms\n'
             f'---\n'
             f'Total Requests: {self._total_requests:,}\n'
             f'Total Failures: {self._total_failures:,}\n'
@@ -56,12 +60,13 @@ class BenchmarkStats:
                         failure_count = row.get("Failure Count") or row.get(
                             "# failures"
                         )
-                        self._total_requests = int(request_count)
-                        self._total_failures = int(failure_count)
+                        self._total_requests += int(request_count)
+                        self._total_failures += int(failure_count)
 
-                        self._percentiles = defaultdict(int)
                         for percentile in self.PERCENTILES_TO_REPORT:
-                            self._percentiles[percentile] = int(row[f"{percentile}%"])
+                            self._percentiles[percentile].append(
+                                int(row[f"{percentile}%"])
+                            )
 
     @property
     def files(self) -> List[str]:
@@ -69,7 +74,10 @@ class BenchmarkStats:
 
     @property
     def percentiles(self) -> Mapping:
-        return self._percentiles
+        return {
+            percentile: int(mean(values))
+            for percentile, values in self._percentiles.items()
+        }
 
     @property
     def average_get(self) -> int:

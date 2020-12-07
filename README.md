@@ -216,31 +216,52 @@ pipenv run python -m scripts.get_summary
 
 This will output something like:
 ```
-Questionnaire GETs average: 477ms
-Questionnaire POSTs average: 573ms
-All requests average: 524ms
-Total Requests: 209303
+---
+Percentiles:
+50th: 74ms
+90th: 140ms
+95th: 170ms
+99th: 240ms
+99.9th: 360ms
+100th: 820ms
+---
+GETs (99th): 237ms
+POSTs (99th): 272ms
+---
+Total Requests: 323,148
 Total Failures: 0
 Error Percentage: 0.0%
 ```
 
+*Note: The values for GETs (99th) and POSTs (99th) will not match up with the 99th percentile because GET/POST values are calculated on a per endpoint basis whereas the
+percentile outputs are from the `Aggregated` row of the locust output file.*
+
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
 
 ### Summarise the Stress Test results:
-To get a breakdown of results for a stress test use the `get_stress_test_summary` script. This accepts a folder containing
+To get a breakdown of results for a stress test use the `get_aggregated_summary` script. This accepts a folder containing
 results as a parameter, and will provide aggregate totals at the folder level:
 ```bash
-OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_stress_test_summary
+OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aOggregated_summary
 ```
 
 This will output something like:
 ```
-Questionnaire GETs average: 465ms
-Questionnaire POSTs average: 525ms
-All requests average: 495ms
-Total Requests: 30056523
-Total Failures: 140186
-Error Percentage: 0.47%
+---
+Percentiles:
+50th: 76ms
+90th: 149ms
+95th: 182ms
+99th: 263ms
+99.9th: 407ms
+100th: 1425ms
+---
+GETs (99th): 237ms
+POSTs (99th): 272ms
+---
+Total Requests: 3,209,821
+Total Failures: 0
+Error Percentage: 0.0%
 ```
 
 ### Run the Visualise Results script
