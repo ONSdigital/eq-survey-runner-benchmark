@@ -19,7 +19,7 @@ class BenchmarkStats:
 
         self._total_requests: int = 0
         self._total_failures: int = 0
-        self._percentiles: Mapping[int : List[int]] = defaultdict(list)
+        self._percentiles: Mapping[int : List[int]] = defaultdict(list)  # noqa: E203
 
         self._process_file_data()
 

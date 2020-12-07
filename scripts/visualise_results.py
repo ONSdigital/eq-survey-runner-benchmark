@@ -3,7 +3,6 @@ from glob import glob
 import matplotlib.pyplot as plt
 from pandas import DataFrame
 
-from scripts.benchmark_stats import BenchmarkStats
 from scripts.get_summary import get_results, parse_environment_variables
 
 PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
