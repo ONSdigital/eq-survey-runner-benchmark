@@ -7,7 +7,7 @@ from typing import List, Mapping
 
 class BenchmarkStats:
     PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9, 100)
-    PERCENTILE_TO_USE_FOR_ROUTES = 99
+    PERCENTILE_TO_USE_FOR_AVERAGES = 99
 
     def __init__(self, folder_paths: List[str]):
         self._files: List = []
@@ -46,7 +46,7 @@ class BenchmarkStats:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
                     percentile_response_time = int(
-                        row[f"{self.PERCENTILE_TO_USE_FOR_ROUTES}%"]
+                        row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]
                     )
                     if row["Type"] == "GET":
                         self._get_requests.append(percentile_response_time)
