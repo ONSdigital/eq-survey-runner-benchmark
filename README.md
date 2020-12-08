@@ -216,25 +216,24 @@ pipenv run python -m scripts.get_summary
 
 This will output something like:
 ```
+2020-01-01
 ---
 Percentiles:
-50th: 74ms
-90th: 140ms
-95th: 170ms
-99th: 240ms
-99.9th: 360ms
-100th: 820ms
+50th: 92ms
+90th: 252ms
+95th: 320ms
+99th: 467ms
+99.9th: 664ms
+100th: 1179ms
 ---
-GETs (99th): 237ms
-POSTs (99th): 272ms
+GETs (99th): 466ms
+POSTs (99th): 467ms
 ---
-Total Requests: 323,148
+Total Requests: 307,207
 Total Failures: 0
 Error Percentage: 0.0%
-```
 
-*Note: The values for GETs (99th) and POSTs (99th) will not match up with the 99th percentile because GET/POST values are calculated on a per endpoint basis whereas the
-percentile outputs are from the `Aggregated` row of the locust output file.*
+```
 
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
 
@@ -250,14 +249,14 @@ This will output something like:
 ---
 Percentiles:
 50th: 76ms
-90th: 149ms
-95th: 182ms
-99th: 263ms
-99.9th: 407ms
-100th: 1425ms
+90th: 147ms
+95th: 177ms
+99th: 254ms
+99.9th: 372ms
+100th: 484ms
 ---
-GETs (99th): 237ms
-POSTs (99th): 272ms
+GETs (99th): 235ms
+POSTs (99th): 273ms
 ---
 Total Requests: 3,209,821
 Total Failures: 0
