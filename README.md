@@ -241,7 +241,7 @@ If `OUTPUT_DATE` is not provided, then it will output a summary for all results 
 To get a breakdown of results for a stress test use the `get_aggregated_summary` script. This accepts a folder containing
 results as a parameter, and will provide aggregate totals at the folder level:
 ```bash
-OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aOggregated_summary
+OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aggregated_summary
 ```
 
 This will output something like:
