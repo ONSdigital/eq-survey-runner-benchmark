@@ -110,4 +110,4 @@ class BenchmarkStats:
         return (self._total_failures * 100) / self.total_requests
 
     def _get_weighted_request_count(self, request_count: int) -> float:
-        return request_count * self.PERCENTILE_TO_USE_FOR_AVERAGES // 100
+        return request_count * self.PERCENTILE_TO_USE_FOR_AVERAGES / 100
