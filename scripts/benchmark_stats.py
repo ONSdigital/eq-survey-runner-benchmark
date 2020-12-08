@@ -1,7 +1,6 @@
 from collections import defaultdict
 from csv import DictReader
 from glob import glob
-from statistics import mean
 from typing import List, Mapping
 
 
@@ -64,7 +63,7 @@ class BenchmarkStats:
                             )
                             self._percentiles[percentile].append(weighted_percentile)
 
-                        percentile_response_time = int(
+                        percentile_response_time = float(
                             row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]
                         )
                         weighted_response_time = (
