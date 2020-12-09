@@ -90,11 +90,29 @@ The following results were omitted because the 99th percentile response was abov
 
 ![](images/performance_graph_workers_by_threads.png)
 
+### Comparison of the 99th percentile between workers with a thread count of 2
+
+The performance of the app does not seem to get noticeably better past 2 threads. The graph below highlights the performance of different workers under 2 threads over multiple runs.
+
+![](images/performance_graph_workers_by_2_threads_99th.png)
+
+The variations seen above are also reflected in Grafana. Using 8 workers with 2 threads as an example, these are the 99th percentile response times as report by Grafana.
+
+**8 Workers with 2 Threads Run 1 (Note the y axis values):**
+![](images/8_workers_2_threads_run_1.png)
+
+**8 Workers with 2 Threads Run 2 (Note the y axis values):**
+![](images/8_workers_2_threads_run_2.png)
+
 ## Observations
 
-- Using a thread count of 1 or worker count of 1/2 is not feasible.
+- Using a thread count of 1 or worker count of 1 or 2 is not feasible.
 - Our current configuration of 7 workers by 7 threads is not the most optimal.
+- Under this test scenario, having more than 2 threads did not have any noticeable advantages in response times.
+- There is a lot of variations between test runs which may have skewed the results. Therefore, multiple runs may be required.
 
 ## Decision
 - Since different configuration has different pros and cons for different percentiles a few different worker/thread configurations may need further testing.
+- Run a small stress test to investigate the impact of thread counts when the app is under stress. Stress the app while using 7 workers with 7 threads vs 7 workers with 2 threads until the 99th percentile reaches 1 second.
+Following on from that, run a small stress test with reduced number of workers. 
 - Run a scale test to discover how these new configurations compare at higher loads.
