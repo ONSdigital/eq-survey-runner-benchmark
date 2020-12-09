@@ -5,7 +5,7 @@ from typing import List, Mapping
 
 
 class BenchmarkStats:
-    PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9, 100)
+    PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9)
     PERCENTILE_TO_USE_FOR_AVERAGES = 99
 
     def __init__(self, folder_paths: List[str]):
