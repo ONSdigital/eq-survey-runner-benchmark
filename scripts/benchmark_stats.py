@@ -30,7 +30,7 @@ class BenchmarkStats:
         )
         return (
             f'---\n'
-            f'Percentiles:\n'
+            f'Percentile Averages:\n'
             f'{formatted_percentiles}\n'
             f'---\n'
             f'GETs (99th): {self.average_get}ms\n'
