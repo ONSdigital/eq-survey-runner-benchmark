@@ -13,9 +13,11 @@ This document highlights the results from running the application with different
 | User wait time maximum (exclusive) | 3                            |
 | Clients                            | 225                          |
 | Hatch rate                         | 225                          |
-| number of workers                  | 1 to 10                      |
-| number of threads                  | 1 to 10                      |
+| Number of workers                  | 1 to 10                      |
+| Number of threads                  | 1 to 10                      |
 | Questionnaire Runner version       | v3.56.0                      |
+| Questionnaire Runner min/min pods  | 3                            |
+| Max nodes per zone                 | 1                            |
 
 A client rate of 225 was chosen to achieve ~65/70% CPU usage. Prior to the 20 minute test, a 1 minute warm up test was run to reduce any cold start times.
 
