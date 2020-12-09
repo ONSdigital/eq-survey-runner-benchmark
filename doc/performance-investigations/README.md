@@ -63,13 +63,12 @@ OUTPUT_DIR=outputs/baseline pipenv run python -m scripts.get_aggregated_summary
 Example output:
 
 ```
-Percentiles:
+Percentile Averages:
 50th: 74ms
 90th: 140ms
 95th: 170ms
 99th: 240ms
 99.9th: 360ms
-100th: 820ms
 ---
 GETs (99th): 237ms
 POSTs (99th): 272ms

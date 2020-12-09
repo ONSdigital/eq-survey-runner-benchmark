@@ -218,13 +218,12 @@ This will output something like:
 ```
 2020-01-01
 ---
-Percentiles:
+Percentile Averages:
 50th: 92ms
 90th: 252ms
 95th: 320ms
 99th: 467ms
 99.9th: 664ms
-100th: 1179ms
 ---
 GETs (99th): 466ms
 POSTs (99th): 467ms
@@ -247,13 +246,12 @@ OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aggregated_sum
 This will output something like:
 ```
 ---
-Percentiles:
+Percentile Averages:
 50th: 76ms
 90th: 147ms
 95th: 177ms
 99th: 254ms
 99.9th: 372ms
-100th: 484ms
 ---
 GETs (99th): 235ms
 POSTs (99th): 273ms
