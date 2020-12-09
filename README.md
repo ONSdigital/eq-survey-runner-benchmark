@@ -216,18 +216,28 @@ pipenv run python -m scripts.get_summary
 
 This will output something like:
 ```
-GETs average: 477ms
-POSTs average: 573ms
-All requests average: 524ms
-Total Requests: 209303
+2020-01-01
+---
+Percentile Averages:
+50th: 92ms
+90th: 252ms
+95th: 320ms
+99th: 467ms
+99.9th: 664ms
+---
+GETs (99th): 466ms
+POSTs (99th): 467ms
+---
+Total Requests: 307,207
 Total Failures: 0
 Error Percentage: 0.0%
+
 ```
 
 If `OUTPUT_DATE` is not provided, then it will output a summary for all results within the provided directory.
 
 ### Summarise the Stress Test results:
-To get a breakdown of results for a stress test use the `get_stress_test_summary` script. This accepts a folder containing
+To get a breakdown of results for a stress test use the `get_aggregated_summary` script. This accepts a folder containing
 results as a parameter, and will provide aggregate totals at the folder level:
 ```bash
 OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aggregated_summary
@@ -235,12 +245,20 @@ OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aggregated_sum
 
 This will output something like:
 ```
-Questionnaire GETs average: 465ms
-Questionnaire POSTs average: 525ms
-All requests average: 495ms
-Total Requests: 30056523
-Total Failures: 140186
-Error Percentage: 0.47%
+---
+Percentile Averages:
+50th: 76ms
+90th: 147ms
+95th: 177ms
+99th: 254ms
+99.9th: 372ms
+---
+GETs (99th): 235ms
+POSTs (99th): 273ms
+---
+Total Requests: 3,209,821
+Total Failures: 0
+Error Percentage: 0.0%
 ```
 
 ### Run the Visualise Results script

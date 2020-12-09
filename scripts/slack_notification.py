@@ -37,7 +37,7 @@ def parse_environment_variables():
 
     initial_comment = os.getenv('INITIAL_COMMENT', '')
     title = os.getenv('TITLE', '')
-    file_type = os.getenv('FILE_TYPE', 'python')
+    file_type = os.getenv('FILE_TYPE', 'yaml')
 
     return {
         'slack_auth_token': slack_auth_token,

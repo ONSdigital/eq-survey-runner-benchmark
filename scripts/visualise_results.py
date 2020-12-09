@@ -5,6 +5,8 @@ from pandas import DataFrame
 
 from scripts.get_summary import get_results, parse_environment_variables
 
+PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
+
 
 def plot_data(df, number_of_days_to_plot):
     plt.style.use('seaborn-poster')
@@ -34,16 +36,19 @@ if __name__ == '__main__':
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
     results = get_results(folders, number_of_days)
+
     result_fields = [
         [
-            result[0],
-            result[1].average_weighted_get,
-            result[1].average_weighted_post,
-            result[1].average_weighted_total,
+            result.date,
+            *(
+                result.statistics.percentiles[percentile]
+                for percentile in PERCENTILES_TO_GRAPH
+            ),
         ]
         for result in results
     ]
 
-    data_frame = DataFrame(result_fields, columns=["DATE", "GET", "POST", "AVERAGE"])
+    percentile_columns = (f"{percentile}th" for percentile in PERCENTILES_TO_GRAPH)
+    data_frame = DataFrame(result_fields, columns=["DATE", *percentile_columns])
 
     plot_data(data_frame, number_of_days)
