@@ -5,37 +5,38 @@ from typing import List, Mapping
 
 
 class BenchmarkStats:
-    PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9, 100)
-    PERCENTILES_TO_GRAPH = PERCENTILES_TO_REPORT[:-2]
-    PERCENTILE_TO_USE_FOR_ROUTES = 99
+    PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9)
+    PERCENTILE_TO_USE_FOR_AVERAGES = 99
 
     def __init__(self, folder_paths: List[str]):
         self._files: List = []
         for folder_path in folder_paths:
             self._files.extend(glob(f"{folder_path}/*stats.csv"))
 
-        self._weighted_get_requests: List[int] = []
-        self._weighted_post_requests: List[int] = []
-        self._total_get_requests: int = 0
-        self._total_post_requests: int = 0
+        self._requests: Mapping = {
+            "GET": {"response_times": [], "total": 0},
+            "POST": {"response_times": [], "total": 0},
+        }
+
+        self._total_failures: int = 0
+        self._percentiles: Mapping[int : List[float]] = defaultdict(list)  # noqa: E203
 
         self._process_file_data()
 
     def __str__(self):
         formatted_percentiles = "\n".join(
-            f"{percentile}th: {self._percentiles[percentile]}ms"
+            f"{percentile}th: {self.percentiles[percentile]}ms"
             for percentile in self.PERCENTILES_TO_REPORT
         )
         return (
             f'---\n'
-            f'Percentiles:\n'
+            f'Percentile Averages:\n'
             f'{formatted_percentiles}\n'
             f'---\n'
-            f'GETs average: {self.average_weighted_get}ms\n'
-            f'POSTs average: {self.average_weighted_post}ms\n'
-            f'All requests average: {self.average_weighted_total}ms\n'
+            f'GETs (99th): {self.average_get}ms\n'
+            f'POSTs (99th): {self.average_post}ms\n'
             f'---\n'
-            f'Total Requests: {self._total_requests:,}\n'
+            f'Total Requests: {self.total_requests:,}\n'
             f'Total Failures: {self._total_failures:,}\n'
             f'Error Percentage: {(round(self.error_percentage, 2))}%\n'
         )
@@ -44,28 +45,34 @@ class BenchmarkStats:
         for file in self.files:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
-                    percentile = int(row[f"{self.PERCENTILE_TO_USE_FOR_ROUTES}%"])
                     request_count = int(
                         row.get("Request Count") or row.get("# requests")
                     )
-                    weighted_request = percentile * request_count
-
-                    if row["Type"] == "GET":
-                        self._weighted_get_requests.append(weighted_request)
-                        self._total_get_requests += request_count
-                    elif row["Type"] == "POST":
-                        self._weighted_post_requests.append(weighted_request)
-                        self._total_post_requests += request_count
-                    elif row["Name"] == "Aggregated":
+                    if row["Name"] == "Aggregated":
                         failure_count = row.get("Failure Count") or row.get(
                             "# failures"
                         )
-                        self._total_failures = int(failure_count)
-                        self._total_requests = request_count
-
-                        self._percentiles = defaultdict(int)
+                        self._total_failures += int(failure_count)
+                    else:
+                        weighted_request_count = self._get_weighted_request_count(
+                            request_count
+                        )
                         for percentile in self.PERCENTILES_TO_REPORT:
-                            self._percentiles[percentile] = int(row[f"{percentile}%"])
+                            weighted_percentile = (
+                                float(row[f"{percentile}%"]) * weighted_request_count
+                            )
+                            self._percentiles[percentile].append(weighted_percentile)
+
+                        percentile_response_time = float(
+                            row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]
+                        )
+                        weighted_response_time = (
+                            percentile_response_time * weighted_request_count
+                        )
+                        self._requests[row["Type"]]["response_times"].append(
+                            weighted_response_time
+                        )
+                        self._requests[row["Type"]]["total"] += request_count
 
     @property
     def files(self) -> List[str]:
@@ -73,23 +80,34 @@ class BenchmarkStats:
 
     @property
     def percentiles(self) -> Mapping:
-        return self._percentiles
+        return {
+            percentile: int(
+                sum(values) / self._get_weighted_request_count(self.total_requests)
+            )
+            for percentile, values in self._percentiles.items()
+        }
 
     @property
-    def average_weighted_get(self) -> int:
-        return sum(self._weighted_get_requests) // self._total_get_requests
+    def total_requests(self) -> int:
+        return self._requests["GET"]["total"] + self._requests["POST"]["total"]
 
     @property
-    def average_weighted_post(self) -> int:
-        return sum(self._weighted_post_requests) // self._total_post_requests
-
-    @property
-    def average_weighted_total(self) -> int:
-        return (
-            sum(self._weighted_get_requests + self._weighted_post_requests)
-            // self._total_requests
+    def average_get(self) -> int:
+        return int(
+            sum(self._requests["GET"]["response_times"])
+            / self._get_weighted_request_count(self._requests["GET"]["total"])
         )
 
     @property
-    def error_percentage(self) -> int:
-        return (self._total_failures * 100) // self._total_requests
+    def average_post(self) -> int:
+        return int(
+            sum(self._requests["POST"]["response_times"])
+            / self._get_weighted_request_count(self._requests["POST"]["total"])
+        )
+
+    @property
+    def error_percentage(self) -> float:
+        return (self._total_failures * 100) / self.total_requests
+
+    def _get_weighted_request_count(self, request_count: int) -> float:
+        return request_count * self.PERCENTILE_TO_USE_FOR_AVERAGES / 100
