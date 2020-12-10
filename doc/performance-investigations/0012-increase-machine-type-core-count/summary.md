@@ -38,7 +38,7 @@ In addition, a test was run against a node provisioned using a C type machine. C
 
 ## Observations
 
-- There is no significant difference in performance when using larger numbers of cores.
+- There is no significant difference in performance when using machines with more cores.
 - There is a significant performance gain per core when using C type machines.
 
 ## Decision
