@@ -44,6 +44,6 @@ In addition, a test was run against a node provisioned using a C type machine. C
 ## Decision
 
 - Continue to run using the 4 core machines currently provisioned.
-- If the number of nodes that are required becomes the limiting factor in horizontal scaling, then larger machine types could be utilized.
+- If the number of nodes that are required becomes the limiting factor in horizontal scaling, then larger machine types could be utilised.
 - Further investigation of C type machines should be carried.
 - A further test of larger machines should be carried out, whereby the number of Gunicorn workers and threads are scaled relative to the available cores.
