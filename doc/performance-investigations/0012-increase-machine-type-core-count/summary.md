@@ -2,7 +2,7 @@
 
 EQ Runner currently uses a machine type of `custom-4-4096` (4 vCPU cores, 4096MB of RAM). This investigation looked at the impact of machine type on the performance of the runner application, focusing on the number of CPU cores as Runner is primarily a CPU bound application with limited network IO to Datastore and Redis.
 
-The investigation aims to determine whether latencies as measured by the Locsut client improve when using larger machines but utilizing roughly the same percentage of CPU.
+The investigation aims to determine whether latencies as measured Locust improve when using larger machines but utilising roughly the same percentage of CPU.
 
 ## Benchmark profile
 
