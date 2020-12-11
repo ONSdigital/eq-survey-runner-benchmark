@@ -1,8 +1,6 @@
 # Investigate Machine Type Architecture Performance
 
-EQ Runner currently uses a machine type of `custom-4-4096` (4 vCPU cores, 4096MB of RAM). This investigation looked at the impact of machine type on the performance of the runner application, focusing on the number of CPU cores as Runner is primarily a CPU bound application with limited network IO to Datastore and Redis.
-
-The investigation aims to determine whether latencies as measured Locust improve when using larger machines but utilising roughly the same percentage of CPU.
+EQ Runner currently uses a machine type of `custom-4-4096` (4 vCPU cores, 4096MB of RAM). This investigation looked at the impact of using larger instances with more pods on the performance of the runner application.
 
 ## Benchmark profile
 
@@ -16,7 +14,7 @@ The investigation aims to determine whether latencies as measured Locust improve
 | Number of workers      | 7                            |
 | Number of threads      | 7                            |
 
-This test replicates the current settings for the daily test. Note that the baseline test ran with 64 clients as per the daily test.
+This test replicates the current settings for the daily test.
 
 ## Results
 
@@ -25,9 +23,8 @@ This test replicates the current settings for the daily test. Note that the base
 | 4     | 4    | 4     | 572         | 609          | 590                 | 403,890        |
 | 8     | 4    | 2     | 542         | 579          | 560                 | 404,535        |
 | 8     | 4    | 2     | 591         | 601          | 596                 | 402,884        |
-| 16    | 4    | 1     | 620         | 651          | 636                 | 138,195        |
-| 16    | 4    | 1     | 579         | 610          | 594                 | 139,156        |
-| 16    | 5    | 1     | 557         | 598          | 577                 | 379,246        |
+| 16    | 4    | 1     | 620         | 651          | 636                 | 379,246        |
+| 16    | 5    | 1     | 579         | 610          | 594                 | 394,487        |
 
 In addition, a test was run against a node provisioned using a C type machine. C type machines have better per-core clock speeds, making them ideal for single-threaded applications. These tests were run with 64 clients.
 
@@ -45,5 +42,5 @@ In addition, a test was run against a node provisioned using a C type machine. C
 
 - Continue to run using the 4 core machines currently provisioned.
 - If the number of nodes that are required becomes the limiting factor in horizontal scaling, then larger machine types could be utilised.
-- Further investigation of C type machines should be carried.
+- Further investigation of C type machines should be carried out to determine whether the performance seen in the cursory test carried out here can still be seen at higher loads.
 - A further test of larger machines should be carried out, using a single runner pod per node and scaling the number of Gunicorn workers and threads relative to the available cores.
