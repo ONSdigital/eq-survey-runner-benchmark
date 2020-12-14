@@ -10,7 +10,7 @@ EQ Runner currently uses a machine type of `custom-4-4096` (4 vCPU cores, 4096MB
 | Run time               | 20m                          |
 | User wait time minimum | 1                            |
 | User wait time maximum | 2                            |
-| Clients                | 256                          |
+| Clients per core       | 16                           |
 | Number of workers      | 7                            |
 | Number of threads      | 7                            |
 
