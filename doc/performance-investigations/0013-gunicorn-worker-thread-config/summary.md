@@ -102,8 +102,8 @@ The performance of the app does not seem to get noticeably better past 2 threads
 
 - Using a thread count of 1 or worker count of 1 or 2 is not feasible.
 - Our current configuration of 7 workers by 7 threads is not the most optimal.
-- Under this test scenario, having more than 2 threads did not have any noticeable advantages in response times.
-    - Along with this, having more than 4 workers does not seem to have any significant improvement in response times.
+- More than 2 threads did not have any noticeable advantages in response times.
+- More than 4 workers does not seem to have any significant improvement in response times.
 
 ## Decision
 - Since different configurations have different pros and cons for different percentiles, a few different worker/thread configurations should be tested further in small scale stress tests:
