@@ -53,7 +53,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     self.handle_redirect(request, response)
 
                 if user_wait_time_min and user_wait_time_max:
-                    time.sleep(r.randrange(user_wait_time_min, user_wait_time_max))
+                    time.sleep(r.randint(user_wait_time_min, user_wait_time_max))
 
             elif request['method'] == 'POST':
                 response = self.post(
