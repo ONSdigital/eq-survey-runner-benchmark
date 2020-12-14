@@ -106,7 +106,7 @@ The performance of the app does not seem to get noticeably better past 2 threads
     - Along with this, having more than 4 workers does not seem to have any significant improvement in response times.
 
 ## Decision
-- Since different configuration has different pros and cons for different percentiles a few different worker/thread configurations will need further testing.
-- Run a small stress test to investigate the impact of thread counts when the app is under stress.
-    - Stress the app while using 7 workers with 7 threads vs 7 workers with 2 threads until the 99th percentile reaches 1 second. Following on from that, run a small stress test with reduced number of workers.
+- Since different configurations have different pros and cons for different percentiles, a few different worker/thread configurations should be tested further in small scale stress tests:
+  - Compare a baseline of 7 workers with 7 threads vs 7 workers with 2 threads, until the 99th percentile reaches 1 second. 
+  - Following on from that, run a test with a reduced number of workers.
 - Run a scale test to discover how these new configurations compare at higher loads.
