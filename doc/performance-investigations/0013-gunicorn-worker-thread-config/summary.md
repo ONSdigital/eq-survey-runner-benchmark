@@ -109,4 +109,4 @@ The performance of the app does not seem to get noticeably better past 2 threads
 - Since different configurations have different pros and cons for different percentiles, a few different worker/thread configurations should be tested further in small scale stress tests:
   - Compare a baseline of 7 workers with 7 threads vs 7 workers with 2 threads, until the 99th percentile reaches 1 second. 
   - Following on from that, run a test with a reduced number of workers.
-- Run a scale test to discover how these new configurations compare at higher loads.
+- Run a stress test to discover how these new configurations compare at higher loads.
