@@ -1,0 +1,191 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "url": "/questionnaire/schema-confirmation/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/schema-confirmation/",
+            "data": {
+                "schema-confirmation-answer": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/thank-you/",
+            "data": {
+                "email": "example@example.com"
+            },
+            "redirect_route": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email_id}"
+        }
+    ],
+    "schema_name": "test_confirmation_email"
+}

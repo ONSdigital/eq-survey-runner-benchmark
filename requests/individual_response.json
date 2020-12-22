@@ -1,0 +1,222 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "url": "/questionnaire/primary-person-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/primary-person-list-collector/",
+            "data": {
+                "you-live-here": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/add-person/",
+            "data": {
+                "first-name": "John",
+                "middle-names": "",
+                "last-name": "Doe"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/household/add-person/",
+            "data": {
+                "first-name": "Jane",
+                "middle-names": "",
+                "last-name": "Doe"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/visitor-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/visitor-list-collector/",
+            "data": {
+                "any-visitors": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/section/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {},
+            "redirect_route": "/questionnaire/household/{person_1_list_id}/individual-interstitial/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_1_list_id}/individual-interstitial/"
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/?list_item_id={person_1_list_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/{person_1_list_id}/how"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/{person_1_list_id}/how",
+            "data": {
+                "individual-response-how-answer": "Text message"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/{person_1_list_id}/text/enter-number"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/{person_1_list_id}/text/enter-number",
+            "data": {
+                "individual-response-enter-number-answer": "07700900345"
+            },
+            "redirect_route": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile_number}"
+
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile_number}"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile_number}",
+            "data": {
+                "individual-response-text-confirm-answer": "Yes, send the text"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/text/confirmation?mobile_number={mobile_number}"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/text/confirmation?mobile_number={mobile_number}",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "redirect_route": "/questionnaire/sections/individual-section/{person_2_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/household/{person_2_list_id}/individual-interstitial/"
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/?list_item_id={person_2_list_id}"
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/{person_2_list_id}/how"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/{person_2_list_id}/how",
+            "data": {
+                "individual-response-how-answer": "Post"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/{person_2_list_id}/post/confirm-address"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/{person_2_list_id}/post/confirm-address",
+            "data": {
+                "individual-response-post-confirm-answer": "Yes, send the access code by post"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/individual-response/post/confirmation"
+        },
+        {
+            "method": "POST",
+            "url": "/individual-response/post/confirmation",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "test_individual_response"
+}
