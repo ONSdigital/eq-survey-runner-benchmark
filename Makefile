@@ -8,4 +8,4 @@ format:
 	pipenv run black .
 
 run:
-	pipenv run ./run.sh requests/census_household_gb_eng.json
+	pipenv run ./run.sh requests/test_feedback.json
