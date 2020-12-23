@@ -159,7 +159,8 @@
         {
             "method": "POST",
             "url": "/questionnaire/",
-            "redirect_route": "/questionnaire/sections/individual-section/{person_2_list_id}/"
+            "redirect_route": "/questionnaire/sections/individual-section/{person_2_list_id}/",
+            "data": {}
         },
         {
             "method": "GET",
