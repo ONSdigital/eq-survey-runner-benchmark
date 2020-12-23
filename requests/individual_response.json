@@ -159,12 +159,8 @@
         {
             "method": "POST",
             "url": "/questionnaire/",
-            "redirect_route": "/questionnaire/sections/individual-section/{person_2_list_id}/",
+            "redirect_route": "/questionnaire/household/{person_2_list_id}/individual-interstitial/",
             "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/individual-section/{person_2_list_id}/"
         },
         {
             "method": "GET",
