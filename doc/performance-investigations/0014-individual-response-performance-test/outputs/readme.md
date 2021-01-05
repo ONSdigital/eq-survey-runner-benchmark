@@ -18,6 +18,7 @@ This test was carried out  to investigate the performance of the individual resp
 
 Overall Locust results based on 99th percentile timings.
 
+
 | Metric | Baseline | Investigation |
 |--------|----------|---------------|
 | Questionnaire GETs | 153 | 96 |
@@ -25,7 +26,8 @@ Overall Locust results based on 99th percentile timings.
 | All requests | 157 | 106 |
 | Total requests (over 20 mins) | 1,276,602 | 1,212,989 |
 
-Individual Response Results based on 99th percentile timings.
+
+Breakdown of Individual Response endpoints based on 99th percentile timings.
 
 | GET/POST | Endpoint|  Average (ms) |
 |---------------------|------------------|-------------------|
@@ -45,5 +47,6 @@ Individual Response Results based on 99th percentile timings.
 
 
 ## Decision
+Overall the individual response urls do not show any signs of poor performance, all get and posts requests showed better performance times than the baseline test using the household census schema.
 
-The individual response urls do not show any signs of poor performance, all get and posts requests showed better performance times than the baseline test.
+Two Individual response POST requests show a significantly slower performance in comparison with the others, although these endpoints are where the telephone number and email address are entered, and the timings are in-line with the POST requests in the baseline tests.
