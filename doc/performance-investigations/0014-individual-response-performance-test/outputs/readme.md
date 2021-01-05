@@ -27,7 +27,7 @@ Overall Locust results based on 99th percentile timings.
 | Total requests (over 20 mins) | 1,276,602 | 1,212,989 |
 
 
-Breakdown of Individual Response endpoints based on 99th percentile timings.
+Breakdown of Individual Response endpoints based on the average 99th percentile timings over the four runs.
 
 | GET/POST | Endpoint|  Average (ms) |
 |---------------------|------------------|-------------------|
