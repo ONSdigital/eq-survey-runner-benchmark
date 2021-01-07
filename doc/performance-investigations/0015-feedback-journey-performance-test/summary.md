@@ -46,10 +46,6 @@ Breakdown of feedback journey endpoints based on 99th percentile timings.
 | GET | /submitted/feedback/sent | 55 |
 | GET | /submitted/thank-you/ | 59 |
 
-Average response times for baseline and investigation benchmark runs. First six using `census_household` and consequent `test_feedback` journeys.
-
-![](images/performance_graph.png)
-
 ## Decision
 
 Compared to baseline, there is a significant drop in response times in feedback journey, all get and post request perform well so no further investigation is needed.
