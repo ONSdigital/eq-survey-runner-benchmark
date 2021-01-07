@@ -161,17 +161,6 @@
             "url": "/submitted/confirmation-email/send"
         },
         {
-            "method": "POST",
-            "url": "/submitted/confirmation-email/send",
-            "data": {
-                "email": "example@example.com"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
-        },
-        {
             "method": "GET",
             "url": "/submitted/confirmation-email/send"
         },
