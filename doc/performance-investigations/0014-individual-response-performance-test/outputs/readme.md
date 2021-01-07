@@ -34,14 +34,14 @@ Breakdown of Individual Response endpoints based on the average 99th percentile 
 | GET | /individual-response/?list_item_id={id} | 83 |
 | GET | /individual-response/post/confirmation | 82 |
 | POST | /individual-response/post/confirmation | 78 |
-| GET | /individual-response/text/confirmation?mobile_number={id} | 79 |
-| POST | /individual-response/text/confirmation?mobile_number={id} | 74 |
+| GET | /individual-response/text/confirmation?mobile_number={mobile} | 79 |
+| POST | /individual-response/text/confirmation?mobile_number={mobile} | 74 |
 | GET | /individual-response/{id}/how | 91 |
 | POST | /individual-response/{id}/how | 82 |
 | GET | /individual-response/{id}/post/confirm-address | 89 |
 | POST | /individual-response/{id}/post/confirm-address | 148 |
-| GET | /individual-response/{id}/text/confirm-number?mobile_number={id} | 87 |
-| POST | /individual-response/{id}/text/confirm-number?mobile_number={id} | 148 |
+| GET | /individual-response/{id}/text/confirm-number?mobile_number={mobile} | 87 |
+| POST | /individual-response/{id}/text/confirm-number?mobile_number={mobile} | 148 |
 | GET | /individual-response/{id}/text/enter-number | 82 |
 | POST | /individual-response/{id}/text/enter-number | 79 |
 
