@@ -129,27 +129,27 @@
             "data": {
                 "individual-response-enter-number-answer": "07700900345"
             },
-            "redirect_route": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile}"
+            "redirect_route": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile_number}"
 
         },
         {
             "method": "GET",
-            "url": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile}"
+            "url": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile_number}"
         },
         {
             "method": "POST",
-            "url": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile}",
+            "url": "/individual-response/{person_1_list_id}/text/confirm-number?mobile_number={mobile_number}",
             "data": {
                 "individual-response-text-confirm-answer": "Yes, send the text"
             }
         },
         {
             "method": "GET",
-            "url": "/individual-response/text/confirmation?mobile_number={mobile}"
+            "url": "/individual-response/text/confirmation?mobile_number={mobile_number}"
         },
         {
             "method": "POST",
-            "url": "/individual-response/text/confirmation?mobile_number={mobile}",
+            "url": "/individual-response/text/confirmation?mobile_number={mobile_number}",
             "data": {}
         },
         {

@@ -1,4 +1,4 @@
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs
 
 
 def parse_params_from_location(url, route):
@@ -19,9 +19,12 @@ def parse_params_from_location(url, route):
                 params[field_name] = value
 
     if urlparse(route).query:
-        query_result = urlparse(route).query.partition("=")[2]
-        url_query = urlparse(url).query.partition("=")[2]
+        query_result = parse_qs(urlparse(route).query)
+        url_result = parse_qs(urlparse(url).query)
 
-        params[query_result.strip("{}")] = url_query
+        query_result.update((key, url_result[key]) for key in query_result)
+
+        for key, value in query_result.items():
+            params[key] = value[0]
 
     return params
