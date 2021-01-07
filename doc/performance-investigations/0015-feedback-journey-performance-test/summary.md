@@ -13,7 +13,7 @@ This test is to investigate the performance of feedback journey. Limit of feedba
 | Option | Value |
 |--------|-------|
 | Requests file | census_household_gb_eng.json |
-| Run time | 20 min |
+| Run time | 30 min |
 | User wait time minimum | 1 |
 | User wait time maximum | 2 |
 | Clients | 144 |
