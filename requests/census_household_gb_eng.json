@@ -1282,6 +1282,35 @@
         {
             "method": "GET",
             "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/thank-you/",
+            "data": {
+                "email": "test@email.com"
+            },
+            "redirect_route": "/submitted/confirmation-email/sent?email={email}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/sent?email={email}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/feedback/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/feedback/send",
+            "data": {
+                "feedback-type": "The census questions",
+                "feedback-type-question-category": "General",
+                "feedback-text": "Test feedback"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/feedback/sent"
         }
     ],
     "schema_name": "census_household_gb_eng"
