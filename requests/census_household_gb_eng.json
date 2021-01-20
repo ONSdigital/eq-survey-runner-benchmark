@@ -1287,7 +1287,7 @@
             "method": "POST",
             "url": "/submitted/thank-you/",
             "data": {
-                "email": "test@email.com"
+                "email": "simulate-delivered@notifications.service.gov.uk"
             },
             "redirect_route": "/submitted/confirmation-email/sent?email={email}"
         },
