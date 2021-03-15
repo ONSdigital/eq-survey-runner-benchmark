@@ -1299,7 +1299,7 @@
             "method": "POST",
             "url": "/submitted/confirmation-email/confirm?email={email}",
             "data": {
-                "confirm-email": "Yes"
+                "confirm-email": "Yes, send the confirmation email"
             },
             "redirect_route": "/submitted/confirmation-email/sent?email={email}"
         },
