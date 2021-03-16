@@ -24,17 +24,48 @@
             "method": "GET",
             "url": "/submitted/thank-you/"
         },
+
         {
             "method": "POST",
             "url": "/submitted/thank-you/",
             "data": {
                 "email": "example@example.com"
             },
+            "redirect_route": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            },
             "redirect_route": "/submitted/confirmation-email/sent?email={email}"
         },
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/send",
+            "data": {
+                "email": "example@example.com"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
         },
         {
             "method": "GET",
@@ -47,9 +78,17 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
         },
         {
             "method": "GET",
@@ -62,9 +101,17 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
         },
         {
             "method": "GET",
@@ -77,9 +124,17 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
         },
         {
             "method": "GET",
@@ -92,9 +147,17 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
         },
         {
             "method": "GET",
@@ -107,9 +170,17 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
         },
         {
             "method": "GET",
@@ -122,11 +193,19 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
         },
         {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
+        },
+      {
             "method": "GET",
             "url": "/submitted/confirmation-email/send"
         },
@@ -137,11 +216,19 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
         },
         {
+            "method": "POST",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
+            "data": {
+                "confirm-email": "Yes, send the confirmation email"
+            }
+        },
+      {
             "method": "GET",
             "url": "/submitted/confirmation-email/send"
         },
@@ -152,24 +239,17 @@
                 "email": "example@example.com"
             }
         },
+
         {
             "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
-        },
-        {
-            "method": "GET",
-            "url": "/submitted/confirmation-email/send"
+            "url": "/submitted/confirmation-email/confirm?email={email}"
         },
         {
             "method": "POST",
-            "url": "/submitted/confirmation-email/send",
+            "url": "/submitted/confirmation-email/confirm?email={email}",
             "data": {
-                "email": "example@example.com"
+                "confirm-email": "Yes, send the confirmation email"
             }
-        },
-        {
-            "method": "GET",
-            "url": "/submitted/confirmation-email/sent?email={email}"
         }
     ],
     "schema_name": "test_confirmation_email"
