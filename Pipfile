@@ -10,7 +10,7 @@ black = "==19.10b0"
 [packages]
 haralyzer = "*"
 backoff = "*"
-sdc-cryptography = "==0.2.3"
+sdc-cryptography = "*"
 click = "*"
 locust = "*"
 google-cloud-storage = "*"
@@ -19,7 +19,7 @@ matplotlib = "*"
 slackclient = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
 
 [pipenv]
 allow_prereleases = false
