@@ -24,6 +24,9 @@ Results based on 99th percentile timings.
 | Questionnaire GETs  | 198ms    | 154ms         |
 | Questionnaire POSTs | 299ms    | 250ms         |
 | All requests        | 247ms    | 202ms         |
+| Total Requests      | 16,683   | 18,146        |
+| Total Failures      | 0        | 0             |
+| Error Percentage    | 0        | 0.0%          |
 
 ## Decision
 
