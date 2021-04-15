@@ -12,7 +12,7 @@ Python's latest minor release version is 3.9. EQ Census is currently running on 
 | User wait time maximum | 2 |
 | Clients | 100 |
 | Hatch rate | 100 |
-| Number of workersi | 7 |
+| Number of workers | 7 |
 | Number of threads | 7 |
 
 ## Results
@@ -27,4 +27,3 @@ Results based on 99th percentile timings.
 
 ## Decision
 The upgrade has already merged, but this result shows a performance improvement when using Python 3.9 over Python 3.8.
-
