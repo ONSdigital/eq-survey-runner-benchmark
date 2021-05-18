@@ -8,9 +8,8 @@
             "method": "POST",
             "url": "/questionnaire/mandatory-checkbox/",
             "data": {
-                "mandatory-checkbox-answer": "Cheese",
-                "other-answer-mandatory": "",
-                "action[save_continue]": ""
+                "mandatory-checkbox-answer": "Ham & Cheese",
+                "other-answer-mandatory": ""
             }
         },
         {
@@ -22,17 +21,25 @@
             "url": "/questionnaire/non-mandatory-checkbox/",
             "data": {
                 "non-mandatory-checkbox-answer": "Ham",
-                "other-answer-non-mandatory": "",
-                "action[save_continue]": ""
+                "other-answer-non-mandatory": ""
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/summary/"
+            "url": "/questionnaire/single-checkbox/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/summary/",
+            "url": "/questionnaire/single-checkbox/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/submit/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/submit/",
             "data": {}
         },
         {
