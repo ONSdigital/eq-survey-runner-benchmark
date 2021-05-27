@@ -13,11 +13,11 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/summary/"
+            "url": "/questionnaire/submit/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/summary/",
+            "url": "/questionnaire/submit/",
             "data": {}
         },
         {

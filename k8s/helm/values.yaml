@@ -8,7 +8,7 @@ container:
   pullPolicy: Always
 
 host: ''
-requestsJson: 'requests/census_household_gb_eng.json'
+requestsJson: 'requests/test_checkbox.json'
 userWaitTimeMinSeconds: 1
 userWaitTimeMaxSeconds: 2
 locustOptions: '--headless --users 800 --hatch-rate 10 --loglevel=CRITICAL --run-time=2h --only-summary'
