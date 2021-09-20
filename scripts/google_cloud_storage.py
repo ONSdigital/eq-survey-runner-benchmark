@@ -26,9 +26,15 @@ class GoogleCloudStorage:
 
     def get_files(self, from_date, output_dir):
 
-        for blob in self.client.list_blobs(self.bucket_name):
+        blobs = [
+            blob
+            for blob in self.client.list_blobs(self.bucket_name)
+            if not blob.name.endswith("/")
+        ]
 
-            if from_date and blob.time_created < from_date or blob.name.endswith("/"):
+        for blob in blobs:
+
+            if from_date and blob.time_created < from_date:
                 continue
 
             file_path = blob.name.rsplit('/', 1)[0]
