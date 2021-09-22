@@ -32,6 +32,11 @@ run:
 
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
 
+      FILE=./image-tag/tag
+      if [[ -f "${FILE}" ]]; then
+        export IMAGE_TAG=`cat "$FILE"`
+      fi
+
       cd eq-survey-runner-benchmark
 
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%dT%H:%M:%S')"
