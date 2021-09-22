@@ -6,6 +6,8 @@ image_resource:
     tag: ((deploy_image_version))
 inputs:
   - name: eq-survey-runner-benchmark
+  - name: image-tag
+    optional: true
 params:
   PROJECT_ID:
   REGION: 'europe-west2'
