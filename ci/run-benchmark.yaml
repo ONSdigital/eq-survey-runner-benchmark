@@ -34,7 +34,7 @@ run:
 
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
 
-      IMAGE_TAG_FILE=./eq-survey-benchmark-image/tag
+      IMAGE_TAG_FILE=./eq-survey-runner-benchmark-image/tag
       if [[ -f "${IMAGE_TAG_FILE}" ]]; then
         export IMAGE_TAG=`cat "$IMAGE_TAG_FILE"`
       fi
