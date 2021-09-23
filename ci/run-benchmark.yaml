@@ -6,7 +6,7 @@ image_resource:
     tag: ((deploy_image_version))
 inputs:
   - name: eq-survey-runner-benchmark
-  - name: image-tag
+  - name: eq-survey-runner-benchmark-image
     optional: true
 params:
   PROJECT_ID:
@@ -34,9 +34,9 @@ run:
 
       gcloud auth activate-service-account --key-file ~/gcloud-service-key.json
 
-      FILE=./image-tag/tag
-      if [[ -f "${FILE}" ]]; then
-        export IMAGE_TAG=`cat "$FILE"`
+      IMAGE_TAG_FILE=./eq-survey-benchmark-image/tag
+      if [[ -f "${IMAGE_TAG_FILE}" ]]; then
+        export IMAGE_TAG=`cat "$IMAGE_TAG_FILE"`
       fi
 
       cd eq-survey-runner-benchmark
