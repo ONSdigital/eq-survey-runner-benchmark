@@ -18,13 +18,14 @@ The following env vars must be set:
 - LOCUST_OPTIONS
 - RUNNER_FULLY_QUALIFIED_DOMAIN_NAME
 - DOCKER_REGISTRY
-- IMAGE_TAG
 - USER_WAIT_TIME_MIN_SECONDS
 - USER_WAIT_TIME_MAX_SECONDS
 - PARALLELISM
 - TIMEOUT
 - OUTPUT_DIR
 - OUTPUT_BUCKET
+
+IMAGE_TAG can be passed as an environment variable or as a file input located at `./eq-survey-runner-benchmark-image/tag`.
 
 The following env var already has a sensible default, but can be set with an alternative value if needed:
 - REGION
