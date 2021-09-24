@@ -25,7 +25,7 @@ The following env vars must be set:
 - OUTPUT_DIR
 - OUTPUT_BUCKET
 
-IMAGE_TAG can be passed as an environment variable or as a file input located at `./image-tag/tag`.
+IMAGE_TAG can be passed as an environment variable or as a file input located at `./eq-survey-runner-benchmark-image/tag`.
 
 The following env var already has a sensible default, but can be set with an alternative value if needed:
 - REGION
