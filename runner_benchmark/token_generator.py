@@ -23,7 +23,7 @@ PAYLOAD = {
     'ru_ref': '123456789012A',
     'ru_name': 'Integration Testing',
     'ref_p_start_date': '2019-04-01',
-    'ref_p_end_date': '2019-011-30',
+    'ref_p_end_date': '2019-11-30',
     'return_by': '2019-12-06',
     'trad_as': 'Benchmark Tests',
     'employment_date': '1983-06-02',
