@@ -7,6 +7,8 @@
 | Concurrency | 250 |
 | Max instances   | 1 |
 | Min instances | 1 |
+| CPU | 4 |
+| Memory | 4G |
 
 
 ## Benchmark settings
