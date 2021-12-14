@@ -1,5 +1,5 @@
 # Stress Test December 2021
-This is an initial stress test to asses the performance of runner after the switch from kubernetes to cloud run. Below are the initial settings we used:
+This is an initial stress test to asses the performance of runner after the switch from Kubernetes to Cloud Run. Below are the initial settings we used:
 
 
 ## Runner settings
