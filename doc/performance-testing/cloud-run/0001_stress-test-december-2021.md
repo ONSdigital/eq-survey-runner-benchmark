@@ -1,6 +1,4 @@
 # Stress Test December 2021
-This is an initial stress test to asses the performance of runner after the switch from Kubernetes to Cloud Run. Below are the initial settings we used:
-
 
 ## Runner settings
 
@@ -55,7 +53,7 @@ This is an initial stress test to asses the performance of runner after the swit
 
 ## Observations
 
-- Some early errors that didn't persist when we increased the load.
+- We encountered a few errors when running with 60 and 70 clients per instance that did not persist when we increased the load.
 - The following CPU usage thresholds were exceeded:
   - 50% at 80 clients per instance.
   - 60% at 100 clients per instance.
@@ -69,10 +67,10 @@ This is an initial stress test to asses the performance of runner after the swit
 - Above 150 clients per instance performance degradation is severe.
 - Over the course of the test there were 42k survey submissions.
 
-#Additional tests
+# Additional tests
 Following our initial stress test we decided to run an additional test to prove that performance stays on similar levels when we fine tune runner's concurrency. Based on the table above we made an assumption that if we set concurrency to 90 we should get similar results. In addition, if we update number of min. max instances to 2 and double the number of clients per instance we should also obtain similar results.
 
-##Comparison
+## Comparison
 
 | Clients per instance | Concurrency | Min. Max. instances | Requests per second | 99th percentile Max CPU Usage (%) | 99th percentile response time (ms) | Error rate (%) | Output |
 | --- | --- | --- | --- | --- | --- | --- | --- |
