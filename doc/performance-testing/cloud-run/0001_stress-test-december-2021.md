@@ -9,6 +9,8 @@
 | Min instances | 1 |
 | CPU | 4 |
 | Memory | 4G |
+| Version | 3.87.0 |
+
 
 
 ## Benchmark settings
