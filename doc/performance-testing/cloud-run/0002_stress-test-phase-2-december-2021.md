@@ -70,9 +70,10 @@ For our phase 2 benchmark, the 99th percentile response time was slightly above 
   - 2995 x 504 errors :
       `The request has been terminated because it has reached the maximum request timeout. To change this limit, see https://cloud.google.com/run/docs/configuring/request-timeout`
 
+
 ## Observations
 
-Overall:
+### Overall:
 
 - Runs between 1 and 20 load generator instances did not follow the expected linear pattern from the phase 1 test due to a number of spikes in CPU usage and backend latency.
 - Runs between 25 and 40 load generator instances followed the expected linear pattern from the phase 1 test for 99th percentile response time and CPU usage and were generally more stable.
@@ -80,7 +81,7 @@ Overall:
 - The application was fairly volatile throughout the test, observed many spikes in response times and CPU usage that did not occur in the phase 1 test.
 - At 50 load injector instances the application began to fail, and thousands of `429` and `500` errors were observed. 
 
-Run by run:
+### Run by run:
 
 - 1 load injector instance:
     - CPU usage remained low throughout the test at around 2.5% despite a significant spike to 49.5% toward the end of the test.
@@ -119,6 +120,3 @@ Run by run:
   - Response times reached over 5 mins (as reported in Grafana) and requests per second dropped to 0.
   - The app began to recover after 10 minutes without serving requests, and reached 5k req/s but CPU peaked at 93.5%.
   
-
-
-    
