@@ -29,7 +29,7 @@ The test intends to confirm that the observations in phase 1 are linear at scale
 
 ## Initial Benchmark
 
-Prior to scaling runner to 50 instances, we ran an initial benchmark against runner 1 instance to check that the results were comparable with the phase 1 test.
+Prior to scaling runner to 50 instances, we ran an initial benchmark against 1 runner instance to check that the results were comparable with the phase 1 test.
 
 For our phase 2 benchmark, the 99th percentile response time was slightly above our expected range of 140 to 180ms but the results were broadly similar to our phase 1 test. CPU usage peaked at 70% but for the most part stayed between 66-68%.
 
