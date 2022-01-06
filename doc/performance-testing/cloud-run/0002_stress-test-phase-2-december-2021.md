@@ -55,11 +55,6 @@ For our phase 2 benchmark, the 99th percentile response time was slightly above 
 | 45  | 5228 |  69.5 | 438 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2021-12-29T15:13:01) |
 | 50  | 1789 | 93.5  | 42127 | 0.240 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2021-12-29T15:38:08) |
 
-Following completion of the test, re-ran the test with 5 Load Injector Instances as suspected there were issues with the app/load generator, the output was much more in line with the expected pattern:
-
-| Load Injector Instances | Requests per second | 99th percentile Max CPU Usage (%) | 99th percentile response time (ms) | Error rate (%) | Output |
-| --- | --- | --- | --- | --- | --- |
-| 5  | 591 | 10.8  | 155 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2021-12-31T12:11:15) |
 
 ## Errors and Failures
 
@@ -126,6 +121,20 @@ Following completion of the test, re-ran the test with 5 Load Injector Instances
   - Response times reached over 5 mins (as reported in Grafana) and requests per second dropped to 0.
   - The app began to recover after 10 minutes without serving requests, and reached 5k req/s but CPU peaked at 93.5%.
   
+## Additional Tests
 
+Following completion of the test, re-ran the test with 5 Load Injector Instances as suspected there were issues with the app/load generator, the output was much more in line with the expected pattern:
+
+| Load Injector Instances | Requests per second | 99th percentile Max CPU Usage (%) | 99th percentile response time (ms) | Error rate (%) | Output |
+| --- | --- | --- | --- | --- | --- |
+| 5  | 591 | 10.8  | 155 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2021-12-31T12:11:15) |
+
+In addition to this, as there were suspected datastore issues that affected the run at 50 instances in the first test, we re-ran the last three tests to get a comparison. Despite a spike in CPU usage in the test at 45 instances on the whole the stats and backend latencies looked a lot healthier.  We did not see any of the 429 or 500 errors in the second run at 50 Load Injector Instances:
+
+| Load Injector Instances | Requests per second | 99th percentile Max CPU Usage (%) | 99th percentile response time (ms) | Error rate (%) | Output |
+| --- | --- | --- | --- | --- | --- |
+| 40  | 4672 | 59.5 | 168 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-06T10:42:22) |
+| 45  | 5173 | 97.6 | 230 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-06T11:12:46) |
+| 50  | 5824 |  82.5 | 165 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-06T11:48:30) |
 
   
