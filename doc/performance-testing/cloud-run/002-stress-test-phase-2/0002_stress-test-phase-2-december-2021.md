@@ -129,7 +129,7 @@ Following completion of the test, re-ran the test with 5 Load Injector Instances
 | --- | --- | --- | --- | --- | --- |
 | 5  | 591 | 10.8  | 155 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2021-12-31T12:11:15) |
 
-In addition to this, as there were suspected datastore issues that affected the run at 50 instances in the first test, we re-ran the last three tests to get a comparison. Despite a spike in CPU usage in the test at 45 instances on the whole the stats and backend latencies looked a lot healthier.  We did not see any of the 429 or 500 errors in the second run at 50 Load Injector Instances:
+In addition to this, as there were suspected datastore issues that affected the run at 50 instances in the first test, we re-ran the last three tests to get a comparison. Despite a spike in CPU usage in the test at 45 instances on the whole the stats and backend latencies looked a lot healthier.  We did not see any of the 429 or 500 errors in the second run at 52 Load Injector Instances:
 
 | Load Injector Instances | Requests per second | 99th percentile Max CPU Usage (%) | 99th percentile response time (ms) | Error rate (%) | Output |
 | --- | --- | --- | --- | --- | --- |
@@ -137,4 +137,22 @@ In addition to this, as there were suspected datastore issues that affected the 
 | 45  | 5173 | 97.6 | 230 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-06T11:12:46) |
 | 50  | 5824 |  82.5 | 165 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-06T11:48:30) |
 
-  
+## Additional Tests - Observations
+
+- The test configuration should have seen the hard Cloud Run limit of 115 rps x 50 instances breached at 5,750 rps resulting in 429 HTTP errors. However, the test achieved a peak of ~5.87k rps with no errors observed.
+- While the max_instances was set to 50, GCP scaled Runner to 52 instances running at 82% CPU. This successfully served the ~5.87k rps at a 99th% response time of 165ms with no errors observed.
+
+## Additional Tests - Supporting Visualisations
+
+![](0002_stress-test-phase-2-instances-and-cpu-5800k.png)
+![](0002_stress-test-phase-2-response-and-requests-5800k.png)
+
+# Decisions and Next Steps
+
+- Understand why Cloud Run scaled past the 50 max_instances configured.
+- Run a phase of stress testing increasing load past the ~5.87k rps to generate 429 errors. This will confirm the expected behaviour and help understand if the previous Datastore errors should be expected or not.
+- Run a phase of soak testing for X hours at 50 instances.
+- Run a phase of testing at X instances while carrying out Cloud Run revision deployments.
+- Ensure a rerun of tests is carried out when unexpected results are seen.
+- Leave concurrency at 115 rps for future tests and target formal environments.
+- No decision made on max/min instances based on the tests so far.
