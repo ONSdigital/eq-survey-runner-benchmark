@@ -129,7 +129,7 @@ Following completion of the test, re-ran the test with 5 Load Injector Instances
 | --- | --- | --- | --- | --- | --- |
 | 5  | 591 | 10.8  | 155 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2021-12-31T12:11:15) |
 
-In addition to this, as there were suspected datastore issues that affected the run at 50 instances in the first test, we re-ran the last three tests to get a comparison. Despite a spike in CPU usage in the test at 45 instances on the whole the stats and backend latencies looked a lot healthier.  We did not see any of the 429 or 500 errors in the second run at 52 Load Injector Instances:
+In addition to this, as there were suspected datastore issues that affected the run at 50 instances in the first test, we re-ran the last three tests to get a comparison. Despite a spike in CPU usage in the test at 45 instances on the whole the stats and backend latencies looked a lot healthier.  We did not see any of the 429 or 500 errors in the second run at 50 Load Injector Instances:
 
 | Load Injector Instances | Requests per second | 99th percentile Max CPU Usage (%) | 99th percentile response time (ms) | Error rate (%) | Output |
 | --- | --- | --- | --- | --- | --- |
