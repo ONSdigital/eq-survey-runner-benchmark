@@ -1,6 +1,6 @@
 # Stress Test Phase 3 January 2022
 
-Following successful Phase 2 Performance testing we need to run a stress test to the point of failure at 50 instances.
+Following successful Phase 2 Performance testing we need to run a stress test to identify the point of failure at 50 runner instances.
 
 ## Runner settings
 
@@ -80,7 +80,7 @@ The result was broadly comparable but slightly faster for the phase 3 test.
 
 ## Observations
 
-- Early runs between 45 and 55 load injector instances generally followed our expected pattern, requests per second increased and backend latencies remained low, although there were some outliers (Runs at 47, 51 and 52 load injector instances).
+- Early runs between 45 and 55 load injector instances generally followed our expected pattern, requests per second increased and backend latencies remained low, although there were some outliers (runs at 47, 51 and 52 load injector instances).
 - We saw a number of `500 Connection reset by peer` errors during the runs between 47 and 49 load injector instances, but these did not persist as load increased.  
 - For the majority of the test, CPU plateaued at around 82% and only breached 90% as load increased significantly towards the end of the test.
 - At 57 load injector instances, the number of active runner instances briefly spiked to 89 at the beginning of the test, this may need further investigation.
