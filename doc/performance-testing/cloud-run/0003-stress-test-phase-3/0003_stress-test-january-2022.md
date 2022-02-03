@@ -56,6 +56,13 @@ The result was broadly comparable but slightly faster for the phase 3 test.
 | 58  | 6211 | 85.5 | 1508 | 5.650 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T09:24:10)|
 | 59  | 2953 | 91.5 | 1527 | 8.400 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T10:40:03)|
 
+## Supporting Visualisations
+
+The following visualisations show the grafana dashboards as the application was approaching the point of failure at 56 - 59 load injector instances:
+
+![](0003_stress-test-runner-instances-and-cpu-56-59.png)
+![](0003_stress-test-response-time-and-requests-56-59.png)
+
 ## Errors and Failures
 - 46 instances: 5x  `Expected a (302) but got a (0) back when posting page`
 - 47 instances: 500 x `500 errors`
