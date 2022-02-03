@@ -43,8 +43,8 @@ The result was broadly comparable but slightly faster for the phase 3 test.
 | 45  | 5240 | 70.5 | 166 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T11:12:11) |
 | 46  | 5369 | 71.5 | 156 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T11:53:32) |
 | 47  | 5307 | 91.5 | 264 | 0.010 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T12:53:29) |
-| 48  | 5579 | 82.5 | 170 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T13:39:34) |
-| 49  | 5669 | 83.5 | 316 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T14:24:01) |
+| 48  | 5579 | 82.5 | 170 | 0.001 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T13:39:34) |
+| 49  | 5669 | 83.5 | 316 | 0.003 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-28T14:24:01) |
 | 50  | 5772 | 81.5 | 401 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-31T11:34:33) |
 | 51  | 5868 | 83.5 | 500 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-31T12:14:21) |
 | 52  | 5828 | 82.5 | 884 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-01-31T12:54:39) |
@@ -72,7 +72,7 @@ The result was broadly comparable but slightly faster for the phase 3 test.
 - 57 instances:
     - 317,880 x `429 errors` - `The request was aborted because there was no available instance.`
     - 301 x `502 errors`
-- 58 instances: 405,414 x `429 erros` - `The request was aborted because there was no available instance.`
+- 58 instances: 405,414 x `429 errors` - `The request was aborted because there was no available instance.`
 - 59 instances: 
     - 701,000 x `429 errors` - `The request was aborted because there was no available instance.`
     - 92 x `502 errors`
