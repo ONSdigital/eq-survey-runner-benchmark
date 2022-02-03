@@ -54,7 +54,7 @@ The result was broadly comparable but slightly faster for the phase 3 test.
 | 56  | 6204 | 93.5 | 1173 | 0.000 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T08:13:20)|
 | 57  | 5960 | 90.9 | 2022 | 4.400 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T08:49:47)|
 | 58  | 6211 | 85.5 | 1508 | 5.650 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T09:24:10)|
-| 59  | 2953 | 91.5 | 1527 | 8.400 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T10:40:03)|
+| 59  | 6975 | 91.5 | 1759 | 8.400 | [output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-01T10:40:03)|
 
 ## Supporting Visualisations
 
