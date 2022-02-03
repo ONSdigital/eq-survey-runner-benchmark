@@ -23,7 +23,6 @@ The following env vars must be set:
 - PARALLELISM
 - TIMEOUT
 - OUTPUT_DIR
-- OUTPUT_BUCKET
 
 IMAGE_TAG can be passed as an environment variable or as a file input located at `./eq-survey-runner-benchmark-image/tag`.
 
@@ -45,7 +44,6 @@ USER_WAIT_TIME_MAX_SECONDS=<user_max_wait_time> \
 PARALLELISM=<number_of_jobs_to_run> \
 TIMEOUT=<job_timeout> \
 OUTPUT_DIR=<folder_where_outputs_are_stored> \
-OUTPUT_BUCKET=<bucket_where_outputs_are_stored> \
 fly -t census-eq execute \
   --config ci/run_benchmark.yaml \
   -v image_registry=<docker-registry> \
@@ -55,11 +53,11 @@ fly -t census-eq execute \
 ## Output results to Slack
 The following env vars must be set:
 
-- OUTPUT_BUCKET
 - OUTPUT_DIR
 - SLACK_CHANNEL_NAME
 
 The following env var already has a sensible default, but can be set with an alternative value if needed:
+- OUTPUT_BUCKET
 - SLACK_AUTH_TOKEN
 - NUMBER_OF_DAYS
 
@@ -67,7 +65,6 @@ The following env var already has a sensible default, but can be set with an alt
 Use the `fly execute` command to run the task.
 
 ```sh
-OUTPUT_BUCKET=<output_bucket_name> \
 OUTPUT_DIR=<output_directory> \
 SLACK_CHANNEL_NAME=<slack_channel_name> \
 fly -t census-eq execute \
