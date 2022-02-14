@@ -107,6 +107,18 @@
         },
         {
             "method": "GET",
+            "url": "/submitted/view-response/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/download-pdf"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "GET",
             "url": "/submitted/feedback/send"
         },
         {
