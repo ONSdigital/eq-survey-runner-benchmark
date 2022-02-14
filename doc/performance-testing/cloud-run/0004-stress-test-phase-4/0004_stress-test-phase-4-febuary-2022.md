@@ -49,11 +49,11 @@ Although deployment was successful in each test it was not completely seemless. 
 
 The table below shows the amount of requests in that time period and the count of requests breaking particular thresholds.
 
-| Environment | Total requests | latency >2s |latency >5s | latency >10s | Date/Time | Output |
+| Environment | Total requests | Request latency >2s | Request latency >5s | Request latency >10s | Date/Time | Output |
 | --- | --- | --- | --- |--- | --- | --- |
 | eq-stress-test-340815 (Test1) | 45,034 | 6017 | 3094 | 58 | 09-02-2022 20:00 |[output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-09T20:00:45/) |
-| eq-stress-test-340815 (Test2) | 43,885 | 7540 | 5453 | 771 | 2022-02-10 13:18:38 |[output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-10T13:18:38/) |
-| Trail run | 45,059 | 7443 | 3385 | 228 | 2022-02-09 13:14:03 | ephemeral GCP project |
+| eq-stress-test-340815 (Test2) | 43,885 | 7540 | 5453 | 771 | 10-02-2022 13:18:38 |[output](https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-10T13:18:38/) |
+| Trail run | 45,059 | 7443 | 3385 | 228 | 09-02-2022 13:14:03 | ephemeral GCP project |
 
 
 ## Visualisations
@@ -79,7 +79,7 @@ Trial
 ## Conclusion
 Whether it was the test settings or the timeliness of the instance switching there does seem to be a gap lasting approximately 20 seconds when the new instance has significantly higher latency.
 
-The results of the test showed that 15% of requests at the time were above 2 seconds. In 2 of the tests aftershocks were also seen for the next 2-3 minutes, where a small proportion of requests also took greater than 2 seconds (approximately 50 requests)
+The results of the test showed that 15% of requests at the time were above 2 seconds. In 2 of the tests aftershocks were also seen for the next 3-4 minutes, where a small proportion of requests also took greater than 2 seconds (approximately 50 requests)
 
 
 ## Next Steps
