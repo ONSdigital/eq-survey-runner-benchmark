@@ -111,6 +111,10 @@
         },
         {
             "method": "GET",
+            "url": "/submitted/download-pdf"
+        },
+        {
+            "method": "GET",
             "url": "/submitted/thank-you/"
         },
         {

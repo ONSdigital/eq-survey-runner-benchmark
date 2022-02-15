@@ -111,6 +111,10 @@
         },
         {
             "method": "GET",
+            "url": "/submitted/download-pdf?pdf_type=pdfkit_optimised"
+        },
+        {
+            "method": "GET",
             "url": "/submitted/thank-you/"
         },
         {
