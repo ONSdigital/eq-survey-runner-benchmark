@@ -87,7 +87,7 @@ The results of the test showed that 15% of requests at the time were above 2 sec
 - Investigate the reason behind the short term latency increase.
 
 
-## Additional tests
+## Additional Tests
 
 After the results above it was decided to reduce the load and see if it had the same affect. Load injectors were halved to 11 and the test ran again.
 
