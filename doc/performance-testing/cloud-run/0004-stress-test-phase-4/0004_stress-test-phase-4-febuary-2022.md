@@ -85,3 +85,16 @@ The results of the test showed that 15% of requests at the time were above 2 sec
 ## Next Steps
 
 - Investigate the reason behind the short term latency increase.
+
+
+## Additional tests
+
+After the results above it was decided to reduce the load and see if it had the same affect. Load injectors were halved to 11 and the test ran again.
+
+The result was the same, out of 32,466 requests 3550 broke the 2 second threshold.
+
+![](0004_test-3-response-time-and-requests.png)
+![](0004_test-3-instances.png)
+![](0004_test-3-cpu.png)
+
+https://console.cloud.google.com/storage/browser/eq-stress-injector-07122021-outputs/stress-test/2022-02-19T20:36:15
