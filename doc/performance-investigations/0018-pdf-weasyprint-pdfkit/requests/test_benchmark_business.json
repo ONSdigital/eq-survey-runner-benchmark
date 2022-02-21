@@ -1,0 +1,138 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "url": "/questionnaire/introduction-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/introduction-block/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block379/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block379/",
+            "data": {
+                "answer434": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block380/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block380/",
+            "data": {
+                "answerfrom-day": "1",
+                "answerfrom-month": "05",
+                "answerfrom-year": "2019",
+                "answerto-day": "1",
+                "answerto-month": "08",
+                "answerto-year": "2019"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block381/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block381/",
+            "data": {
+                "answer436": "100",
+                "answer437": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block4616/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block4616/",
+            "data": {
+                "answer5873": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block4952/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block4952/",
+            "data": {
+                "answer6287": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block4953/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block4953/",
+            "data": {
+                "answer6288": "One-off increase in stocks"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block383/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block383/",
+            "data": {
+                "answer439": "Differences textarea"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/submit/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/submit/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/view-response/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/feedback/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/feedback/send",
+            "data": {
+                "feedback-type": "The survey questions",
+                "feedback-text": "Feedback"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/feedback/sent"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "test_benchmark_business"
+}

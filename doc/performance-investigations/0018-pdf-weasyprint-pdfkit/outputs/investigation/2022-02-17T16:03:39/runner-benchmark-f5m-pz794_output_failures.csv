@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+POST,/questionnaire/introduction-block/,Expected a (302) but got a (0) back when posting page: /questionnaire/introduction-block/ with data: {'csrf_token': 'IjU1NTE0OTNiOTExZDlmNGUzMzU2Nzg5ZDY3NTc3NTI1NDkwYjBjODYi.Yg50Cw.NbM0oEneyyqlqZoW64frjOwbvqY'},1
