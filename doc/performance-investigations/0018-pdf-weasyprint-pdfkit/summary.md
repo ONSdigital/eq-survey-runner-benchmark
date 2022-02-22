@@ -14,16 +14,16 @@ This documentation benchmarks Weasyprint and PDFKit under higher loads to see th
 
 ## Runner settings
 
-| Setting       | Value                                    |  
-|---------------|------------------------------------------|  
-| Concurrency   | 115                                      |  
-| Max instances | 3                                        |  
-| Min instances | 3                                        |  
-| CPU           | 4                                        |  
-| Memory        | 4G                                       |  
-| Commit        | 4e810eb782d0614563a13844def69dd42b1770b3 |  
+| Setting       | Value                                                                                                                                             |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Concurrency   | 115                                                                                                                                               |
+| Max instances | 3                                                                                                                                                 |
+| Min instances | 3                                                                                                                                                 |
+| CPU           | 4                                                                                                                                                 |
+| Memory        | 4G                                                                                                                                                |
+| Commit        | [4e810eb782d0614563a13844def69dd42b1770b3](https://github.com/ONSdigital/eq-questionnaire-runner/commit/4e810eb782d0614563a13844def69dd42b1770b3) |
 
-When testing PDFKit with a custom CSS file, commit `03f3bccbd37e4f31d9621137dc8ba12ce5dc3b0b`  was used, which implemented this. This should have no impact on the other test runs.
+When testing PDFKit with a custom CSS file, commit [03f3bccbd37e4f31d9621137dc8ba12ce5dc3b0b](https://github.com/ONSdigital/eq-questionnaire-runner/commit/03f3bccbd37e4f31d9621137dc8ba12ce5dc3b0b)  was used, which implemented this. This should have no impact on the other test runs.
 
 ## Benchmark profile
 
