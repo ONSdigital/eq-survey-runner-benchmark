@@ -4,7 +4,7 @@ To test deployment of a new version of eQ runner whilst under load.
 
 The test was conducted 3 times, one trial run in a separate GCP project before 2 tests using eq-stress-test-340815. The trial results have been included to highlight a potential issue with latency on deployment.
 
-In each test, runner version 3.9.4 was upgraded to 3.9.5. The only exception was the last test which was downgraded from 3.9.5 to 3.9.4, this seemed a completely valid scenario and due to no breaking changes in the versions had no ill effect.
+In each test, runner version v3.94.0 was upgraded to v3.95.0 The only exception was the last test which was downgraded from v3.95.0 to v3.94.0, this seemed a completely valid scenario and due to no breaking changes in the versions had no ill effect.
 
 ## Runner settings
 
