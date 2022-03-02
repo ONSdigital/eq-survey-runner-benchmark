@@ -1,0 +1,9 @@
+{
+  "min_wait": "1",
+  "requests_json": "requests/test_benchmark_business_pdfkit_optimised.json",
+  "runner_version": "03f3bccbd37e4f31d9621137dc8ba12ce5dc3b0b",
+  "timestamp": "1645185230",
+  "max_wait": "2",
+  "host": "https://mebin-runner.eq.gcp.onsdigital.uk",
+  "locust_options": "--headless --users 50 --hatch-rate 50 --run-time 10m --csv=output -L WARNING"
+}
