@@ -109,5 +109,6 @@ Error for PDFKit with custom CSS file:
     - creating the PDF from scratch (not from HTML)
     - using another PDF library / 3rd party service.
     - preloading the PDF
+- Look at improving the UX via the use of a spinner for the button.
 - If possible, move to Second Generation Cloud Run execution environment once it is out of Beta.
 - Re-understand runner’s maximum capability considering the CPU impact the PDF generation has on the node.
