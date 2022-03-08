@@ -1,0 +1,9 @@
+{
+  "host": "https://mebin-runner.eq.gcp.onsdigital.uk",
+  "min_wait": "1",
+  "requests_json": "requests/test_benchmark_business_weasy.json",
+  "locust_options": "--headless --users 50 --hatch-rate 50 --run-time 10m --csv=output -L WARNING",
+  "runner_version": "4e810eb782d0614563a13844def69dd42b1770b3",
+  "max_wait": "2",
+  "timestamp": "1645111703"
+}

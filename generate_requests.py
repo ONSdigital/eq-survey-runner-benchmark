@@ -17,7 +17,7 @@ def parse_har_file(har_file):
     requests = []
 
     for page in har_parser.pages:
-        entries = page.filter_entries(content_type='text/html')
+        entries = page.filter_entries(content_type=r'(text/html|application/pdf)')
         for entry in entries:
             entry_request = entry['request']
 

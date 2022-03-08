@@ -25,7 +25,8 @@ class QuestionnaireMixins:
             if not response.content:
                 response.failure(f"No content in GET response for url: {url}")
 
-            self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
+            if "text/html" in response.headers['content-type']:
+                self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
 
             return response
 
