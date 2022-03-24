@@ -2,7 +2,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: ((image_registry))/eq-benchmark-deploy-image
+    repository: ((image_registry))/eq-app-k8s-deploy-image
     tag: ((deploy_image_version))
 inputs:
   - name: eq-survey-runner-benchmark
