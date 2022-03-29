@@ -134,5 +134,6 @@
             "url": "/submitted/thank-you/"
         }
     ],
-    "schema_name": "test_benchmark_business"
+    "schema_name": "test_benchmark_business",
+    "survey_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_benchmark_business.json"
 }
