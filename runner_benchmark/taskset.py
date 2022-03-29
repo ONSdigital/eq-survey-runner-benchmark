@@ -25,6 +25,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         with open(requests_filepath, encoding='utf-8') as requests_file:
             requests_json = json.load(requests_file)
             self.schema_name = requests_json['schema_name']
+            self.survey_url = requests_json['survey_url']
             self.requests = requests_json['requests']
 
     @task
@@ -75,7 +76,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         )
 
     def do_launch_survey(self):
-        token = create_token(schema_name=self.schema_name)
+        token = create_token(schema_name=self.schema_name,
+                             survey_url=self.survey_url)
 
         url = f'/session?token={token}'
         self.get(url=url, name='/session', expect_redirect=True)
