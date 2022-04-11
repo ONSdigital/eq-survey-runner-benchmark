@@ -31,6 +31,8 @@ spec:
               value: "{{ .Values.host }}"
             - name: REQUESTS_JSON
               value: "{{ .Values.requestsJson }}"
+            - name: INCLUDE_SURVEY_URL_IN_TOKEN
+              value: "{{ .Values.includeSurveyUrlInToken }}"
             - name: USER_WAIT_TIME_MIN_SECONDS
               value: "{{ .Values.userWaitTimeMinSeconds }}"
             - name: USER_WAIT_TIME_MAX_SECONDS
