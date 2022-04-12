@@ -20,8 +20,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         self.base_url = self.client.base_url
         self.redirect_params = {}
         self.include_survey_url_in_token = os.getenv(
-            'INCLUDE_SURVEY_URL_IN_TOKEN', False
-        )
+            'INCLUDE_SURVEY_URL_IN_TOKEN', 'false').lower() == 'true'
 
         requests_filepath = os.environ.get('REQUESTS_JSON', 'requests.json')
 
@@ -35,7 +34,6 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
                     self.survey_url = requests_json['survey_url']
                 except Exception as e:
                     raise Exception('Survey url not present in the request file') from e
-
 
     @task
     def start(self):
