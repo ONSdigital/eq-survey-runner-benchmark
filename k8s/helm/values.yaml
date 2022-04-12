@@ -11,6 +11,7 @@ host: ''
 requestsJson: 'requests/test_checkbox.json'
 userWaitTimeMinSeconds: 1
 userWaitTimeMaxSeconds: 2
+includeSurveyUrlInToken: ''
 locustOptions: '--headless --users 800 --hatch-rate 10 --loglevel=CRITICAL --run-time=2h --only-summary'
 output:
   bucket: ''
