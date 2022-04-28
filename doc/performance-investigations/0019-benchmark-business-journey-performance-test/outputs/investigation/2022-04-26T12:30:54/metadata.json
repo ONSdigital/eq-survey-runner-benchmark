@@ -1,0 +1,9 @@
+{
+  "host": "https://staging-runner.eq.gcp.onsdigital.uk",
+  "timestamp": "1650977551",
+  "runner_version": "7aa17971efc6437f7dfb42a732c015b72d809a72",
+  "min_wait": "1",
+  "locust_options": "--headless --users 50 --hatch-rate 50 --run-time 20m --csv=output -L WARNING",
+  "requests_json": "requests/test_benchmark_business.json",
+  "max_wait": "2"
+}
