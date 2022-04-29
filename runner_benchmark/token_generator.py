@@ -65,13 +65,13 @@ _key_store = KeyStore(
 )
 
 
-def _get_payload_with_params(schema_name, survey_url=None, **extra_payload):
+def _get_payload_with_params(schema_name, schema_url=None, **extra_payload):
     payload_vars = PAYLOAD.copy()
     payload_vars['tx_id'] = str(uuid4())
     payload_vars['response_id'] = str(uuid4())
     payload_vars['schema_name'] = schema_name
-    if survey_url:
-        payload_vars['survey_url'] = survey_url
+    if schema_url:
+        payload_vars['schema_url'] = schema_url
 
     payload_vars['iat'] = time.time()
     payload_vars['exp'] = payload_vars['iat'] + float(3600)  # one hour from now
