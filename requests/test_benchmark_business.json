@@ -135,5 +135,5 @@
         }
     ],
     "schema_name": "test_benchmark_business",
-    "survey_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_benchmark_business.json"
+    "schema_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_benchmark_business.json"
 }

@@ -19,8 +19,8 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
 
         self.base_url = self.client.base_url
         self.redirect_params = {}
-        self.include_survey_url_in_token = (
-            os.getenv('INCLUDE_SURVEY_URL_IN_TOKEN', 'false').lower() == 'true'
+        self.include_schema_url_in_token = (
+            os.getenv('INCLUDE_SCHEMA_URL_IN_TOKEN', 'false').lower() == 'true'
         )
 
         requests_filepath = os.environ.get('REQUESTS_JSON', 'requests.json')
@@ -30,11 +30,11 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
             self.schema_name = requests_json['schema_name']
             self.requests = requests_json['requests']
 
-            if self.include_survey_url_in_token:
+            if self.include_schema_url_in_token:
                 try:
-                    self.survey_url = requests_json['survey_url']
+                    self.schema_url = requests_json['schema_url']
                 except Exception as e:
-                    raise Exception('Survey url not present in the request file') from e
+                    raise Exception('Schema url not present in the request file') from e
 
     @task
     def start(self):
@@ -84,9 +84,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         )
 
     def do_launch_survey(self):
-        if self.include_survey_url_in_token:
+        if self.include_schema_url_in_token:
             token = create_token(
-                schema_name=self.schema_name, survey_url=self.survey_url
+                schema_name=self.schema_name, schema_url=self.schema_url
             )
         else:
             token = create_token(schema_name=self.schema_name)

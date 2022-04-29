@@ -157,7 +157,7 @@ If you want to vary the default parameters Locust uses on start, you can specify
   - defaults to 1
 - userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
   - defaults to 2
-- includeSurveyUrlInToken - Optional boolean value that allows the schema to be loaded via a survey_url included in the launch claim.
+- includeSchemaUrlInToken - Optional boolean value that allows the schema to be loaded via a schema_url included in the launch claim.
   - defaults to `false`
 - output.bucket - Name of the GCS bucket in which the output should be stored.
 - output.directory - Name of the directory within the GCS bucket in which the output should be stored.
