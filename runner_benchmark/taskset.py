@@ -30,12 +30,6 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
             self.schema_name = requests_json['schema_name']
             self.requests = requests_json['requests']
 
-            if self.include_schema_url_in_token:
-                try:
-                    self.schema_url = requests_json['schema_url']
-                except Exception as e:
-                    raise Exception('Schema url not present in the request file') from e
-
     @task
     def start(self):
         self.do_launch_survey()

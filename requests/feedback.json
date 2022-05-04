@@ -130,5 +130,6 @@
             "url": "/submitted/thank-you/"
         }
     ],
-    "schema_name": "test_feedback"
+    "schema_name": "test_feedback",
+    "schema_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_feedback.json"
 }
