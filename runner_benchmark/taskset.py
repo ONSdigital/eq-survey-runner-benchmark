@@ -84,7 +84,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         )
 
     def do_launch_survey(self):
-        extra_payload = dict(schema_url=self.schema_url) if self.include_schema_url_in_token else {}
+        extra_payload = (
+            dict(schema_url=self.schema_url) if self.include_schema_url_in_token else {}
+        )
         token = create_token(schema_name=self.schema_name, **extra_payload)
 
         url = f'/session?token={token}'
