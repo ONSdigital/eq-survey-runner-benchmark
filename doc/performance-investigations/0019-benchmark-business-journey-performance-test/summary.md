@@ -1,4 +1,4 @@
-# Feedback performance investigation
+# Business journey performance investigation
 
 This test is to investigate the performance of business journey in comparison to the incumbent checkbox journey. No new requests file was generated as one was already present for `test_benchmark_business.json`.
 
