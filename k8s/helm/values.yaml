@@ -4,7 +4,7 @@
 
 parallelism: 1
 container:
-  image: eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
+  image: europe-west2-docker.pkg.dev/ons-eq-ci/docker-images/eq-benchmark-deploy-image:latest
   pullPolicy: Always
 
 host: ''
