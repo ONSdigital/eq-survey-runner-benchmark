@@ -29,6 +29,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
             requests_json = json.load(requests_file)
             self.schema_name = requests_json['schema_name']
             self.requests = requests_json['requests']
+            self.schema_url = requests_json['schema_url']
 
     @task
     def start(self):
