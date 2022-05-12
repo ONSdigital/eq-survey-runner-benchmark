@@ -215,5 +215,6 @@
             "url": "/submitted/thank-you/"
         }
     ],
-    "schema_name": "test_individual_response"
+    "schema_name": "test_individual_response",
+    "schema_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_individual_response.json"
 }

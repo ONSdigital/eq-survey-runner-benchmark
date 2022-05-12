@@ -21,7 +21,7 @@ The benchmark consumes a requests JSON file that contains a list of HTTP request
 To run a benchmark, use:
 
 ```bash
-pipenv run ./run.sh <REQUESTS_JSON> <HOST: Optional>
+pipenv run ./run.sh <REQUESTS_JSON> <INCLUDE_SCHEMA_URL_IN_TOKEN: Optional> <HOST: Optional>
 ```
 e.g.
 ```bash
@@ -157,6 +157,8 @@ If you want to vary the default parameters Locust uses on start, you can specify
   - defaults to 1
 - userWaitTimeMaxSeconds - The maximum delay between each user's GET requests
   - defaults to 2
+- includeSchemaUrlInToken - Optional boolean value that allows the schema to be loaded via a schema_url included in the launch claim. The schema being loaded will need to be present in our cloud bucket however this is not validated, so check the storage bucket at `https://storage.googleapis.com/eq-questionnaire-schemas/{schema_name}.json` before setting this parameter to `true`.
+  - defaults to `false`
 - output.bucket - Name of the GCS bucket in which the output should be stored.
 - output.directory - Name of the directory within the GCS bucket in which the output should be stored.
 
@@ -169,7 +171,7 @@ helm tiller run \
 -    --set requestsJson=requests/census_individual_gb_eng.json \
 -    --set locustOptions="--clients 1000 --hatch-rate 50 -L WARNING" \
 -    --set host=https://your-runner.gcp.dev.eq.ons.digital \
--    --set container.image=eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
+-    --set container.image=europe-west2-docker.pkg.dev/ons-eq-ci/docker-images/eq-benchmark-deploy-image:latest
 ```
 
 ## Visualising Benchmark Results

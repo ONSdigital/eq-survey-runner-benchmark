@@ -55,6 +55,9 @@ def parse_har_file(har_file):
 def generate_requests(har_file, requests_file, schema_name):
     requests = parse_har_file(har_file)
     requests['schema_name'] = schema_name
+    requests[
+        'schema_url'
+    ] = f"https://storage.googleapis.com/eq-questionnaire-schemas/{schema_name}.json"
     json.dump(requests, requests_file, indent=4)
 
 

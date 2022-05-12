@@ -47,5 +47,6 @@
             "url": "/submitted/thank-you/"
         }
     ],
-    "schema_name": "test_checkbox"
+    "schema_name": "test_checkbox",
+    "schema_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_checkbox.json"
 }

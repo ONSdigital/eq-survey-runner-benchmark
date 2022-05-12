@@ -19,6 +19,9 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
 
         self.base_url = self.client.base_url
         self.redirect_params = {}
+        self.include_schema_url_in_token = (
+            os.getenv('INCLUDE_SCHEMA_URL_IN_TOKEN', 'false').lower() == 'true'
+        )
 
         requests_filepath = os.environ.get('REQUESTS_JSON', 'requests.json')
 
@@ -26,6 +29,7 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
             requests_json = json.load(requests_file)
             self.schema_name = requests_json['schema_name']
             self.requests = requests_json['requests']
+            self.schema_url = requests_json['schema_url']
 
     @task
     def start(self):
@@ -75,7 +79,10 @@ class SurveyRunnerTaskSet(TaskSet, QuestionnaireMixins):
         )
 
     def do_launch_survey(self):
-        token = create_token(schema_name=self.schema_name)
+        extra_payload = (
+            dict(schema_url=self.schema_url) if self.include_schema_url_in_token else {}
+        )
+        token = create_token(schema_name=self.schema_name, **extra_payload)
 
         url = f'/session?token={token}'
         self.get(url=url, name='/session', expect_redirect=True)

@@ -4,13 +4,14 @@
 
 parallelism: 1
 container:
-  image: eu.gcr.io/census-eq-ci/eq-survey-runner-benchmark:latest
+  image: europe-west2-docker.pkg.dev/ons-eq-ci/docker-images/eq-benchmark-deploy-image:latest
   pullPolicy: Always
 
 host: ''
 requestsJson: 'requests/test_checkbox.json'
 userWaitTimeMinSeconds: 1
 userWaitTimeMaxSeconds: 2
+includeSchemaUrlInToken: 'false'
 locustOptions: '--headless --users 800 --hatch-rate 10 --loglevel=CRITICAL --run-time=2h --only-summary'
 output:
   bucket: ''

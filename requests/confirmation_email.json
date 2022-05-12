@@ -252,5 +252,6 @@
             }
         }
     ],
-    "schema_name": "test_confirmation_email"
+    "schema_name": "test_confirmation_email",
+    "schema_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_confirmation_email.json"
 }
