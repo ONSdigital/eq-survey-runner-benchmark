@@ -21,7 +21,7 @@ The benchmark consumes a requests JSON file that contains a list of HTTP request
 To run a benchmark, use:
 
 ```bash
-pipenv run ./run.sh <REQUESTS_JSON> <HOST: Optional>
+pipenv run ./run.sh <REQUESTS_JSON> <INCLUDE_SCHEMA_URL_IN_TOKEN: Optional> <HOST: Optional>
 ```
 e.g.
 ```bash
