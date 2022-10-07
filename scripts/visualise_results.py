@@ -9,7 +9,7 @@ PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
 
 
 def plot_data(df, number_of_days_to_plot):
-    plt.style.use('seaborn-poster')
+    plt.style.use('fast')
 
     if (
         number_of_days_to_plot and number_of_days_to_plot <= 45
