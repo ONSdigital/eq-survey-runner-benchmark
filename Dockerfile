@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 WORKDIR /benchmark
 COPY . /benchmark
@@ -7,7 +7,7 @@ COPY . /benchmark
 RUN apt-get update && apt-get install -y gcc python3-dev
 
 # Install the required dependencies via pip
-RUN pip install pipenv==2018.11.26
+RUN pip install pipenv==2022.9.24
 RUN pipenv install --deploy --system
 
 # Start Locust using LOCUS_OPTS environment variable
