@@ -1,8 +1,9 @@
-# Title
+# Python 3.10.8 Upgrade investigation
 
-Brief explanation.
+EQ Questionaire Runner is currently on `3.9` .
+This investigation is to see the performance of Runner when upgraded to `3.10.8` compared to `3.9` .
 
-Link to Github branch with proposed changes.
+https://github.com/ONSdigital/eq-questionnaire-runner/tree/upgrade-python-3.10.8
 
 ## Benchmark profile
 
