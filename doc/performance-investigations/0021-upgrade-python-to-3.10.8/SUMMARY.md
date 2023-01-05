@@ -21,10 +21,10 @@ https://github.com/ONSdigital/eq-questionnaire-runner/tree/upgrade-python-3.10.8
 Results based on 99th percentile timings.
 | Metric              | Baseline | Investigation |
 | ------------------- | -------- | ------------- |
-| Questionnaire GETs  | 469ms    | 468ms         |
-| Questionnaire POSTs | 306ms    | 161ms         |
-| All requests        | 409ms    | 354ms         |
-| Total Requests      | 65,857  | 65,962        |
+| Questionnaire GETs  | 469ms    | 433ms         |
+| Questionnaire POSTs | 306ms    | 186ms         |
+| All requests        | 409ms    | 341ms         |
+| Total Requests      | 65,857   | 65,678        |
 | Total Failures      | 0 .      | 0             |
 | Error Percentage    | 0.0%     | 0.0%          |
 
