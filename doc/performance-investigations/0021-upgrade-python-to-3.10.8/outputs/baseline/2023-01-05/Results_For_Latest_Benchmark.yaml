@@ -1,0 +1,14 @@
+---
+Percentile Averages:
+50th: 66ms
+90th: 82ms
+95th: 105ms
+99th: 409ms
+99.9th: 717ms
+---
+GETs (99th): 469ms
+POSTs (99th): 306ms
+---
+Total Requests: 65,857
+Total Failures: 0
+Error Percentage: 0.0%
