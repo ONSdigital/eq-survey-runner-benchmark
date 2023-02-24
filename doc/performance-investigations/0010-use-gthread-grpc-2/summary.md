@@ -43,7 +43,7 @@ The results below are the averages between all tests. Note response times are in
 | Gunicorn Threads         | 137                | 162                | 150                        |
 | Gunicorn Threads + gRPC  | 91                 | 110                | 100                        |
 
-#### Performance comparison of Async vs Thread with gRPC over multiple tests
+## Performance comparison of Async vs Thread with gRPC over multiple tests
 
 Threads without gRPC is not included as it was not performant enough
 
