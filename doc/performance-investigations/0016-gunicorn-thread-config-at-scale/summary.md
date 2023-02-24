@@ -1,6 +1,6 @@
 # Gunicorn thread count configuration at scale
 
-The previous [worker and thread count investigation](https://github.com/ONSdigital/eq-survey-runner-benchmark/blob/master/doc/performance-investigations/0013-gunicorn-worker-thread-config/summary.md) highlighted that we should do further testing at scale with a reduced number of threads. This test aims to:
+The previous [worker and thread count investigation](https://github.com/ONSdigital/eq-survey-runner-benchmark/blob/main/doc/performance-investigations/0013-gunicorn-worker-thread-config/summary.md) highlighted that we should do further testing at scale with a reduced number of threads. This test aims to:
 - confirm that reducing the number of threads does not negatively impact performance across a varied load profile
 - understand the impact on Redis connections
 

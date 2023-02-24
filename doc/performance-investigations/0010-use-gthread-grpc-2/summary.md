@@ -1,6 +1,6 @@
 # Use gthread gunicorn worker class and gRPC protocol #2
 
-This document follows on from the [previous test](https://github.com/ONSdigital/eq-survey-runner-benchmark/blob/master/doc/performance-investigations/0008-use-gthread-grpc/summary.md) that was carried out to investigate the performance of the threaded worker class of Gunicorn with and without gRPC.
+This document follows on from the [previous test](https://github.com/ONSdigital/eq-survey-runner-benchmark/blob/main/doc/performance-investigations/0008-use-gthread-grpc/summary.md) that was carried out to investigate the performance of the threaded worker class of Gunicorn with and without gRPC.
 Now that sessions are stored in Datastore instead of Redis, a re-run of the previous test was appropriate.
 
 ## Benchmark profile
