@@ -1,0 +1,8 @@
+{
+  "requests_json": "requests/test_business_benchmark_pdfkit.json",
+  "runner_version": "caff9b764cbc39fb846eeb3ad14e935dff3ac53a",
+  "max_wait": "2",
+  "min_wait": "1",
+  "host": "https://sinhaa-runner.eq.gcp.onsdigital.uk",
+  "locust_options": "--headless --users 50 --hatch-rate 50 --run-time 20m --csv=output -L WARNING"
+}
