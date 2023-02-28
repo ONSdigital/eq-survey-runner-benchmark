@@ -47,7 +47,9 @@ execution environment.
 
 ## Results
 
-Results based on 99th percentile timings.
+### Execution Environment Performance
+
+#### Results based on 99th percentile timings.
 
 | Metric                                   | Baseline (gen1)                                                                    | Investigation (gen2)                                                                    |
 |------------------------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
@@ -59,12 +61,29 @@ Results based on 99th percentile timings.
 | Results                                  | [benchmark_results](outputs/baseline/2023-02-27/Results_For_Latest_Benchmark.yaml) | [benchmark_results](outputs/investigation/2023-02-27/Results_For_Latest_Benchmark.yaml) |
 | Performance Graph                        | [result](outputs/baseline/2023-02-27/performance_graph.png)                        | [result](outputs/investigation/2023-02-27/performance_graph.png)                        |
 
-Detailed Results.
+#### Detailed Results.
 
 | Execution Environment | Type | Name                    | Request Count | Failure Count | Average Response Time | Average Content Size | Requests/s | 50%  | 66%  | 75%  | 80%  | 90%  | 95%  | 98%  | 99%  | 99.90% | 99.99% | 100% | outputs                                     |
 |-----------------------|------|-------------------------|---------------|---------------|-----------------------|----------------------|------------|------|------|------|------|------|------|------|------|--------|--------|------|---------------------------------------------|
 | Gen1                  | GET  | /submitted/download-pdf | 2176          | 0             | 1134.83901            | 352743.324           | 1.81477554 | 1100 | 1100 | 1200 | 1200 | 1200 | 1300 | 1600 | 1900 | 2300   | 2700   | 2700 | [outputs](outputs/baseline/2023-02-27)      |
 | Gen2                  | GET  | /submitted/download-pdf | 2146          | 0             | 1028.35708            | 353894.429           | 1.78933408 | 1000 | 1000 | 1000 | 1100 | 1100 | 1100 | 1300 | 1600 | 2400   | 2700   | 2700 | [outputs](outputs/investigation/2023-02-27) |
+
+### Execution environment switch down-time
+
+#### Results based on 99th percentile timings.
+
+
+| Metric                            | Investigation (gen1 to gen2 switch down-time)                                                        |
+|-----------------------------------|------------------------------------------------------------------------------------------------------|
+| GETs                              | 418ms                                                                                                |
+| POSTs                             | 207ms                                                                                                |
+| Total Requests                    | 60,861                                                                                               |
+| 99th percentile Max CPU Usage (%) | 30.0%                                                                                                |
+| Total Failures                    | 0                                                                                                    |
+| Error Percentage                  | 0.0%                                                                                                 |
+| Results                           | [benchmark_results](outputs/investigation/down-time-investigation/Results_For_Latest_Benchmark.yaml) |
+| Performance Graph                 | [result](outputs/investigation/down-time-investigation/performance_graph.png)                        |
+
 
 ## Investigation
 
@@ -77,6 +96,9 @@ recorded was roughly 1 second.
 
 If we decide to move to second generation execution environment:
 - The investigation proved that there won't be any down-time necessary and the requests can be handled seamlessly.
+  > As a part of this test, the benchmark was started on a fresh runner deployment on execution environment gen1. 
+  > Midway through benchmark execution, runner was deployed with the execution environment gen2 and the 
+  > [output](outputs/investigation/down-time-investigation) suggests no issue/errors reported and the traffic was managed properly by Cloud Run. 
 - The investigation suggested no compatibility or cost implications.
 - The investigation suggested the migration to be straight forward. As we are using terraform for the deployment which 
 will require template metadata annotation `"run.googleapis.com/execution-environment"` as `"gen2"`.
