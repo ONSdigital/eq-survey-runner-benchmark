@@ -53,13 +53,13 @@ execution environment.
 
 | Metric                                   | Baseline (gen1)                                                                    | Investigation (gen2)                                                                    |
 |------------------------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
-| **GET** <br/>(*/submitted/download-pdf*) | 1900ms                                                                             | 1600ms                                                                                  |
-| Total Requests                           | 2,176                                                                              | 2,146                                                                                   |
-| 99th percentile Max CPU Usage (%)        | 30.9%                                                                              | 29.9%                                                                                   |
+| **GET** <br/>(*/submitted/download-pdf*) | 1900ms                                                                             | 1400ms                                                                                  |
+| Total Requests                           | 2,176                                                                              | 2,203                                                                                   |
+| 99th percentile Max CPU Usage (%)        | 30.9%                                                                              | 28.0%                                                                                   |
 | Total Failures                           | 0                                                                                  | 0                                                                                       |
 | Error Percentage                         | 0.0%                                                                               | 0.0%                                                                                    |
-| Results                                  | [benchmark_results](outputs/baseline/2023-02-27/Results_For_Latest_Benchmark.yaml) | [benchmark_results](outputs/investigation/2023-02-27/Results_For_Latest_Benchmark.yaml) |
-| Performance Graph                        | [result](outputs/baseline/2023-02-27/performance_graph.png)                        | [result](outputs/investigation/2023-02-27/performance_graph.png)                        |
+| Results                                  | [benchmark_results](outputs/baseline/2023-02-27/Results_For_Latest_Benchmark.yaml) | [benchmark_results](outputs/investigation/2023-03-02/Results_For_Latest_Benchmark.yaml) |
+| Performance Graph                        | [result](outputs/baseline/2023-02-27/performance_graph.png)                        | [result](outputs/investigation/2023-03-02/performance_graph.png)                        |
 
 #### Detailed Results.
 
