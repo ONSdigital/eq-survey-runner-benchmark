@@ -1,7 +1,7 @@
 import os
 import time
 from uuid import uuid4
-
+from datetime import datetime, timedelta
 from sdc.crypto.encrypter import encrypt
 from sdc.crypto.key_store import KeyStore
 
@@ -76,7 +76,7 @@ def _get_payload_with_params(schema_name, schema_url=None, **extra_payload):
     payload_vars['iat'] = time.time()
     payload_vars['exp'] = payload_vars['iat'] + float(3600)  # one hour from now
     payload_vars['jti'] = str(uuid4())
-    payload_vars['response_expires_at'] =  payload_vars['iat'] + float(604800) # 7 days from now which is the default expiry time
+    payload_vars['response_expires_at'] = (datetime.now() + timedelta(days=7)).isoformat() # 7 days from now which is the default expiry time
     for key, value in extra_payload.items():
         payload_vars[key] = value
 
