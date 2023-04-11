@@ -1,7 +1,7 @@
 import os
 import time
 from uuid import uuid4
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from sdc.crypto.encrypter import encrypt
 from sdc.crypto.key_store import KeyStore
 
