@@ -77,7 +77,8 @@ def _get_payload_with_params(schema_name, schema_url=None, **extra_payload):
     payload_vars['exp'] = payload_vars['iat'] + float(3600)  # one hour from now
     payload_vars['jti'] = str(uuid4())
     payload_vars['response_expires_at'] = (
-        datetime.now() + timedelta(days=7)
+        datetime.now(tz=timezone.utc) + timedelta(days=7)
+```
     ).isoformat()  # 7 days from now in ISO 8601 format
     for key, value in extra_payload.items():
         payload_vars[key] = value
