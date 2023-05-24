@@ -3,7 +3,7 @@ image_resource:
   type: docker-image
   source:
     repository: python
-    tag: 3.10-slim
+    tag: 3.9-slim
 inputs:
   - name: eq-survey-runner-benchmark
 params:
