@@ -4,22 +4,22 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-black = "*"
-"flake8" = "*"
+black = "22.10.0"
+"flake8" = "5.0.4"
 
 [packages]
-haralyzer = "*"
-backoff = "*"
-sdc-cryptography = "*"
-click = "*"
-locust = "*"
-google-cloud-storage = "*"
-pandas = "*"
-matplotlib = "*"
-slackclient = "*"
+haralyzer = "2.1.0"
+backoff = "2.2.1"
+sdc-cryptography = "1.1.0"
+click = "8.1.3"
+locust = "2.12.1"
+google-cloud-storage = "2.5.0"
+pandas = "1.5.0"
+matplotlib = "3.6.1"
+slackclient = "2.9.4"
 
 [requires]
-python_version = "3.10"
+python_version = "3.9"
 
 [pipenv]
 allow_prereleases = false
