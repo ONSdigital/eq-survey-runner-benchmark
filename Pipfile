@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
-black = "22.10.0"
-"flake8" = "5.0.4"
+black = "*"
+"flake8" = "*"
 
 [packages]
 haralyzer = "2.1.0"
@@ -16,7 +16,7 @@ locust = "2.12.1"
 google-cloud-storage = "2.5.0"
 pandas = "1.5.0"
 matplotlib = "3.6.1"
-slackclient = "2.9.4"
+slackclient = "*"
 
 [requires]
 python_version = "3.9"
