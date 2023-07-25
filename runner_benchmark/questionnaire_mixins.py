@@ -9,7 +9,6 @@ class QuestionnaireMixins:
         with self.client.get(
             url=url, name=name, allow_redirects=False, catch_response=True
         ) as response:
-
             if expect_redirect:
                 if response.status_code != 302:
                     error = f"Expected a (302) but got a ({response.status_code}) back when getting page: {url}"
@@ -31,7 +30,6 @@ class QuestionnaireMixins:
             return response
 
     def post(self, base_url, request_url, data={}, name=None):
-
         data['csrf_token'] = self.csrf_token
         headers = {'Referer': base_url}
 
@@ -43,7 +41,6 @@ class QuestionnaireMixins:
             name=name,
             catch_response=True,
         ) as response:
-
             if response.status_code != 302:
                 error = f"Expected a (302) but got a ({response.status_code}) back when posting page: {request_url} with data: {data}"
                 response.failure(error)

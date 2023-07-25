@@ -28,7 +28,6 @@ def get_results(folders, number_of_days=None):
 
 
 def parse_environment_variables():
-
     days = os.getenv("NUMBER_OF_DAYS")
     if days and days.isdigit() is False:
         print("'NUMBER_OF_DAYS' environment variable must be a valid integer value")
