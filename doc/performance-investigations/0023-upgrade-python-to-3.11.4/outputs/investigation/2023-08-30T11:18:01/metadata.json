@@ -1,0 +1,9 @@
+{
+  "min_wait": "1",
+  "requests_json": "requests/test_benchmark_business.json",
+  "max_wait": "2",
+  "locust_options": "--headless --users 50 --hatch-rate 50 --run-time 20m --csv=output -L WARNING",
+  "runner_version": "13048d6ec01e1e0a60389585e1328db73c7de02b",
+  "timestamp": "1693395509",
+  "host": "https://pete-staging-28-08-2023-runner.eq.gcp.onsdigital.uk"
+}
