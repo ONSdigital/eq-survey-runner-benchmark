@@ -1,0 +1,262 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "url": "/questionnaire/introduction-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/introduction-block/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block379/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block379/",
+            "data": {
+                "answer434": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block380/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block380/",
+            "data": {
+                "answerfrom-day": "1",
+                "answerfrom-month": "05",
+                "answerfrom-year": "2019",
+                "answerto-day": "1",
+                "answerto-month": "08",
+                "answerto-year": "2019"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block381/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block381/",
+            "data": {
+                "answer436": "100",
+                "answer437": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block4616/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block4616/",
+            "data": {
+                "answer5873": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block4952/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block4952/",
+            "data": {
+                "answer6287": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block4953/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block4953/",
+            "data": {
+                "answer6288": "One-off increase in stocks"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/block383/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/block383/",
+            "data": {
+                "answer439": ""
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/primary-person-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/primary-person-list-collector/",
+            "data": {
+                "you-live-here": "Yes"
+            },
+            "redirect_route": "/questionnaire/people/{person_1_list_id}/add-or-edit-primary-person/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_1_list_id}/add-or-edit-primary-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_1_list_id}/add-or-edit-primary-person/",
+            "data": {
+                "first-name": "Joe",
+                "last-name": "Bloggs"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/skip-first-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/skip-first-block/",
+            "data": {
+                "skip-first-block-answer": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/first-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/first-number-block/",
+            "data": {
+                "first-number-answer": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/first-and-a-half-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/first-and-a-half-number-block/",
+            "data": {
+                "first-and-a-half-number-answer-also-in-total": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/second-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/second-number-block/",
+            "data": {
+                "second-number-answer-also-in-total": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/currency-total-playback-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/currency-total-playback-1/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/questions-section/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/questions-section/",
+            "data": {},
+            "redirect_route": "/questionnaire/people/{persons_1_list_id}/third-number-block/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{persons_1_list_id}/third-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{persons_1_list_id}/third-number-block/",
+            "data": {
+                "third-number-answer": "100",
+                "third-number-answer-also-in-total": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{persons_1_list_id}/currency-total-playback-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{persons_1_list_id}/currency-total-playback-2/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{persons_1_list_id}/mutually-exclusive-checkbox/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{persons_1_list_id}/mutually-exclusive-checkbox/",
+            "data": {
+                "checkbox-answer": "{calc_value_2}"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{persons_1_list_id}/set-min-max-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{persons_1_list_id}/set-min-max-block/",
+            "data": {
+                "set-minimum-answer": "400",
+                "set-maximum-answer": "200"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/calculated-summary-section/{persons_1_list_id}"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/calculated-summary-section/{persons_1_list_id}/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/submit/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/submit/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        }
+    ],
+    "schema_name": "test_benchmark_business",
+    "schema_url": "https://storage.googleapis.com/eq-questionnaire-schemas/test_benchmark_business.json"
+}
