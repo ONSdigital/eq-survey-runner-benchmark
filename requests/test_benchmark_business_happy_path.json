@@ -11,85 +11,85 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block379/"
+            "url": "/questionnaire/block-379/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block379/",
+            "url": "/questionnaire/block-379/",
             "data": {
-                "answer434": "No"
+                "answer-434": "No"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block380/"
+            "url": "/questionnaire/block-380/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block380/",
+            "url": "/questionnaire/block-380/",
             "data": {
-                "answerfrom-day": "1",
-                "answerfrom-month": "05",
-                "answerfrom-year": "2019",
-                "answerto-day": "1",
-                "answerto-month": "08",
-                "answerto-year": "2019"
+                "answer-from-day": "1",
+                "answer-from-month": "05",
+                "answer-from-year": "2019",
+                "answer-to-day": "1",
+                "answer-to-month": "08",
+                "answer-to-year": "2019"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block381/"
+            "url": "/questionnaire/block-381/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block381/",
+            "url": "/questionnaire/block-381/",
             "data": {
-                "answer436": "100",
-                "answer437": "100"
+                "answer-436": "100",
+                "answer-437": "100"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block4616/"
+            "url": "/questionnaire/block-4616/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block4616/",
+            "url": "/questionnaire/block-4616/",
             "data": {
-                "answer5873": "No"
+                "answer-5873": "No"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block4952/"
+            "url": "/questionnaire/block-4952/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block4952/",
+            "url": "/questionnaire/block-4952/",
             "data": {
-                "answer6287": "Yes"
+                "answer-6287": "Yes"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block4953/"
+            "url": "/questionnaire/block-4953/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block4953/",
+            "url": "/questionnaire/block-4953/",
             "data": {
-                "answer6288": "One-off increase in stocks"
+                "answer-6288": "One-off increase in stocks"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/block383/"
+            "url": "/questionnaire/block-383/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/block383/",
+            "url": "/questionnaire/block-383/",
             "data": {
-                "answer439": ""
+                "answer-439": ""
             }
         },
         {
