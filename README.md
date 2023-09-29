@@ -117,9 +117,9 @@ N.B Although the above example uses the same url in the redirect as the GET, it 
 Manually adding in a redirect is only needed once for each list_item_id and you can do multiple at the same time.
 
 ---
-## Dealing Hub Schemas
+## Dealing with hub schemas
 
-Before you make a request file with a hub schema. You will need to add the sections to the `required_completed_sections` in the schema, for example:
+Before you make a request file with a hub schema. You will need to add the sections to the `required_completed_sections` in the schema. For Example:
 
 ```
     "questionnaire_flow": {
@@ -130,7 +130,7 @@ Before you make a request file with a hub schema. You will need to add the secti
     }
 ```
 
-Once you create the request file you will need to remove any json object with the url `"url": "/questionnaire/"` For example:
+Once you create the request file you will need to remove any json object with the url `"url": "/questionnaire/"`. For Example:
 
 ```
     {
