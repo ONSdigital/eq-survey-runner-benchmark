@@ -86,15 +86,15 @@
             "data": {
                 "you-live-here": "Yes"
             },
-            "redirect_route": "/questionnaire/people/{person_1_list_id}/add-or-edit-primary-person/"
+            "redirect_route": "/questionnaire/people/{person_1_id}/add-or-edit-primary-person/"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_list_id}/add-or-edit-primary-person/"
+            "url": "/questionnaire/people/{person_1_id}/add-or-edit-primary-person/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_list_id}/add-or-edit-primary-person/",
+            "url": "/questionnaire/people/{person_1_id}/add-or-edit-primary-person/",
             "data": {
                 "first-name": "Joe",
                 "last-name": "Bloggs"
@@ -198,11 +198,20 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_list_id}/third-number-block/"
+            "url": "/questionnaire/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_list_id}/third-number-block/",
+            "url": "/questionnaire/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_1_id}/third-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_1_id}/third-number-block/",
             "data": {
                 "third-number-answer": "100",
                 "third-number-answer-also-in-total": "100"
@@ -210,31 +219,31 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_list_id}/currency-total-playback-2/"
+            "url": "/questionnaire/people/{person_1_id}/currency-total-playback-2/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_list_id}/currency-total-playback-2/",
+            "url": "/questionnaire/people/{person_1_id}/currency-total-playback-2/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_list_id}/mutually-exclusive-checkbox/"
+            "url": "/questionnaire/people/{person_1_id}/mutually-exclusive-checkbox/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_list_id}/mutually-exclusive-checkbox/",
+            "url": "/questionnaire/people/{person_1_id}/mutually-exclusive-checkbox/",
             "data": {
                 "checkbox-answer": "{calc_value_1}"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_list_id}/set-min-max-block/"
+            "url": "/questionnaire/people/{person_1_id}/set-min-max-block/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_list_id}/set-min-max-block/",
+            "url": "/questionnaire/people/{person_1_id}/set-min-max-block/",
             "data": {
                 "set-minimum-answer": "500",
                 "set-maximum-answer": "200"
@@ -242,21 +251,30 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_1_list_id}/"
+            "url": "/questionnaire/sections/calculated-summary-section/{person_1_id}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_1_list_id}/",
-            "data": {},
-            "redirect_route": "/questionnaire/people/{person_2_list_id}/third-number-block/"
+            "url": "/questionnaire/sections/calculated-summary-section/{person_1_id}/",
+            "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_2_list_id}/third-number-block/"
+            "url": "/questionnaire/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_2_list_id}/third-number-block/",
+            "url": "/questionnaire/",
+            "data": {},
+            "redirect_route": "/questionnaire/people/{person_2_id}/third-number-block/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_2_id}/third-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_2_id}/third-number-block/",
             "data": {
                 "third-number-answer": "100",
                 "third-number-answer-also-in-total": "100"
@@ -264,31 +282,31 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_2_list_id}/currency-total-playback-2/"
+            "url": "/questionnaire/people/{person_2_id}/currency-total-playback-2/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_2_list_id}/currency-total-playback-2/",
+            "url": "/questionnaire/people/{person_2_id}/currency-total-playback-2/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_2_list_id}/mutually-exclusive-checkbox/"
+            "url": "/questionnaire/people/{person_2_id}/mutually-exclusive-checkbox/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_2_list_id}/mutually-exclusive-checkbox/",
+            "url": "/questionnaire/people/{person_2_id}/mutually-exclusive-checkbox/",
             "data": {
                 "checkbox-exclusive-answer": "I prefer not to say"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_2_list_id}/set-min-max-block/"
+            "url": "/questionnaire/people/{person_2_id}/set-min-max-block/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_2_list_id}/set-min-max-block/",
+            "url": "/questionnaire/people/{person_2_id}/set-min-max-block/",
             "data": {
                 "set-minimum-answer": "500",
                 "set-maximum-answer": "100"
@@ -296,20 +314,20 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_2_list_id}/"
+            "url": "/questionnaire/sections/calculated-summary-section/{person_2_id}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_2_list_id}/",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_2_id}/",
             "data": {}
         },
         {
             "method": "GET",
-            "url": "/questionnaire/submit/"
+            "url": "/questionnaire/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/submit/",
+            "url": "/questionnaire/",
             "data": {}
         },
         {
