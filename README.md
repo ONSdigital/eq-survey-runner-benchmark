@@ -117,7 +117,43 @@ N.B Although the above example uses the same url in the redirect as the GET, it 
 Manually adding in a redirect is only needed once for each list_item_id and you can do multiple at the same time.
 
 ---
+## Dealing Hub Schemas
 
+Before you make a request file with a hub schema. You will need to add sections the hub is visible to in `required_completed_sections`
+
+```
+    "questionnaire_flow": {
+        "type": "Hub",
+        "options": {
+            "required_completed_sections": ["stock-section"]
+        }
+    }
+```
+
+Once you create the request file you will need to remove any json object with the url `"url": "/questionnaire/"` For example:
+
+```
+    {
+        "method": "GET",
+        "url": "/questionnaire/"
+    }
+```
+
+Finally at the end of the schema make sure you have these json objects before the `"url": "/submitted/thank-you"` object.
+
+```
+        {
+            "method": "GET",
+            "url": "/questionnaire/submit/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/submit/",
+            "data": {}
+        },
+```
+
+You then need to make sure 
 ## Deployment with [Helm](https://helm.sh/)
 
 To deploy this application with helm, you must have a kubernetes cluster already running and be logged into the cluster.
