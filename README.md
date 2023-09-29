@@ -119,7 +119,7 @@ Manually adding in a redirect is only needed once for each list_item_id and you 
 ---
 ## Dealing Hub Schemas
 
-Before you make a request file with a hub schema. You will need to add sections the hub is visible to in `required_completed_sections`
+Before you make a request file with a hub schema. You will need to add the sections to the `required_completed_sections` in the schema, for example:
 
 ```
     "questionnaire_flow": {
@@ -153,7 +153,6 @@ Finally at the end of the schema make sure you have these json objects before th
         },
 ```
 
-You then need to make sure 
 ## Deployment with [Helm](https://helm.sh/)
 
 To deploy this application with helm, you must have a kubernetes cluster already running and be logged into the cluster.
