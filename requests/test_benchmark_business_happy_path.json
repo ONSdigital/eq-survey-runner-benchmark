@@ -333,6 +333,34 @@
         {
             "method": "GET",
             "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/view-response/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/feedback/send"
+        },
+        {
+            "method": "POST",
+            "url": "/submitted/feedback/send",
+            "data": {
+                "feedback-type": "The survey questions",
+                "feedback-text": "Feedback"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/feedback/sent"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/thank-you/"
         }
     ],
     "schema_name": "test_benchmark_business",
