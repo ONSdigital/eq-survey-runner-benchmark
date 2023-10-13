@@ -28,10 +28,10 @@
             "method": "POST",
             "url": "/questionnaire/block-380/",
             "data": {
-                "answer-from-day": "1",
+                "answer-from-day": "01",
                 "answer-from-month": "05",
                 "answer-from-year": "2019",
-                "answer-to-day": "1",
+                "answer-to-day": "01",
                 "answer-to-month": "08",
                 "answer-to-year": "2019"
             }
@@ -97,7 +97,7 @@
             "method": "POST",
             "url": "/questionnaire/block-4953/",
             "data": {
-                "answer-6288": "Other (for example, end of the EU transition period, leaving the EU or other global economic conditions."
+                "answer-6288": "Normal movement for the time of year"
             }
         },
         {
@@ -108,7 +108,7 @@
             "method": "POST",
             "url": "/questionnaire/block-383/",
             "data": {
-                "answer-439": "Hi eQ\r\n"
+                "answer-439": "hi"
             }
         },
         {
@@ -121,15 +121,15 @@
             "data": {
                 "you-live-here": "Yes"
             },
-            "redirect_route":"/questionnaire/people/{person_1_id}/add-or-edit-primary-person/"
+            "redirect_route": "/questionnaire/people/{person_1}/add-or-edit-primary-person/"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_id}/add-or-edit-primary-person/"
+            "url": "/questionnaire/people/{person_1}/add-or-edit-primary-person/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_id}/add-or-edit-primary-person/",
+            "url": "/questionnaire/people/{person_1}/add-or-edit-primary-person/",
             "data": {
                 "first-name": "Joe",
                 "last-name": "Bloggs"
@@ -156,6 +156,29 @@
             "data": {
                 "first-name": "Erling",
                 "last-name": "Haland"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/list-collector/",
+            "data": {
+                "anyone-else": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/add-person/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/add-person/",
+            "data": {
+                "first-name": "Sarah",
+                "last-name": "Bloggs"
             }
         },
         {
@@ -211,31 +234,464 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/questions-section/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/second-number-block/?return_to=section-summary&return_to_answer_id=second-number-answer-also-in-total"
+            "url": "/questionnaire/people/{person_1}/grand-calculated-summary-third-number-block/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/second-number-block/?return_to=section-summary&return_to_answer_id=second-number-answer-also-in-total",
+            "url": "/questionnaire/people/{person_1}/grand-calculated-summary-third-number-block/",
             "data": {
-                "second-number-answer-also-in-total": "1001.00"
+                "third-number-answer": "100",
+                "third-number-answer-also-in-total": "100"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/currency-total-playback-1/?return_to=section-summary"
+            "url": "/questionnaire/people/{person_1}/currency-total-playback-2/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/currency-total-playback-1/?return_to=section-summary",
+            "url": "/questionnaire/people/{person_1}/currency-total-playback-2/",
             "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_1}/mutually-exclusive-checkbox/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_1}/mutually-exclusive-checkbox/",
+            "data": {
+                "checkbox-answer": "{third_answer_value}"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_1}/set-min-max-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_1}/set-min-max-block/",
+            "data": {
+                "set-minimum-answer": "200",
+                "set-maximum-answer": "50"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_1}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_1}/",
+            "data": {},
+            "redirect_route": "/questionnaire/people/{person_2}/grand-calculated-summary-third-number-block/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_2}/grand-calculated-summary-third-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_2}/grand-calculated-summary-third-number-block/",
+            "data": {
+                "third-number-answer": "100",
+                "third-number-answer-also-in-total": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_2}/currency-total-playback-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_2}/currency-total-playback-2/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_2}/mutually-exclusive-checkbox/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_2}/mutually-exclusive-checkbox/",
+            "data": {
+                "checkbox-answer": "{third_answer_value}"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_2}/set-min-max-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_2}/set-min-max-block/",
+            "data": {
+                "set-minimum-answer": "200",
+                "set-maximum-answer": "50"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_2}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_2}/",
+            "data": {},
+            "redirect_route": "/questionnaire/people/{person_3}/grand-calculated-summary-third-number-block/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_3}/grand-calculated-summary-third-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_3}/grand-calculated-summary-third-number-block/",
+            "data": {
+                "third-number-answer": "100",
+                "third-number-answer-also-in-total": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_3}/currency-total-playback-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_3}/currency-total-playback-2/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_3}/mutually-exclusive-checkbox/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_3}/mutually-exclusive-checkbox/",
+            "data": {
+                "checkbox-answer": "{third_answer_value}"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/people/{person_3}/set-min-max-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/people/{person_3}/set-min-max-block/",
+            "data": {
+                "set-minimum-answer": "200",
+                "set-maximum-answer": "50"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_3}/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_3}/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/grand-calculated-summary-first-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/grand-calculated-summary-first-number-block/",
+            "data": {
+                "q1-a1": "100",
+                "q1-a2": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/grand-calculated-summary-second-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/grand-calculated-summary-second-number-block/",
+            "data": {
+                "q2-a1": "100",
+                "q2-a2": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/distance-calculated-summary-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/distance-calculated-summary-1/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/number-calculated-summary-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/number-calculated-summary-1/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/grand-calculated-summary-section-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/grand-calculated-summary-section-1/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/third-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/third-number-block/",
+            "data": {
+                "q3-a1": "100",
+                "q3-a2": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/fourth-number-block/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/fourth-number-block/",
+            "data": {
+                "q4-a1": "100",
+                "q4-a2": "100"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/distance-calculated-summary-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/distance-calculated-summary-2/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/number-calculated-summary-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/number-calculated-summary-2/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/distance-grand-calculated-summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/distance-grand-calculated-summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/number-grand-calculated-summary/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/number-grand-calculated-summary/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/responsible-party/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/responsible-party/",
+            "data": {
+                "responsible-party-answer": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-companies-or-branches/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-companies-or-branches/",
+            "data": {
+                "any-companies-or-branches-answer": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/add-company/?previous=any-companies-or-branches"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/add-company/?previous=any-companies-or-branches",
+            "data": {
+                "company-or-branch-name": "Company 1"
+            },
+            "redirect_route": "/questionnaire/companies/{company_1}/companies-repeating-block-1/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/{company_1}/companies-repeating-block-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/{company_1}/companies-repeating-block-1/",
+            "data": {
+                "registration-number": "10",
+                "registration-date-day": "10",
+                "registration-date-month": "03",
+                "registration-date-year": "1999"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/{company_1}/companies-repeating-block-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/{company_1}/companies-repeating-block-2/",
+            "data": {
+                "authorised-trader-uk-radio": "No",
+                "authorised-trader-eu-radio": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-other-companies-or-branches/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-other-companies-or-branches/",
+            "data": {
+                "any-other-companies-or-branches-answer": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/add-company/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/add-company/",
+            "data": {
+                "company-or-branch-name": "Company 2"
+            },
+            "redirect_route": "/questionnaire/companies/{company_2}/companies-repeating-block-1/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/{company_2}/companies-repeating-block-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/{company_2}/companies-repeating-block-1/",
+            "data": {
+                "registration-number": "10",
+                "registration-date-day": "10",
+                "registration-date-month": "03",
+                "registration-date-year": "1992"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/{company_2}/companies-repeating-block-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/{company_2}/companies-repeating-block-2/",
+            "data": {
+                "authorised-trader-uk-radio": "No",
+                "authorised-trader-eu-radio": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-other-companies-or-branches/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/companies/{company_1}/remove-company/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/companies/{company_1}/remove-company/",
+            "data": {
+                "remove-confirmation": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-other-companies-or-branches/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-other-companies-or-branches/",
+            "data": {
+                "any-other-companies-or-branches-answer": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-other-trading-details/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-other-trading-details/",
+            "data": {
+                "any-other-trading-details-answer": "1231"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section-companies/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/responsible-party/?return_to=section-summary&return_to_answer_id=responsible-party-answer"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/responsible-party/?return_to=section-summary&return_to_answer_id=responsible-party-answer",
+            "data": {
+                "responsible-party-answer": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section-companies/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/section-companies/",
+            "data": {}
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/primary-person-list-collector/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/primary-person-list-collector/",
+            "data": {
+                "you-live-here": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/"
         },
         {
             "method": "GET",
@@ -260,7 +716,7 @@
             "method": "POST",
             "url": "/questionnaire/first-number-block/?return_to=section-summary",
             "data": {
-                "first-number-answer": "10000"
+                "first-number-answer": "200"
             }
         },
         {
@@ -271,7 +727,7 @@
             "method": "POST",
             "url": "/questionnaire/first-and-a-half-number-block/?return_to=section-summary",
             "data": {
-                "first-and-a-half-number-answer-also-in-total": "2000"
+                "first-and-a-half-number-answer-also-in-total": "100"
             }
         },
         {
@@ -297,123 +753,29 @@
             "url": "/questionnaire/"
         },
         {
+            "method": "POST",
+            "url": "/questionnaire/",
+            "data" : {}
+        },
+        {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_id}/third-number-block/"
+            "url": "/questionnaire/people/{person_2}/set-min-max-block/?resume=True"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_id}/third-number-block/",
+            "url": "/questionnaire/people/{person_2}/set-min-max-block/?resume=True",
             "data": {
-                "third-number-answer": "100",
-                "third-number-answer-also-in-total": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_1_id}/currency-total-playback-2/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_1_id}/currency-total-playback-2/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_1_id}/mutually-exclusive-checkbox/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_1_id}/mutually-exclusive-checkbox/",
-            "data": {
-                "checkbox-answer": "{third_answer_value}"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_1_id}/set-min-max-block/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_1_id}/set-min-max-block/",
-            "data": {
-                "set-minimum-answer": "13001",
+                "set-minimum-answer": "500",
                 "set-maximum-answer": "100"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_1_id}/"
+            "url": "/questionnaire/sections/calculated-summary-section/{person_2}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_1_id}/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/questions-section/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/first-number-block/?return_to=section-summary&return_to_answer_id=first-number-answer"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/first-number-block/?return_to=section-summary&return_to_answer_id=first-number-answer",
-            "data": {
-                "first-number-answer": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/currency-total-playback-1/?return_to=section-summary"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/first-and-a-half-number-block/?return_to=calculated-summary&return_to_answer_id=first-and-a-half-number-answer-also-in-total&return_to_block_id=currency-total-playback-1"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/first-and-a-half-number-block/?return_to=calculated-summary&return_to_answer_id=first-and-a-half-number-answer-also-in-total&return_to_block_id=currency-total-playback-1",
-            "data": {
-                "first-and-a-half-number-answer-also-in-total": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/currency-total-playback-1/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/second-number-block/?return_to=calculated-summary&return_to_answer_id=second-number-answer-also-in-total&return_to_block_id=currency-total-playback-1"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/second-number-block/?return_to=calculated-summary&return_to_answer_id=second-number-answer-also-in-total&return_to_block_id=currency-total-playback-1",
-            "data": {
-                "second-number-answer-also-in-total": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/currency-total-playback-1/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/currency-total-playback-1/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/questions-section/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/questions-section/",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_2}/",
             "data": {}
         },
         {
@@ -423,90 +785,28 @@
         {
             "method": "POST",
             "url": "/questionnaire/",
-            "data": {}
+            "data" : {},
+            "redirect_route": "/questionnaire/people/{person_3}/set-min-max-block/?resume=True"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_1_id}/set-min-max-block/?resume=True"
+            "url": "/questionnaire/people/{person_3}/set-min-max-block/?resume=True"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_1_id}/set-min-max-block/?resume=True",
+            "url": "/questionnaire/people/{person_3}/set-min-max-block/?resume=True",
             "data": {
-                "set-minimum-answer": "400",
-                "set-maximum-answer": "100"
+                "set-minimum-answer": "550",
+                "set-maximum-answer": "200"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_1_id}/"
+            "url": "/questionnaire/sections/calculated-summary-section/{person_3}/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_1_id}/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/",
-            "data": {},
-            "redirect_route": "/questionnaire/people/{person_2_id}/third-number-block/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_2_id}/third-number-block/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_2_id}/third-number-block/",
-            "data": {
-                "third-number-answer": "100",
-                "third-number-answer-also-in-total": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_2_id}/currency-total-playback-2/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_2_id}/currency-total-playback-2/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_2_id}/mutually-exclusive-checkbox/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_2_id}/mutually-exclusive-checkbox/",
-            "data": {
-                "checkbox-answer": "{third_answer_value}"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_2_id}/set-min-max-block/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_2_id}/set-min-max-block/",
-            "data": {
-                "set-minimum-answer": "400",
-                "set-maximum-answer": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_2_id}/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_2_id}/",
+            "url": "/questionnaire/sections/calculated-summary-section/{person_3}/",
             "data": {}
         },
         {
@@ -515,60 +815,13 @@
         },
         {
             "method": "GET",
-            "url": "/questionnaire/list-collector/"
+            "url": "/questionnaire/responsible-party-business/"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/list-collector/",
+            "url": "/questionnaire/responsible-party-business/",
             "data": {
-                "anyone-else": "Yes"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/add-person/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/add-person/",
-            "data": {
-                "first-name": "Matt",
-                "last-name": "Smith"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/list-collector/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_2_id}/remove-person/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/list-collector/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_2_id}/edit-person/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_2_id}/edit-person/",
-            "data": {
-                "first-name": "Erling",
-                "last-name": "Haaland"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/list-collector/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/list-collector/",
-            "data": {
-                "anyone-else": "No"
+                "responsible-party-business-answer": "No"
             }
         },
         {
@@ -576,82 +829,110 @@
             "url": "/questionnaire/"
         },
         {
-            "method": "POST",
-            "url": "/questionnaire/",
-            "data": {},
-            "redirect_route": "/questionnaire/people/{person_3_id}/third-number-block/"
+            "method": "GET",
+            "url": "/questionnaire/sections/section-businesses/"
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_3_id}/third-number-block/"
+            "url": "/questionnaire/responsible-party-business/?return_to=section-summary&return_to_answer_id=responsible-party-business-answer"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_3_id}/third-number-block/",
+            "url": "/questionnaire/responsible-party-business/?return_to=section-summary&return_to_answer_id=responsible-party-business-answer",
             "data": {
-                "third-number-answer": "100",
-                "third-number-answer-also-in-total": "100"
+                "responsible-party-business-answer": "Yes"
             }
         },
         {
             "method": "GET",
-            "url": "/questionnaire/people/{person_3_id}/currency-total-playback-2/"
+            "url": "/questionnaire/any-businesses-or-branches/?return_to=section-summary"
         },
         {
             "method": "POST",
-            "url": "/questionnaire/people/{person_3_id}/currency-total-playback-2/",
+            "url": "/questionnaire/any-businesses-or-branches/?return_to=section-summary",
+            "data": {
+                "any-businesses-or-branches-answer": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/businesses/add-business/?previous=any-businesses-or-branches"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/businesses/add-business/?previous=any-businesses-or-branches",
+            "data": {
+                "business-or-branch-name": "Company 2"
+            },
+            "redirect_route":  "/questionnaire/businesses/{company_2}/businesses-repeating-block-1/"
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/businesses/{company_2}/businesses-repeating-block-1/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/businesses/{company_2}/businesses-repeating-block-1/",
+            "data": {
+                "registration-business-number": "19",
+                "registration-business-date-day": "20",
+                "registration-business-date-month": "02",
+                "registration-business-date-year": "1990"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/businesses/{company_2}/businesses-repeating-block-2/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/businesses/{company_2}/businesses-repeating-block-2/",
+            "data": {
+                "authorised-business-trader-uk-radio": "Yes",
+                "authorised-business-trader-eu-radio": "Yes"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-other-business-businesses-or-branches/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-other-business-businesses-or-branches/",
+            "data": {
+                "any-other-business-businesses-or-branches-answer": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/any-other-business-trading-details/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/any-other-business-trading-details/",
+            "data": {
+                "any-other-business-trading-details-answer": "hI"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/responsible-party-business/?return_to=section-summary&return_to_answer_id=responsible-party-business-answer"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/responsible-party-business/?return_to=section-summary&return_to_answer_id=responsible-party-business-answer",
+            "data": {
+                "responsible-party-business-answer": "No"
+            }
+        },
+        {
+            "method": "GET",
+            "url": "/questionnaire/sections/section-businesses/"
+        },
+        {
+            "method": "POST",
+            "url": "/questionnaire/sections/section-businesses/",
             "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_3_id}/mutually-exclusive-checkbox/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_3_id}/mutually-exclusive-checkbox/",
-            "data": {
-                "checkbox-answer": "{third_answer_value}"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_3_id}/set-min-max-block/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_3_id}/set-min-max-block/",
-            "data": {
-                "set-minimum-answer": "370",
-                "set-maximum-answer": "100"
-            }
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_3_id}/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/sections/calculated-summary-section/{person_3_id}/",
-            "data": {}
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/list-collector/"
-        },
-        {
-            "method": "GET",
-            "url": "/questionnaire/people/{person_3_id}/remove-person/"
-        },
-        {
-            "method": "POST",
-            "url": "/questionnaire/people/{person_3_id}/remove-person/",
-            "data": {
-                "remove-confirmation": "Yes"
-            }
         },
         {
             "method": "GET",
