@@ -117,7 +117,6 @@ N.B Although the above example uses the same url in the redirect as the GET, it 
 Manually adding in a redirect is only needed once for each list_item_id and you can do multiple at the same time.
 
 ---
-
 ## Deployment with [Helm](https://helm.sh/)
 
 To deploy this application with helm, you must have a kubernetes cluster already running and be logged into the cluster.
