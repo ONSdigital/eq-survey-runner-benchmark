@@ -625,7 +625,7 @@
             "method": "POST",
             "url": "/questionnaire/companies/{company_1}/remove-company/",
             "data": {
-                "remove-confirmation": "Yes"
+                "remove-confirmation-company": "Yes"
             }
         },
         {
