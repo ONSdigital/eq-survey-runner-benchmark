@@ -1,6 +1,6 @@
 platform: linux
 image_resource:
-  type: docker-image
+  type: registry-image
   source:
     repository: ((image_registry))/eq-app-k8s-deploy-image
     tag: ((deploy_image_version))
