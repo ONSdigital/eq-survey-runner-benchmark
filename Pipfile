@@ -6,6 +6,7 @@ name = "pypi"
 [dev-packages]
 black = "*"
 "flake8" = "*"
+isort = "*"
 
 [packages]
 haralyzer = "*"
@@ -17,6 +18,10 @@ google-cloud-storage = "*"
 pandas = "*"
 matplotlib = "*"
 slackclient = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+freezegun = "*"
 
 [requires]
 python_version = "3.11"

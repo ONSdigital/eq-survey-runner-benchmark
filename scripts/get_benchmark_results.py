@@ -1,7 +1,7 @@
 import os
 import sys
-
 from datetime import datetime, timedelta
+
 from dateutil.tz import tzutc
 
 from scripts.get_summary import parse_environment_variables

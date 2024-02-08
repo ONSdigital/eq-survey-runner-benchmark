@@ -28,6 +28,21 @@ jobs:
         run: pipenv install --dev
       - name: Lint scripts
         run: make lint
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - run:
+          echo "PYTHON_VERSION=$(cat .python-version)" >> $GITHUB_ENV
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install pipenv
+        run: pip install pipenv==2023.8.22
+      - name: Install virtual environment
+        run: pipenv install --dev
+      - name: Running unit tests
+        run: make test
   docker-push:
     runs-on: ubuntu-22.04
     steps:

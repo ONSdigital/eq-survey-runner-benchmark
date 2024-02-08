@@ -1,0 +1,5 @@
+[run]
+include = scripts/*
+
+[report]
+fail_under = 80
