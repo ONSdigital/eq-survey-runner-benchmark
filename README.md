@@ -173,6 +173,10 @@ helm tiller run \
 -    --set container.image=europe-west2-docker.pkg.dev/ons-eq-ci/docker-images/eq-benchmark-deploy-image:latest
 ```
 
+## Running Tests
+
+Tests for our python files in the scripts directory can be run using `make test`.
+
 ## Visualising Benchmark Results
 
 You can use the `visualise_results.py` script to visualise benchmark results over time.
