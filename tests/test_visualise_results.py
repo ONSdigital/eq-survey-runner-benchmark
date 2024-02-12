@@ -52,3 +52,9 @@ def test_plot_data(get_results_single_file):
         plot_data(dataframe, 1)
     except GraphGenerationFailed:
         pytest.fail("Graph generation failed")
+
+
+def test_plot_data_failed():
+    dataframe = DataFrame.from_dict({})
+    with pytest.raises(GraphGenerationFailed):
+        plot_data(dataframe, 1)
