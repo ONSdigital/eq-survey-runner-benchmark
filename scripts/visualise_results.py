@@ -20,7 +20,7 @@ def plot_data(df, number_of_days_to_plot):
             number_of_days_to_plot and number_of_days_to_plot <= 45
         ):  # To make the chart still easily digestible
             df.plot.line(marker="o", markersize=8)
-            # plt.grid(True, axis="both", alpha=0.3)
+            plt.grid(True, axis="both", alpha=0.3)
         else:
             df.plot.line()
 
