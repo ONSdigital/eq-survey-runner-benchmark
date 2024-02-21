@@ -46,10 +46,12 @@ def test_plot_data_df(mocker, get_results_single_file):
     assert_frame_equal(mock_plot_data.call_args[0][0], expected_data_frame)
 
 
-def test_plot_data(get_results_single_file):
+def test_plot_data(mocker, get_results_single_file):
     dataframe = get_data_frame(get_results_single_file)
     try:
+        graph_output = mocker.patch("matplotlib.pyplot.savefig")
         plot_data(dataframe, 1)
+        assert graph_output.call_count == 1
     except GraphGenerationFailed:
         pytest.fail("Graph generation failed")
 

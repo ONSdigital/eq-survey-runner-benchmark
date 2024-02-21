@@ -7,6 +7,9 @@ name = "pypi"
 black = "*"
 "flake8" = "*"
 isort = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
 
 [packages]
 haralyzer = "*"
@@ -18,9 +21,6 @@ google-cloud-storage = "*"
 pandas = "*"
 matplotlib = "*"
 slackclient = "*"
-pytest = "*"
-pytest-cov = "*"
-pytest-mock = "*"
 freezegun = "*"
 
 [requires]
