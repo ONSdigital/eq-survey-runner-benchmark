@@ -10,6 +10,8 @@ isort = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-mock = "*"
+pandas = "*"
+matplotlib = "*"
 
 [packages]
 haralyzer = "*"
