@@ -7,11 +7,6 @@ name = "pypi"
 black = "*"
 "flake8" = "*"
 isort = "*"
-pytest = "*"
-pytest-cov = "*"
-pytest-mock = "*"
-pandas = "*"
-matplotlib = "*"
 
 [packages]
 haralyzer = "*"
@@ -24,6 +19,9 @@ pandas = "*"
 matplotlib = "*"
 slackclient = "*"
 freezegun = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
 
 [requires]
 python_version = "3.11"
