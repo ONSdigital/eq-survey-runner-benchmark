@@ -10,6 +10,8 @@ isort = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-mock = "*"
+freezegun = "*"
+numpy = "*"
 
 [packages]
 haralyzer = "*"
@@ -21,8 +23,6 @@ google-cloud-storage = "*"
 pandas = "*"
 matplotlib = "*"
 slackclient = "*"
-freezegun = "*"
-numpy = "*"
 
 [requires]
 python_version = "3.11"
