@@ -1,6 +1,6 @@
-from glob import glob
 import os
 import sys
+from glob import glob
 from typing import List
 
 from scripts.benchmark_stats import BenchmarkStats

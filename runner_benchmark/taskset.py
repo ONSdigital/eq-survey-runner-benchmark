@@ -6,9 +6,9 @@ import time
 
 from locust import TaskSet, task
 
-from .utils import parse_params_from_location
 from .questionnaire_mixins import QuestionnaireMixins
 from .token_generator import create_token
+from .utils import parse_params_from_location
 
 r = random.Random()
 

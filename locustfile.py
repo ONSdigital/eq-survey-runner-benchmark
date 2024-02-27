@@ -1,6 +1,6 @@
 import os
 
-from locust import constant, HttpUser
+from locust import HttpUser, constant
 
 from runner_benchmark.taskset import SurveyRunnerTaskSet
 
