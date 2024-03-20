@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from glob import glob
 from typing import NamedTuple
 
-from scripts.benchmark_stats import BenchmarkStats
+from scripts.benchmark_stats import BenchmarkStats, BenchmarkStatsGithub
 
 
 class Result(NamedTuple):
@@ -15,7 +15,14 @@ class Result(NamedTuple):
         return f"{self.date}\n{self.statistics}\n"
 
 
-def get_results(folders, number_of_days=None):
+class ResultGithub(NamedTuple):
+    date: str
+    statistics: BenchmarkStatsGithub
+
+    def __str__(self):
+        return f"{self.date}\n{self.statistics}\n"
+
+def get_results(folders, output_to_github, number_of_days=None):
     from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
     )
@@ -24,7 +31,10 @@ def get_results(folders, number_of_days=None):
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-        yield Result(date, BenchmarkStats([folder]))
+        if output_to_github:
+            yield ResultGithub(date, BenchmarkStatsGithub([folder]))
+        else:
+            yield Result(date, BenchmarkStats([folder]))
 
 
 def parse_environment_variables():
@@ -39,19 +49,24 @@ def parse_environment_variables():
         "number_of_days": days,
         "output_date": os.getenv("OUTPUT_DATE"),
         "output_dir": os.getenv("OUTPUT_DIR", "outputs"),
+        "output_to_github": os.getenv("OUTPUT_TO_GITHUB")
     }
 
 
 if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
     date_to_output = parsed_variables["output_date"]
+    output_to_github = bool(parsed_variables["output_to_github"])
     sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"), reverse=True)
-    results = get_results(sorted_folders)
+    results = get_results(sorted_folders, output_to_github)
 
     for result in results:
         if date_to_output:
             if result.date == date_to_output:
-                print(result.statistics)
+                if output_to_github:
+                    print(f'{{"body": "{result.statistics}"}}')
+                else:
+                    print(result.statistics)
                 break
         else:
             print(result)

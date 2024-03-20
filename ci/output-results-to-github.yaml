@@ -6,13 +6,13 @@ image_resource:
     tag: 3.11-slim
 inputs:
   - name: eq-survey-runner-benchmark
+  - name: pull-request
 params:
   OUTPUT_BUCKET:
   OUTPUT_DIR:
-  SLACK_CHANNEL_NAME:
   NUMBER_OF_DAYS:
   SERVICE_ACCOUNT_JSON: ((gcp.service_account_json))
-  SLACK_AUTH_TOKEN: ((eq-ons-slack-app.bot_user_oauth_token))
+  ACCESS_TOKEN: ((eq-github.access_token))
 run:
   path: bash
   args:
@@ -35,25 +35,19 @@ run:
       NUMBER_OF_DAYS="$NUMBER_OF_DAYS" \
       pipenv run python -m scripts.get_benchmark_results
 
-      # Create performance graph
-      OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
-      NUMBER_OF_DAYS="$NUMBER_OF_DAYS" \
-      OUTPUT_TO_GITHUB="False" \
-      pipenv run python -m scripts.visualise_results
-
       # Date to get summary for
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%d')"
       SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
       OUTPUT_DATE="$RUNTIME_DATE_STRING" \
+      OUTPUT_TO_GITHUB="True" \
       pipenv run python -m scripts.get_summary)
 
-      # Post summary to Slack
-      TITLE="Results For Latest Benchmark" \
-      INITIAL_COMMENT="Latest Daily Performance Metrics" \
-      CONTENT="$SUMMARY" \
-      pipenv run python -m scripts.slack_notification
-
-      # Post performance graph to Slack
-      TITLE="Performance Graph" \
-      ATTACHMENT_FILENAME="performance_graph.png" \
-      pipenv run python -m scripts.slack_notification
+      # Post summary to Github
+      cd ../
+      cd pull-request
+      PR_NUMBER=`cat .git/resource/pr`
+      cd ../
+      apt-get update && apt-get install -y curl
+      curl -s -H "Authorization: token ${ACCESS_TOKEN}" \
+      -X POST -d "${SUMMARY}" \
+      "https://api.github.com/repos/ONSdigital/eq-terraform-gcp-runner/issues/" + "${PR_NUMBER}" + "/comments"
