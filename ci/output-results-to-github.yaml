@@ -50,4 +50,4 @@ run:
       apt-get update && apt-get install -y curl
       curl -s -H "Authorization: token ${ACCESS_TOKEN}" \
       -X POST -d "${SUMMARY}" \
-      "https://api.github.com/repos/ONSdigital/eq-terraform-gcp-runner/issues/" + "${PR_NUMBER}" + "/comments"
+      "https://api.github.com/repos/ONSdigital/eq-terraform-gcp-runner/issues/${PR_NUMBER}/comments"
