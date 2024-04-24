@@ -39,4 +39,6 @@ EXPECTED_OUTPUT_MULTIPLE_FOLDERS = (
 
 @pytest.fixture
 def get_results_single_file():
-    return get_results(folders=["./tests/mock_stats/2024-02-07T03:09:41"])
+    return get_results(
+        folders=["./tests/mock_stats/2024-02-07T03:09:41"], output_to_github=False
+    )
