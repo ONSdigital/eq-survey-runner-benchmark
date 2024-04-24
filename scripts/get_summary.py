@@ -22,6 +22,7 @@ class ResultGithub(NamedTuple):
     def __str__(self):
         return f"{self.date}\n{self.statistics}\n"
 
+
 def get_results(folders, output_to_github, number_of_days=None):
     from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
@@ -49,7 +50,7 @@ def parse_environment_variables():
         "number_of_days": days,
         "output_date": os.getenv("OUTPUT_DATE"),
         "output_dir": os.getenv("OUTPUT_DIR", "outputs"),
-        "output_to_github": os.getenv("OUTPUT_TO_GITHUB")
+        "output_to_github": os.getenv("OUTPUT_TO_GITHUB"),
     }
 
 

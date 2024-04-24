@@ -32,7 +32,8 @@ def test_get_results_multiple_folders():
         folders=[
             "./tests/mock_stats/2024-02-07T03:09:41",
             "./tests/mock_stats/2024-02-06T03:09:41",
-        ]
+        ],
+        output_to_github=False,
     )
     results = list(generated_results)
     assert len(results) == 2
@@ -48,6 +49,7 @@ def test_get_results_multiple_folders_with_number_of_days():
             "./tests/mock_stats/2024-02-06T03:09:41",
         ],
         number_of_days=1,
+        output_to_github=False,
     )
 
     # Number of days set to 1, so the 2024-02-06 folder should be ignored
