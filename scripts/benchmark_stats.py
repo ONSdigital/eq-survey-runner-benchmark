@@ -120,5 +120,8 @@ class BenchmarkStatsGithub(BenchmarkStats):
             for percentile in self.PERCENTILES_TO_REPORT
         )
         return (
-            f"**Benchmark Results**<br />Percentile Averages:<br />{formatted_percentiles}<br />GETs (99th): {self.average_get}ms<br />POSTs (99th): {self.average_post}ms<br />Total Requests: {self.total_requests:,}<br />Total Failures: {self._total_failures:,}<br />Error Percentage: {(round(self.error_percentage, 2))}%"
+            f"**Benchmark Results**<br />Percentile Averages:<br />{formatted_percentiles}<br />GETs (99th): "
+            f"{self.average_get}ms<br />POSTs (99th): {self.average_post}ms<br />Total Requests: "
+            f"{self.total_requests:,}<br />Total Failures: {self._total_failures:,}<br />Error Percentage: "
+            f"{(round(self.error_percentage, 2))}%"
         ).replace("\n", "")
