@@ -19,10 +19,10 @@ PAYLOAD = {
     'case_id': str(uuid4()),
     'collection_exercise_sid': str(uuid4()),
     'response_id': str(uuid4()),
-    "survey_metadata": {
-        "data": {
-            "case_ref": '1000000000000001',
-            "form_type": '0001',
+    'survey_metadata': {
+        'data': {
+            'case_ref': '1000000000000001',
+            'form_type': '0001',
             'period_id': '201907',
             'period_str': 'July 2019',
             'ref_p_start_date': '2019-04-01',
@@ -31,8 +31,8 @@ PAYLOAD = {
             'ru_ref': '123456789012A',
             'trad_as': 'Benchmark Tests',
             'user_id': 'benchmark-user',
-            'survey_id': "0",
-            "employment_date": "2019-04-01",
+            'survey_id': '0',
+            'employment_date': '2019-04-01',
         }
     },
 }
@@ -83,7 +83,7 @@ def _get_payload_with_params(schema_name, schema_url=None, **extra_payload):
         datetime.now(tz=timezone.utc) + timedelta(days=7)
     ).isoformat()  # 7 days from now in ISO 8601 format
     for key, value in extra_payload.items():
-        payload_vars["survey_metadata"]["data"][key] = value
+        payload_vars['survey_metadata']['data'][key] = value
 
     return payload_vars
 
