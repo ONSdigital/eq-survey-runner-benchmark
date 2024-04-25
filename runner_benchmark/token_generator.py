@@ -49,7 +49,7 @@ PAYLOAD = {
             'period_str': 'July 2019',
             'ref_p_start_date': '2019-04-01',
             'ref_p_end_date': '2019-11-30',
-            'ru_name': 'Integration Testing',
+            'ru_name': 'Benchmark Testing',
             'ru_ref': '123456789012A',
             'trad_as': 'Benchmark Tests',
             'display_address': '68 Abingdon Road, Goathill',
