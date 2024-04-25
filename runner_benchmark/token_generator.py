@@ -13,12 +13,35 @@ SR_USER_AUTHENTICATION_PUBLIC_KEY_KID = 'e19091072f920cbf3ca9f436ceba309e7d814a6
 
 KEYS_FOLDER = './jwt-test-keys'
 
+# "version" is excluded here as it is handled independently
+TOP_LEVEL_METADATA_KEYS = [
+    "exp",
+    "jti",
+    "iat",
+    "tx_id",
+    "account_service_url",
+    "case_id",
+    "collection_exercise_sid",
+    "response_id",
+    "response_expires_at",
+    "language_code",
+    "schema_name",
+    "schema_url",
+    "cir_instrument_id",
+    "channel",
+    "region_code",
+    "roles",
+]
+
 PAYLOAD = {
     'version': 'v2',
     'account_service_url': 'http://upstream.url',
     'case_id': str(uuid4()),
     'collection_exercise_sid': str(uuid4()),
     'response_id': str(uuid4()),
+    'language_code': 'en',
+    'region_code': 'GB-ENG',
+    'roles': [],
     'survey_metadata': {
         'data': {
             'case_ref': '1000000000000001',
@@ -82,8 +105,12 @@ def _get_payload_with_params(schema_name, schema_url=None, **extra_payload):
     payload_vars['response_expires_at'] = (
         datetime.now(tz=timezone.utc) + timedelta(days=7)
     ).isoformat()  # 7 days from now in ISO 8601 format
+
     for key, value in extra_payload.items():
-        payload_vars['survey_metadata']['data'][key] = value
+        if key in TOP_LEVEL_METADATA_KEYS:
+            payload_vars[key] = value
+        else:
+            payload_vars['survey_metadata']['data'][key] = value
 
     return payload_vars
 
