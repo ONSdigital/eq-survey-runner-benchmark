@@ -13,7 +13,6 @@ SR_USER_AUTHENTICATION_PUBLIC_KEY_KID = 'e19091072f920cbf3ca9f436ceba309e7d814a6
 
 KEYS_FOLDER = './jwt-test-keys'
 
-# "version" is excluded here as it is handled independently
 TOP_LEVEL_METADATA_KEYS = [
     "exp",
     "jti",
@@ -53,6 +52,7 @@ PAYLOAD = {
             'ru_name': 'Integration Testing',
             'ru_ref': '123456789012A',
             'trad_as': 'Benchmark Tests',
+            'display_address': '68 Abingdon Road, Goathill',
             'user_id': 'benchmark-user',
             'survey_id': '0',
             'employment_date': '2019-04-01',
