@@ -32,7 +32,7 @@ def test_get_results_multiple_folders():
         folders=[
             "./tests/mock_stats/2024-02-07T03:09:41",
             "./tests/mock_stats/2024-02-06T03:09:41",
-        ],
+        ]
     )
     results = list(generated_results)
     assert len(results) == 2

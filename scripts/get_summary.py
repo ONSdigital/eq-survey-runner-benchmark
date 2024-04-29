@@ -49,14 +49,14 @@ if __name__ == "__main__":
     date_to_output = parsed_variables["output_date"]
     output_to_github = bool(parsed_variables["output_to_github"])
     sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"), reverse=True)
-    results = get_results(sorted_folders, output_to_github)
+    results = get_results(sorted_folders)
 
     for result in results:
         if date_to_output:
             if result.date == date_to_output:
                 if output_to_github:
                     print(
-                        f'{{"body": "{"**Benchmark Results**<br />" + str(result.statistics).replace(os.linesep, "<br />").replace("---", "")}"}}'
+                        f'{{"body": "{"**Benchmark Results**<br />" + str(result.statistics).replace(os.linesep,"<br />").replace("---", "")}"}}'
                     )
                 else:
                     print(result.statistics)
