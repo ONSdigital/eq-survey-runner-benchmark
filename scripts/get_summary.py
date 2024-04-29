@@ -15,15 +15,7 @@ class Result(NamedTuple):
         return f"{self.date}\n{self.statistics}\n"
 
 
-class ResultGithub(NamedTuple):
-    date: str
-    statistics: BenchmarkStatsGithub
-
-    def __str__(self):
-        return f"{self.date}\n{self.statistics}\n"
-
-
-def get_results(folders, output_to_github, number_of_days=None):
+def get_results(folders, number_of_days=None):
     from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
     )
@@ -63,7 +55,9 @@ if __name__ == "__main__":
         if date_to_output:
             if result.date == date_to_output:
                 if output_to_github:
-                    print(f'{{"body": "{"**Benchmark Results**<br />" + str(result.statistics).replace(os.linesep, "<br />").replace("---", "")}"}}')
+                    print(
+                        f'{{"body": "{"**Benchmark Results**<br />" + str(result.statistics).replace(os.linesep, "<br />").replace("---", "")}"}}'
+                    )
                 else:
                     print(result.statistics)
                 break

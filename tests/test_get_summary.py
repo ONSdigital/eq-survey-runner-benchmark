@@ -2,7 +2,7 @@ import pytest
 from freezegun import freeze_time
 
 from scripts.get_summary import get_results, parse_environment_variables
-from tests.conftest import EXPECTED_OUTPUT_GITHUB, EXPECTED_OUTPUT_SINGLE_FOLDER
+from tests.conftest import EXPECTED_OUTPUT_SINGLE_FOLDER
 
 EXPECTED_OUTPUT_20240206_FOLDER = (
     '---\n'
@@ -27,18 +27,12 @@ def test_get_results(get_results_single_file):
     assert str(results[0]) == f"2024-02-07\n{EXPECTED_OUTPUT_SINGLE_FOLDER}\n"
 
 
-def test_get_results_github(get_results_single_file_github):
-    results = list(get_results_single_file_github)
-    assert str(results[0]) == f"2024-02-07\n{EXPECTED_OUTPUT_GITHUB}\n"
-
-
 def test_get_results_multiple_folders():
     generated_results = get_results(
         folders=[
             "./tests/mock_stats/2024-02-07T03:09:41",
             "./tests/mock_stats/2024-02-06T03:09:41",
         ],
-        output_to_github=False,
     )
     results = list(generated_results)
     assert len(results) == 2
@@ -54,7 +48,6 @@ def test_get_results_multiple_folders_with_number_of_days():
             "./tests/mock_stats/2024-02-06T03:09:41",
         ],
         number_of_days=1,
-        output_to_github=False,
     )
 
     # Number of days set to 1, so the 2024-02-06 folder should be ignored
