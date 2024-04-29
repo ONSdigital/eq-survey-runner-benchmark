@@ -31,7 +31,6 @@ def test_get_data_frame_multiple_files():
             "./tests/mock_stats/2024-02-07T03:09:41",
             "./tests/mock_stats/2024-02-06T03:09:41",
         ],
-        output_to_github=False,
     )
     dataframe = get_data_frame(results)
     assert_frame_equal(dataframe, expected_data_frame_multiple_files)

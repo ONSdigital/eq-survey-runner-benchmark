@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from glob import glob
 from typing import NamedTuple
 
-from scripts.benchmark_stats import BenchmarkStats, BenchmarkStatsGithub
+from scripts.benchmark_stats import BenchmarkStats
 
 
 class Result(NamedTuple):
