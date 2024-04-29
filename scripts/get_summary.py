@@ -63,7 +63,7 @@ if __name__ == "__main__":
         if date_to_output:
             if result.date == date_to_output:
                 if output_to_github:
-                    print(f'{{"body": "{str(result.statistics).replace(os.linesep, "")}"}}')
+                    print(f'{{"body": "{"**Benchmark Results**<br />" + str(result.statistics).replace(os.linesep, "</ br>")}"}}')
                 else:
                     print(result.statistics)
                 break
