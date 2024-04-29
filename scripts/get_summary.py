@@ -32,8 +32,6 @@ def get_results(folders, output_to_github, number_of_days=None):
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-        if output_to_github:
-            yield ResultGithub(date, BenchmarkStatsGithub([folder]))
         else:
             yield Result(date, BenchmarkStats([folder]))
 
@@ -65,7 +63,7 @@ if __name__ == "__main__":
         if date_to_output:
             if result.date == date_to_output:
                 if output_to_github:
-                    print(f'{{"body": "{result.statistics}"}}')
+                    print(f'{{"body": "{str(result.statistics).replace(os.linesep, "")}"}}')
                 else:
                     print(result.statistics)
                 break
