@@ -36,9 +36,9 @@ run:
       pipenv run python -m scripts.get_benchmark_results
 
       # Date to get summary for
-      RUNTIME_DATE_STRING="2024-04-26"
+      RUNTIME_DATE_STRING="2024-04-29"
       SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
-      OUTPUT_DATE="2024-04-26" \
+      OUTPUT_DATE="2024-04-29" \
       OUTPUT_TO_GITHUB="True" \
       pipenv run python -m scripts.get_summary)
 
