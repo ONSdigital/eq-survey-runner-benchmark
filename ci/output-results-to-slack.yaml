@@ -38,13 +38,13 @@ run:
       # Create performance graph
       OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
       NUMBER_OF_DAYS="$NUMBER_OF_DAYS" \
-      OUTPUT_TO_GITHUB="False" \
       pipenv run python -m scripts.visualise_results
 
       # Date to get summary for
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%d')"
       SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
       OUTPUT_DATE="$RUNTIME_DATE_STRING" \
+      OUTPUT_TO_GITHUB="False" \
       pipenv run python -m scripts.get_summary)
 
       # Post summary to Slack
