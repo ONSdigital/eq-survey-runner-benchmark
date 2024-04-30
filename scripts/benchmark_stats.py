@@ -1,3 +1,4 @@
+import os
 from collections import defaultdict
 from csv import DictReader
 from glob import glob
@@ -8,8 +9,9 @@ class BenchmarkStats:
     PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9)
     PERCENTILE_TO_USE_FOR_AVERAGES = 99
 
-    def __init__(self, folder_paths: List[str]):
+    def __init__(self, folder_paths: List[str], output_to_github: bool = False):
         self._files: List = []
+        self.output_to_github = output_to_github
         for folder_path in folder_paths:
             self._files.extend(glob(f"{folder_path}/*stats.csv"))
 
@@ -28,6 +30,18 @@ class BenchmarkStats:
             f"{percentile}th: {self.percentiles[percentile]}ms"
             for percentile in self.PERCENTILES_TO_REPORT
         )
+        if self.output_to_github:
+            formatted_percentiles = formatted_percentiles.replace(os.linesep, "< br/>")
+            return (
+                f'**Benchmark Results**<br />'
+                f'Percentile Averages:<br />'
+                f'{formatted_percentiles}<br />'
+                f'GETs (99th): {self.average_get}ms<br />'
+                f'POSTs (99th): {self.average_post}ms<br />'
+                f'Total Requests: {self.total_requests:,}<br />'
+                f'Total Failures: {self._total_failures:,}<br />'
+                f'Error Percentage: {(round(self.error_percentage, 2))}%<br />'
+            )
         return (
             f'---\n'
             f'Percentile Averages:\n'

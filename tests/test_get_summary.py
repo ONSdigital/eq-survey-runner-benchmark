@@ -21,10 +21,34 @@ EXPECTED_OUTPUT_20240206_FOLDER = (
     'Error Percentage: 0.0%\n'
 )
 
+EXPECTED_OUTPUT_20240206_FOLDER_GITHUB = (
+    '**Benchmark Results**<br />'
+    'Percentile Averages:<br />'
+    '50th: 58ms< br/>'
+    '90th: 96ms< br/>'
+    '95th: 173ms< br/>'
+    '99th: 301ms< br/>'
+    '99.9th: 477ms<br />'
+    'GETs (99th): 380ms<br />'
+    'POSTs (99th): 211ms<br />'
+    'Total Requests: 70,640<br />'
+    'Total Failures: 1<br />'
+    'Error Percentage: 0.0%<br />\n'
+)
+
 
 def test_get_results(get_results_single_file):
     results = list(get_results_single_file)
     assert str(results[0]) == f"2024-02-07\n{EXPECTED_OUTPUT_SINGLE_FOLDER}\n"
+
+
+def test_get_results_github(get_results_single_file):
+    results = list(
+        get_results(
+            folders=["./tests/mock_stats/2024-02-07T03:09:41"], output_to_github=True
+        )
+    )
+    assert str(results[0]) == f"2024-02-07\n{EXPECTED_OUTPUT_20240206_FOLDER_GITHUB}"
 
 
 def test_get_results_multiple_folders():
