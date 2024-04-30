@@ -10,8 +10,11 @@ from scripts.benchmark_stats import BenchmarkStats
 class Result(NamedTuple):
     date: str
     statistics: BenchmarkStats
+    output_to_github: bool = False
 
     def __str__(self):
+        if self.output_to_github:
+            return f'{self.date}\n{{"body": "{{{self.statistics}\n"}}'
         return f"{self.date}\n{self.statistics}\n"
 
 
@@ -24,7 +27,7 @@ def get_results(folders, output_to_github=False, number_of_days=None):
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-        yield Result(date, BenchmarkStats([folder], output_to_github))
+        yield Result(date, BenchmarkStats([folder], output_to_github), output_to_github)
 
 
 def parse_environment_variables():
