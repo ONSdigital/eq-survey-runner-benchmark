@@ -22,7 +22,7 @@ EXPECTED_OUTPUT_20240206_FOLDER = (
 )
 
 EXPECTED_OUTPUT_20240206_FOLDER_GITHUB = (
-    '{"body": "{'
+    '{"body": "'
     '**Benchmark Results**<br />'
     'Percentile Averages:<br />'
     '50th: 58ms< br/>'
@@ -34,8 +34,8 @@ EXPECTED_OUTPUT_20240206_FOLDER_GITHUB = (
     'POSTs (99th): 211ms<br />'
     'Total Requests: 70,640<br />'
     'Total Failures: 1<br />'
-    'Error Percentage: 0.0%<br />\n'
-    '"}'
+    'Error Percentage: 0.0%<br />'
+    '"}\n'
 )
 
 
