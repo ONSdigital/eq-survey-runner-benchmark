@@ -31,7 +31,7 @@ class BenchmarkStats:
             for percentile in self.PERCENTILES_TO_REPORT
         )
         if self.output_to_github:
-            formatted_percentiles = formatted_percentiles.replace(os.linesep, "< br/>")
+            formatted_percentiles = formatted_percentiles.replace(os.linesep, "< br />")
             return (
                 f'{{"body": "'
                 f'**Benchmark Results**<br />'
