@@ -13,26 +13,51 @@ SR_USER_AUTHENTICATION_PUBLIC_KEY_KID = 'e19091072f920cbf3ca9f436ceba309e7d814a6
 
 KEYS_FOLDER = './jwt-test-keys'
 
+TOP_LEVEL_METADATA_KEYS = [
+    "exp",
+    "jti",
+    "iat",
+    "tx_id",
+    "account_service_url",
+    "case_id",
+    "collection_exercise_sid",
+    "response_id",
+    "response_expires_at",
+    "language_code",
+    "schema_name",
+    "schema_url",
+    "cir_instrument_id",
+    "channel",
+    "region_code",
+    "roles",
+]
+
 PAYLOAD = {
-    'user_id': 'benchmark-user',
-    'period_str': 'July 2019',
-    'period_id': '201907',
-    'collection_exercise_sid': str(uuid4()),
-    'case_id': str(uuid4()),
-    'case_type': 'HI',
-    'display_address': '68 Abingdon Road, Goathill',
-    'ru_ref': '123456789012A',
-    'ru_name': 'Integration Testing',
-    'ref_p_start_date': '2019-04-01',
-    'ref_p_end_date': '2019-11-30',
-    'return_by': '2019-12-06',
-    'trad_as': 'Benchmark Tests',
-    'employment_date': '1983-06-02',
-    'region_code': 'GB-ENG',
-    'language_code': 'en',
-    'roles': [],
+    'version': 'v2',
     'account_service_url': 'http://upstream.url',
-    'variant_flags': {'sexual_identity': 'false'},
+    'case_id': str(uuid4()),
+    'collection_exercise_sid': str(uuid4()),
+    'response_id': str(uuid4()),
+    'language_code': 'en',
+    'region_code': 'GB-ENG',
+    'roles': [],
+    'survey_metadata': {
+        'data': {
+            'case_ref': '1000000000000001',
+            'form_type': '0001',
+            'period_id': '201907',
+            'period_str': 'July 2019',
+            'ref_p_start_date': '2019-04-01',
+            'ref_p_end_date': '2019-11-30',
+            'ru_name': 'Benchmark Testing',
+            'ru_ref': '123456789012A',
+            'trad_as': 'Benchmark Tests',
+            'display_address': '68 Abingdon Road, Goathill',
+            'user_id': 'benchmark-user',
+            'survey_id': '0',
+            'employment_date': '2019-04-01',
+        }
+    },
 }
 
 
@@ -80,8 +105,12 @@ def _get_payload_with_params(schema_name, schema_url=None, **extra_payload):
     payload_vars['response_expires_at'] = (
         datetime.now(tz=timezone.utc) + timedelta(days=7)
     ).isoformat()  # 7 days from now in ISO 8601 format
+
     for key, value in extra_payload.items():
-        payload_vars[key] = value
+        if key in TOP_LEVEL_METADATA_KEYS:
+            payload_vars[key] = value
+        else:
+            payload_vars['survey_metadata']['data'][key] = value
 
     return payload_vars
 
