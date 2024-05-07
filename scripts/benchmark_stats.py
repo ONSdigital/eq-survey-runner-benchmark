@@ -31,14 +31,14 @@ class BenchmarkStats:
             for percentile in self.PERCENTILES_TO_REPORT
         )
         if self.output_to_github:
-            formatted_percentiles = formatted_percentiles.replace(os.linesep, "< br />")
+            formatted_percentiles = formatted_percentiles.replace(os.linesep, "<br />")
             return (
                 f'{{"body": "'
-                f'**Benchmark Results**<br />'
+                f'**Benchmark Results**<br /><br />'
                 f'Percentile Averages:<br />'
                 f'{formatted_percentiles}<br />'
                 f'GETs (99th): {self.average_get}ms<br />'
-                f'POSTs (99th): {self.average_post}ms<br />'
+                f'POSTs (99th): {self.average_post}ms<br /><br />'
                 f'Total Requests: {self.total_requests:,}<br />'
                 f'Total Failures: {self._total_failures:,}<br />'
                 f'Error Percentage: {(round(self.error_percentage, 2))}%<br />"}}'
