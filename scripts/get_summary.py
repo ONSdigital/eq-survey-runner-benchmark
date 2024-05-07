@@ -15,7 +15,7 @@ class Result(NamedTuple):
         return f"{self.date}\n{self.statistics}\n"
 
 
-def get_results(folders, output_to_github=False, number_of_days=None):
+def get_results(folders, number_of_days=None):
     from_date = (
         (datetime.utcnow() - timedelta(days=number_of_days)) if number_of_days else None
     )
@@ -24,7 +24,7 @@ def get_results(folders, output_to_github=False, number_of_days=None):
         date = folder.split("/")[-1].split("T")[0]
         if from_date and datetime.strptime(date, "%Y-%m-%d") < from_date:
             continue
-        yield Result(date, BenchmarkStats([folder], output_to_github))
+        yield Result(date, BenchmarkStats([folder]))
 
 
 def parse_environment_variables():

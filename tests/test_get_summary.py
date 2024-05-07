@@ -44,12 +44,9 @@ def test_get_results(get_results_single_file):
     assert str(results[0]) == f"2024-02-07\n{EXPECTED_OUTPUT_SINGLE_FOLDER}\n"
 
 
-def test_get_results_github(get_results_single_file):
-    results = list(
-        get_results(
-            folders=["./tests/mock_stats/2024-02-07T03:09:41"], output_to_github=True
-        )
-    )
+def test_get_results_github(get_results_single_file, monkeypatch):
+    monkeypatch.setenv("OUTPUT_TO_GITHUB", "True")
+    results = list(get_results(folders=["./tests/mock_stats/2024-02-07T03:09:41"]))
     assert str(results[0]) == f"2024-02-07\n{EXPECTED_OUTPUT_20240206_FOLDER_GITHUB}"
 
 

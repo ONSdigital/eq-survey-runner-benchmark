@@ -44,7 +44,6 @@ run:
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%d')"
       SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
       OUTPUT_DATE="$RUNTIME_DATE_STRING" \
-      OUTPUT_TO_GITHUB="False" \
       pipenv run python -m scripts.get_summary)
 
       # Post summary to Slack

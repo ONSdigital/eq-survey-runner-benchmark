@@ -9,9 +9,9 @@ class BenchmarkStats:
     PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9)
     PERCENTILE_TO_USE_FOR_AVERAGES = 99
 
-    def __init__(self, folder_paths: List[str], output_to_github: bool = False):
+    def __init__(self, folder_paths: List[str]):
         self._files: List = []
-        self.output_to_github = output_to_github
+        self.output_to_github = os.getenv("OUTPUT_TO_GITHUB", False)
         for folder_path in folder_paths:
             self._files.extend(glob(f"{folder_path}/*stats.csv"))
 
