@@ -83,7 +83,6 @@ def test_parse_environment_variables_with_valid_number_of_days(monkeypatch):
     monkeypatch.setenv("NUMBER_OF_DAYS", "10")
     monkeypatch.setenv("OUTPUT_DATE", "2024-02-07")
     monkeypatch.setenv("OUTPUT_DIR", "outputs")
-    monkeypatch.setenv("OUTPUT_TO_GITHUB", "False")
 
     env_vars = parse_environment_variables()
 
@@ -91,7 +90,6 @@ def test_parse_environment_variables_with_valid_number_of_days(monkeypatch):
         "number_of_days": 10,
         "output_date": "2024-02-07",
         "output_dir": "outputs",
-        "output_to_github": "False",
     }
 
 

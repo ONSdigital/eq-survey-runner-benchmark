@@ -39,16 +39,14 @@ def parse_environment_variables():
         "number_of_days": days,
         "output_date": os.getenv("OUTPUT_DATE"),
         "output_dir": os.getenv("OUTPUT_DIR", "outputs"),
-        "output_to_github": os.getenv("OUTPUT_TO_GITHUB"),
     }
 
 
 if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
     date_to_output = parsed_variables["output_date"]
-    output_to_github = bool(parsed_variables["output_to_github"])
     sorted_folders = sorted(glob(f"{parsed_variables['output_dir']}/*"), reverse=True)
-    results = get_results(sorted_folders, output_to_github)
+    results = get_results(sorted_folders)
 
     for result in results:
         if date_to_output:
