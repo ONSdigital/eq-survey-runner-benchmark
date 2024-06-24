@@ -3,8 +3,8 @@
 Minification of HTML was previously turned off due to performance issues before the Census. We need to investigate the
 impact of re-enabling it in Runner.
 
-Following on [from a recent investigation](https://confluence.ons.gov.uk/display/SDC/Enabling+HTML+Minification) of
-enabling HTML minification in Runner, we concluded that re-enabling minification did not have any adverse affects on our
+Following on from a recent investigation of enabling HTML minification in Runner, we concluded that re-enabling
+minification did not have any adverse affects on our
 UI.
 
 However, during the spike, we ran a basic performance benchmark to check if there were any performance impacts. We
@@ -57,7 +57,7 @@ Performance graphs:
 ## Observations
 
 * Most noteworthy observation here is the CPU usage. Although it's only ~2% higher, enabling HTML minify seems to have a
-consistently higher CPU rate with minify turned **on**. 
+  consistently higher CPU rate.
 
 * The memory usage was consistent across all baseline and investigation runs, at ~30%
 
