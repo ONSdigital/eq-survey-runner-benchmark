@@ -1,0 +1,3 @@
+Method,Name,Error,Occurrences
+GET,/questionnaire/sections/calculated-summary-section/{id}/,CatchResponseError('Expected a (200) but got a (0) back when getting page: /questionnaire/sections/calculated-summary-section/cERcgg/'),1
+GET,/questionnaire/sections/section-companies/,CatchResponseError('Expected a (200) but got a (0) back when getting page: /questionnaire/sections/section-companies/'),1
