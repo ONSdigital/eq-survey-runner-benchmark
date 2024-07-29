@@ -77,9 +77,7 @@ def test_get_data_frame_single_file(
     ),
 )
 def test_get_data_frame_multiple_files(folders, data_frame_method, expected_result):
-    results = get_results(
-        folders=folders
-    )
+    results = get_results(folders=folders)
     dataframe = data_frame_method(results)
     assert_frame_equal(dataframe, expected_result)
 
