@@ -2,7 +2,7 @@ import os
 from collections import defaultdict
 from csv import DictReader
 from glob import glob
-from typing import List, Mapping
+from typing import List, Mapping, Any
 
 
 class BenchmarkStats:
@@ -20,6 +20,8 @@ class BenchmarkStats:
             "POST": {"response_times": [], "total": 0},
         }
 
+        self._session_percentile: int = 0
+        self._pdf_percentile: int = 0
         self._total_failures: int = 0
         self._percentiles: Mapping[int : List[float]] = defaultdict(list)  # noqa: E203
 
@@ -51,6 +53,9 @@ class BenchmarkStats:
             f'GETs (99th): {self.average_get}ms\n'
             f'POSTs (99th): {self.average_post}ms\n'
             f'---\n'
+            f'PDF: {self.pdf_percentile}\n'
+            f'Session: {self.session_percentile}ms\n'
+            f'---\n'
             f'Total Requests: {self.total_requests:,}\n'
             f'Total Failures: {self._total_failures:,}\n'
             f'Error Percentage: {(round(self.error_percentage, 2))}%\n'
@@ -69,6 +74,12 @@ class BenchmarkStats:
                         )
                         self._total_failures += int(failure_count)
                     else:
+                        if row["Name"] == "/submitted/download-pdf":
+                            self._pdf_percentile = int(row.get("99%"))
+
+                        if row["Name"] == "/session":
+                            self._session_percentile = int(row.get("99%"))
+
                         weighted_request_count = self._get_weighted_request_count(
                             request_count
                         )
@@ -88,6 +99,16 @@ class BenchmarkStats:
                             weighted_response_time
                         )
                         self._requests[row["Type"]]["total"] += request_count
+
+    @property
+    def pdf_percentile(self) -> Any:
+        if self._pdf_percentile:
+            return self._pdf_percentile
+        return "N/A"
+
+    @property
+    def session_percentile(self) -> int:
+        return self._session_percentile
 
     @property
     def files(self) -> List[str]:
