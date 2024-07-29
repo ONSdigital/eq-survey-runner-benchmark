@@ -35,7 +35,7 @@ EXPECTED_OUTPUT_MULTIPLE_FOLDERS = (
     'POSTs (99th): 234ms\n'
     '---\n'
     'PDF: N/A\n'
-    'Session: 7600ms\n'
+    'Session: 6700ms\n'
     '---\n'
     'Total Requests: 211,841\n'
     'Total Failures: 2\n'
