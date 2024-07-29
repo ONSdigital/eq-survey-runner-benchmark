@@ -13,6 +13,11 @@ def benchmark_stats():
 
 
 @pytest.fixture
+def benchmark_stats_pdf():
+    return BenchmarkStats(folder_paths=["./tests/mock_stats/2024-07-25T03:09:41"])
+
+
+@pytest.fixture
 def benchmark_stats_multiple():
     return BenchmarkStats(
         folder_paths=[
@@ -54,3 +59,15 @@ def test_average_post(benchmark_stats):
 
 def test_error_percentage(benchmark_stats):
     assert benchmark_stats.error_percentage == 0.0014156285390713476
+
+
+def test_pdf_percentile(benchmark_stats_pdf):
+    assert benchmark_stats_pdf.pdf_percentile == 4700
+
+
+def test_non_applicable_pdf_percentile(benchmark_stats):
+    assert benchmark_stats.pdf_percentile == "N/A"
+
+
+def test_session_percentile(benchmark_stats_pdf):
+    assert benchmark_stats_pdf.session_percentile == 180
