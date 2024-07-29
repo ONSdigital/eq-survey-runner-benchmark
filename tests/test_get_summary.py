@@ -35,6 +35,8 @@ EXPECTED_OUTPUT_20240206_FOLDER_GITHUB = (
     '99.9th: 477ms<br />'
     'GETs (99th): 380ms<br />'
     'POSTs (99th): 211ms<br /><br />'
+    'PDF: N/A<br />'
+    'Session: 7600ms<br /><br />'
     'Total Requests: 70,640<br />'
     'Total Failures: 1<br />'
     'Error Percentage: 0.0%<br />'

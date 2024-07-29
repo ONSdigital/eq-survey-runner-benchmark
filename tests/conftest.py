@@ -49,5 +49,10 @@ def get_results_single_file():
 
 
 @pytest.fixture
+def get_results_single_file_with_pdf_endpoint():
+    return get_results(folders=["./tests/mock_stats/2024-07-25T03:09:41"])
+
+
+@pytest.fixture
 def get_results_single_file_github():
     return get_results(folders=["./tests/mock_stats/2024-02-07T03:09:41"])
