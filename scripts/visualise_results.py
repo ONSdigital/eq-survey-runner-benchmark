@@ -7,6 +7,8 @@ from scripts.get_summary import get_results, parse_environment_variables
 
 PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
 
+ADDITIONAL_METRICS_TO_GRAPH = ("PDF", "Session")
+
 
 class GraphGenerationFailed(Exception):
     pass
@@ -53,6 +55,20 @@ def get_data_frame(results):
     return DataFrame(result_fields, columns=["DATE", *percentile_columns])
 
 
+def get_data_frame_session_pdf(results):
+    result_fields = [
+        [
+            result.date,
+            result.statistics.pdf_percentile,
+            result.statistics.session_percentile,
+        ]
+        for result in results
+    ]
+
+    metrics_columns = (f"{endpoint}" for endpoint in ADDITIONAL_METRICS_TO_GRAPH)
+    return DataFrame(result_fields, columns=["DATE", *metrics_columns])
+
+
 if __name__ == '__main__':
     parsed_variables = parse_environment_variables()
     number_of_days = parsed_variables['number_of_days']
@@ -60,5 +76,7 @@ if __name__ == '__main__':
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
     results = get_results(folders, number_of_days)
     dataframe = get_data_frame(results)
+    pdf_session_dataframe = get_data_frame_session_pdf(results)
 
     plot_data(dataframe, number_of_days)
+    plot_data(pdf_session_dataframe, number_of_days)
