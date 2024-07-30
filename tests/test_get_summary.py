@@ -17,7 +17,7 @@ EXPECTED_OUTPUT_20240206_FOLDER = (
     'POSTs (99th): 245ms\n'
     '---\n'
     'PDF: N/A\n'
-    'Session: 6700ms\n'
+    'Session: 7150ms\n'
     '---\n'
     'Total Requests: 141,201\n'
     'Total Failures: 1\n'

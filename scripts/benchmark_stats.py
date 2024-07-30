@@ -20,8 +20,8 @@ class BenchmarkStats:
             "POST": {"response_times": [], "total": 0},
         }
 
-        self._session_percentile: int = 0
-        self._pdf_percentile: int = 0
+        self._session_percentile: List[int] = []
+        self._pdf_percentile: List[Any] = []
         self._total_failures: int = 0
         self._percentiles: Mapping[int : List[float]] = defaultdict(list)  # noqa: E203
 
@@ -77,10 +77,10 @@ class BenchmarkStats:
                         self._total_failures += int(failure_count)
                     else:
                         if row["Name"] == "/submitted/download-pdf":
-                            self._pdf_percentile = int(row.get("99%"))
+                            self._pdf_percentile.append(int(row.get("99%")))
 
                         if row["Name"] == "/session":
-                            self._session_percentile = int(row.get("99%"))
+                            self._session_percentile.append(int(row.get("99%")))
 
                         weighted_request_count = self._get_weighted_request_count(
                             request_count
@@ -105,12 +105,12 @@ class BenchmarkStats:
     @property
     def pdf_percentile(self) -> Any:
         if self._pdf_percentile:
-            return self._pdf_percentile
+            return int(sum(self._pdf_percentile) / len(self._pdf_percentile))
         return "N/A"
 
     @property
     def session_percentile(self) -> int:
-        return self._session_percentile
+        return int(sum(self._session_percentile) / len(self._session_percentile))
 
     @property
     def files(self) -> List[str]:
