@@ -1,15 +1,15 @@
 lint: flake8
-	pipenv run black --check .
+	poetry run black --check .
 
 flake8:
-	pipenv run flake8 --max-complexity 10 --count
+	poetry run flake8 --max-complexity 10 --count
 
 format:
-	pipenv run isort .
-	pipenv run black .
+	poetry run isort .
+	poetry run black .
 
 run:
-	pipenv run ./run.sh requests/test_checkbox.json
+	poetry run ./run.sh requests/test_checkbox.json
 
 test:
-	pipenv run ./scripts/run_tests.sh
+	poetry run ./scripts/run_tests.sh

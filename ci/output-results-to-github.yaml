@@ -26,21 +26,21 @@ run:
 
       cd eq-survey-runner-benchmark
 
-      pip3 install pipenv
-      pipenv install --deploy
+      pip3 install poetry
+      poetry install
 
       # Get benchmark outputs
       OUTPUT_BUCKET="$OUTPUT_BUCKET" \
       OUTPUT_DIR="outputs" \
       NUMBER_OF_DAYS="$NUMBER_OF_DAYS" \
-      pipenv run python -m scripts.get_benchmark_results
+      poetry run python -m scripts.get_benchmark_results
 
       # Date to get summary for
       RUNTIME_DATE_STRING="$(date +'%Y-%m-%d')"
       SUMMARY=$(OUTPUT_DIR="outputs/${OUTPUT_DIR}" \
       OUTPUT_DATE="$RUNTIME_DATE_STRING" \
       OUTPUT_TO_GITHUB="True" \
-      pipenv run python -m scripts.get_summary)
+      poetry run python -m scripts.get_summary)
 
       # Post summary to Github
       cd ../
