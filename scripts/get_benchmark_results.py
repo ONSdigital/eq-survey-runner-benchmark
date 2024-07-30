@@ -7,12 +7,12 @@ from dateutil.tz import tzutc
 from scripts.get_summary import parse_environment_variables
 from scripts.google_cloud_storage import GoogleCloudStorage
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     output_bucket = os.getenv("OUTPUT_BUCKET")
 
     parsed_variables = parse_environment_variables()
-    number_of_days = parsed_variables['number_of_days']
-    output_dir = parsed_variables['output_dir']
+    number_of_days = parsed_variables["number_of_days"]
+    output_dir = parsed_variables["output_dir"]
 
     from_date = (
         datetime.now(tz=tzutc()) - timedelta(days=number_of_days)
@@ -28,4 +28,4 @@ if __name__ == '__main__':
     print("Fetching files...")
 
     gcs.get_files(from_date=from_date, output_dir=output_dir)
-    print('All files downloaded')
+    print("All files downloaded")
