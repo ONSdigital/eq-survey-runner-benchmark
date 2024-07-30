@@ -3,7 +3,9 @@ import pytest
 from scripts.benchmark_stats import BenchmarkStats
 from tests.conftest import (
     EXPECTED_OUTPUT_MULTIPLE_FOLDERS,
-    EXPECTED_OUTPUT_SINGLE_FOLDER, EXPECTED_OUTPUT_MULTIPLE_FOLDERS_WITH_PDF, EXPECTED_OUTPUT_SINGLE_FOLDER_WITH_PDF,
+    EXPECTED_OUTPUT_MULTIPLE_FOLDERS_WITH_PDF,
+    EXPECTED_OUTPUT_SINGLE_FOLDER,
+    EXPECTED_OUTPUT_SINGLE_FOLDER_WITH_PDF,
 )
 
 
@@ -26,6 +28,7 @@ def benchmark_stats_multiple():
         ]
     )
 
+
 @pytest.fixture
 def benchmark_stats_multiple_with_pdf():
     return BenchmarkStats(
@@ -44,7 +47,10 @@ def benchmark_stats_multiple_with_pdf():
         ("benchmark_stats", EXPECTED_OUTPUT_SINGLE_FOLDER),
         ("benchmark_stats_pdf", EXPECTED_OUTPUT_SINGLE_FOLDER_WITH_PDF),
         ("benchmark_stats_multiple", EXPECTED_OUTPUT_MULTIPLE_FOLDERS),
-        ("benchmark_stats_multiple_with_pdf", EXPECTED_OUTPUT_MULTIPLE_FOLDERS_WITH_PDF)
+        (
+            "benchmark_stats_multiple_with_pdf",
+            EXPECTED_OUTPUT_MULTIPLE_FOLDERS_WITH_PDF,
+        ),
     ),
 )
 def test_formatted_percentile(benchmark_stats_fixture, expected_result, request):
