@@ -18,7 +18,6 @@ sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
 
 The benchmark consumes a requests JSON file that contains a list of HTTP requests. This can either be created from scratch or generated from a HAR file. Example requests files can be found in the `requests` folder.
 
-To run a benchmark, use:
 
 ```bash
 pipenv run ./run.sh <REQUESTS_JSON> <INCLUDE_SCHEMA_URL_IN_TOKEN: Optional> <HOST: Optional>
