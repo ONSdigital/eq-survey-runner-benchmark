@@ -75,8 +75,6 @@ if __name__ == '__main__':
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
     results = get_results(folders, number_of_days)
-    dataframe = get_data_frame(results)
     pdf_session_dataframe = get_data_frame_session_pdf(results)
 
-    plot_data(dataframe, number_of_days)
     plot_data(pdf_session_dataframe, number_of_days)
