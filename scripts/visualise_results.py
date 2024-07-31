@@ -94,5 +94,7 @@ if __name__ == '__main__':
     dataframe = get_data_frame(get_results(folders, number_of_days))
     plot_performance_data(dataframe, number_of_days)
 
-    pdf_session_dataframe = get_data_frame_session_pdf(get_results(folders, number_of_days))
+    pdf_session_dataframe = get_data_frame_session_pdf(
+        get_results(folders, number_of_days)
+    )
     plot_additional_metrics(pdf_session_dataframe, number_of_days)
