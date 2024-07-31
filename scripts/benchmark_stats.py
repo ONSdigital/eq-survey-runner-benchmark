@@ -41,7 +41,7 @@ class BenchmarkStats:
                 f'{formatted_percentiles}<br />'
                 f'GETs (99th): {self.average_get}ms<br />'
                 f'POSTs (99th): {self.average_post}ms<br /><br />'
-                f'PDF: {self.pdf_percentile}ms<br />'
+                f'PDF: {self.pdf_percentile+"ms" if self.pdf_percentile else "N/A"}<br />'
                 f'Session: {self.session_percentile}ms<br /><br />'
                 f'Total Requests: {self.total_requests:,}<br />'
                 f'Total Failures: {self._total_failures:,}<br />'
@@ -55,7 +55,7 @@ class BenchmarkStats:
             f'GETs (99th): {self.average_get}ms\n'
             f'POSTs (99th): {self.average_post}ms\n'
             f'---\n'
-            f'PDF: {self.pdf_percentile}\n'
+            f'PDF: {str(self.pdf_percentile)+"ms" if self.pdf_percentile else "N/A"}\n'
             f'Session: {self.session_percentile}ms\n'
             f'---\n'
             f'Total Requests: {self.total_requests:,}\n'
@@ -106,7 +106,7 @@ class BenchmarkStats:
     def pdf_percentile(self) -> Any:
         if self._pdf_percentile:
             return int(sum(self._pdf_percentile) / len(self._pdf_percentile))
-        return "N/A"
+        return None
 
     @property
     def session_percentile(self) -> int:

@@ -88,7 +88,7 @@ def test_pdf_percentile(benchmark_stats_pdf):
 
 
 def test_non_applicable_pdf_percentile(benchmark_stats):
-    assert benchmark_stats.pdf_percentile == "N/A"
+    assert benchmark_stats.pdf_percentile == None
 
 
 def test_session_percentile(benchmark_stats_pdf):
