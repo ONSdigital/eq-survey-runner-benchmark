@@ -34,7 +34,6 @@ def plot_data(df, number_of_days_to_plot):
 
 
 def plot_performance_data(df, number_of_days_to_plot):
-    print(df)
     try:
         plot_data(df, number_of_days_to_plot)
 
@@ -45,7 +44,6 @@ def plot_performance_data(df, number_of_days_to_plot):
 
 
 def plot_additional_metrics(df, number_of_days_to_plot):
-    print(df)
     try:
         plot_data(df, number_of_days_to_plot)
 
