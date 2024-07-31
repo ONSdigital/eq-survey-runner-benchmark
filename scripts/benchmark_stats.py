@@ -41,7 +41,7 @@ class BenchmarkStats:
                 f'{formatted_percentiles}<br />'
                 f'GETs (99th): {self.average_get}ms<br />'
                 f'POSTs (99th): {self.average_post}ms<br /><br />'
-                f'PDF: {self.pdf_percentile}<br />'
+                f'PDF: {self.pdf_percentile}ms<br />'
                 f'Session: {self.session_percentile}ms<br /><br />'
                 f'Total Requests: {self.total_requests:,}<br />'
                 f'Total Failures: {self._total_failures:,}<br />'
