@@ -6,14 +6,14 @@ Link to Github branch with proposed changes.
 
 ## Benchmark profile
 
-| Option | Value |
-|--------|-------|
-| Requests file | |
-| Run time | |
+| Option                 | Value |
+|------------------------|-------|
+| Requests file          | |
+| Run time               | |
 | User wait time minimum | |
 | User wait time maximum | |
-| Clients | |
-| Hatch rate | |
+| Clients                | |
+| Spawn rate             | |
 
 ## Results
 
