@@ -16,8 +16,7 @@ class GraphGenerationFailed(Exception):
 
 def plot_data(dataframes, number_of_days_to_plot):
     plt.style.use('fast')
-    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(6.75, 3.75))
-    plt.subplots_adjust(wspace=0.35)
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
     for i in range(len(dataframes)):
         plt.subplot(1, 2, i + 1)
