@@ -56,7 +56,3 @@ run:
       TITLE="Performance Graph" \
       ATTACHMENT_FILENAME="performance_graph.png" \
       pipenv run python -m scripts.slack_notification
-      
-      TITLE="Additional Metrics Graph" \
-      ATTACHMENT_FILENAME="additional_metrics.png" \
-      pipenv run python -m scripts.slack_notification

@@ -14,46 +14,50 @@ class GraphGenerationFailed(Exception):
     pass
 
 
-def plot_data(df, number_of_days_to_plot):
+def plot_data(dataframes, number_of_days_to_plot):
     plt.style.use('fast')
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
-    if (
-        number_of_days_to_plot and number_of_days_to_plot <= 45
-    ):  # To make the chart still easily digestible
-        df.plot.line(marker="o", markersize=8)
-        plt.grid(True, axis="both", alpha=0.3)
-    else:
-        df.plot.line()
+    for i in range(len(dataframes)):
+        plt.subplot(1, 2, i + 1)
+        if (
+                number_of_days_to_plot and number_of_days_to_plot <= 45
+        ):  # To make the chart still easily digestible
+            dataframes[i].plot.line(marker="o", markersize=8, ax=axes[i])
+            plt.grid(True, axis="both", alpha=0.3)
+        else:
+            dataframes[i].plot.line(ax=axes[0])
 
-    plt.margins(0.03, 0.07)
-    plt.legend(frameon=True, prop={"size": 17})
-    plt.xticks(df.index, df["DATE"], size="small", rotation=90)
-    plt.yticks(size="small")
-    plt.ylabel("Average Response Time (ms)")
-    plt.xlabel("Run Date (YYYY-MM-DD)", labelpad=13)
+        plt.margins(0.03, 0.07)
+        plt.legend(frameon=True, prop={"size": 17})
+        plt.xticks(dataframes[i].index, dataframes[i]["DATE"], size="small", rotation=90)
+        plt.yticks(size="small")
+        plt.ylabel("Average Response Time (ms)")
+        plt.xlabel("Run Date (YYYY-MM-DD)", labelpad=13)
 
 
-def plot_performance_data(df, number_of_days_to_plot):
+def create_graph(dataframes, number_of_days_to_plot, filename):
     try:
-        plot_data(df, number_of_days_to_plot)
-
-        plt.savefig('performance_graph.png', bbox_inches="tight")
-        print("Graph saved as performance_graph.png")
+        plot_data(dataframes, number_of_days_to_plot)
+        plt.savefig(filename, bbox_inches="tight")
+        print("Graph saved as", filename)
     except Exception as e:
         raise GraphGenerationFailed from e
 
 
-def plot_additional_metrics(df, number_of_days_to_plot):
-    try:
-        plot_data(df, number_of_days_to_plot)
+def create_dataframe(result_fields, values_to_plot, prefix=True):
+    if prefix:
+        return DataFrame(
+            result_fields,
+            columns=["DATE", *(f"{percentile}th" for percentile in values_to_plot)],
+        )
+    return DataFrame(
+        result_fields,
+        columns=["DATE", *(f"{percentile}" for percentile in values_to_plot)],
+    )
 
-        plt.savefig('additional_metrics.png', bbox_inches="tight")
-        print("Graph saved as additional_metrics.png")
-    except Exception as e:
-        raise GraphGenerationFailed from e
 
-
-def get_data_frame(results):
+def get_performance_data_frame(results):
     result_fields = [
         [
             result.date,
@@ -65,11 +69,10 @@ def get_data_frame(results):
         for result in results
     ]
 
-    percentile_columns = (f"{percentile}th" for percentile in PERCENTILES_TO_GRAPH)
-    return DataFrame(result_fields, columns=["DATE", *percentile_columns])
+    return create_dataframe(result_fields, PERCENTILES_TO_GRAPH)
 
 
-def get_data_frame_session_pdf(results):
+def get_additional_metrics_data_frame(results):
     result_fields = [
         [
             result.date,
@@ -79,8 +82,7 @@ def get_data_frame_session_pdf(results):
         for result in results
     ]
 
-    metrics_columns = (f"{endpoint}" for endpoint in ADDITIONAL_METRICS_TO_GRAPH)
-    return DataFrame(result_fields, columns=["DATE", *metrics_columns])
+    return create_dataframe(result_fields, ADDITIONAL_METRICS_TO_GRAPH, prefix=False)
 
 
 if __name__ == '__main__':
@@ -89,10 +91,11 @@ if __name__ == '__main__':
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
 
-    dataframe = get_data_frame(get_results(folders, number_of_days))
-    plot_performance_data(dataframe, number_of_days)
+    results = list(get_results(folders, number_of_days))
 
-    pdf_session_dataframe = get_data_frame_session_pdf(
-        get_results(folders, number_of_days)
-    )
-    plot_additional_metrics(pdf_session_dataframe, number_of_days)
+    performance_dataframe = get_performance_data_frame(results)
+    additional_metrics_dataframe = get_additional_metrics_data_frame(results)
+
+    dataframe_values = [performance_dataframe, additional_metrics_dataframe]
+
+    create_graph(dataframe_values, number_of_days, "performance_graph.png")
