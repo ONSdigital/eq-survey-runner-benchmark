@@ -16,7 +16,7 @@ class GraphGenerationFailed(Exception):
 
 def plot_data(dataframes, number_of_days_to_plot):
     plt.style.use('fast')
-    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 4))
 
     for i in range(len(dataframes)):
         plt.subplot(1, 2, i + 1)
@@ -29,7 +29,7 @@ def plot_data(dataframes, number_of_days_to_plot):
             dataframes[i].plot.line(ax=axes[0])
 
         plt.margins(0.03, 0.07)
-        plt.legend(frameon=True, prop={"size": 17})
+        plt.legend(frameon=True, prop={"size": 14})
         plt.xticks(dataframes[i].index, dataframes[i]["DATE"], size="small", rotation=90)
         plt.yticks(size="small")
         plt.ylabel("Average Response Time (ms)")
