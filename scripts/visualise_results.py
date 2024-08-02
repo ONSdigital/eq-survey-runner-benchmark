@@ -21,7 +21,7 @@ def plot_data(dataframes, number_of_days_to_plot):
     for i in range(len(dataframes)):
         plt.subplot(1, 2, i + 1)
         if (
-                number_of_days_to_plot and number_of_days_to_plot <= 45
+            number_of_days_to_plot and number_of_days_to_plot <= 45
         ):  # To make the chart still easily digestible
             dataframes[i].plot.line(marker="o", markersize=8, ax=axes[i])
             plt.grid(True, axis="both", alpha=0.3)
@@ -30,7 +30,9 @@ def plot_data(dataframes, number_of_days_to_plot):
 
         plt.margins(0.03, 0.07)
         plt.legend(frameon=True, prop={"size": 10})
-        plt.xticks(dataframes[i].index, dataframes[i]["DATE"], size="small", rotation=90)
+        plt.xticks(
+            dataframes[i].index, dataframes[i]["DATE"], size="small", rotation=90
+        )
         plt.yticks(size="small")
         plt.ylabel("Average Response Time (ms)")
         plt.xlabel("Run Date (YYYY-MM-DD)", labelpad=13)
