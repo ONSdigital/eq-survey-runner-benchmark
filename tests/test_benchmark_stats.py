@@ -83,8 +83,17 @@ def test_error_percentage(benchmark_stats):
     assert benchmark_stats.error_percentage == 0.0014156285390713476
 
 
-def test_pdf_percentile(benchmark_stats_pdf):
-    assert benchmark_stats_pdf.pdf_percentile == 4700
+@pytest.mark.parametrize(
+    "benchmark_stats_fixture, percentile_value",
+    (
+        ("benchmark_stats_pdf", 4700),
+        ("benchmark_stats_multiple_with_pdf", 4850),
+    ),
+)
+def test_pdf_percentile(benchmark_stats_fixture, percentile_value, request):
+    assert (
+        request.getfixturevalue(benchmark_stats_fixture)
+    ).pdf_percentile == percentile_value
 
 
 def test_non_applicable_pdf_percentile(benchmark_stats):
