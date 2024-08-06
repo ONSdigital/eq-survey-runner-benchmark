@@ -2,14 +2,14 @@
 
 ## Benchmark settings
 
-| Setting | Value |
-| --- | ---| 
+| Setting              | Value |
+|----------------------| ---| 
 | Clients per instance | 200 |
-| Clients hatch rate   | 200 |
-| Wait time minimum | 1 |
-| Wait time maximum | 2 |
-| Requests JSON | census_household_gb_eng.json |
-| Runtime | 20m |
+| Clients spawn rate   | 200 |
+| Wait time minimum    | 1 |
+| Wait time maximum    | 2 |
+| Requests JSON        | census_household_gb_eng.json |
+| Runtime              | 20m |
 
 ## Results
 
