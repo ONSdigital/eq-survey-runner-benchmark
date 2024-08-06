@@ -168,7 +168,7 @@ helm tiller run \
 -    runner-benchmark \
 -    k8s/helm \
 -    --set requestsJson=requests/census_individual_gb_eng.json \
--    --set locustOptions="--clients 1000 --hatch-rate 50 -L WARNING" \
+-    --set locustOptions="--clients 1000 --spawn-rate 50 -L WARNING" \
 -    --set host=https://your-runner.gcp.dev.eq.ons.digital \
 -    --set container.image=europe-west2-docker.pkg.dev/ons-eq-ci/docker-images/eq-benchmark-deploy-image:latest
 ```
