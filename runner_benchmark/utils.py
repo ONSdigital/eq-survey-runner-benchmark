@@ -10,7 +10,7 @@ def parse_params_from_location(url, route):
     fields = [
         (i, element[1:-1])
         for i, element in enumerate(parsed_route.path.split("/"))
-        if element.startswith('{') and element.endswith('}')
+        if element.startswith("{") and element.endswith("}")
     ]
 
     for value_pos, value in enumerate(parsed_url.path.split("/")):

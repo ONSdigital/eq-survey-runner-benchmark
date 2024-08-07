@@ -1,3 +1,31 @@
-[tool.black]
-skip-string-normalization = true
-target_version = ['py37']
+[tool.poetry]
+name = "eq-survey-runner-benchmark"
+version = "1.0.0"
+description = "ONS Digital eQ Survey Runner Benchmark App"
+authors = ["ONSDigital"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+haralyzer = "*"
+backoff = "*"
+sdc-cryptography = "*"
+click = "*"
+locust = "*"
+google-cloud-storage = "*"
+pandas = "*"
+matplotlib = "*"
+slackclient = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+"flake8" = "*"
+isort = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+freezegun = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

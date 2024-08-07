@@ -5,36 +5,36 @@ from scripts.get_summary import get_results, parse_environment_variables
 from tests.conftest import EXPECTED_OUTPUT_SINGLE_FOLDER
 
 EXPECTED_OUTPUT_20240206_FOLDER = (
-    '---\n'
-    'Percentile Averages:\n'
-    '50th: 58ms\n'
-    '90th: 99ms\n'
-    '95th: 177ms\n'
-    '99th: 319ms\n'
-    '99.9th: 654ms\n'
-    '---\n'
-    'GETs (99th): 384ms\n'
-    'POSTs (99th): 245ms\n'
-    '---\n'
-    'Total Requests: 141,201\n'
-    'Total Failures: 1\n'
-    'Error Percentage: 0.0%\n'
+    "---\n"
+    "Percentile Averages:\n"
+    "50th: 58ms\n"
+    "90th: 99ms\n"
+    "95th: 177ms\n"
+    "99th: 319ms\n"
+    "99.9th: 654ms\n"
+    "---\n"
+    "GETs (99th): 384ms\n"
+    "POSTs (99th): 245ms\n"
+    "---\n"
+    "Total Requests: 141,201\n"
+    "Total Failures: 1\n"
+    "Error Percentage: 0.0%\n"
 )
 
 EXPECTED_OUTPUT_20240206_FOLDER_GITHUB = (
     '{"body": "'
-    '**Benchmark Results**<br /><br />'
-    'Percentile Averages:<br />'
-    '50th: 58ms<br />'
-    '90th: 96ms<br />'
-    '95th: 173ms<br />'
-    '99th: 301ms<br />'
-    '99.9th: 477ms<br />'
-    'GETs (99th): 380ms<br />'
-    'POSTs (99th): 211ms<br /><br />'
-    'Total Requests: 70,640<br />'
-    'Total Failures: 1<br />'
-    'Error Percentage: 0.0%<br />'
+    "**Benchmark Results**<br /><br />"
+    "Percentile Averages:<br />"
+    "50th: 58ms<br />"
+    "90th: 96ms<br />"
+    "95th: 173ms<br />"
+    "99th: 301ms<br />"
+    "99.9th: 477ms<br />"
+    "GETs (99th): 380ms<br />"
+    "POSTs (99th): 211ms<br /><br />"
+    "Total Requests: 70,640<br />"
+    "Total Failures: 1<br />"
+    "Error Percentage: 0.0%<br />"
     '"}\n'
 )
 

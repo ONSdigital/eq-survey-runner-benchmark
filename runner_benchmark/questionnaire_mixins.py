@@ -24,14 +24,14 @@ class QuestionnaireMixins:
             if not response.content:
                 response.failure(f"No content in GET response for url: {url}")
 
-            if "text/html" in response.headers['content-type']:
-                self.csrf_token = _extract_csrf_token(response.content.decode('utf8'))
+            if "text/html" in response.headers["content-type"]:
+                self.csrf_token = _extract_csrf_token(response.content.decode("utf8"))
 
             return response
 
     def post(self, base_url, request_url, data={}, name=None):
-        data['csrf_token'] = self.csrf_token
-        headers = {'Referer': base_url}
+        data["csrf_token"] = self.csrf_token
+        headers = {"Referer": base_url}
 
         with self.client.post(
             allow_redirects=False,

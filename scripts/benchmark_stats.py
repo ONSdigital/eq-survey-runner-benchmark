@@ -34,26 +34,26 @@ class BenchmarkStats:
             formatted_percentiles = formatted_percentiles.replace(os.linesep, "<br />")
             return (
                 f'{{"body": "'
-                f'**Benchmark Results**<br /><br />'
-                f'Percentile Averages:<br />'
-                f'{formatted_percentiles}<br />'
-                f'GETs (99th): {self.average_get}ms<br />'
-                f'POSTs (99th): {self.average_post}ms<br /><br />'
-                f'Total Requests: {self.total_requests:,}<br />'
-                f'Total Failures: {self._total_failures:,}<br />'
+                f"**Benchmark Results**<br /><br />"
+                f"Percentile Averages:<br />"
+                f"{formatted_percentiles}<br />"
+                f"GETs (99th): {self.average_get}ms<br />"
+                f"POSTs (99th): {self.average_post}ms<br /><br />"
+                f"Total Requests: {self.total_requests:,}<br />"
+                f"Total Failures: {self._total_failures:,}<br />"
                 f'Error Percentage: {(round(self.error_percentage, 2))}%<br />"}}'
             )
         return (
-            f'---\n'
-            f'Percentile Averages:\n'
-            f'{formatted_percentiles}\n'
-            f'---\n'
-            f'GETs (99th): {self.average_get}ms\n'
-            f'POSTs (99th): {self.average_post}ms\n'
-            f'---\n'
-            f'Total Requests: {self.total_requests:,}\n'
-            f'Total Failures: {self._total_failures:,}\n'
-            f'Error Percentage: {(round(self.error_percentage, 2))}%\n'
+            f"---\n"
+            f"Percentile Averages:\n"
+            f"{formatted_percentiles}\n"
+            f"---\n"
+            f"GETs (99th): {self.average_get}ms\n"
+            f"POSTs (99th): {self.average_post}ms\n"
+            f"---\n"
+            f"Total Requests: {self.total_requests:,}\n"
+            f"Total Failures: {self._total_failures:,}\n"
+            f"Error Percentage: {(round(self.error_percentage, 2))}%\n"
         )
 
     def _process_file_data(self):
