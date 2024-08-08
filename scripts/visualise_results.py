@@ -14,7 +14,7 @@ class GraphGenerationFailed(Exception):
 
 def plot_data(df, number_of_days_to_plot):
     try:
-        plt.style.use('fast')
+        plt.style.use("fast")
 
         if (
             number_of_days_to_plot and number_of_days_to_plot <= 45
@@ -31,7 +31,7 @@ def plot_data(df, number_of_days_to_plot):
         plt.ylabel("Average Response Time (ms)")
         plt.xlabel("Run Date (YYYY-MM-DD)", labelpad=13)
 
-        plt.savefig('performance_graph.png', bbox_inches="tight")
+        plt.savefig("performance_graph.png", bbox_inches="tight")
         print("Graph saved as performance_graph.png")
     except Exception as e:
         raise GraphGenerationFailed from e
@@ -53,9 +53,9 @@ def get_data_frame(results):
     return DataFrame(result_fields, columns=["DATE", *percentile_columns])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
-    number_of_days = parsed_variables['number_of_days']
+    number_of_days = parsed_variables["number_of_days"]
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
     results = get_results(folders, number_of_days)
