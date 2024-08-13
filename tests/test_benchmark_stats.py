@@ -44,13 +44,13 @@ def benchmark_stats_multiple_with_pdf():
 @pytest.mark.parametrize(
     "benchmark_stats_fixture, expected_result",
     (
-        ("benchmark_stats", EXPECTED_OUTPUT_SINGLE_FOLDER),
-        ("benchmark_stats_pdf", EXPECTED_OUTPUT_SINGLE_FOLDER_WITH_PDF),
-        ("benchmark_stats_multiple", EXPECTED_OUTPUT_MULTIPLE_FOLDERS),
-        (
-            "benchmark_stats_multiple_with_pdf",
-            EXPECTED_OUTPUT_MULTIPLE_FOLDERS_WITH_PDF,
-        ),
+            ("benchmark_stats", EXPECTED_OUTPUT_SINGLE_FOLDER),
+            ("benchmark_stats_pdf", EXPECTED_OUTPUT_SINGLE_FOLDER_WITH_PDF),
+            ("benchmark_stats_multiple", EXPECTED_OUTPUT_MULTIPLE_FOLDERS),
+            (
+                    "benchmark_stats_multiple_with_pdf",
+                    EXPECTED_OUTPUT_MULTIPLE_FOLDERS_WITH_PDF,
+            ),
     ),
 )
 def test_formatted_percentile(benchmark_stats_fixture, expected_result, request):
@@ -86,14 +86,14 @@ def test_error_percentage(benchmark_stats):
 @pytest.mark.parametrize(
     "benchmark_stats_fixture, percentile_value",
     (
-        ("benchmark_stats_pdf", 4700),
-        ("benchmark_stats_multiple_with_pdf", 4850),
+            ("benchmark_stats_pdf", 4700),
+            ("benchmark_stats_multiple_with_pdf", 4850),
     ),
 )
 def test_pdf_percentile(benchmark_stats_fixture, percentile_value, request):
     assert (
-        request.getfixturevalue(benchmark_stats_fixture)
-    ).pdf_percentile == percentile_value
+               request.getfixturevalue(benchmark_stats_fixture)
+           ).pdf_percentile == percentile_value
 
 
 def test_non_applicable_pdf_percentile(benchmark_stats):
@@ -102,3 +102,11 @@ def test_non_applicable_pdf_percentile(benchmark_stats):
 
 def test_session_percentile(benchmark_stats_pdf):
     assert benchmark_stats_pdf.session_percentile == 180
+
+
+def test_no_pdf_endpoint_formatted_percentile(benchmark_stats):
+    assert benchmark_stats.formatted_pdf_percentile() is None
+
+
+def test_formatted_pdf_percentile(benchmark_stats_pdf):
+    assert benchmark_stats_pdf.formatted_pdf_percentile() == "4700ms"

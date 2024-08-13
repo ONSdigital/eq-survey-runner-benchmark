@@ -41,7 +41,7 @@ class BenchmarkStats:
                 f"{formatted_percentiles}<br />"
                 f"GETs (99th): {self.average_get}ms<br />"
                 f"POSTs (99th): {self.average_post}ms<br /><br />"
-                f"PDF: {str(self.pdf_percentile)+'ms' if self.pdf_percentile else 'N/A'}<br />"
+                f"PDF: {self.formatted_pdf_percentile() or 'N/A'}<br />"
                 f"Session: {self.session_percentile}ms<br /><br />"
                 f"Total Requests: {self.total_requests:,}<br />"
                 f"Total Failures: {self._total_failures:,}<br />"
@@ -55,7 +55,7 @@ class BenchmarkStats:
             f"GETs (99th): {self.average_get}ms\n"
             f"POSTs (99th): {self.average_post}ms\n"
             f"---\n"
-            f"PDF: {str(self.pdf_percentile)+'ms' if self.pdf_percentile else 'N/A'}\n"
+            f"PDF: {self.formatted_pdf_percentile() or 'N/A'}\n"
             f"Session: {self.session_percentile}ms\n"
             f"---\n"
             f"Total Requests: {self.total_requests:,}\n"
@@ -77,10 +77,12 @@ class BenchmarkStats:
                         self._total_failures += int(failure_count)
                     else:
                         if row["Name"] == "/submitted/download-pdf":
-                            self._pdf_percentile.append(int(row.get("99%")))
+                            self._pdf_percentile.append(round(float(row.get("99%"))))
 
                         if row["Name"] == "/session":
-                            self._session_percentile.append(int(row.get("99%")))
+                            self._session_percentile.append(
+                                round(float(row.get("99%")))
+                            )
 
                         weighted_request_count = self._get_weighted_request_count(
                             request_count
@@ -103,14 +105,22 @@ class BenchmarkStats:
                         self._requests[row["Type"]]["total"] += request_count
 
     @property
-    def pdf_percentile(self) -> Any:
+    def pdf_percentile(self) -> int | None:
         if self._pdf_percentile:
-            return int(sum(self._pdf_percentile) / len(self._pdf_percentile))
+            average_pdf_percentile = float(
+                sum(self._pdf_percentile) / len(self._pdf_percentile)
+            )
+            return round(average_pdf_percentile)
+        return None
+
+    def formatted_pdf_percentile(self) -> str | None:
+        if self.pdf_percentile:
+            return f"{self.pdf_percentile}ms"
         return None
 
     @property
     def session_percentile(self) -> int:
-        return int(sum(self._session_percentile) / len(self._session_percentile))
+        return round(sum(self._session_percentile) / len(self._session_percentile))
 
     @property
     def files(self) -> List[str]:
