@@ -51,12 +51,12 @@ outputs/
 
 To get a summary for each dated folder, run the following:
 ```
-OUTPUT_DIR=outputs/baseline pipenv run python -m scripts.get_summary 
+OUTPUT_DIR=outputs/baseline poetry run python -m scripts.get_summary 
 ```
 
 To get an aggregated summary for all dated folders, run the following:
 ```
-OUTPUT_DIR=outputs/baseline pipenv run python -m scripts.get_aggregated_summary
+OUTPUT_DIR=outputs/baseline poetry run python -m scripts.get_aggregated_summary
 ```
 
 

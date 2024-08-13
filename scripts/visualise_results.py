@@ -15,7 +15,7 @@ class GraphGenerationFailed(Exception):
 
 
 def plot_data(dataframes, number_of_days_to_plot):
-    plt.style.use('fast')
+    plt.style.use("fast")
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
     for i in range(len(dataframes)):
@@ -87,9 +87,9 @@ def get_additional_metrics_data_frame(results):
     return create_dataframe(result_fields, ADDITIONAL_METRICS_TO_GRAPH, prefix=False)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parsed_variables = parse_environment_variables()
-    number_of_days = parsed_variables['number_of_days']
+    number_of_days = parsed_variables["number_of_days"]
 
     folders = sorted(glob(f"{parsed_variables['output_dir']}/*"))
 

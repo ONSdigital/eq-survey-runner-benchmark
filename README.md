@@ -21,11 +21,11 @@ The benchmark consumes a requests JSON file that contains a list of HTTP request
 To run a benchmark, use:
 
 ```bash
-pipenv run ./run.sh <REQUESTS_JSON> <INCLUDE_SCHEMA_URL_IN_TOKEN: Optional> <HOST: Optional>
+poetry run ./run.sh <REQUESTS_JSON> <INCLUDE_SCHEMA_URL_IN_TOKEN: Optional> <HOST: Optional>
 ```
 e.g.
 ```bash
-pipenv run ./run.sh requests/test_checkbox.json
+poetry run ./run.sh requests/test_checkbox.json
 ```
 
 This will run 1 minute of locust requests with 1 user and no wait time between requests. The output files are `output_stats.csv`, `output_stats_history.csv` and `output_failures.csv`.
@@ -33,7 +33,7 @@ This will run 1 minute of locust requests with 1 user and no wait time between r
 For the web interface:
 
 ```bash
-REQUESTS_JSON=requests/test_checkbox.json HOST=http://localhost:5000 pipenv run locust
+REQUESTS_JSON=requests/test_checkbox.json HOST=http://localhost:5000 poetry run locust
 ```
 
 ## Configuration
@@ -57,11 +57,11 @@ Open the network inspector in Chrome or Firefox and ensure 'preserve log' is tic
 After the test is complete, right-click on one of the requests in the network inspector and save the log as a HAR file. To generate a requests file from the HAR file run:
 
 ```bash
-pipenv run python generate_requests.py <HAR_FILEPATH> <REQUESTS_FILEPATH> <SCHEMA_NAME>
+poetry run python generate_requests.py <HAR_FILEPATH> <REQUESTS_FILEPATH> <SCHEMA_NAME>
 ```
 e.g.
 ```bash
-pipenv run python generate_requests.py requests.har requests/test_checkbox.json test_checkbox
+poetry run python generate_requests.py requests.har requests/test_checkbox.json test_checkbox
 ```
 
 ## Dealing with repeating sections
@@ -202,13 +202,13 @@ export GOOGLE_APPLICATION_CREDENTIALS="<path_to_json_credentials_file>"
 
 To run the script and download results:
 ```bash
-OUTPUT_BUCKET="<bucket_name>" pipenv run python -m scripts.get_benchmark_results
+OUTPUT_BUCKET="<bucket_name>" poetry run python -m scripts.get_benchmark_results
 ```
 
 This script also accepts optional `NUMBER_OF_DAYS` and `OUTPUT_DIR` environment variables which allows the user to download a subset of results and set
 a specific output directory e.g.
 ```bash
-OUTPUT_BUCKET="<bucket_name>" NUMBER_OF_DAYS=<number_of_days> OUTPUT_DIR="<output_directory>" pipenv run python -m scripts.get_benchmark_results
+OUTPUT_BUCKET="<bucket_name>" NUMBER_OF_DAYS=<number_of_days> OUTPUT_DIR="<output_directory>" poetry run python -m scripts.get_benchmark_results
 ```
 
 ### Summarise the Daily Benchmark results
@@ -216,7 +216,7 @@ You can get a breakdown of the average response times for a result set by doing:
 ```bash
 OUTPUT_DIR="outputs/daily-test" \
 OUTPUT_DATE="2020-01-01" \
-pipenv run python -m scripts.get_summary
+poetry run python -m scripts.get_summary
 ```
 
 This will output something like:
@@ -245,7 +245,7 @@ If `OUTPUT_DATE` is not provided, then it will output a summary for all results 
 To get a breakdown of results for a stress test use the `get_aggregated_summary` script. This accepts a folder containing
 results as a parameter, and will provide aggregate totals at the folder level:
 ```bash
-OUTPUT_DIR="outputs/stress-test" pipenv run python -m scripts.get_aggregated_summary
+OUTPUT_DIR="outputs/stress-test" poetry run python -m scripts.get_aggregated_summary
 ```
 
 This will output something like:
@@ -275,7 +275,7 @@ For example, to visualise results for the last 7 days:
 ```bash
 OUTPUT_DIR="outputs/daily-test" \
 NUMBER_OF_DAYS="7" \
-pipenv run python -m scripts.visualise_results
+poetry run python -m scripts.visualise_results
 ```
 
 A line chart will be generated and saved as `performance_graph.png`.

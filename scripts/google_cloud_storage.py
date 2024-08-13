@@ -15,7 +15,7 @@ class GoogleCloudStorage:
     ):
         for output_file in output_files:
             output_filename = (
-                f'{output_filename_prefix}_{output_file}'
+                f"{output_filename_prefix}_{output_file}"
                 if output_filename_prefix
                 else output_file
             )
@@ -29,16 +29,16 @@ class GoogleCloudStorage:
             if blob.name.endswith("/") or (from_date and blob.time_created < from_date):
                 continue
 
-            file_path = blob.name.rsplit('/', 1)[0]
+            file_path = blob.name.rsplit("/", 1)[0]
 
-            output_file_path = f'{output_dir}/{file_path}'
+            output_file_path = f"{output_dir}/{file_path}"
 
             if not os.path.exists(output_file_path):
                 os.makedirs(output_file_path)
 
-            blob.download_to_filename(filename=f'{output_dir}/{blob.name}')
+            blob.download_to_filename(filename=f"{output_dir}/{blob.name}")
 
             metadata_file_path = f"{output_dir}/{file_path}/metadata.json"
             if not os.path.exists(metadata_file_path):
-                with open(metadata_file_path, 'w+') as file:
+                with open(metadata_file_path, "w+") as file:
                     file.write(json.dumps(blob.metadata, indent=2))
