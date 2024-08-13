@@ -26,7 +26,7 @@ def plot_data(dataframes, number_of_days_to_plot):
             dataframes[i].plot.line(marker="o", markersize=8, ax=axes[i])
             plt.grid(True, axis="both", alpha=0.3)
         else:
-            dataframes[i].plot.line(ax=axes[0])
+            dataframes[i].plot.line(ax=axes[i])
 
         plt.margins(0.03, 0.07)
         plt.legend(frameon=True, prop={"size": 10})
