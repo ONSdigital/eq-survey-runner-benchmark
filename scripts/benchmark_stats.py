@@ -9,6 +9,7 @@ class BenchmarkStats:
     PERCENTILES_TO_REPORT = (50, 90, 95, 99, 99.9)
     PERCENTILE_TO_USE_FOR_AVERAGES = 99
 
+
     def __init__(self, folder_paths: List[str]):
         self._files: List = []
         self.output_to_github = os.getenv("OUTPUT_TO_GITHUB", False)
@@ -32,6 +33,12 @@ class BenchmarkStats:
             f"{percentile}th: {self.percentiles[percentile]}ms"
             for percentile in self.PERCENTILES_TO_REPORT
         )
+        formatted_metrics = {
+            "average_get": f"{self.average_get}ms",
+            "average_post": f"{self.average_post}ms",
+            "pdf_percentile": f"{self.formatted_pdf_percentile()}",
+            "session_percentile": f"{self.session_percentile}ms",
+        }
         if self.output_to_github:
             formatted_percentiles = formatted_percentiles.replace(os.linesep, "<br />")
             return (
@@ -39,10 +46,10 @@ class BenchmarkStats:
                 f"**Benchmark Results**<br /><br />"
                 f"Percentile Averages:<br />"
                 f"{formatted_percentiles}<br />"
-                f"GETs (99th): {self.average_get}ms<br />"
-                f"POSTs (99th): {self.average_post}ms<br /><br />"
-                f"PDF: {self.formatted_pdf_percentile() or 'N/A'}<br />"
-                f"Session: {self.session_percentile}ms<br /><br />"
+                f"GETs (99th): {formatted_metrics.get('average_get')}<br />"
+                f"POSTs (99th): {formatted_metrics.get('average_post')}<br /><br />"
+                f"PDF: {formatted_metrics.get('pdf_percentile')}<br />"
+                f"Session: {formatted_metrics.get('session_percentile')}<br /><br />"
                 f"Total Requests: {self.total_requests:,}<br />"
                 f"Total Failures: {self._total_failures:,}<br />"
                 f'Error Percentage: {(round(self.error_percentage, 2))}%<br />"}}'
@@ -52,11 +59,11 @@ class BenchmarkStats:
             f"Percentile Averages:\n"
             f"{formatted_percentiles}\n"
             f"---\n"
-            f"GETs (99th): {self.average_get}ms\n"
-            f"POSTs (99th): {self.average_post}ms\n"
+            f"GETs (99th): {formatted_metrics.get('average_get')}\n"
+            f"POSTs (99th): {formatted_metrics.get('average_post')}\n"
             f"---\n"
-            f"PDF: {self.formatted_pdf_percentile() or 'N/A'}\n"
-            f"Session: {self.session_percentile}ms\n"
+            f"PDF: {formatted_metrics.get('pdf_percentile')}\n"
+            f"Session: {formatted_metrics.get('session_percentile')}\n"
             f"---\n"
             f"Total Requests: {self.total_requests:,}\n"
             f"Total Failures: {self._total_failures:,}\n"
@@ -113,10 +120,10 @@ class BenchmarkStats:
             return round(average_pdf_percentile)
         return None
 
-    def formatted_pdf_percentile(self) -> str | None:
+    def formatted_pdf_percentile(self) -> str:
         if self.pdf_percentile:
             return f"{self.pdf_percentile}ms"
-        return None
+        return "N/A"
 
     @property
     def session_percentile(self) -> int:

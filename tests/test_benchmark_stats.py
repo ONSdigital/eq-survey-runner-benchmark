@@ -105,7 +105,7 @@ def test_session_percentile(benchmark_stats_pdf):
 
 
 def test_no_pdf_endpoint_formatted_percentile(benchmark_stats):
-    assert benchmark_stats.formatted_pdf_percentile() is None
+    assert benchmark_stats.formatted_pdf_percentile() == "N/A"
 
 
 def test_formatted_pdf_percentile(benchmark_stats_pdf):
