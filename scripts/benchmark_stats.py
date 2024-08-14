@@ -2,7 +2,7 @@ import os
 from collections import defaultdict
 from csv import DictReader
 from glob import glob
-from typing import Any, List, Mapping
+from typing import List, Mapping
 
 
 class BenchmarkStats:
@@ -21,7 +21,7 @@ class BenchmarkStats:
         }
 
         self._session_percentile: List[int] = []
-        self._pdf_percentile: List[Any] = []
+        self._pdf_percentile: List[int] = []
         self._total_failures: int = 0
         self._percentiles: Mapping[int : List[float]] = defaultdict(list)  # noqa: E203
 
