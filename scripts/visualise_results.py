@@ -6,6 +6,7 @@ from pandas import DataFrame
 from scripts.get_summary import get_results, parse_environment_variables
 
 PERCENTILES_TO_GRAPH = (50, 90, 95, 99)
+PERCENTILES_TO_PLOT = ("50th", "90th", "95th", "99th")
 
 ADDITIONAL_METRICS_TO_GRAPH = ("PDF", "Session")
 
@@ -47,12 +48,7 @@ def create_graph(dataframes, number_of_days_to_plot, filename):
         raise GraphGenerationFailed from e
 
 
-def create_dataframe(result_fields, values_to_plot, suffix=True):
-    if suffix:
-        return DataFrame(
-            result_fields,
-            columns=["DATE", *(f"{percentile}th" for percentile in values_to_plot)],
-        )
+def create_dataframe(result_fields, values_to_plot):
     return DataFrame(
         result_fields,
         columns=["DATE", *(f"{percentile}" for percentile in values_to_plot)],
@@ -71,7 +67,7 @@ def get_performance_data_frame(results):
         for result in results
     ]
 
-    return create_dataframe(result_fields, PERCENTILES_TO_GRAPH)
+    return create_dataframe(result_fields, PERCENTILES_TO_PLOT)
 
 
 def get_additional_metrics_data_frame(results):
@@ -84,7 +80,7 @@ def get_additional_metrics_data_frame(results):
         for result in results
     ]
 
-    return create_dataframe(result_fields, ADDITIONAL_METRICS_TO_GRAPH, suffix=False)
+    return create_dataframe(result_fields, ADDITIONAL_METRICS_TO_GRAPH)
 
 
 if __name__ == "__main__":
