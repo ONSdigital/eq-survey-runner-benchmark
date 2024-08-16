@@ -33,10 +33,10 @@ class BenchmarkStats:
             for percentile in self.PERCENTILES_TO_REPORT
         )
         formatted_metrics = {
-            "average_get": f"{self.average_get}ms",
-            "average_post": f"{self.average_post}ms",
-            "pdf_percentile": f"{self.formatted_pdf_percentile()}",
-            "session_percentile": f"{self.session_percentile}ms",
+            "average_get": self.formatted_percentile(self.average_get),
+            "average_post": self.formatted_percentile(self.average_post),
+            "pdf_percentile": self.formatted_percentile(self.pdf_percentile),
+            "session_percentile": self.formatted_percentile(self.session_percentile),
         }
         if self.output_to_github:
             formatted_percentiles = formatted_percentiles.replace(os.linesep, "<br />")
@@ -45,10 +45,10 @@ class BenchmarkStats:
                 f"**Benchmark Results**<br /><br />"
                 f"Percentile Averages:<br />"
                 f"{formatted_percentiles}<br />"
-                f"GETs (99th): {formatted_metrics.get('average_get')}<br />"
-                f"POSTs (99th): {formatted_metrics.get('average_post')}<br /><br />"
-                f"PDF: {formatted_metrics.get('pdf_percentile')}<br />"
-                f"Session: {formatted_metrics.get('session_percentile')}<br /><br />"
+                f"GETs (99th): {formatted_metrics['average_get']}<br />"
+                f"POSTs (99th): {formatted_metrics['average_post']}<br /><br />"
+                f"PDF: {formatted_metrics['pdf_percentile']}<br />"
+                f"Session: {formatted_metrics['session_percentile']}<br /><br />"
                 f"Total Requests: {self.total_requests:,}<br />"
                 f"Total Failures: {self._total_failures:,}<br />"
                 f'Error Percentage: {(round(self.error_percentage, 2))}%<br />"}}'
@@ -119,11 +119,6 @@ class BenchmarkStats:
             return round(average_pdf_percentile)
         return None
 
-    def formatted_pdf_percentile(self) -> str:
-        if self.pdf_percentile:
-            return f"{self.pdf_percentile}ms"
-        return "N/A"
-
     @property
     def session_percentile(self) -> int:
         return round(sum(self._session_percentile) / len(self._session_percentile))
@@ -162,6 +157,12 @@ class BenchmarkStats:
     @property
     def error_percentage(self) -> float:
         return (self._total_failures * 100) / self.total_requests
+
+    @staticmethod
+    def formatted_percentile(percentile) -> str:
+        if percentile:
+            return f"{percentile}ms"
+        return "N/A"
 
     def _get_weighted_request_count(self, request_count: int) -> float:
         return request_count * self.PERCENTILE_TO_USE_FOR_AVERAGES / 100
