@@ -20,6 +20,11 @@ def plot_data(dataframes, number_of_days_to_plot):
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
     for i in range(len(dataframes)):
+        """
+        We use the .subplot() method below to switch the indexes of the plots themselves,
+        if we do not switch plots or remove this method, the visuals (such as the graph background)
+        and, most importantly, the axes values will only be applied to the second subplot.
+        """
         plt.subplot(1, 2, i + 1)
         if (
             number_of_days_to_plot and number_of_days_to_plot <= 45
