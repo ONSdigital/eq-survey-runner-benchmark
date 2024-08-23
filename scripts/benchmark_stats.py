@@ -130,9 +130,11 @@ class BenchmarkStats:
     @property
     def percentiles(self) -> Mapping:
         return {
-            percentile: round(float(
-                sum(values) / self._get_weighted_request_count(self.total_requests)
-            ))
+            percentile: round(
+                float(
+                    sum(values) / self._get_weighted_request_count(self.total_requests)
+                )
+            )
             for percentile, values in self._percentiles.items()
         }
 
@@ -142,17 +144,21 @@ class BenchmarkStats:
 
     @property
     def average_get(self) -> int:
-        return round(float(
-            sum(self._requests["GET"]["response_times"])
-            / self._get_weighted_request_count(self._requests["GET"]["total"])
-        ))
+        return round(
+            float(
+                sum(self._requests["GET"]["response_times"])
+                / self._get_weighted_request_count(self._requests["GET"]["total"])
+            )
+        )
 
     @property
     def average_post(self) -> int:
-        return round(float(
-            sum(self._requests["POST"]["response_times"])
-            / self._get_weighted_request_count(self._requests["POST"]["total"])
-        ))
+        return round(
+            float(
+                sum(self._requests["POST"]["response_times"])
+                / self._get_weighted_request_count(self._requests["POST"]["total"])
+            )
+        )
 
     @property
     def error_percentage(self) -> float:
