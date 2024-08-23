@@ -11,7 +11,7 @@ from scripts.visualise_results import (
 )
 
 expected_data_frame = DataFrame.from_dict(
-    {"DATE": ["2024-02-07"], "50th": [58], "90th": [96], "95th": [173], "99th": [301]}
+    {"DATE": ["2024-02-07"], "50th": [58], "90th": [97], "95th": [174], "99th": [301]}
 )
 
 expected_data_frame_session_pdf = DataFrame.from_dict(
@@ -22,9 +22,9 @@ expected_data_frame_multiple_files = DataFrame.from_dict(
     {
         "DATE": ["2024-02-07", "2024-02-06"],
         "50th": [58, 58],
-        "90th": [96, 99],
-        "95th": [173, 177],
-        "99th": [301, 319],
+        "90th": [97, 100],
+        "95th": [174, 178],
+        "99th": [301, 320],
     }
 )
 

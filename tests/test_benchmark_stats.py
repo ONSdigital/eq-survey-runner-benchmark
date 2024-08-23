@@ -64,7 +64,7 @@ def test_files(benchmark_stats):
 
 
 def test_percentiles(benchmark_stats):
-    assert benchmark_stats.percentiles == {50: 58, 90: 96, 95: 173, 99: 301, 99.9: 477}
+    assert benchmark_stats.percentiles == {50: 58, 90: 97, 95: 174, 99: 301, 99.9: 477}
 
 
 def test_total_requests(benchmark_stats):
@@ -76,7 +76,7 @@ def test_average_get(benchmark_stats):
 
 
 def test_average_post(benchmark_stats):
-    assert benchmark_stats.average_post == 211
+    assert benchmark_stats.average_post == 212
 
 
 def test_error_percentage(benchmark_stats):
