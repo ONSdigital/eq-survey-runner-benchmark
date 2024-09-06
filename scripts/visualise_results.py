@@ -19,7 +19,7 @@ def plot_data(dataframes, number_of_days_to_plot):
     plt.style.use("fast")
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
-    for i in range(len(dataframes)):
+    for i, dataframe in enumerate(dataframes):
         """
         We use the .subplot() method below to switch the indexes of the plots themselves,
         if we do not switch plots or remove this method, the visuals (such as the graph background)
@@ -29,15 +29,15 @@ def plot_data(dataframes, number_of_days_to_plot):
         if (
             number_of_days_to_plot and number_of_days_to_plot <= 45
         ):  # To make the chart still easily digestible
-            dataframes[i].plot.line(marker="o", markersize=8, ax=axes[i])
+            dataframe.plot.line(marker="o", markersize=8, ax=axes[i])
             plt.grid(True, axis="both", alpha=0.3)
         else:
-            dataframes[i].plot.line(ax=axes[i])
+            dataframe.plot.line(ax=axes[i])
 
         plt.margins(0.03, 0.07)
         plt.legend(frameon=True, prop={"size": 10})
         plt.xticks(
-            dataframes[i].index, dataframes[i]["DATE"], size="small", rotation=90
+            dataframe.index, dataframe["DATE"], size="small", rotation=90
         )
         plt.yticks(size="small")
         plt.ylabel("Average Response Time (ms)")
@@ -79,8 +79,8 @@ def get_additional_metrics_data_frame(results):
     result_fields = [
         [
             result.date,
-            result.statistics.pdf_percentile,
-            result.statistics.session_percentile,
+            result.statistics.average_pdf_percentile,
+            result.statistics.average_session_percentile,
         ]
         for result in results
     ]

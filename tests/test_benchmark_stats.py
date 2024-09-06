@@ -93,23 +93,23 @@ def test_error_percentage(benchmark_stats):
 def test_pdf_percentile(benchmark_stats_fixture, percentile_value, request):
     assert (
         request.getfixturevalue(benchmark_stats_fixture)
-    ).pdf_percentile == percentile_value
+    ).average_pdf_percentile == percentile_value
 
 
 def test_non_applicable_pdf_percentile(benchmark_stats):
-    assert benchmark_stats.pdf_percentile is None
+    assert benchmark_stats.average_pdf_percentile is None
 
 
 def test_session_percentile(benchmark_stats_pdf):
-    assert benchmark_stats_pdf.session_percentile == 180
+    assert benchmark_stats_pdf.average_session_percentile == 180
 
 
 def test_no_pdf_endpoint_formatted_percentile(benchmark_stats):
-    assert benchmark_stats.formatted_percentile(benchmark_stats.pdf_percentile) == "N/A"
+    assert benchmark_stats.formatted_percentile(benchmark_stats.average_pdf_percentile) == "N/A"
 
 
 def test_formatted_pdf_percentile(benchmark_stats_pdf):
     assert (
-        benchmark_stats_pdf.formatted_percentile(benchmark_stats_pdf.pdf_percentile)
+        benchmark_stats_pdf.formatted_percentile(benchmark_stats_pdf.average_pdf_percentile)
         == "4700ms"
     )

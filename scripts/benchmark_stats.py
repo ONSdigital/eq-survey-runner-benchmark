@@ -35,8 +35,8 @@ class BenchmarkStats:
         formatted_metrics = {
             "average_get": self.formatted_percentile(self.average_get),
             "average_post": self.formatted_percentile(self.average_post),
-            "pdf_percentile": self.formatted_percentile(self.pdf_percentile),
-            "session_percentile": self.formatted_percentile(self.session_percentile),
+            "pdf_percentile": self.formatted_percentile(self.average_pdf_percentile),
+            "session_percentile": self.formatted_percentile(self.average_session_percentile),
         }
         if self.output_to_github:
             formatted_percentiles = formatted_percentiles.replace(os.linesep, "<br />")
@@ -73,54 +73,41 @@ class BenchmarkStats:
         for file in self.files:
             with open(file) as fp:
                 for row in DictReader(fp, delimiter=","):
-                    request_count = int(
-                        row.get("Request Count") or row.get("# requests")
-                    )
-                    if row["Name"] == "Aggregated":
-                        failure_count = row.get("Failure Count") or row.get(
-                            "# failures"
-                        )
-                        self._total_failures += int(failure_count)
-                    else:
-                        if row["Name"] == "/submitted/download-pdf":
-                            self._pdf_percentile.append(round(float(row.get("99%"))))
+                    self._process_row(row)
 
-                        if row["Name"] == "/session":
-                            self._session_percentile.append(
-                                round(float(row.get("99%")))
-                            )
+    def _process_row(self, row):
+        # Handle special 'Aggregated' row
+        if row["Name"] == "Aggregated":
+            failure_count = row["Failure Count"] or row["# failures"]
+            self._total_failures += int(failure_count)
+            return
 
-                        weighted_request_count = self._get_weighted_request_count(
-                            request_count
-                        )
-                        for percentile in self.PERCENTILES_TO_REPORT:
-                            weighted_percentile = (
-                                float(row[f"{percentile}%"]) * weighted_request_count
-                            )
-                            self._percentiles[percentile].append(weighted_percentile)
+        if row["Name"] == "/submitted/download-pdf":
+            self._pdf_percentile.append(int(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]))
+        elif row["Name"] == "/session":
+            self._session_percentile.append(int(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]))
 
-                        percentile_response_time = float(
-                            row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]
-                        )
-                        weighted_response_time = (
-                            percentile_response_time * weighted_request_count
-                        )
-                        self._requests[row["Type"]]["response_times"].append(
-                            weighted_response_time
-                        )
-                        self._requests[row["Type"]]["total"] += request_count
+        request_count = int(row.get("Request Count") or row.get("# requests"))
+        weighted_request_count = self._get_weighted_request_count(request_count)
+
+        for percentile in self.PERCENTILES_TO_REPORT:
+            weighted_percentile = float(row[f"{percentile}%"]) * weighted_request_count
+            self._percentiles[percentile].append(weighted_percentile)
+
+        percentile_response_time = float(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"])
+        weighted_response_time = percentile_response_time * weighted_request_count
+        self._requests[row["Type"]]["response_times"].append(weighted_response_time)
+        self._requests[row["Type"]]["total"] += request_count
 
     @property
-    def pdf_percentile(self) -> int | None:
+    def average_pdf_percentile(self) -> int | None:
         if self._pdf_percentile:
-            average_pdf_percentile = float(
-                sum(self._pdf_percentile) / len(self._pdf_percentile)
-            )
+            average_pdf_percentile = sum(self._pdf_percentile) / len(self._pdf_percentile)
             return round(average_pdf_percentile)
         return None
 
     @property
-    def session_percentile(self) -> int:
+    def average_session_percentile(self) -> int:
         return round(sum(self._session_percentile) / len(self._session_percentile))
 
     @property
@@ -131,9 +118,7 @@ class BenchmarkStats:
     def percentiles(self) -> Mapping:
         return {
             percentile: round(
-                float(
                     sum(values) / self._get_weighted_request_count(self.total_requests)
-                )
             )
             for percentile, values in self._percentiles.items()
         }
@@ -145,19 +130,15 @@ class BenchmarkStats:
     @property
     def average_get(self) -> int:
         return round(
-            float(
-                sum(self._requests["GET"]["response_times"])
-                / self._get_weighted_request_count(self._requests["GET"]["total"])
-            )
+            sum(self._requests["GET"]["response_times"])
+            / self._get_weighted_request_count(self._requests["GET"]["total"])
         )
 
     @property
     def average_post(self) -> int:
         return round(
-            float(
-                sum(self._requests["POST"]["response_times"])
-                / self._get_weighted_request_count(self._requests["POST"]["total"])
-            )
+            sum(self._requests["POST"]["response_times"])
+            / self._get_weighted_request_count(self._requests["POST"]["total"])
         )
 
     @property
@@ -166,9 +147,7 @@ class BenchmarkStats:
 
     @staticmethod
     def formatted_percentile(percentile) -> str:
-        if percentile:
-            return f"{percentile}ms"
-        return "N/A"
+        return f"{percentile}ms" if percentile else "N/A"
 
     def _get_weighted_request_count(self, request_count: int) -> float:
         return request_count * self.PERCENTILE_TO_USE_FOR_AVERAGES / 100
