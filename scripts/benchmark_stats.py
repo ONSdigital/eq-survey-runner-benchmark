@@ -36,7 +36,9 @@ class BenchmarkStats:
             "average_get": self.formatted_percentile(self.average_get),
             "average_post": self.formatted_percentile(self.average_post),
             "pdf_percentile": self.formatted_percentile(self.average_pdf_percentile),
-            "session_percentile": self.formatted_percentile(self.average_session_percentile),
+            "session_percentile": self.formatted_percentile(
+                self.average_session_percentile
+            ),
         }
         if self.output_to_github:
             formatted_percentiles = formatted_percentiles.replace(os.linesep, "<br />")
@@ -83,9 +85,13 @@ class BenchmarkStats:
             return
 
         if row["Name"] == "/submitted/download-pdf":
-            self._pdf_percentile.append(int(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]))
+            self._pdf_percentile.append(
+                int(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"])
+            )
         elif row["Name"] == "/session":
-            self._session_percentile.append(int(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"]))
+            self._session_percentile.append(
+                int(row[f"{self.PERCENTILE_TO_USE_FOR_AVERAGES}%"])
+            )
 
         request_count = int(row.get("Request Count") or row.get("# requests"))
         weighted_request_count = self._get_weighted_request_count(request_count)
@@ -102,7 +108,9 @@ class BenchmarkStats:
     @property
     def average_pdf_percentile(self) -> int | None:
         if self._pdf_percentile:
-            average_pdf_percentile = sum(self._pdf_percentile) / len(self._pdf_percentile)
+            average_pdf_percentile = sum(self._pdf_percentile) / len(
+                self._pdf_percentile
+            )
             return round(average_pdf_percentile)
         return None
 
@@ -118,7 +126,7 @@ class BenchmarkStats:
     def percentiles(self) -> Mapping:
         return {
             percentile: round(
-                    sum(values) / self._get_weighted_request_count(self.total_requests)
+                sum(values) / self._get_weighted_request_count(self.total_requests)
             )
             for percentile, values in self._percentiles.items()
         }

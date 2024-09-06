@@ -105,11 +105,16 @@ def test_session_percentile(benchmark_stats_pdf):
 
 
 def test_no_pdf_endpoint_formatted_percentile(benchmark_stats):
-    assert benchmark_stats.formatted_percentile(benchmark_stats.average_pdf_percentile) == "N/A"
+    assert (
+        benchmark_stats.formatted_percentile(benchmark_stats.average_pdf_percentile)
+        == "N/A"
+    )
 
 
 def test_formatted_pdf_percentile(benchmark_stats_pdf):
     assert (
-        benchmark_stats_pdf.formatted_percentile(benchmark_stats_pdf.average_pdf_percentile)
+        benchmark_stats_pdf.formatted_percentile(
+            benchmark_stats_pdf.average_pdf_percentile
+        )
         == "4700ms"
     )

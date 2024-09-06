@@ -36,9 +36,7 @@ def plot_data(dataframes, number_of_days_to_plot):
 
         plt.margins(0.03, 0.07)
         plt.legend(frameon=True, prop={"size": 10})
-        plt.xticks(
-            dataframe.index, dataframe["DATE"], size="small", rotation=90
-        )
+        plt.xticks(dataframe.index, dataframe["DATE"], size="small", rotation=90)
         plt.yticks(size="small")
         plt.ylabel("Average Response Time (ms)")
         plt.xlabel("Run Date (YYYY-MM-DD)", labelpad=13)
