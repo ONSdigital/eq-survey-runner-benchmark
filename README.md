@@ -54,7 +54,9 @@ Open the network inspector in Chrome or Firefox and ensure 'preserve log' is tic
 
 **Important:** The captured test should not include the `/session` endpoint.
 
-After the test is complete, right-click on one of the requests in the network inspector and save the log as a HAR file. To generate a requests file from the HAR file run:
+After the test is complete, right-click on one of the requests in the network inspector and save the log as a HAR file. 
+
+To generate a requests file from the HAR file run:
 
 ```bash
 poetry run python generate_requests.py <HAR_FILEPATH> <REQUESTS_FILEPATH> <SCHEMA_NAME>
@@ -167,7 +169,7 @@ helm tiller run \
 -    helm upgrade --install \
 -    runner-benchmark \
 -    k8s/helm \
--    --set requestsJson=requests/census_individual_gb_eng.json \
+-    --set requestsJson=requests/test_checkbox.json \
 -    --set locustOptions="--clients 1000 --spawn-rate 50 -L WARNING" \
 -    --set host=https://your-runner.gcp.dev.eq.ons.digital \
 -    --set container.image=europe-west2-docker.pkg.dev/ons-eq-ci/docker-images/eq-benchmark-deploy-image:latest
