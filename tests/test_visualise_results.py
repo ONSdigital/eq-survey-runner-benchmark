@@ -132,17 +132,10 @@ def test_individual_graph_creation(
         pytest.fail("Graph generation failed")
 
 
-@pytest.mark.parametrize(
-    "image_name",
-    (
-        "performance_graph.png",
-        "additional_metrics.png",
-    ),
-)
-def test_create_graph_failed(image_name):
+def test_create_graph_failed():
     dataframe = DataFrame.from_dict({})
     with pytest.raises(GraphGenerationFailed):
-        create_graph([dataframe], 1, image_name)
+        create_graph([dataframe], 1, "test_graph.png")
 
 
 def test_create_graph(

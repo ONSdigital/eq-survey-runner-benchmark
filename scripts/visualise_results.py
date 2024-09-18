@@ -97,6 +97,6 @@ if __name__ == "__main__":
     performance_dataframe = get_performance_data_frame(results)
     additional_metrics_dataframe = get_additional_metrics_data_frame(results)
 
-    dataframe_values = [performance_dataframe, additional_metrics_dataframe]
+    dataframes = [performance_dataframe, additional_metrics_dataframe]
 
-    create_graph(dataframe_values, number_of_days, "performance_graph.png")
+    create_graph(dataframes, number_of_days, "performance_graph.png")
