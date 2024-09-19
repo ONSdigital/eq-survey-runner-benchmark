@@ -42,7 +42,9 @@ class BenchmarkStats:
 
     def __str__(self):
         if self.output_to_github:
-            formatted_percentiles = self._formatted_percentiles.replace(os.linesep, "<br />")
+            formatted_percentiles = self._formatted_percentiles.replace(
+                os.linesep, "<br />"
+            )
             return (
                 f'{{"body": "'
                 f"**Benchmark Results**<br /><br />"

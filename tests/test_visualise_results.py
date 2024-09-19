@@ -1,3 +1,5 @@
+from glob import glob
+
 import pytest
 from pandas import DataFrame
 from pandas.testing import assert_frame_equal
@@ -7,7 +9,7 @@ from scripts.visualise_results import (
     GraphGenerationFailed,
     create_graph,
     get_additional_metrics_data_frame,
-    get_performance_data_frame,
+    get_performance_data_frame, get_dataframes,
 )
 
 expected_data_frame = DataFrame.from_dict(
@@ -125,11 +127,18 @@ def test_individual_graph_creation(
 ):
     dataframe = data_frame_method(request.getfixturevalue(results_file))
     try:
-        graph_output = mocker.patch("matplotlib.pyplot.savefig")
+        graph_creation = mocker.patch("matplotlib.pyplot.subplot")
         create_graph([dataframe], 1, image_name)
-        assert graph_output.call_count == 1
+        assert graph_creation.call_count == 1
     except GraphGenerationFailed:
         pytest.fail("Graph generation failed")
+
+
+def test_get_dataframes():
+    folders = "tests/mock_stats/*"
+    dataframes = get_dataframes(folders, 4)
+
+    print(dataframes)
 
 
 def test_create_graph_failed():
