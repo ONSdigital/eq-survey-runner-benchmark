@@ -182,18 +182,13 @@ def test_create_graph_failed():
         create_graph([dataframe], 1, "test_graph.png")
 
 
-def test_create_graph(
-    mocker, get_results_single_file_with_pdf_endpoint, get_results_single_file
-):
-    metrics_dataframe = get_additional_metrics_data_frame(
-        get_results_single_file_with_pdf_endpoint
-    )
-    performance_data_frame = get_performance_data_frame(get_results_single_file)
+@freeze_time("2024-03-1")
+def test_create_graph(mocker):
+    folders = sorted(glob("tests/mock_stats/*"))
+    dataframes = get_dataframes(folders, 30)
     try:
         graph_output = mocker.patch("matplotlib.pyplot.savefig")
-        create_graph(
-            [metrics_dataframe, performance_data_frame], 1, "additional_metrics.png"
-        )
+        create_graph(dataframes, 1, "performance_graph.png")
         assert graph_output.call_count == 1
     except GraphGenerationFailed:
         pytest.fail("Graph generation failed")
