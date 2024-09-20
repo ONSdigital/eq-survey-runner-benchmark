@@ -29,7 +29,9 @@ def plot_data(dataframes, number_of_days_to_plot):
         if (
             number_of_days_to_plot and number_of_days_to_plot <= 45
         ):  # To make the chart still easily digestible
-            dataframe.plot.line(marker="o", markersize=8, ax=axes[i] if len(dataframes) > 1 else axes)
+            dataframe.plot.line(
+                marker="o", markersize=8, ax=axes[i] if len(dataframes) > 1 else axes
+            )
             plt.grid(True, axis="both", alpha=0.3)
         else:
             dataframe.plot.line(ax=axes[i] if len(dataframes) > 1 else axes)

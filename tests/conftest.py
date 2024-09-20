@@ -90,7 +90,7 @@ def get_results_single_file():
 
 @pytest.fixture
 def get_results_single_file_with_pdf_endpoint():
-    return get_results(folders=["./tests/mock_stats/2024-07-25T03:09:41"])
+    return get_results(folders=["./tests/mock_stats/2024-02-09T03:09:41"])
 
 
 @pytest.fixture

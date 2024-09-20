@@ -16,7 +16,7 @@ def benchmark_stats():
 
 @pytest.fixture
 def benchmark_stats_pdf():
-    return BenchmarkStats(folder_paths=["./tests/mock_stats/2024-07-25T03:09:41"])
+    return BenchmarkStats(folder_paths=["./tests/mock_stats/2024-02-09T03:09:41"])
 
 
 @pytest.fixture
@@ -35,8 +35,8 @@ def benchmark_stats_multiple_with_pdf():
         folder_paths=[
             "./tests/mock_stats/2024-02-07T03:09:41",
             "./tests/mock_stats/2024-02-06T03:09:41",
-            "./tests/mock_stats/2024-07-25T03:09:41",
-            "./tests/mock_stats/2024-07-29T03:09:41",
+            "./tests/mock_stats/2024-02-09T03:09:41",
+            "./tests/mock_stats/2024-02-12T03:09:41",
         ]
     )
 
