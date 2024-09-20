@@ -169,7 +169,7 @@ def test_individual_graph_creation(
 
 @freeze_time("2024-03-1")
 def test_get_dataframes():
-    folders = sorted(glob(f"tests/mock_stats/*"))
+    folders = sorted(glob("tests/mock_stats/*"))
     dataframes = get_dataframes(folders, 30)
 
     for i, item in enumerate(dataframes):
