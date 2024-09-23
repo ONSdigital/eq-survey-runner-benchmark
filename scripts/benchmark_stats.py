@@ -31,14 +31,15 @@ class BenchmarkStats:
             f"{percentile}th: {self.percentiles[percentile]}ms"
             for percentile in self.PERCENTILES_TO_REPORT
         )
-        self._formatted_metrics: Mapping = {
-            "average_get": self.formatted_percentile(self.average_get),
-            "average_post": self.formatted_percentile(self.average_post),
-            "pdf_percentile": self.formatted_percentile(self.average_pdf_percentile),
-            "session_percentile": self.formatted_percentile(
-                self.average_session_percentile
-            ),
-        }
+
+        self.formatted_average_get: str = self.formatted_percentile(self.average_get)
+        self.formatted_average_post: str = self.formatted_percentile(self.average_post)
+        self.formatted_average_pdf_percentile: str = self.formatted_percentile(
+            self.average_pdf_percentile
+        )
+        self.formatted_average_session_percentile: str = self.formatted_percentile(
+            self.average_session_percentile
+        )
 
     def __str__(self):
         if self.output_to_github:
@@ -50,10 +51,10 @@ class BenchmarkStats:
                 f"**Benchmark Results**<br /><br />"
                 f"Percentile Averages:<br />"
                 f"{formatted_percentiles}<br />"
-                f"GETs (99th): {self._formatted_metrics['average_get']}<br />"
-                f"POSTs (99th): {self._formatted_metrics['average_post']}<br /><br />"
-                f"PDF: {self._formatted_metrics['pdf_percentile']}<br />"
-                f"Session: {self._formatted_metrics['session_percentile']}<br /><br />"
+                f"GETs (99th): {self.formatted_average_get}<br />"
+                f"POSTs (99th): {self.formatted_average_post}<br /><br />"
+                f"PDF: {self.formatted_average_pdf_percentile}<br />"
+                f"Session: {self.formatted_average_session_percentile}<br /><br />"
                 f"Total Requests: {self.total_requests:,}<br />"
                 f"Total Failures: {self._total_failures:,}<br />"
                 f'Error Percentage: {(round(self.error_percentage, 2))}%<br />"}}'
@@ -63,11 +64,11 @@ class BenchmarkStats:
             f"Percentile Averages:\n"
             f"{self._formatted_percentiles}\n"
             f"---\n"
-            f"GETs (99th): {self._formatted_metrics['average_get']}\n"
-            f"POSTs (99th): {self._formatted_metrics['average_post']}\n"
+            f"GETs (99th): {self.formatted_average_get}\n"
+            f"POSTs (99th): {self.formatted_average_post}\n"
             f"---\n"
-            f"PDF: {self._formatted_metrics['pdf_percentile']}\n"
-            f"Session: {self._formatted_metrics['session_percentile']}\n"
+            f"PDF: {self.formatted_average_pdf_percentile}\n"
+            f"Session: {self.formatted_average_session_percentile}\n"
             f"---\n"
             f"Total Requests: {self.total_requests:,}\n"
             f"Total Failures: {self._total_failures:,}\n"
