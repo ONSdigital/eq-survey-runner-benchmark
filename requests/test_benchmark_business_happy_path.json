@@ -73,7 +73,7 @@
             "method": "POST",
             "url": "/questionnaire/block-383/",
             "data": {
-                "answer-439": "Hi eQ team \ud83d\ude0d"
+                "answer-439": "Hi eQ Team"
             }
         },
         {
@@ -119,8 +119,8 @@
             "method": "POST",
             "url": "/questionnaire/people/add-person/",
             "data": {
-                "first-name": "Erling",
-                "last-name": "Haaland"
+                "first-name": "Kylian",
+                "last-name": "Mbappé"
             }
         },
         {
@@ -539,6 +539,10 @@
         {
             "method": "GET",
             "url": "/submitted/view-response/"
+        },
+        {
+            "method": "GET",
+            "url": "/submitted/download-pdf"
         },
         {
             "method": "GET",
