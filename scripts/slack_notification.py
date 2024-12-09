@@ -63,7 +63,7 @@ def post_slack_notification(
 
     try:
         if content:
-            response = client.files_upload(
+            response = client.files_upload_v2(
                 channel=slack_channel,
                 content=content,
                 filetype=file_type,
@@ -72,7 +72,7 @@ def post_slack_notification(
             )
 
         else:
-            response = client.files_upload(
+            response = client.files_upload_v2(
                 channel=slack_channel,
                 file=attachment_filename,
                 title=title,
