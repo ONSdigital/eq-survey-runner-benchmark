@@ -68,7 +68,7 @@ def test_parse_environment_variables_attachment_filename_not_valid(monkeypatch):
 
 
 def test_post_slack_notification_with_ok_response_raises_no_error(mocker):
-    mocker.patch("slack.web.client.WebClient.files_upload", return_value={"ok": True})
+    mocker.patch("slack_sdk.web.client.WebClient.files_upload_v2", return_value={"ok": True})
 
     post_slack_notification(
         slack_auth_token="token",
@@ -84,7 +84,7 @@ def test_post_slack_notification_with_ok_response_raises_no_error(mocker):
 def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error(
     mocker,
 ):
-    mocker.patch("slack.web.client.WebClient.files_upload", return_value={"ok": True})
+    mocker.patch("slack_sdk.web.client.WebClient.files_upload_v2", return_value={"ok": True})
     post_slack_notification(
         slack_auth_token="token",
         slack_channel="test-alerts",
@@ -97,7 +97,7 @@ def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error
 
 
 def test_post_slack_notification_with_bad_response_raises_error(mocker):
-    mocker.patch("slack.web.client.WebClient.files_upload", return_value={"ok": False})
+    mocker.patch("slack_sdk.web.client.WebClient.files_upload_v2", return_value={"ok": False})
 
     with pytest.raises(SystemExit):
         post_slack_notification(

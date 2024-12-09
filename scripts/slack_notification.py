@@ -2,7 +2,7 @@ import os
 import sys
 import warnings
 
-import slack
+import slack_sdk as slack
 from slack.errors import SlackApiError
 
 
@@ -64,15 +64,16 @@ def post_slack_notification(
     try:
         if content:
             response = client.files_upload(
-                channels=f"#{slack_channel}",
+                channel=slack_channel,
                 content=content,
                 filetype=file_type,
                 title=title,
                 initial_comment=initial_comment,
             )
+
         else:
             response = client.files_upload(
-                channels=f"#{slack_channel}",
+                channel=slack_channel,
                 file=attachment_filename,
                 title=title,
                 initial_comment=initial_comment,
