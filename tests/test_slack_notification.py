@@ -69,13 +69,12 @@ def test_parse_environment_variables_attachment_filename_not_valid(monkeypatch):
 
 
 def test_post_slack_notification_with_ok_response_raises_no_error(mocker):
-    mock_conversations_list = mocker.patch(
+    mocker.patch(
         "slack_sdk.web.client.WebClient.conversations_list",
         side_effect=[
             {
                 "ok": True,
                 "channels": [{"id": "C12345", "name": "test-alerts"}],
-                "response_metadata": {"next_cursor": ""},
             }
         ],
     )
@@ -98,7 +97,7 @@ def test_post_slack_notification_with_ok_response_raises_no_error(mocker):
 def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error(
     mocker,
 ):
-    mock_conversations_list = mocker.patch(
+    mocker.patch(
         "slack_sdk.web.client.WebClient.conversations_list",
         side_effect=[
             {
