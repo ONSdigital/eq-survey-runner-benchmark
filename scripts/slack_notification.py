@@ -52,7 +52,9 @@ def parse_environment_variables():
 
 def get_channel_id(client, channel_name):
     try:
-        conversation_data = client.conversations_list()
+        conversation_data = client.conversations_list(
+            filter="public_channel,private_channel"
+        )
         if not conversation_data.get("ok", False):
             print("Failed to fetch channels")
             sys.exit(2)
