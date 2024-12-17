@@ -123,6 +123,7 @@ def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error
 
 
 def test_post_slack_notification_with_bad_response_raises_error(mocker):
+    mocker.patch("scripts.slack_notification.get_channel_id", return_value="C12345")
     mocker.patch(
         "slack_sdk.web.client.WebClient.files_upload_v2", return_value={"ok": False}
     )
@@ -139,8 +140,8 @@ def test_post_slack_notification_with_bad_response_raises_error(mocker):
         )
 
 
-def test_post_slack_notification_with_api_error_exits():
-
+def test_post_slack_notification_with_api_error_exits(mocker):
+    mocker.patch("scripts.slack_notification.get_channel_id", return_value="C12345")
     with pytest.raises(SystemExit):
         post_slack_notification(
             slack_auth_token="token",
