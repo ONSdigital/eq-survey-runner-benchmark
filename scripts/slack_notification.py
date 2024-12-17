@@ -50,6 +50,26 @@ def parse_environment_variables():
     }
 
 
+def get_channel_id(client, channel_name):
+    try:
+        conversation_data = client.conversations_list()
+        if not conversation_data.get("ok", False):
+            print("Failed to fetch channels")
+            sys.exit(2)
+
+        channels = conversation_data.get("channels", [])
+        for channel in channels:
+            if channel.get("name") == channel_name:
+                return channel.get("id")
+
+        print(f"Channel: '{channel_name}' not found")
+        sys.exit(1)
+
+    except SlackApiError as e:
+        print(f'Error fetching channel list \nError: {e.response["error"]}')
+        sys.exit(2)
+
+
 def post_slack_notification(
     slack_auth_token,
     slack_channel,
@@ -60,11 +80,11 @@ def post_slack_notification(
     title,
 ):
     client = slack.WebClient(token=slack_auth_token)
-
+    slack_channel_id = get_channel_id(client, slack_channel)
     try:
         if content:
             response = client.files_upload_v2(
-                channel=slack_channel,
+                channel=slack_channel_id,
                 content=content,
                 title=title,
                 initial_comment=initial_comment,
@@ -72,7 +92,7 @@ def post_slack_notification(
 
         else:
             response = client.files_upload_v2(
-                channel=slack_channel,
+                channel=slack_channel_id,
                 title=title,
                 initial_comment=initial_comment,
             )
