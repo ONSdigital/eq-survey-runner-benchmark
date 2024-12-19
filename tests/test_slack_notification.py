@@ -1,7 +1,6 @@
 import pytest
 
 from scripts.slack_notification import (
-    get_channel_id,
     parse_environment_variables,
     post_slack_notification,
 )
@@ -11,6 +10,7 @@ def test_parse_environment_variables(monkeypatch):
     monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
     monkeypatch.setenv("SLACK_CHANNEL_NAME", "test-alerts")
     monkeypatch.setenv("CONTENT", "Slack message")
+    monkeypatch.setenv("SLACK_CHANNEL_ID", "C12345")
 
     slack_environment_variables = parse_environment_variables()
 
@@ -21,6 +21,7 @@ def test_parse_environment_variables(monkeypatch):
         "initial_comment": "",
         "slack_auth_token": "token",
         "slack_channel": "test-alerts",
+        "slack_channel_id": "C12345",
         "title": "",
     }
 
@@ -28,6 +29,7 @@ def test_parse_environment_variables(monkeypatch):
 def test_parse_environment_variables_missing_slack_token(monkeypatch):
     monkeypatch.setenv("SLACK_CHANNEL_NAME", "test-alerts")
     monkeypatch.setenv("CONTENT", "Slack message")
+    monkeypatch.setenv("SLACK_CHANNEL_ID", "C12345")
 
     with pytest.raises(SystemExit):
         parse_environment_variables()
@@ -36,6 +38,14 @@ def test_parse_environment_variables_missing_slack_token(monkeypatch):
 def test_parse_environment_variables_missing_slack_channel_name(monkeypatch):
     monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
     monkeypatch.setenv("CONTENT", "Slack message")
+    monkeypatch.setenv("SLACK_CHANNEL_ID", "C12345")
+    with pytest.raises(SystemExit):
+        parse_environment_variables()
+
+def test_parse_environment_variables_missing_slack_channel_id(monkeypatch):
+    monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
+    monkeypatch.setenv("CONTENT", "Slack message")
+    monkeypatch.setenv("SLACK_CHANNEL_NAME", "test-alerts")
 
     with pytest.raises(SystemExit):
         parse_environment_variables()
@@ -44,6 +54,7 @@ def test_parse_environment_variables_missing_slack_channel_name(monkeypatch):
 def test_parse_environment_variables_content_and_attachment_filename_set(monkeypatch):
     monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
     monkeypatch.setenv("SLACK_CHANNEL_NAME", "test-alerts")
+    monkeypatch.setenv("SLACK_CHANNEL_ID", "C12345")
     monkeypatch.setenv("CONTENT", "Slack message")
     monkeypatch.setenv("ATTACHMENT_FILENAME", "file_name")
 
@@ -54,6 +65,7 @@ def test_parse_environment_variables_content_and_attachment_filename_set(monkeyp
 def test_parse_environment_variables_no_content_or_attachment_filename_set(monkeypatch):
     monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
     monkeypatch.setenv("SLACK_CHANNEL_NAME", "test-alerts")
+    monkeypatch.setenv("SLACK_CHANNEL_ID", "C12345")
 
     with pytest.raises(SystemExit):
         parse_environment_variables()
@@ -63,6 +75,7 @@ def test_parse_environment_variables_attachment_filename_not_valid(monkeypatch):
     monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
     monkeypatch.setenv("SLACK_CHANNEL_NAME", "test-alerts")
     monkeypatch.setenv("ATTACHMENT_FILENAME", "file_name")
+    monkeypatch.setenv("SLACK_CHANNEL_ID", "C12345")
 
     with pytest.raises(SystemExit):
         parse_environment_variables()
@@ -86,6 +99,7 @@ def test_post_slack_notification_with_ok_response_raises_no_error(mocker):
     post_slack_notification(
         slack_auth_token="token",
         slack_channel="test-alerts",
+        slack_channel_id="C12345",
         content="slack message",
         file_type="type",
         title="title",
@@ -98,22 +112,12 @@ def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error
     mocker,
 ):
     mocker.patch(
-        "slack_sdk.web.client.WebClient.conversations_list",
-        side_effect=[
-            {
-                "ok": True,
-                "channels": [{"id": "C12345", "name": "test-alerts"}],
-                "response_metadata": {"next_cursor": ""},
-            }
-        ],
-    )
-
-    mocker.patch(
         "slack_sdk.web.client.WebClient.files_upload_v2", return_value={"ok": True}
     )
     post_slack_notification(
         slack_auth_token="token",
         slack_channel="test-alerts",
+        slack_channel_id="C12345",
         file_type="type",
         title="title",
         content=None,
@@ -123,7 +127,6 @@ def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error
 
 
 def test_post_slack_notification_with_bad_response_raises_error(mocker):
-    mocker.patch("scripts.slack_notification.get_channel_id", return_value="C12345")
     mocker.patch(
         "slack_sdk.web.client.WebClient.files_upload_v2", return_value={"ok": False}
     )
@@ -132,6 +135,7 @@ def test_post_slack_notification_with_bad_response_raises_error(mocker):
         post_slack_notification(
             slack_auth_token="token",
             slack_channel="test-alerts",
+            slack_channel_id="C12345",
             content="slack message",
             file_type="type",
             title="title",
@@ -141,58 +145,14 @@ def test_post_slack_notification_with_bad_response_raises_error(mocker):
 
 
 def test_post_slack_notification_with_api_error_exits(mocker):
-    mocker.patch("scripts.slack_notification.get_channel_id", return_value="C12345")
     with pytest.raises(SystemExit):
         post_slack_notification(
             slack_auth_token="token",
             slack_channel="test-alerts",
+            slack_channel_id="C12345",
             content="slack message",
             file_type="type",
             title="title",
             initial_comment="comment",
             attachment_filename="file",
         )
-
-
-def test_get_channel_id_with_ok_response_raises_no_error(mocker):
-    mock_response = {
-        "ok": True,
-        "channels": [
-            {"id": "C12345678", "name": "test-alert"},
-            {"id": "C87654321", "name": "general"},
-        ],
-    }
-
-    mock_client = mocker.Mock()
-
-    mock_client.conversations_list.return_value = mock_response
-
-    channel_id = get_channel_id(mock_client, "test-alert")
-
-    assert channel_id == "C12345678"
-
-
-def test_get_channel_id_channel_not_found(mocker):
-    mock_response = {
-        "ok": True,
-        "channels": [
-            {"id": "C12345678", "name": "test-alert"},
-            {"id": "C87654321", "name": "general"},
-        ],
-    }
-
-    mock_client = mocker.Mock()
-    mock_client.conversations_list.return_value = mock_response
-
-    with pytest.raises(SystemExit):
-        get_channel_id(mock_client, "random-channel")
-
-
-def test_get_channel_id_fails_to_fetch_channels(mocker):
-    mock_response = {"ok": False, "error": "invalid_auth"}
-
-    mock_client = mocker.Mock()
-    mock_client.conversations_list.return_value = mock_response
-
-    with pytest.raises(SystemExit):
-        get_channel_id(mock_client, "test-alert")
