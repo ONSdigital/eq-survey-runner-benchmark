@@ -73,6 +73,7 @@ def post_slack_notification(
             response = client.files_upload_v2(
                 channel=slack_channel_id,
                 content=content,
+                filetype=file_type,
                 title=title,
                 initial_comment=initial_comment,
             )
@@ -80,6 +81,7 @@ def post_slack_notification(
         else:
             response = client.files_upload_v2(
                 channel=slack_channel_id,
+                file=attachment_filename,
                 title=title,
                 initial_comment=initial_comment,
             )
