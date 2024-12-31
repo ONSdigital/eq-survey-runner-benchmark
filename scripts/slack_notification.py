@@ -2,8 +2,8 @@ import os
 import sys
 import warnings
 
-import slack
-from slack.errors import SlackApiError
+import slack_sdk as slack
+from slack_sdk.errors import SlackApiError
 
 
 def parse_environment_variables():
@@ -15,6 +15,11 @@ def parse_environment_variables():
     slack_channel = os.getenv("SLACK_CHANNEL_NAME")
     if not slack_channel:
         print("'SLACK_CHANNEL_NAME' environment variable must be provided")
+        sys.exit(1)
+
+    slack_channel_id = os.getenv("SLACK_CHANNEL_ID")
+    if not slack_channel_id:
+        print("'SLACK_CHANNEL_ID' environment variable must be provided")
         sys.exit(1)
 
     content = os.getenv("CONTENT")
@@ -42,6 +47,7 @@ def parse_environment_variables():
     return {
         "slack_auth_token": slack_auth_token,
         "slack_channel": slack_channel,
+        "slack_channel_id": slack_channel_id,
         "content": content,
         "attachment_filename": attachment_filename,
         "file_type": file_type,
@@ -58,22 +64,22 @@ def post_slack_notification(
     file_type,
     initial_comment,
     title,
+    slack_channel_id,
 ):
     client = slack.WebClient(token=slack_auth_token)
 
     try:
         if content:
-            response = client.files_upload(
-                channels=f"#{slack_channel}",
+            response = client.files_upload_v2(
+                channel=slack_channel_id,
                 content=content,
-                filetype=file_type,
                 title=title,
                 initial_comment=initial_comment,
             )
+
         else:
-            response = client.files_upload(
-                channels=f"#{slack_channel}",
-                file=attachment_filename,
+            response = client.files_upload_v2(
+                channel=slack_channel_id,
                 title=title,
                 initial_comment=initial_comment,
             )
