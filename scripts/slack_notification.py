@@ -17,6 +17,11 @@ def parse_environment_variables():
         print("'SLACK_CHANNEL_NAME' environment variable must be provided")
         sys.exit(1)
 
+    slack_channel_id = os.getenv("SLACK_CHANNEL_ID")
+    if not slack_channel_id:
+        print("'SLACK_CHANNEL_ID' environment variable must be provided")
+        sys.exit(1)
+
     content = os.getenv("CONTENT")
     attachment_filename = os.getenv("ATTACHMENT_FILENAME")
     if content and attachment_filename:
@@ -42,32 +47,13 @@ def parse_environment_variables():
     return {
         "slack_auth_token": slack_auth_token,
         "slack_channel": slack_channel,
+        "slack_channel_id": slack_channel_id,
         "content": content,
         "attachment_filename": attachment_filename,
         "file_type": file_type,
         "initial_comment": initial_comment,
         "title": title,
     }
-
-
-def get_channel_id(client, channel_name):
-    try:
-        conversation_data = client.conversations_list()
-        if not conversation_data.get("ok", False):
-            print("Failed to fetch channels")
-            sys.exit(2)
-
-        channels = conversation_data.get("channels", [])
-        for channel in channels:
-            if channel.get("name") == channel_name:
-                return channel.get("id")
-
-        print(f"Channel: '{channel_name}' not found")
-        sys.exit(1)
-
-    except SlackApiError as e:
-        print(f'Error fetching channel list \nError: {e.response["error"]}')
-        sys.exit(2)
 
 
 def post_slack_notification(
@@ -78,14 +64,16 @@ def post_slack_notification(
     file_type,
     initial_comment,
     title,
+    slack_channel_id,
 ):
     client = slack.WebClient(token=slack_auth_token)
-    slack_channel_id = get_channel_id(client, slack_channel)
+
     try:
         if content:
             response = client.files_upload_v2(
                 channel=slack_channel_id,
                 content=content,
+                filetype=file_type,
                 title=title,
                 initial_comment=initial_comment,
             )
@@ -93,6 +81,7 @@ def post_slack_notification(
         else:
             response = client.files_upload_v2(
                 channel=slack_channel_id,
+                file=attachment_filename,
                 title=title,
                 initial_comment=initial_comment,
             )
