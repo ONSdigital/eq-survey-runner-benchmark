@@ -42,6 +42,7 @@ def test_parse_environment_variables_missing_slack_channel_name(monkeypatch):
     with pytest.raises(SystemExit):
         parse_environment_variables()
 
+
 def test_parse_environment_variables_missing_slack_channel_id(monkeypatch):
     monkeypatch.setenv("SLACK_AUTH_TOKEN", "token")
     monkeypatch.setenv("CONTENT", "Slack message")
