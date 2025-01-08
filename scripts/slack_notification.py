@@ -12,11 +12,6 @@ def parse_environment_variables():
         print("'SLACK_AUTH_TOKEN' environment variable must be provided")
         sys.exit(1)
 
-    slack_channel = os.getenv("SLACK_CHANNEL_NAME")
-    if not slack_channel:
-        print("'SLACK_CHANNEL_NAME' environment variable must be provided")
-        sys.exit(1)
-
     slack_channel_id = os.getenv("SLACK_CHANNEL_ID")
     if not slack_channel_id:
         print("'SLACK_CHANNEL_ID' environment variable must be provided")
@@ -46,7 +41,6 @@ def parse_environment_variables():
 
     return {
         "slack_auth_token": slack_auth_token,
-        "slack_channel": slack_channel,
         "slack_channel_id": slack_channel_id,
         "content": content,
         "attachment_filename": attachment_filename,
