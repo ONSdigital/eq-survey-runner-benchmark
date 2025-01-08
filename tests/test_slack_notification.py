@@ -84,7 +84,6 @@ def test_post_slack_notification_with_ok_response_raises_no_error(mocker):
 
     post_slack_notification(
         slack_auth_token="token",
-        slack_channel="test-alerts",
         slack_channel_id="C12345",
         content="slack message",
         file_type="type",
@@ -102,7 +101,6 @@ def test_post_slack_notification_with_no_content_and_ok_response_raises_no_error
     )
     post_slack_notification(
         slack_auth_token="token",
-        slack_channel="test-alerts",
         slack_channel_id="C12345",
         file_type="type",
         title="title",
@@ -120,7 +118,6 @@ def test_post_slack_notification_with_bad_response_raises_error(mocker):
     with pytest.raises(SystemExit):
         post_slack_notification(
             slack_auth_token="token",
-            slack_channel="test-alerts",
             slack_channel_id="C12345",
             content="slack message",
             file_type="type",
@@ -134,7 +131,6 @@ def test_post_slack_notification_with_api_error_exits(mocker):
     with pytest.raises(SystemExit):
         post_slack_notification(
             slack_auth_token="token",
-            slack_channel="test-alerts",
             slack_channel_id="C12345",
             content="slack message",
             file_type="type",
