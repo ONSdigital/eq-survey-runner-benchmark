@@ -58,7 +58,6 @@ def parse_environment_variables():
 
 def post_slack_notification(
     slack_auth_token,
-    slack_channel,
     content,
     attachment_filename,
     file_type,
