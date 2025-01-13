@@ -54,7 +54,7 @@ fly -t census-eq execute \
 The following env vars must be set:
 
 - OUTPUT_DIR
-- SLACK_CHANNEL_NAME
+- SLACK_CHANNEL_ID
 
 The following env var already has a sensible default, but can be set with an alternative value if needed:
 - OUTPUT_BUCKET
@@ -66,7 +66,7 @@ Use the `fly execute` command to run the task.
 
 ```sh
 OUTPUT_DIR=<output_directory> \
-SLACK_CHANNEL_NAME=<slack_channel_name> \
+SLACK_CHANNEL_ID=<slack_channel_id> \
 fly -t census-eq execute \
   --config ci/output-results-to-slack.yaml
 ```

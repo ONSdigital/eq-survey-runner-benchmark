@@ -9,7 +9,7 @@ inputs:
 params:
   OUTPUT_BUCKET:
   OUTPUT_DIR:
-  SLACK_CHANNEL_NAME:
+  SLACK_CHANNEL_ID:
   NUMBER_OF_DAYS:
   SERVICE_ACCOUNT_JSON: ((gcp.service_account_json))
   SLACK_AUTH_TOKEN: ((eq-ons-slack-app.bot_user_oauth_token))
