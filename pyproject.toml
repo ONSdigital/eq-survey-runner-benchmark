@@ -15,7 +15,7 @@ locust = "*"
 google-cloud-storage = "*"
 pandas = "*"
 matplotlib = "*"
-slackclient = "*"
+slack_sdk = "*"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
