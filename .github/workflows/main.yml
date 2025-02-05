@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
-
 jobs:
+  permissions:
+    contents: read
   docker-push:
     runs-on: ubuntu-22.04
     steps:
