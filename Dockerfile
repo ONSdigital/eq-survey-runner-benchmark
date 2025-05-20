@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y gcc python3-dev
 # Install the required dependencies via pip
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
-RUN pip install "poetry==1.8.3" \
+RUN pip install "poetry==2.1.2" \
     && poetry config virtualenvs.create false \
     && poetry install --only main
 
