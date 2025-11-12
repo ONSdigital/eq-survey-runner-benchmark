@@ -78,7 +78,7 @@ def post_slack_notification(
     print("Slack notification posted")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     with warnings.catch_warnings():
         #  https://github.com/slackapi/python-slackclient/issues/622
         warnings.simplefilter("ignore", category=RuntimeWarning)
