@@ -58,18 +58,14 @@ def post_slack_notification(
 ):
     client = slack.WebClient(token=slack_auth_token)
 
+    payload = {
+        "channel": slack_channel_id,
+        "initial_comment": initial_comment,
+        "title": title,
+        "content" if content else "file": content or attachment_filename,
+    }
+
     try:
-        payload = {
-            "channel": slack_channel_id,
-            "initial_comment": initial_comment,
-            "title": title,
-        }
-
-        if content:
-            payload["content"] = content
-        else:
-            payload["file"] = attachment_filename
-
         response = client.files_upload_v2(**payload)
     except SlackApiError as e:
         print(f'Slack notification errored\nError: {e.response["error"]}')
@@ -82,7 +78,7 @@ def post_slack_notification(
     print("Slack notification posted")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     with warnings.catch_warnings():
         #  https://github.com/slackapi/python-slackclient/issues/622
         warnings.simplefilter("ignore", category=RuntimeWarning)
