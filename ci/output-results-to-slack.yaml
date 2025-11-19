@@ -3,7 +3,7 @@ image_resource:
   type: registry-image
   source:
     repository: python
-    tag: 3.12-slim
+    tag: 3.13-slim
 inputs:
   - name: eq-survey-runner-benchmark
 params:
