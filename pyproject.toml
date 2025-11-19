@@ -6,7 +6,7 @@ authors = ["ONSDigital"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 haralyzer = "*"
 backoff = "*"
 sdc-cryptography = "*"
