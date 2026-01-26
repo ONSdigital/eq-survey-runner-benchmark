@@ -2,7 +2,7 @@
 
 ## Creating a new investigation
 
-1. Create a branch in runner prefixed with `performance-investigation` and make the proposed changes.
+1. Create a branch in runner prefixed with `EQS-<NUM>-performance-investigation` and make the proposed changes.
 1. Create a new folder in `doc/performance-investigations` named `0000-descriptive-name-for-investigation` incrementing `0000` from the last used number.
 1. Copy `TEMPLATE.md` into the directory as `summary.md`.
 1. Update `summary.md` as appropriate.
