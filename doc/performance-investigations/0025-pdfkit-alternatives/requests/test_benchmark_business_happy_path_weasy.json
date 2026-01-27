@@ -542,7 +542,7 @@
         },
         {
             "method": "GET",
-            "url": "/submitted/download-pdf?pdf_type=weaasy"
+            "url": "/submitted/download-pdf?pdf_type=weasy"
         },
         {
             "method": "GET",
