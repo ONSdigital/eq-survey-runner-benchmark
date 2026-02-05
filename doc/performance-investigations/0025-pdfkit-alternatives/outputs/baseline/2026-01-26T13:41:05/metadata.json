@@ -1,0 +1,9 @@
+{
+  "timestamp": "1769435491",
+  "max_wait": "2",
+  "host": "https://liam-staging-2026-01-15-runner.eq.gcp.onsdigital.uk",
+  "min_wait": "1",
+  "locust_options": "--headless --users 50 --spawn-rate 50 --run-time 10m --csv=output -L WARNING",
+  "runner_version": "b7542892bbdc626b5680879e3a35b7bab8e1589f",
+  "requests_json": "requests/test_benchmark_business_happy_path.json"
+}

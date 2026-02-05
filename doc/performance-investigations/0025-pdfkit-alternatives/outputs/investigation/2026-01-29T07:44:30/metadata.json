@@ -1,0 +1,9 @@
+{
+  "timestamp": "1769673277",
+  "min_wait": "1",
+  "host": "https://liam-staging-2026-01-15-runner.eq.gcp.onsdigital.uk",
+  "max_wait": "2",
+  "locust_options": "--headless --users 50 --spawn-rate 50 --run-time 10m --csv=output -L WARNING",
+  "runner_version": "a281eb28427717b10c0771a14d0fdf237a0249dc",
+  "requests_json": "doc/performance-investigations/0025-pdfkit-alternatives/requests/test_benchmark_business_happy_path_xhtml2pdf.json"
+}

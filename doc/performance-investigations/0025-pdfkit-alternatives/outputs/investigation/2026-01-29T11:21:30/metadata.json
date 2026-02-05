@@ -1,0 +1,9 @@
+{
+  "locust_options": "--headless --users 50 --spawn-rate 50 --run-time 10m --csv=output -L WARNING",
+  "max_wait": "2",
+  "host": "https://liam-staging-2026-01-15-runner.eq.gcp.onsdigital.uk",
+  "min_wait": "1",
+  "runner_version": "a281eb28427717b10c0771a14d0fdf237a0249dc",
+  "timestamp": "1769686297",
+  "requests_json": "doc/performance-investigations/0025-pdfkit-alternatives/requests/test_benchmark_business_happy_path_weasy.json"
+}
