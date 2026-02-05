@@ -23,14 +23,14 @@ moving over.
 
 ## Runner settings
 
-| Setting       | Value                                              |
-|---------------|----------------------------------------------------|
-| Concurrency   | 115                                                |
-| Max instances | 3                                                  |
-| Min instances | 3                                                  |
-| CPU           | 4                                                  |
-| Memory        | 4G                                                 |
-| Branch / PR   | EQS-512-alternatives-to-pdfkit / ADD PR LINK HERE! |
+| Setting       | Value                                                                                             |
+|---------------|---------------------------------------------------------------------------------------------------|
+| Concurrency   | 115                                                                                               |
+| Max instances | 3                                                                                                 |
+| Min instances | 3                                                                                                 |
+| CPU           | 4                                                                                                 |
+| Memory        | 4G                                                                                                |
+| Draft PR      | [EQS-512-alternatives-to-pdfkit](https://github.com/ONSdigital/eq-questionnaire-runner/pull/1816) |
 
 ## Benchmark profile
 
@@ -66,14 +66,14 @@ Observations:
 
 ## Runner settings
 
-| Setting       | Value                                              |
-|---------------|----------------------------------------------------|
-| Concurrency   | 115                                                |
-| Max instances | 50                                                 |
-| Min instances | 3                                                  |
-| CPU           | 4                                                  |
-| Memory        | 4G                                                 |
-| Branch / PR   | EQS-512-alternatives-to-pdfkit / ADD PR LINK HERE! |
+| Setting       | Value                                                                                             |
+|---------------|---------------------------------------------------------------------------------------------------|
+| Concurrency   | 115                                                                                               |
+| Max instances | 50                                                                                                |
+| Min instances | 3                                                                                                 |
+| CPU           | 4                                                                                                 |
+| Memory        | 4G                                                                                                |
+| Draft PR      | [EQS-512-alternatives-to-pdfkit](https://github.com/ONSdigital/eq-questionnaire-runner/pull/1816) |
 
 ## Benchmark profile
 
