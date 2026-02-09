@@ -203,8 +203,8 @@ Observations:
 
 ## Option 7: Use a mouse cursor wait loop icon while PDF is being generated
 
-* This has been mentioned before (from previous spike) - maybe we could add a mouse cursor wait loop icon while the PDF
-  is being generated to improve UX?
+* This has been mentioned before (from previous spike) - maybe we could add a mouse cursor wait loop icon, or have a
+  spinner on the button while the PDF is being generated to improve UX?
 * This would need DS and accessibility considerations, but could be a low-effort way to improve the UX while we explore
   other options?
 
