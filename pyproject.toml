@@ -16,7 +16,6 @@ google-cloud-storage = "*"
 pandas = "*"
 matplotlib = "*"
 slack_sdk = "*"
-protobuf = "6.33.5"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
