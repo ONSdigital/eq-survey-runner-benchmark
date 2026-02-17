@@ -201,7 +201,7 @@ Observations:
   handle PDF generation only, which could offload the processing from our Runner instances. However, this would
   introduce additional complexity and potential costs, as well as concerns around data privacy and security
 
-## Option 7: Use a mouse cursor wait loop icon while PDF is being generated
+## Option 7: Use a button or mouse wait loop icon while PDF is being generated
 
 * This has been mentioned before (from previous spike) - maybe we could add a mouse cursor wait loop icon, or have a
   spinner on the button while the PDF is being generated to improve UX?
