@@ -19,7 +19,7 @@ slack_sdk = "*"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
-"flake8" = "*"
+flake8 = "*"
 isort = "*"
 pytest = "*"
 pytest-cov = "*"
