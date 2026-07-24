@@ -2089,10 +2089,7 @@ files = [
 ]
 
 [package.dependencies]
-numpy = [
-    {version = ">=1.26.0", markers = "python_version < \"3.14\""},
-    {version = ">=2.3.3", markers = "python_version >= \"3.14\""},
-]
+numpy = {version = ">=2.3.3", markers = "python_version >= \"3.14\""}
 python-dateutil = ">=2.8.2"
 tzdata = {version = "*", markers = "sys_platform == \"win32\" or sys_platform == \"emscripten\""}
 
@@ -3122,5 +3119,5 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = "^3.13"
-content-hash = "71370ff09e20908c3090f3c6dbeadc3970a9dd127207fcaefe4b4e9dc34aa7e1"
+python-versions = "^3.14"
+content-hash = "a839ac4c4a498adfda5d861baa26d9021b972c0a8532bd956ea839b41b51ae0f"
