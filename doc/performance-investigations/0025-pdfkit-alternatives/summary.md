@@ -3,7 +3,7 @@
 Important notes:
 
 * This investigation aims to repeat the previous investigation
-  in [Investigation 0021](../0021-pdfkit-vs-weasyprint/summary.md), but now uses the new 'happy path' benchmark journey
+  in [0018](../0018-pdf-weasyprint-pdfkit/summary.md), but now uses the new 'happy path' benchmark journey
   which includes the `/download-pdf` end point, along with the latest updates of dependencies and Runner.
 * The benchmarks are very much a 'worst case scenario' because the journey _always_ hits the `/download-pdf` endpoint.
   In reality, not all users will download the PDF, so the overall impact on performance may be less significant.
