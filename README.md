@@ -31,20 +31,6 @@ conda activate eq-benchmark
 
 Version can be changed by editing `environment.yml` and running `conda env update -f environment.yml --prune`
 
-#### Poetry
-
-Poetry must install into the conda environment rather than creating its own virtualenv.
-Set this on the environment so that no configuration file is left in the repository:
-
-``` shell
-conda env config vars set POETRY_VIRTUALENVS_CREATE=false
-conda deactivate && conda activate eq-benchmark
-```
-Confirm it took effect, this must print `false`:
-
-``` shell
-echo $POETRY_VIRTUALENVS_CREATE
-```
 
 #### Dependencies
 
