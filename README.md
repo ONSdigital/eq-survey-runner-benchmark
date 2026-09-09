@@ -14,6 +14,33 @@ You need to remove 10.14 version by using:
 sudo rm -rf /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
 ```
 
+
+#### Conda environment
+
+Python version is pinned in the committed `environment.yml`, 
+matching `.python-version` as closely as conda-forge availability allows:
+
+If `.python-version` changes, update `environment.yml` to match.
+
+Create and activate the environment:
+
+``` shell
+conda env create -f environment.yml
+conda activate eq-benchmark
+```
+
+Version can be changed by editing `environment.yml` and running `conda env update -f environment.yml --prune`
+
+
+#### Dependencies
+
+With the environment active, install the Python dependencies:
+
+``` shell
+poetry install
+```
+
+
 ## Running a benchmark
 
 The benchmark consumes a requests JSON file that contains a list of HTTP requests. This can either be created from scratch or generated from a HAR file. Example requests files can be found in the `requests` folder.
